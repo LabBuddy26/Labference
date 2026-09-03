@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use LabBench, please cite the repository release until the paper citation is available."
+title: "EAI4S LabBench"
+type: software
+version: 0.1.0
+date-released: 2026-09-02
+authors:
+  - name: "EAI4S Contributors"
+license: MIT
+repository-code: "https://github.com/zhaochunhai/LabBench"
