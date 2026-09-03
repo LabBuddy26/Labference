@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b2c35">
+  <meta name="description" content="Data, tasks, objects and reproducible evaluation for embodied agents operating in chemistry laboratories.">
+  <title>Dataset · EAI4S LabBench</title>
+  <link rel="stylesheet" href="/LabBench/static/public-site.css">
+  <script defer src="/LabBench/static/public-site.js"></script>
+</head>
+<body data-page="dataset">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <a class="site-brand" href="/LabBench/" aria-label="EAI4S LabBench home">
+      <img class="brand-logo" src="/LabBench/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">
+      <span><strong>EAI4S</strong> <em>LabBench</em><small>Chemistry manipulation benchmark</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+      <a data-nav="home" href="/LabBench/">Home</a>
+      <a data-nav="tasks" href="/LabBench/tasks/">Tasks</a>
+      <a data-nav="objects" href="/LabBench/objects/">Objects</a>
+      <a data-nav="dataset" href="/LabBench/dataset/">Dataset</a>
+      <a data-nav="leaderboard" href="/LabBench/leaderboard/">Leaderboard</a>
+      <a data-nav="docs" href="/LabBench/docs/">Docs</a>
+      
+    </nav>
+  </header>
+
+  <main id="main-content">
+    
+<header class="page-hero"><div><p class="section-kicker">Simulation trajectories</p><h1>Simulation data, frame by frame.</h1><p class="lede">Inspect the Isaac Sim collection used to train and evaluate LabBench agents: synchronized RGB, robot state and action streams at 10 Hz.</p></div></header>
+<div class="page-shell">
+  
+  <section class="download-callout" aria-labelledby="dataset-download-title">
+    <div><p class="section-kicker">Download available</p><h2 id="dataset-download-title">Download the LabBench dataset</h2><p>Open the Baidu Netdisk share directly or copy the visible link below.</p><a class="download-url" href="https://pan.baidu.com/s/1zyJL3zxHqI_j67hUkUF6lw?pwd=gtc4" target="_blank" rel="noopener">https://pan.baidu.com/s/1zyJL3zxHqI_j67hUkUF6lw?pwd=gtc4</a></div>
+    <div class="download-actions"><a class="button primary" href="https://pan.baidu.com/s/1zyJL3zxHqI_j67hUkUF6lw?pwd=gtc4" target="_blank" rel="noopener">Download from Baidu Netdisk →</a></div>
+  </section>
+  
+  <section class="content-card"><div class="section-head"><div><p class="section-kicker">Simulation collection</p><h2>One timeline, every modality.</h2></div></div><div class="contract-list"><div><strong>Observation</strong>Front RGB + wrist RGB</div><div><strong>Robot state</strong>7 arm joints + gripper</div><div><strong>Actions</strong>Joint / EE + binary gripper</div><div><strong>Sampling</strong>10 Hz synchronized with 60 Hz physics</div><div><strong>Container</strong>HDF5 episodes with video and state streams (LeRobot-compatible folder naming)</div></div></section>
+
+  <div class="track-grid">
+    
+    <article class="content-card"><p class="section-kicker">Simulation collection</p><h3>Isaac Sim Simulation</h3><p>Physics-based Franka Panda task trajectories</p><dl class="definition-list"><div><dt>Episodes</dt><dd>4,785</dd></div><div><dt>Duration</dt><dd>32:42:40</dd></div><div><dt>Status</dt><dd>Active</dd></div></dl></article>
+    
+  </div>
+
+  <section class="content-card"><p class="section-kicker">Published simulation tasks</p><h2>Dataset inventory</h2><div class="leaderboard-table data-table inventory-table"><table><thead><tr><th>Task</th><th>Episodes</th><th>Frames</th><th>FPS</th><th>Duration</th></tr></thead><tbody><tr><td><code class="dataset-task-id">L12</code>Clear and Reset the Laboratory Bench</td><td>175</td><td>79,894</td><td>10</td><td>7,989 s</td></tr><tr><td><code class="dataset-task-id">skill:close</code>Close the laboratory device</td><td>200</td><td>18,440</td><td>10</td><td>1,844 s</td></tr><tr><td><code class="dataset-task-id">L08</code>NMR Sample Holder Loading</td><td>200</td><td>28,762</td><td>10</td><td>2,876 s</td></tr><tr><td><code class="dataset-task-id">R09</code>Map a B3 Grid Instruction</td><td>200</td><td>28,674</td><td>10</td><td>2,867 s</td></tr><tr><td><code class="dataset-task-id">R10</code>Place a Tube at C2</td><td>200</td><td>32,253</td><td>10</td><td>3,225 s</td></tr><tr><td><code class="dataset-task-id">R11</code>Locate a Sample-Box Socket</td><td>166</td><td>5,192</td><td>10</td><td>519 s</td></tr><tr><td><code class="dataset-task-id">L09</code>Load and Start a Laboratory Device</td><td>200</td><td>98,665</td><td>10</td><td>9,866 s</td></tr><tr><td><code class="dataset-task-id">skill:open</code>Open the laboratory device</td><td>60</td><td>8,675</td><td>10</td><td>867 s</td></tr><tr><td><code class="dataset-task-id">L11</code>Operate a Condition Module</td><td>200</td><td>53,445</td><td>10</td><td>5,344 s</td></tr><tr><td><code class="dataset-task-id">skill:grasp</code>Pick up the beaker from the table</td><td>400</td><td>120,932</td><td>10</td><td>12,093 s</td></tr><tr><td><code class="dataset-task-id">skill:stir</code>Pick up the glass rod and stir the liquid</td><td>200</td><td>58,304</td><td>10</td><td>5,830 s</td></tr><tr><td><code class="dataset-task-id">skill:place</code>Pick up the object and place it at the target</td><td>200</td><td>26,821</td><td>10</td><td>2,682 s</td></tr><tr><td><code class="dataset-task-id">skill:pour</code>Pick up the source container and pour it into the target container</td><td>200</td><td>32,318</td><td>10</td><td>3,231 s</td></tr><tr><td><code class="dataset-task-id">L06</code>Sequential Balance Loading</td><td>200</td><td>83,646</td><td>10</td><td>8,364 s</td></tr><tr><td><code class="dataset-task-id">L02</code>Organize a Vial by Destination</td><td>318</td><td>57,278</td><td>10</td><td>5,727 s</td></tr><tr><td><code class="dataset-task-id">L01</code>Transport Three Sample Vials</td><td>267</td><td>137,000</td><td>10</td><td>13,700 s</td></tr><tr><td><code class="dataset-task-id">L10</code>Sequential Three-Vial Loading</td><td>200</td><td>86,569</td><td>10</td><td>8,656 s</td></tr><tr><td><code class="dataset-task-id">L04</code>Three-Beaker Liquid Mixing</td><td>200</td><td>118,398</td><td>10</td><td>11,839 s</td></tr><tr><td><code class="dataset-task-id">R08</code>Read and Select an NMR Slot</td><td>200</td><td>28,671</td><td>10</td><td>2,867 s</td></tr><tr><td><code class="dataset-task-id">R04</code>RPM Adjustment Decision</td><td>104</td><td>5,749</td><td>10</td><td>574 s</td></tr><tr><td><code class="dataset-task-id">R05</code>State-Dependent Device Control</td><td>200</td><td>22,668</td><td>10</td><td>2,266 s</td></tr><tr><td><code class="dataset-task-id">R03</code>Temperature-Gated Sample Retrieval</td><td>200</td><td>20,041</td><td>10</td><td>2,004 s</td></tr><tr><td><code class="dataset-task-id">R03</code>Temperature-Gated Sample Retrieval</td><td>200</td><td>20,041</td><td>10</td><td>2,004 s</td></tr><tr><td><code class="dataset-task-id">R01</code>Read and Record a Digital Mass</td><td>95</td><td>5,261</td><td>10</td><td>526 s</td></tr></tbody></table></div></section>
+
+  <section class="content-card"><p class="section-kicker">HDF5 episode schema</p><h2>Publication fields</h2><div class="leaderboard-table data-table schema-table"><table><thead><tr><th>Field</th><th>Type</th><th>Purpose</th></tr></thead><tbody>
+    <tr><td><code>camera_1_rgb / camera_3_rgb</code></td><td>uint8[T,…]</td><td>Front and wrist RGB observations</td></tr>
+    <tr><td><code>agent_pose</code></td><td>float32[T,8]</td><td>Seven arm joints and gripper state</td></tr>
+    <tr><td><code>actions / actions_ee</code></td><td>float32[T,…]</td><td>Next-step joint or end-effector target</td></tr>
+    <tr><td><code>action_gripper</code></td><td>uint8[T]</td><td>Binary gripper command: 0 close, 1 open</td></tr>
+    <tr><td><code>subtask</code></td><td>UTF-8[T]</td><td>Semantic phase annotation aligned to every frame</td></tr>
+    <tr><td><code>timestamp / sim_step</code></td><td>float64 / int64</td><td>Episode time and original 60 Hz physics step</td></tr>
+    <tr><td><code>language_instruction</code></td><td>UTF-8 string</td><td>Per-episode task instruction</td></tr>
+    <tr><td><code>task_properties</code></td><td>UTF-8 JSON</td><td>Structured task parameters</td></tr>
+    <tr><td><code>attrs: fps / physics_hz / sample_stride</code></td><td>int</td><td>Sample rate, source physics rate and decimation step</td></tr>
+  </tbody></table></div></section>
+
+  <section class="content-card"><p class="section-kicker">Dataset terms</p><h2>CC-BY-4.0</h2><p>The released LabBench dataset may be used, adapted and redistributed with appropriate attribution. Cite LabBench and identify whether changes were made.</p><p><a class="text-link" href="https://creativecommons.org/licenses/by/4.0/" rel="license">Read the full Creative Commons Attribution 4.0 International terms →</a></p></section>
+</div>
+
+  </main>
+
+  <button class="scroll-to-top" id="scrollBtn" type="button" aria-label="Back to top" title="Back to top">↑</button>
+
+  <footer class="site-footer">
+    <div>
+      <a class="site-brand footer-brand" href="/LabBench/">
+        <img class="brand-logo" src="/LabBench/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">
+        <span><strong>EAI4S</strong> <em>LabBench</em></span>
+      </a>
+      <p>Data, tasks, objects and reproducible evaluation for embodied agents operating in chemistry laboratories.</p>
+    </div>
+    <div class="footer-links">
+      <a href="/LabBench/tasks/">Tasks</a><a href="/LabBench/objects/">Objects</a>
+      <a href="/LabBench/leaderboard/">Leaderboard</a><a href="/LabBench/docs/">Documentation</a>
+    </div>
+    <p class="footer-note">Built for reproducible chemistry laboratory robotics research.</p>
+  </footer>
+</body>
+</html>

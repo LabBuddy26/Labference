@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b2c35">
+  <meta name="description" content="Data, tasks, objects and reproducible evaluation for embodied agents operating in chemistry laboratories.">
+  <title>L10 · Sequential Three-Vial Loading · EAI4S LabBench</title>
+  <link rel="stylesheet" href="/LabBench/static/public-site.css">
+  <script defer src="/LabBench/static/public-site.js"></script>
+</head>
+<body data-page="tasks">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <a class="site-brand" href="/LabBench/" aria-label="EAI4S LabBench home">
+      <img class="brand-logo" src="/LabBench/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">
+      <span><strong>EAI4S</strong> <em>LabBench</em><small>Chemistry manipulation benchmark</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+      <a data-nav="home" href="/LabBench/">Home</a>
+      <a data-nav="tasks" href="/LabBench/tasks/">Tasks</a>
+      <a data-nav="objects" href="/LabBench/objects/">Objects</a>
+      <a data-nav="dataset" href="/LabBench/dataset/">Dataset</a>
+      <a data-nav="leaderboard" href="/LabBench/leaderboard/">Leaderboard</a>
+      <a data-nav="docs" href="/LabBench/docs/">Docs</a>
+      
+    </nav>
+  </header>
+
+  <main id="main-content">
+    
+<header class="page-hero"><div><a class="page-back" href="/LabBench/tasks/" aria-label="Back to all tasks"><span aria-hidden="true">←</span> Back to tasks</a><p class="section-kicker">L10 · Long-Horizon Procedures</p><h1>Sequential Three-Vial Loading</h1><p class="lede">Load vials A, B and C into positions 1, 2 and 3 in order.</p><span class="status">available</span></div></header>
+<div class="page-shell detail-grid">
+  <div class="detail-main">
+    
+    <section class="content-card task-demos"><p class="section-kicker">Scene demonstrations</p>
+      <article class="demo-variant"><div class="demo-copy"><h3>Sequential cohort loading</h3><p>Three vials are loaded into cohort positions in order while preserving the identity and destination of each sample.</p></div><div class="demo-grid">
+        <figure class="demo-view"><div class="demo-video-shell"><video muted loop playsinline autoplay preload="auto" tabindex="0" poster="/LabBench/static/web_assets/task_media/l10-cohort-loading-front.webp" data-autoplay-video aria-label="Sequential cohort loading — Front camera"><source src="/LabBench/static/web_assets/task_media/l10-cohort-loading-front.mp4" type="video/mp4"></video></div><figcaption>Front camera</figcaption></figure><figure class="demo-view"><div class="demo-video-shell"><video muted loop playsinline autoplay preload="auto" tabindex="0" poster="/LabBench/static/web_assets/task_media/l10-cohort-loading-wrist.webp" data-autoplay-video aria-label="Sequential cohort loading — Wrist camera"><source src="/LabBench/static/web_assets/task_media/l10-cohort-loading-wrist.mp4" type="video/mp4"></video></div><figcaption>Wrist camera</figcaption></figure>
+      </div></article>
+    </section>
+    
+    <section class="content-card"><p class="section-kicker">Official evaluation</p><h2>Success Rate and scoring</h2><div class="score-bar" style="--weight: 40%"><span></span><small>Completion · 40%</small></div><div class="score-bar" style="--weight: 30%"><span></span><small>Sequence quality · 30%</small></div><div class="score-bar" style="--weight: 20%"><span></span><small>Subgoal completion · 20%</small></div><div class="score-bar" style="--weight: 10%"><span></span><small>Efficiency · 10%</small></div><p class="detail-note"><strong>Success Rate:</strong> Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.</p><p class="detail-note"><strong>Hard failures:</strong> Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.</p><p class="detail-note"><strong>Quality score:</strong> Quality scoring is not implemented yet for this task.</p></section>
+  </div>
+  <aside class="detail-side">
+    <section class="content-card"><h3>Task facts</h3><dl class="definition-list"><div><dt>Track</dt><dd>L · Long-Horizon Procedures</dd></div><div><dt>Availability</dt><dd>Available</dd></div><div><dt>Required objects</dt><dd>Sample Vial, Sample Organization Box</dd></div><div><dt>Simulation model</dt><dd>Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.</dd></div></dl></section>
+    <section class="content-card"><h3>Objects & equipment</h3><div class="chip-row"><a class="chip" href="/LabBench/objects/sample-vial/">Sample Vial</a><a class="chip" href="/LabBench/objects/sample-box/">Sample Organization Box</a></div></section>
+    <a class="button" href="/LabBench/tasks/">← Back to all tasks</a>
+  </aside>
+</div>
+
+  </main>
+
+  <button class="scroll-to-top" id="scrollBtn" type="button" aria-label="Back to top" title="Back to top">↑</button>
+
+  <footer class="site-footer">
+    <div>
+      <a class="site-brand footer-brand" href="/LabBench/">
+        <img class="brand-logo" src="/LabBench/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">
+        <span><strong>EAI4S</strong> <em>LabBench</em></span>
+      </a>
+      <p>Data, tasks, objects and reproducible evaluation for embodied agents operating in chemistry laboratories.</p>
+    </div>
+    <div class="footer-links">
+      <a href="/LabBench/tasks/">Tasks</a><a href="/LabBench/objects/">Objects</a>
+      <a href="/LabBench/leaderboard/">Leaderboard</a><a href="/LabBench/docs/">Documentation</a>
+    </div>
+    <p class="footer-note">Built for reproducible chemistry laboratory robotics research.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b2c35">
+  <meta name="description" content="Data, tasks, objects and reproducible evaluation for embodied agents operating in chemistry laboratories.">
+  <title>Tasks · EAI4S LabBench</title>
+  <link rel="stylesheet" href="/LabBench/static/public-site.css">
+  <script defer src="/LabBench/static/public-site.js"></script>
+</head>
+<body data-page="tasks">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <a class="site-brand" href="/LabBench/" aria-label="EAI4S LabBench home">
+      <img class="brand-logo" src="/LabBench/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">
+      <span><strong>EAI4S</strong> <em>LabBench</em><small>Chemistry manipulation benchmark</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+      <a data-nav="home" href="/LabBench/">Home</a>
+      <a data-nav="tasks" href="/LabBench/tasks/">Tasks</a>
+      <a data-nav="objects" href="/LabBench/objects/">Objects</a>
+      <a data-nav="dataset" href="/LabBench/dataset/">Dataset</a>
+      <a data-nav="leaderboard" href="/LabBench/leaderboard/">Leaderboard</a>
+      <a data-nav="docs" href="/LabBench/docs/">Docs</a>
+      
+    </nav>
+  </header>
+
+  <main id="main-content">
+    
+<header class="page-hero"><div><p class="section-kicker">L01–L12 · R01–R12</p><h1>24 tasks for laboratory manipulation.</h1><p class="lede">Browse long-horizon procedures and reasoning-in-action tasks. Available tasks come first; planned tasks make the benchmark roadmap visible.</p></div></header>
+<div class="page-shell">
+  <div class="filter-bar" aria-label="Task filters">
+    <input data-task-search type="search" placeholder="Search task name, ID or description" aria-label="Search tasks">
+    <select data-task-track aria-label="Filter by track"><option value="">All tracks</option><option value="long_horizon">L · Long-Horizon Procedures</option><option value="reasoning_in_action">R · Reasoning in Action</option></select>
+    <select data-task-status aria-label="Filter by availability"><option value="">All states</option><option value="available">Available</option><option value="planned">Planned</option></select>
+    <select data-task-action aria-label="Filter by atomic action"><option value="">All atomic actions</option><option value="grasp">Grasp</option><option value="place">Place</option><option value="press">Press</option><option value="pour">Pour</option><option value="open">Open</option><option value="close">Close</option><option value="move">Move</option><option value="stir">Stir</option><option value="shake">Shake</option><option value="lift">Lift</option><option value="twist">Twist</option></select>
+    <span class="result-count" data-result-count></span>
+  </div>
+  <div class="card-grid" data-task-grid>
+    
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="grasp,lift,move,place" data-search="l01 transport three sample vials pick three sample vials in sequence and place each one into a separate sample-box slot.">
+      <div class="card-media"><span class="media-fallback">L01</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l01-sample-transport-front.webp" data-hover-video aria-label="Transport Three Sample Vials preview"><source data-src="/LabBench/static/web_assets/task_media/l01-sample-transport-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>L01 · L</span><span class="status">available</span></div><h3>Transport Three Sample Vials</h3><p>Pick three sample vials in sequence and place each one into a separate sample-box slot.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Lift</span><span class="chip">Move</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L01/">View Transport Three Sample Vials</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="grasp,move,place" data-search="l02 organize a vial by destination resolve the assigned sample box and insert the vial into the matching destination slot.">
+      <div class="card-media"><span class="media-fallback">L02</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l02-sample-organization-front.webp" data-hover-video aria-label="Organize a Vial by Destination preview"><source data-src="/LabBench/static/web_assets/task_media/l02-sample-organization-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>L02 · L</span><span class="status">available</span></div><h3>Organize a Vial by Destination</h3><p>Resolve the assigned sample box and insert the vial into the matching destination slot.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L02/">View Organize a Vial by Destination</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="grasp,move,press,shake,place" data-search="l04 three-beaker liquid mixing pour three source beakers into a central mixing target and return every beaker to its original place.">
+      <div class="card-media"><span class="media-fallback">L04</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l04-liquid-mixing-front.webp" data-hover-video aria-label="Three-Beaker Liquid Mixing preview"><source data-src="/LabBench/static/web_assets/task_media/l04-liquid-mixing-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>L04 · L</span><span class="status">available</span></div><h3>Three-Beaker Liquid Mixing</h3><p>Pour three source beakers into a central mixing target and return every beaker to its original place.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Press</span><span class="chip">Shake</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L04/">View Three-Beaker Liquid Mixing</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="open,grasp,move,place,close" data-search="l06 sequential balance loading pick three calibration weights and place them on the laboratory balance in the required order.">
+      <div class="card-media"><span class="media-fallback">L06</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l06-scale-weights-front.webp" data-hover-video aria-label="Sequential Balance Loading preview"><source data-src="/LabBench/static/web_assets/task_media/l06-scale-weights-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>L06 · L</span><span class="status">available</span></div><h3>Sequential Balance Loading</h3><p>Pick three calibration weights and place them on the laboratory balance in the required order.</p><div class="chip-row"><span class="chip">Open</span><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span><span class="chip">Close</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L06/">View Sequential Balance Loading</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="grasp,lift,move,place" data-search="l08 nmr sample holder loading pick the nmr sample and insert it into the designated sample holder with stable vertical alignment.">
+      <div class="card-media"><span class="media-fallback">L08</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l08-nmr-loading-front.webp" data-hover-video aria-label="NMR Sample Holder Loading preview"><source data-src="/LabBench/static/web_assets/task_media/l08-nmr-loading-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>L08 · L</span><span class="status">available</span></div><h3>NMR Sample Holder Loading</h3><p>Pick the NMR sample and insert it into the designated sample holder with stable vertical alignment.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Lift</span><span class="chip">Move</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L08/">View NMR Sample Holder Loading</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="open,grasp,move,place,close,press" data-search="l09 load and start a laboratory device open the device, place two beakers without collision and press the physical start control.">
+      <div class="card-media"><span class="media-fallback">L09</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l09-device-program-front.webp" data-hover-video aria-label="Load and Start a Laboratory Device preview"><source data-src="/LabBench/static/web_assets/task_media/l09-device-program-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>L09 · L</span><span class="status">available</span></div><h3>Load and Start a Laboratory Device</h3><p>Open the device, place two beakers without collision and press the physical start control.</p><div class="chip-row"><span class="chip">Open</span><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span><span class="chip">Close</span><span class="chip">Press</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L09/">View Load and Start a Laboratory Device</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="grasp,lift,move,place" data-search="l10 sequential three-vial loading load vials a, b and c into positions 1, 2 and 3 in order.">
+      <div class="card-media"><span class="media-fallback">L10</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l10-cohort-loading-front.webp" data-hover-video aria-label="Sequential Three-Vial Loading preview"><source data-src="/LabBench/static/web_assets/task_media/l10-cohort-loading-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>L10 · L</span><span class="status">available</span></div><h3>Sequential Three-Vial Loading</h3><p>Load vials A, B and C into positions 1, 2 and 3 in order.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Lift</span><span class="chip">Move</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L10/">View Sequential Three-Vial Loading</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="open,grasp,move,place,close,press" data-search="l11 operate a condition module load a beaker onto the condition module, press its control and return the beaker after the cycle.">
+      <div class="card-media"><span class="media-fallback">L11</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l11-condition-module-front.webp" data-hover-video aria-label="Operate a Condition Module preview"><source data-src="/LabBench/static/web_assets/task_media/l11-condition-module-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>L11 · L</span><span class="status">available</span></div><h3>Operate a Condition Module</h3><p>Load a beaker onto the condition module, press its control and return the beaker after the cycle.</p><div class="chip-row"><span class="chip">Open</span><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span><span class="chip">Close</span><span class="chip">Press</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L11/">View Operate a Condition Module</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="grasp,move,place,close" data-search="l12 clear and reset the laboratory bench return a sample vial to its box, insert a test tube into its rack and leave the workspace clear.">
+      <div class="card-media"><span class="media-fallback">L12</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l12-bench-reset-front.webp" data-hover-video aria-label="Clear and Reset the Laboratory Bench preview"><source data-src="/LabBench/static/web_assets/task_media/l12-bench-reset-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>L12 · L</span><span class="status">available</span></div><h3>Clear and Reset the Laboratory Bench</h3><p>Return a sample vial to its box, insert a test tube into its rack and leave the workspace clear.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span><span class="chip">Close</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L12/">View Clear and Reset the Laboratory Bench</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="available" data-actions="press" data-search="r01 read and record a digital mass read a digital scale display and select the matching value from four choices.">
+      <div class="card-media"><span class="media-fallback">R01</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r01-digital-mass-front.webp" data-hover-video aria-label="Read and Record a Digital Mass preview"><source data-src="/LabBench/static/web_assets/task_media/r01-digital-mass-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>R01 · R</span><span class="status">available</span></div><h3>Read and Record a Digital Mass</h3><p>Read a digital scale display and select the matching value from four choices.</p><div class="chip-row"><span class="chip">Press</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/R01/">View Read and Record a Digital Mass</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="available" data-actions="grasp,move,place" data-search="r02 select weights for a target mass reason over labelled weights and place the required combination on the scale.">
+      <div class="card-media"><span class="media-fallback">R02</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r02-weight-selection-front.webp" data-hover-video aria-label="Select Weights for a Target Mass preview"><source data-src="/LabBench/static/web_assets/task_media/r02-weight-selection-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>R02 · R</span><span class="status">available</span></div><h3>Select Weights for a Target Mass</h3><p>Reason over labelled weights and place the required combination on the scale.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/R02/">View Select Weights for a Target Mass</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="available" data-actions="open,press" data-search="r03 temperature-gated sample retrieval read temperature and choose wait or open based on a 30 °c threshold.">
+      <div class="card-media"><span class="media-fallback">R03</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r03-temperature-open-front.webp" data-hover-video aria-label="Temperature-Gated Sample Retrieval preview"><source data-src="/LabBench/static/web_assets/task_media/r03-temperature-open-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>R03 · R</span><span class="status">available</span></div><h3>Temperature-Gated Sample Retrieval</h3><p>Read temperature and choose Wait or Open based on a 30 °C threshold.</p><div class="chip-row"><span class="chip">Open</span><span class="chip">Press</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/R03/">View Temperature-Gated Sample Retrieval</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="available" data-actions="press" data-search="r04 rpm adjustment decision read an rpm value and select increase, confirm or decrease.">
+      <div class="card-media"><span class="media-fallback">R04</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r04-rpm-decision-front.webp" data-hover-video aria-label="RPM Adjustment Decision preview"><source data-src="/LabBench/static/web_assets/task_media/r04-rpm-decision-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>R04 · R</span><span class="status">available</span></div><h3>RPM Adjustment Decision</h3><p>Read an RPM value and select increase, confirm or decrease.</p><div class="chip-row"><span class="chip">Press</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/R04/">View RPM Adjustment Decision</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="available" data-actions="open,press" data-search="r05 state-dependent device control map ready, running and done states to start, wait and open actions.">
+      <div class="card-media"><span class="media-fallback">R05</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r05-device-status-front.webp" data-hover-video aria-label="State-Dependent Device Control preview"><source data-src="/LabBench/static/web_assets/task_media/r05-device-status-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>R05 · R</span><span class="status">available</span></div><h3>State-Dependent Device Control</h3><p>Map Ready, Running and Done states to Start, Wait and Open actions.</p><div class="chip-row"><span class="chip">Open</span><span class="chip">Press</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/R05/">View State-Dependent Device Control</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="available" data-actions="move,place" data-search="r08 read and select an nmr slot read slot 7 from a display and map it to the physical autosampler socket.">
+      <div class="card-media"><span class="media-fallback">R08</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r08-display-slot-front.webp" data-hover-video aria-label="Read and Select an NMR Slot preview"><source data-src="/LabBench/static/web_assets/task_media/r08-display-slot-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>R08 · R</span><span class="status">available</span></div><h3>Read and Select an NMR Slot</h3><p>Read Slot 7 from a display and map it to the physical autosampler socket.</p><div class="chip-row"><span class="chip">Move</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/R08/">View Read and Select an NMR Slot</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="available" data-actions="move,place" data-search="r09 map a b3 grid instruction interpret row and column labels and select the b3 rack socket.">
+      <div class="card-media"><span class="media-fallback">R09</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r09-rack-grid-front.webp" data-hover-video aria-label="Map a B3 Grid Instruction preview"><source data-src="/LabBench/static/web_assets/task_media/r09-rack-grid-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>R09 · R</span><span class="status">available</span></div><h3>Map a B3 Grid Instruction</h3><p>Interpret row and column labels and select the B3 rack socket.</p><div class="chip-row"><span class="chip">Move</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/R09/">View Map a B3 Grid Instruction</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="available" data-actions="move,place" data-search="r10 place a tube at c2 map a c2 command to a labelled rack and insert the test tube.">
+      <div class="card-media"><span class="media-fallback">R10</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r10-assigned-socket-front.webp" data-hover-video aria-label="Place a Tube at C2 preview"><source data-src="/LabBench/static/web_assets/task_media/r10-assigned-socket-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>R10 · R</span><span class="status">available</span></div><h3>Place a Tube at C2</h3><p>Map a C2 command to a labelled rack and insert the test tube.</p><div class="chip-row"><span class="chip">Move</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/R10/">View Place a Tube at C2</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="available" data-actions="move" data-search="r11 locate a sample-box socket interpret a row-and-column instruction and move the gripper above the matching sample-box socket.">
+      <div class="card-media"><span class="media-fallback">R11</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r11-sample-box-socket-front.webp" data-hover-video aria-label="Locate a Sample-Box Socket preview"><source data-src="/LabBench/static/web_assets/task_media/r11-sample-box-socket-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
+      <div class="card-body"><div class="card-meta"><span>R11 · R</span><span class="status">available</span></div><h3>Locate a Sample-Box Socket</h3><p>Interpret a row-and-column instruction and move the gripper above the matching sample-box socket.</p><div class="chip-row"><span class="chip">Move</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/R11/">View Locate a Sample-Box Socket</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="planned" data-actions="grasp,move,press,place" data-search="l03 tip installation and liquid transfer install a tip, transfer 100 microlitres between tubes and discard the tip.">
+      <div class="card-media"><span class="media-fallback">L03</span></div>
+      <div class="card-body"><div class="card-meta"><span>L03 · L</span><span class="status planned">planned</span></div><h3>Tip Installation and Liquid Transfer</h3><p>Install a tip, transfer 100 microlitres between tubes and discard the tip.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Press</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L03/">View Tip Installation and Liquid Transfer</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="planned" data-actions="grasp,move,press,place" data-search="l05 four-well recipe dispensing dispense fixed recipe volumes into a1, a2, b1 and b2.">
+      <div class="card-media"><span class="media-fallback">L05</span></div>
+      <div class="card-body"><div class="card-meta"><span>L05 · L</span><span class="status planned">planned</span></div><h3>Four-Well Recipe Dispensing</h3><p>Dispense fixed recipe volumes into A1, A2, B1 and B2.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Press</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L05/">View Four-Well Recipe Dispensing</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="planned" data-actions="open,grasp,move,place,close,press" data-search="l07 load two tubes into a centrifuge pick two nmr tubes and place them into the designated centrifuge rotor positions.">
+      <div class="card-media"><span class="media-fallback">L07</span></div>
+      <div class="card-body"><div class="card-meta"><span>L07 · L</span><span class="status planned">planned</span></div><h3>Load Two Tubes into a Centrifuge</h3><p>Pick two NMR tubes and place them into the designated centrifuge rotor positions.</p><div class="chip-row"><span class="chip">Open</span><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span><span class="chip">Close</span><span class="chip">Press</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L07/">View Load Two Tubes into a Centrifuge</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="planned" data-actions="move,place" data-search="r06 choose the opposite rotor slot identify an occupied rotor slot and select its diametrically opposite slot.">
+      <div class="card-media"><span class="media-fallback">R06</span></div>
+      <div class="card-body"><div class="card-meta"><span>R06 · R</span><span class="status planned">planned</span></div><h3>Choose the Opposite Rotor Slot</h3><p>Identify an occupied rotor slot and select its diametrically opposite slot.</p><div class="chip-row"><span class="chip">Move</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/R06/">View Choose the Opposite Rotor Slot</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="planned" data-actions="grasp,move,place" data-search="r07 find an empty symmetric slot pair reason over partial rotor occupancy and load an empty symmetric pair.">
+      <div class="card-media"><span class="media-fallback">R07</span></div>
+      <div class="card-body"><div class="card-meta"><span>R07 · R</span><span class="status planned">planned</span></div><h3>Find an Empty Symmetric Slot Pair</h3><p>Reason over partial rotor occupancy and load an empty symmetric pair.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/R07/">View Find an Empty Symmetric Slot Pair</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="planned" data-actions="close,press" data-search="r12 lid-state action selection observe whether a device lid is open and choose close or start.">
+      <div class="card-media"><span class="media-fallback">R12</span></div>
+      <div class="card-body"><div class="card-meta"><span>R12 · R</span><span class="status planned">planned</span></div><h3>Lid-State Action Selection</h3><p>Observe whether a device lid is open and choose Close or Start.</p><div class="chip-row"><span class="chip">Close</span><span class="chip">Press</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/R12/">View Lid-State Action Selection</a>
+    </article>
+    
+  </div>
+</div>
+
+  </main>
+
+  <button class="scroll-to-top" id="scrollBtn" type="button" aria-label="Back to top" title="Back to top">↑</button>
+
+  <footer class="site-footer">
+    <div>
+      <a class="site-brand footer-brand" href="/LabBench/">
+        <img class="brand-logo" src="/LabBench/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">
+        <span><strong>EAI4S</strong> <em>LabBench</em></span>
+      </a>
+      <p>Data, tasks, objects and reproducible evaluation for embodied agents operating in chemistry laboratories.</p>
+    </div>
+    <div class="footer-links">
+      <a href="/LabBench/tasks/">Tasks</a><a href="/LabBench/objects/">Objects</a>
+      <a href="/LabBench/leaderboard/">Leaderboard</a><a href="/LabBench/docs/">Documentation</a>
+    </div>
+    <p class="footer-note">Built for reproducible chemistry laboratory robotics research.</p>
+  </footer>
+</body>
+</html>
