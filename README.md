@@ -3,9 +3,28 @@
 [中文说明](README.zh-CN.md)
 
 LabBench is a chemistry laboratory manipulation dataset and benchmark for
-vision-language-action agents. It contains 24 public task definitions across
-Long-Horizon Procedures and Reasoning in Action, with all 24 tasks currently
-implemented for evaluation.
+vision-language-action agents. It combines a 24-task ordinary benchmark across
+Long-Horizon Procedures and Reasoning in Action with four selected special
+long-horizon laboratory workflows. Synchronized observations, robot states,
+joint and end-effector actions, and gripper recordings support data collection
+and model evaluation. The two task collections have separate leaderboards.
+
+## Four special long-horizon workflows
+
+| Workflow | Description | Public demonstration status |
+| --- | --- | --- |
+| Feedback weighing (`weighing_v1`) | Adjust standard weights using live scale feedback to reach a stable target. | Successful collection demo available |
+| Device operation (`device_operation_v1`) | Manipulate a laboratory device and beakers through a multi-stage procedure with door disturbances. | Successful collection demo available |
+| Centrifuge loading (`centrifuge_v2`) | Insert tubes into opposite rotor slots while preserving placement stability. | Pending public implementation |
+| Rack placement recall (`rack_recall_v4`) | Remember tube locations through occlusion and retrieve the correct tube from a rack. | Pending public implementation |
+
+The homepage prioritizes these four workflows and shows successful main-camera
+videos only for weighing and device operation. The other two remain marked as
+pending. The [Tasks page](https://zhaochunhai.github.io/LabBench/tasks/) presents the special
+workflows first, followed by the 24 ordinary tasks and their demonstrations.
+The [Leaderboard](https://zhaochunhai.github.io/LabBench/leaderboard/) reports the four special
+workflows separately from the ordinary benchmark. Successful collection demos
+are not model evaluation scores and do not imply all four workflows are complete.
 
 ## Public preview
 
