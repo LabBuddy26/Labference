@@ -4,7 +4,7 @@
 
 LabBench is a chemistry laboratory manipulation dataset and benchmark for
 vision-language-action agents. It contains 24 public task definitions across
-Long-Horizon Procedures and Reasoning in Action, with 18 tasks currently
+Long-Horizon Procedures and Reasoning in Action, with all 24 tasks currently
 implemented for evaluation.
 
 ## Public preview
