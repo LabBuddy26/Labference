@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b2c35">
   <meta name="description" content="Data, tasks, objects and reproducible evaluation for embodied agents operating in chemistry laboratories.">
-  <title>L03 · Tip Installation and Liquid Transfer · EAI4S LabBench</title>
+  <title>L03 · Tip Installation and 100 µL Transfer · EAI4S LabBench</title>
   <link rel="stylesheet" href="/LabBench/static/public-site.css">
   <script defer src="/LabBench/static/public-site.js"></script>
 </head>
@@ -30,15 +30,15 @@
 
   <main id="main-content">
     
-<header class="page-hero"><div><a class="page-back" href="/LabBench/tasks/" aria-label="Back to all tasks"><span aria-hidden="true">←</span> Back to tasks</a><p class="section-kicker">L03 · Long-Horizon Procedures</p><h1>Tip Installation and Liquid Transfer</h1><p class="lede">Install a tip, transfer 100 microlitres between tubes and discard the tip.</p><span class="status planned">planned</span></div></header>
+<header class="page-hero"><div><a class="page-back" href="/LabBench/tasks/" aria-label="Back to all tasks"><span aria-hidden="true">←</span> Back to tasks</a><p class="section-kicker">L03 · Long-Horizon Procedures</p><h1>Tip Installation and 100 µL Transfer</h1><p class="lede">Install a disposable tip, aspirate and dispense 100 microlitres in order, then discard the used tip.</p><span class="status">available</span></div></header>
 <div class="page-shell detail-grid">
   <div class="detail-main">
     <div class="card-media detail-media"><span class="media-fallback">L03</span></div>
     <section class="content-card"><p class="section-kicker">Official evaluation</p><h2>Success Rate and scoring</h2><div class="score-bar" style="--weight: 40%"><span></span><small>Completion · 40%</small></div><div class="score-bar" style="--weight: 30%"><span></span><small>Sequence quality · 30%</small></div><div class="score-bar" style="--weight: 20%"><span></span><small>Subgoal completion · 20%</small></div><div class="score-bar" style="--weight: 10%"><span></span><small>Efficiency · 10%</small></div><p class="detail-note"><strong>Success Rate:</strong> Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.</p><p class="detail-note"><strong>Hard failures:</strong> Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.</p><p class="detail-note"><strong>Quality score:</strong> Quality scoring is not implemented yet for this task.</p></section>
   </div>
   <aside class="detail-side">
-    <section class="content-card"><h3>Task facts</h3><dl class="definition-list"><div><dt>Track</dt><dd>L · Long-Horizon Procedures</dd></div><div><dt>Availability</dt><dd>Planned</dd></div><div><dt>Required objects</dt><dd>Micropipette, Pipette Tip Box, Test Tube, Laboratory Waste Box</dd></div><div><dt>Simulation model</dt><dd>Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.</dd></div></dl></section>
-    <section class="content-card"><h3>Objects & equipment</h3><div class="chip-row"><a class="chip" href="/LabBench/objects/test-tube/">Test Tube</a></div></section>
+    <section class="content-card"><h3>Task facts</h3><dl class="definition-list"><div><dt>Track</dt><dd>L · Long-Horizon Procedures</dd></div><div><dt>Availability</dt><dd>Available</dd></div><div><dt>Required objects</dt><dd>Micropipette Proxy, Pipette Tip Fixture, Test Tube, Laboratory Waste Target</dd></div><div><dt>Simulation model</dt><dd>Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.</dd></div></dl></section>
+    <section class="content-card"><h3>Objects & equipment</h3><div class="chip-row"><a class="chip" href="/LabBench/objects/pipette/">Micropipette Proxy</a><a class="chip" href="/LabBench/objects/pipette-tip-box/">Pipette Tip Fixture</a><a class="chip" href="/LabBench/objects/test-tube/">Test Tube</a><a class="chip" href="/LabBench/objects/waste-box/">Laboratory Waste Target</a></div></section>
     <a class="button" href="/LabBench/tasks/">← Back to all tasks</a>
   </aside>
 </div>

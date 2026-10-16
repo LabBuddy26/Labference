@@ -48,2044 +48,7 @@
   ],
   "catalog_id": "laboratory_benchmark_v1",
   "catalog_version": "2.0.0",
-  "models": [
-    {
-      "atomic_actions": [
-        {
-          "action_id": "grasp",
-          "attempts": 10,
-          "failure_code_distribution": {
-            "timeout": 10
-          },
-          "label": "Grasp",
-          "sources": [
-            "derived_legacy"
-          ],
-          "success_rate": 0.0,
-          "successes": 0,
-          "task_count": 2,
-          "task_ids": [
-            "level2_L01_sampletransport",
-            "level2_R02_wights"
-          ]
-        },
-        {
-          "action_id": "place",
-          "attempts": 45,
-          "failure_code_distribution": {
-            "timeout": 45
-          },
-          "label": "Place",
-          "sources": [
-            "derived_legacy"
-          ],
-          "success_rate": 0.0,
-          "successes": 0,
-          "task_count": 9,
-          "task_ids": [
-            "level2_L01_sampletransport",
-            "level2_L02_sampleorganition",
-            "level2_L06_wights",
-            "level2_L08_NMRInjection",
-            "level2_L10_cohort_analysis",
-            "level2_R02_wights",
-            "level4_L09_DeviceOperation",
-            "level4_L11_ConditionModule",
-            "level4_L12_clearreset"
-          ]
-        },
-        {
-          "action_id": "press",
-          "attempts": 10,
-          "failure_code_distribution": {
-            "timeout": 10
-          },
-          "label": "Press",
-          "sources": [
-            "derived_legacy"
-          ],
-          "success_rate": 0.0,
-          "successes": 0,
-          "task_count": 2,
-          "task_ids": [
-            "level4_L09_DeviceOperation",
-            "level4_L11_ConditionModule"
-          ]
-        },
-        {
-          "action_id": "pour",
-          "attempts": 5,
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "label": "Pour",
-          "sources": [
-            "derived_legacy"
-          ],
-          "success_rate": 0.0,
-          "successes": 0,
-          "task_count": 1,
-          "task_ids": [
-            "level4_L04_LiquidMixing"
-          ]
-        },
-        {
-          "action_id": "open",
-          "attempts": 5,
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "label": "Open",
-          "sources": [
-            "derived_legacy"
-          ],
-          "success_rate": 0.0,
-          "successes": 0,
-          "task_count": 1,
-          "task_ids": [
-            "level4_L09_DeviceOperation"
-          ]
-        },
-        {
-          "action_id": "close",
-          "attempts": 0,
-          "failure_code_distribution": {},
-          "label": "Close",
-          "sources": [],
-          "success_rate": null,
-          "successes": 0,
-          "task_count": 0,
-          "task_ids": []
-        },
-        {
-          "action_id": "move",
-          "attempts": 5,
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "label": "Move",
-          "sources": [
-            "derived_legacy"
-          ],
-          "success_rate": 0.0,
-          "successes": 0,
-          "task_count": 1,
-          "task_ids": [
-            "level2_L01_sampletransport"
-          ]
-        },
-        {
-          "action_id": "stir",
-          "attempts": 0,
-          "failure_code_distribution": {},
-          "label": "Stir",
-          "sources": [],
-          "success_rate": null,
-          "successes": 0,
-          "task_count": 0,
-          "task_ids": []
-        },
-        {
-          "action_id": "shake",
-          "attempts": 0,
-          "failure_code_distribution": {},
-          "label": "Shake",
-          "sources": [],
-          "success_rate": null,
-          "successes": 0,
-          "task_count": 0,
-          "task_ids": []
-        },
-        {
-          "action_id": "lift",
-          "attempts": 0,
-          "failure_code_distribution": {},
-          "label": "Lift",
-          "sources": [],
-          "success_rate": null,
-          "successes": 0,
-          "task_count": 0,
-          "task_ids": []
-        },
-        {
-          "action_id": "twist",
-          "attempts": 0,
-          "failure_code_distribution": {},
-          "label": "Twist",
-          "sources": [],
-          "success_rate": null,
-          "successes": 0,
-          "task_count": 0,
-          "task_ids": []
-        }
-      ],
-      "atomic_coverage": {
-        "evaluated": 6,
-        "rate": 0.5454545454545454,
-        "total": 11
-      },
-      "atomic_success_rate": 0.0,
-      "benchmark_version": "EAI4S-benchmark-1.0.0",
-      "capabilities": {
-        "atomic": 0.0,
-        "efficiency": 92.559965608517,
-        "overall_success": 20.0,
-        "partial_success": 42.5,
-        "safety": 100.0,
-        "score_coverage": 0.0,
-        "task_coverage": 100.0
-      },
-      "checkpoint": "openpi_labbench_v1",
-      "failure_category_distribution": {
-        "timeout": 72
-      },
-      "failure_code_distribution": {
-        "timeout": 72
-      },
-      "model_id": "model-128e1c280da1",
-      "model_name": "OpenPI",
-      "num_success": 18,
-      "num_trials": 90,
-      "overall_score_100": null,
-      "overall_success_rate": 0.2,
-      "policy_provider": "openpi",
-      "rank": 1,
-      "run_ids": [
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L01_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L02_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L04_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L06_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L08_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L09_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L10_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L11_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L12_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R01_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R02_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R03_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R04_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R05_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R08_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R09_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R10_sim_randomized",
-        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R11_sim_randomized"
-      ],
-      "score_coverage": {
-        "evaluated": 0,
-        "rate": 0.0,
-        "total": 18
-      },
-      "submission": {
-        "contributor": "EAI4S",
-        "policy_provider": "openpi",
-        "splits": [
-          "sim_randomized"
-        ],
-        "submission_id": "OPEN_PI05-labbench-hard-v1",
-        "suite_id": "eai4s_benchmark_longhorizon_reasoning_v1",
-        "verified_at": "2026-09-01"
-      },
-      "suite_id": "eai4s_benchmark_longhorizon_reasoning_v1",
-      "task_coverage": {
-        "evaluated": 18,
-        "rate": 1.0,
-        "total": 18
-      },
-      "tasks": [
-        {
-          "asset_names_en": [
-            "Sample Vial",
-            "Sample Organization Box"
-          ],
-          "atomic_action_labels": [
-            "Grasp",
-            "Lift",
-            "Move",
-            "Place"
-          ],
-          "atomic_actions": [
-            "grasp",
-            "lift",
-            "move",
-            "place"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 5
-          },
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 73.69507979194168,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "The robot transports three sample vials one at a time and inserts each vial into a separate sample-box slot.",
-                "title_en": "Three-vial sample transport",
-                "variant": "sample-transport",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/l01-sample-transport-front.webp",
-                    "preview": "web_assets/task_media/l01-sample-transport-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/l01-sample-transport-wrist.webp",
-                    "preview": "web_assets/task_media/l01-sample-transport-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/l01-sample-transport-front.webp"
-          },
-          "name_en": "Transport Three Sample Vials",
-          "num_success": 0,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "sample-vial",
-            "sample-box"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Completion",
-              "metric": "success",
-              "weight": 40
-            },
-            {
-              "component": "Sequence quality",
-              "metric": "sequence_quality_score_100",
-              "weight": 30
-            },
-            {
-              "component": "Subgoal completion",
-              "metric": "subgoal_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.0,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.0,
-          "summary_en": "Pick three sample vials in sequence and place each one into a separate sample-box slot.",
-          "task_id": "L01",
-          "task_spec": "../tasks/B11_level2_sampletransport.yaml",
-          "track": {
-            "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
-            "label": "Long-Horizon Procedures",
-            "prefix": "L",
-            "task_count": 12,
-            "track_id": "long_horizon"
-          },
-          "track_id": "long_horizon"
-        },
-        {
-          "asset_names_en": [
-            "Sample Vial",
-            "Sample Organization Box"
-          ],
-          "atomic_action_labels": [
-            "Grasp",
-            "Move",
-            "Place"
-          ],
-          "atomic_actions": [
-            "grasp",
-            "move",
-            "place"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 5
-          },
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 75.47500910586677,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "The selected destination box is resolved from the episode state before the vial is aligned and released into its slot.",
-                "title_en": "Rule-based vial organization",
-                "variant": "sample-organization",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/l02-sample-organization-front.webp",
-                    "preview": "web_assets/task_media/l02-sample-organization-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/l02-sample-organization-wrist.webp",
-                    "preview": "web_assets/task_media/l02-sample-organization-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/l02-sample-organization-front.webp"
-          },
-          "name_en": "Organize a Vial by Destination",
-          "num_success": 0,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "sample-vial",
-            "sample-box"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Completion",
-              "metric": "success",
-              "weight": 40
-            },
-            {
-              "component": "Sequence quality",
-              "metric": "sequence_quality_score_100",
-              "weight": 30
-            },
-            {
-              "component": "Subgoal completion",
-              "metric": "subgoal_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.75,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.0,
-          "summary_en": "Resolve the assigned sample box and insert the vial into the matching destination slot.",
-          "task_id": "L02",
-          "task_spec": "../tasks/B16_level2_sample_organization.yaml",
-          "track": {
-            "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
-            "label": "Long-Horizon Procedures",
-            "prefix": "L",
-            "task_count": 12,
-            "track_id": "long_horizon"
-          },
-          "track_id": "long_horizon"
-        },
-        {
-          "asset_names_en": [
-            "Laboratory Beaker"
-          ],
-          "atomic_action_labels": [
-            "Grasp",
-            "Move",
-            "Press",
-            "Shake",
-            "Place"
-          ],
-          "atomic_actions": [
-            "grasp",
-            "move",
-            "press",
-            "shake",
-            "place"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 5
-          },
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 74.49208200356225,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "Each source beaker is poured into the central mixing vessel and then returned to its original position.",
-                "title_en": "Three-beaker liquid mixing",
-                "variant": "liquid-mixing",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/l04-liquid-mixing-front.webp",
-                    "preview": "web_assets/task_media/l04-liquid-mixing-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/l04-liquid-mixing-wrist.webp",
-                    "preview": "web_assets/task_media/l04-liquid-mixing-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/l04-liquid-mixing-front.webp"
-          },
-          "name_en": "Three-Beaker Liquid Mixing",
-          "num_success": 0,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "beaker"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Completion",
-              "metric": "success",
-              "weight": 40
-            },
-            {
-              "component": "Sequence quality",
-              "metric": "sequence_quality_score_100",
-              "weight": 30
-            },
-            {
-              "component": "Subgoal completion",
-              "metric": "subgoal_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.05,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.0,
-          "summary_en": "Pour three source beakers into a central mixing target and return every beaker to its original place.",
-          "task_id": "L04",
-          "task_spec": "../tasks/B19_level4_liquid_mixing.yaml",
-          "track": {
-            "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
-            "label": "Long-Horizon Procedures",
-            "prefix": "L",
-            "task_count": 12,
-            "track_id": "long_horizon"
-          },
-          "track_id": "long_horizon"
-        },
-        {
-          "asset_names_en": [
-            "Laboratory Balance",
-            "Calibration Weight Set"
-          ],
-          "atomic_action_labels": [
-            "Open",
-            "Grasp",
-            "Move",
-            "Place",
-            "Close"
-          ],
-          "atomic_actions": [
-            "open",
-            "grasp",
-            "move",
-            "place",
-            "close"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 5
-          },
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 75.9409740101546,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "Three calibration weights are grasped in sequence and placed separately on the laboratory balance.",
-                "title_en": "Three-weight measurement",
-                "variant": "scale-weights",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/l06-scale-weights-front.webp",
-                    "preview": "web_assets/task_media/l06-scale-weights-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/l06-scale-weights-wrist.webp",
-                    "preview": "web_assets/task_media/l06-scale-weights-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/l06-scale-weights-front.webp"
-          },
-          "name_en": "Sequential Balance Loading",
-          "num_success": 0,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "laboratory-balance",
-            "calibration-weights"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Completion",
-              "metric": "success",
-              "weight": 40
-            },
-            {
-              "component": "Sequence quality",
-              "metric": "sequence_quality_score_100",
-              "weight": 30
-            },
-            {
-              "component": "Subgoal completion",
-              "metric": "subgoal_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.05,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.0,
-          "summary_en": "Pick three calibration weights and place them on the laboratory balance in the required order.",
-          "task_id": "L06",
-          "task_spec": "../tasks/B17_level2_scale_weights.yaml",
-          "track": {
-            "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
-            "label": "Long-Horizon Procedures",
-            "prefix": "L",
-            "task_count": 12,
-            "track_id": "long_horizon"
-          },
-          "track_id": "long_horizon"
-        },
-        {
-          "asset_names_en": [
-            "NMR Tube",
-            "Sample Organization Box"
-          ],
-          "atomic_action_labels": [
-            "Grasp",
-            "Lift",
-            "Move",
-            "Place"
-          ],
-          "atomic_actions": [
-            "grasp",
-            "lift",
-            "move",
-            "place"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 5
-          },
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 73.44430939352605,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "The robot grasps the slender NMR sample and seats it in the target holder while maintaining vertical alignment.",
-                "title_en": "NMR sample loading",
-                "variant": "nmr-loading",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/l08-nmr-loading-front.webp",
-                    "preview": "web_assets/task_media/l08-nmr-loading-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/l08-nmr-loading-wrist.webp",
-                    "preview": "web_assets/task_media/l08-nmr-loading-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/l08-nmr-loading-front.webp"
-          },
-          "name_en": "NMR Sample Holder Loading",
-          "num_success": 0,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "nmr-tube",
-            "sample-box"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Completion",
-              "metric": "success",
-              "weight": 40
-            },
-            {
-              "component": "Sequence quality",
-              "metric": "sequence_quality_score_100",
-              "weight": 30
-            },
-            {
-              "component": "Subgoal completion",
-              "metric": "subgoal_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.75,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.0,
-          "summary_en": "Pick the NMR sample and insert it into the designated sample holder with stable vertical alignment.",
-          "task_id": "L08",
-          "task_spec": "../tasks/B13_level2_nmrinjection.yaml",
-          "track": {
-            "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
-            "label": "Long-Horizon Procedures",
-            "prefix": "L",
-            "task_count": 12,
-            "track_id": "long_horizon"
-          },
-          "track_id": "long_horizon"
-        },
-        {
-          "asset_names_en": [
-            "Programmable Laboratory Cabinet",
-            "Laboratory Beaker",
-            "Physical Control Panel"
-          ],
-          "atomic_action_labels": [
-            "Open",
-            "Grasp",
-            "Move",
-            "Place",
-            "Close",
-            "Press"
-          ],
-          "atomic_actions": [
-            "open",
-            "grasp",
-            "move",
-            "place",
-            "close",
-            "press"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 5
-          },
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 72.90675195807125,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "The robot opens the device, loads two beakers without collision and activates the physical control button.",
-                "title_en": "Device loading sequence",
-                "variant": "device-program",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/l09-device-program-front.webp",
-                    "preview": "web_assets/task_media/l09-device-program-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/l09-device-program-wrist.webp",
-                    "preview": "web_assets/task_media/l09-device-program-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/l09-device-program-front.webp"
-          },
-          "name_en": "Load and Start a Laboratory Device",
-          "num_success": 0,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "drying-cabinet",
-            "beaker",
-            "button-panel"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Completion",
-              "metric": "success",
-              "weight": 40
-            },
-            {
-              "component": "Sequence quality",
-              "metric": "sequence_quality_score_100",
-              "weight": 30
-            },
-            {
-              "component": "Subgoal completion",
-              "metric": "subgoal_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.0,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.0,
-          "summary_en": "Open the device, place two beakers without collision and press the physical start control.",
-          "task_id": "L09",
-          "task_spec": "../tasks/B12_level4_device_operation.yaml",
-          "track": {
-            "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
-            "label": "Long-Horizon Procedures",
-            "prefix": "L",
-            "task_count": 12,
-            "track_id": "long_horizon"
-          },
-          "track_id": "long_horizon"
-        },
-        {
-          "asset_names_en": [
-            "Sample Vial",
-            "Sample Organization Box"
-          ],
-          "atomic_action_labels": [
-            "Grasp",
-            "Lift",
-            "Move",
-            "Place"
-          ],
-          "atomic_actions": [
-            "grasp",
-            "lift",
-            "move",
-            "place"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 5
-          },
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 75.83569339185487,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "Three vials are loaded into cohort positions in order while preserving the identity and destination of each sample.",
-                "title_en": "Sequential cohort loading",
-                "variant": "cohort-loading",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/l10-cohort-loading-front.webp",
-                    "preview": "web_assets/task_media/l10-cohort-loading-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/l10-cohort-loading-wrist.webp",
-                    "preview": "web_assets/task_media/l10-cohort-loading-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/l10-cohort-loading-front.webp"
-          },
-          "name_en": "Sequential Three-Vial Loading",
-          "num_success": 0,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "sample-vial",
-            "sample-box"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Completion",
-              "metric": "success",
-              "weight": 40
-            },
-            {
-              "component": "Sequence quality",
-              "metric": "sequence_quality_score_100",
-              "weight": 30
-            },
-            {
-              "component": "Subgoal completion",
-              "metric": "subgoal_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.0,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.0,
-          "summary_en": "Load vials A, B and C into positions 1, 2 and 3 in order.",
-          "task_id": "L10",
-          "task_spec": "../tasks/B15_level2_cohort_analysis.yaml",
-          "track": {
-            "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
-            "label": "Long-Horizon Procedures",
-            "prefix": "L",
-            "task_count": 12,
-            "track_id": "long_horizon"
-          },
-          "track_id": "long_horizon"
-        },
-        {
-          "asset_names_en": [
-            "Laboratory Beaker",
-            "Laboratory Heat Block",
-            "Physical Control Panel"
-          ],
-          "atomic_action_labels": [
-            "Open",
-            "Grasp",
-            "Move",
-            "Place",
-            "Close",
-            "Press"
-          ],
-          "atomic_actions": [
-            "open",
-            "grasp",
-            "move",
-            "place",
-            "close",
-            "press"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 5
-          },
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 74.41698964161333,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "A beaker is loaded onto the condition module, the control is pressed and the beaker is returned to its starting location.",
-                "title_en": "Condition module cycle",
-                "variant": "condition-module",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/l11-condition-module-front.webp",
-                    "preview": "web_assets/task_media/l11-condition-module-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/l11-condition-module-wrist.webp",
-                    "preview": "web_assets/task_media/l11-condition-module-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/l11-condition-module-front.webp"
-          },
-          "name_en": "Operate a Condition Module",
-          "num_success": 0,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "beaker",
-            "heat-block",
-            "button-panel"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Completion",
-              "metric": "success",
-              "weight": 40
-            },
-            {
-              "component": "Sequence quality",
-              "metric": "sequence_quality_score_100",
-              "weight": 30
-            },
-            {
-              "component": "Subgoal completion",
-              "metric": "subgoal_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.05,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.0,
-          "summary_en": "Load a beaker onto the condition module, press its control and return the beaker after the cycle.",
-          "task_id": "L11",
-          "task_spec": "../tasks/B18_level4_condition_module.yaml",
-          "track": {
-            "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
-            "label": "Long-Horizon Procedures",
-            "prefix": "L",
-            "task_count": 12,
-            "track_id": "long_horizon"
-          },
-          "track_id": "long_horizon"
-        },
-        {
-          "asset_names_en": [
-            "Sample Vial",
-            "Sample Organization Box",
-            "Test Tube",
-            "Test Tube Rack"
-          ],
-          "atomic_action_labels": [
-            "Grasp",
-            "Move",
-            "Place",
-            "Close"
-          ],
-          "atomic_actions": [
-            "grasp",
-            "move",
-            "place",
-            "close"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 5
-          },
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 74.99019893468358,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "The robot returns a sample vial to its box and inserts a test tube into the rack before clearing the workspace.",
-                "title_en": "Bench reset",
-                "variant": "bench-reset",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/l12-bench-reset-front.webp",
-                    "preview": "web_assets/task_media/l12-bench-reset-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/l12-bench-reset-wrist.webp",
-                    "preview": "web_assets/task_media/l12-bench-reset-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/l12-bench-reset-front.webp"
-          },
-          "name_en": "Clear and Reset the Laboratory Bench",
-          "num_success": 0,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "sample-vial",
-            "sample-box",
-            "test-tube",
-            "test-tube-rack"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Completion",
-              "metric": "success",
-              "weight": 50
-            },
-            {
-              "component": "Sequence quality",
-              "metric": "sequence_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Subgoal completion",
-              "metric": "subgoal_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.0,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.0,
-          "summary_en": "Return a sample vial to its box, insert a test tube into its rack and leave the workspace clear.",
-          "task_id": "L12",
-          "task_spec": "../tasks/B20_level4_clear_reset.yaml",
-          "track": {
-            "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
-            "label": "Long-Horizon Procedures",
-            "prefix": "L",
-            "task_count": 12,
-            "track_id": "long_horizon"
-          },
-          "track_id": "long_horizon"
-        },
-        {
-          "asset_names_en": [
-            "Digital Scale Interface"
-          ],
-          "atomic_action_labels": [
-            "Press"
-          ],
-          "atomic_actions": [
-            "press"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 3
-          },
-          "failure_code_distribution": {
-            "timeout": 3
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 73.95496797398664,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "The scale display is read and the robot presses the button corresponding to the displayed mass.",
-                "title_en": "Digital mass reading",
-                "variant": "digital-mass",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/r01-digital-mass-front.webp",
-                    "preview": "web_assets/task_media/r01-digital-mass-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/r01-digital-mass-wrist.webp",
-                    "preview": "web_assets/task_media/r01-digital-mass-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/r01-digital-mass-front.webp"
-          },
-          "name_en": "Read and Record a Digital Mass",
-          "num_success": 2,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "digital-scale-interface"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Completion",
-              "metric": "success",
-              "weight": 60
-            },
-            {
-              "component": "Evidence quality",
-              "metric": "evidence_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Geometry quality",
-              "metric": "geometry_quality_score_100",
-              "weight": 10
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.4,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.4,
-          "summary_en": "Read a digital scale display and select the matching value from four choices.",
-          "task_id": "R01",
-          "task_spec": "../tasks/B28_level3_R01_scaledigital.yaml",
-          "track": {
-            "description": "Action selection grounded in visual observations and structured laboratory state.",
-            "label": "Reasoning in Action",
-            "prefix": "R",
-            "task_count": 12,
-            "track_id": "reasoning_in_action"
-          },
-          "track_id": "reasoning_in_action"
-        },
-        {
-          "asset_names_en": [
-            "Laboratory Balance",
-            "Calibration Weight Set"
-          ],
-          "atomic_action_labels": [
-            "Grasp",
-            "Move",
-            "Place"
-          ],
-          "atomic_actions": [
-            "grasp",
-            "move",
-            "place"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 5
-          },
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 74.38451140915276,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "The robot selects the required labelled weights and places them on the laboratory scale.",
-                "title_en": "Target-mass weight selection",
-                "variant": "weight-selection",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/r02-weight-selection-front.webp",
-                    "preview": "web_assets/task_media/r02-weight-selection-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/r02-weight-selection-wrist.webp",
-                    "preview": "web_assets/task_media/r02-weight-selection-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/r02-weight-selection-front.webp"
-          },
-          "name_en": "Select Weights for a Target Mass",
-          "num_success": 0,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "laboratory-balance",
-            "calibration-weights"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Geometry quality",
-              "metric": "geometry_quality_score_100",
-              "weight": 60
-            },
-            {
-              "component": "Evidence quality",
-              "metric": "evidence_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Geometry quality",
-              "metric": "geometry_quality_score_100",
-              "weight": 10
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.45,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.0,
-          "summary_en": "Reason over labelled weights and place the required combination on the scale.",
-          "task_id": "R02",
-          "task_spec": "../tasks/B21_level2_R02_wights.yaml",
-          "track": {
-            "description": "Action selection grounded in visual observations and structured laboratory state.",
-            "label": "Reasoning in Action",
-            "prefix": "R",
-            "task_count": 12,
-            "track_id": "reasoning_in_action"
-          },
-          "track_id": "reasoning_in_action"
-        },
-        {
-          "asset_names_en": [
-            "Temperature Status Panel"
-          ],
-          "atomic_action_labels": [
-            "Open",
-            "Press"
-          ],
-          "atomic_actions": [
-            "open",
-            "press"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 1
-          },
-          "failure_code_distribution": {
-            "timeout": 1
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 73.87456127238693,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "A temperature at or above the release threshold is read and the robot selects Open.",
-                "title_en": "Open at the threshold",
-                "variant": "temperature-open",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/r03-temperature-open-front.webp",
-                    "preview": "web_assets/task_media/r03-temperature-open-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/r03-temperature-open-wrist.webp",
-                    "preview": "web_assets/task_media/r03-temperature-open-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/r03-temperature-open-front.webp"
-          },
-          "name_en": "Temperature-Gated Sample Retrieval",
-          "num_success": 4,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "temperature-status-panel"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Geometry quality",
-              "metric": "geometry_quality_score_100",
-              "weight": 60
-            },
-            {
-              "component": "Quantity accuracy",
-              "metric": "quantity_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Geometry quality",
-              "metric": "geometry_quality_score_100",
-              "weight": 10
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.8,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.8,
-          "summary_en": "Read temperature and choose Wait or Open based on a 30 °C threshold.",
-          "task_id": "R03",
-          "task_spec": "../tasks/B25_level3_R03_temperaturepanel.yaml",
-          "track": {
-            "description": "Action selection grounded in visual observations and structured laboratory state.",
-            "label": "Reasoning in Action",
-            "prefix": "R",
-            "task_count": 12,
-            "track_id": "reasoning_in_action"
-          },
-          "track_id": "reasoning_in_action"
-        },
-        {
-          "asset_names_en": [
-            "RPM Control Panel"
-          ],
-          "atomic_action_labels": [
-            "Press"
-          ],
-          "atomic_actions": [
-            "press"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {},
-          "failure_code_distribution": {},
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 72.88827602518722,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "The displayed RPM is interpreted before the robot presses Increase, Decrease or Confirm.",
-                "title_en": "RPM adjustment decision",
-                "variant": "rpm-decision",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/r04-rpm-decision-front.webp",
-                    "preview": "web_assets/task_media/r04-rpm-decision-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/r04-rpm-decision-wrist.webp",
-                    "preview": "web_assets/task_media/r04-rpm-decision-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/r04-rpm-decision-front.webp"
-          },
-          "name_en": "RPM Adjustment Decision",
-          "num_success": 5,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "rpm-control-panel"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Completion",
-              "metric": "success",
-              "weight": 70
-            },
-            {
-              "component": "Quantity accuracy",
-              "metric": "quantity_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 1.0,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 1.0,
-          "summary_en": "Read an RPM value and select increase, confirm or decrease.",
-          "task_id": "R04",
-          "task_spec": "../tasks/B29_level3_R04_centrifugepanel.yaml",
-          "track": {
-            "description": "Action selection grounded in visual observations and structured laboratory state.",
-            "label": "Reasoning in Action",
-            "prefix": "R",
-            "task_count": 12,
-            "track_id": "reasoning_in_action"
-          },
-          "track_id": "reasoning_in_action"
-        },
-        {
-          "asset_names_en": [
-            "Temperature Status Panel"
-          ],
-          "atomic_action_labels": [
-            "Open",
-            "Press"
-          ],
-          "atomic_actions": [
-            "open",
-            "press"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 1
-          },
-          "failure_code_distribution": {
-            "timeout": 1
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 73.74435636738781,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "The robot reads the device state and presses the action button that is valid for that state.",
-                "title_en": "State-dependent device control",
-                "variant": "device-status",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/r05-device-status-front.webp",
-                    "preview": "web_assets/task_media/r05-device-status-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/r05-device-status-wrist.webp",
-                    "preview": "web_assets/task_media/r05-device-status-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/r05-device-status-front.webp"
-          },
-          "name_en": "State-Dependent Device Control",
-          "num_success": 4,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "temperature-status-panel"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Completion",
-              "metric": "success",
-              "weight": 70
-            },
-            {
-              "component": "Evidence quality",
-              "metric": "evidence_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.8,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.8,
-          "summary_en": "Map Ready, Running and Done states to Start, Wait and Open actions.",
-          "task_id": "R05",
-          "task_spec": "../tasks/B26_level3_R05_devicestatus.yaml",
-          "track": {
-            "description": "Action selection grounded in visual observations and structured laboratory state.",
-            "label": "Reasoning in Action",
-            "prefix": "R",
-            "task_count": 12,
-            "track_id": "reasoning_in_action"
-          },
-          "track_id": "reasoning_in_action"
-        },
-        {
-          "asset_names_en": [
-            "NMR Autosampler Rack",
-            "NMR Tube"
-          ],
-          "atomic_action_labels": [
-            "Move",
-            "Place"
-          ],
-          "atomic_actions": [
-            "move",
-            "place"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 4
-          },
-          "failure_code_distribution": {
-            "timeout": 4
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 74.00697815959575,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "The displayed sample instruction is interpreted and mapped to the corresponding physical NMR slot.",
-                "title_en": "Display-guided NMR placement",
-                "variant": "display-slot",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/r08-display-slot-front.webp",
-                    "preview": "web_assets/task_media/r08-display-slot-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/r08-display-slot-wrist.webp",
-                    "preview": "web_assets/task_media/r08-display-slot-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/r08-display-slot-front.webp"
-          },
-          "name_en": "Read and Select an NMR Slot",
-          "num_success": 1,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "nmr-rack",
-            "nmr-tube"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Geometry quality",
-              "metric": "geometry_quality_score_100",
-              "weight": 60
-            },
-            {
-              "component": "Evidence quality",
-              "metric": "evidence_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Geometry quality",
-              "metric": "geometry_quality_score_100",
-              "weight": 10
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.8,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.2,
-          "summary_en": "Read Slot 7 from a display and map it to the physical autosampler socket.",
-          "task_id": "R08",
-          "task_spec": "../tasks/B23_level2_R08_nmrsample.yaml",
-          "track": {
-            "description": "Action selection grounded in visual observations and structured laboratory state.",
-            "label": "Reasoning in Action",
-            "prefix": "R",
-            "task_count": 12,
-            "track_id": "reasoning_in_action"
-          },
-          "track_id": "reasoning_in_action"
-        },
-        {
-          "asset_names_en": [
-            "NMR Autosampler Rack",
-            "NMR Tube"
-          ],
-          "atomic_action_labels": [
-            "Move",
-            "Place"
-          ],
-          "atomic_actions": [
-            "move",
-            "place"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 5
-          },
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 74.65206573600881,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "The instructed row and column are mapped to a physical NMR rack socket before the tube is inserted.",
-                "title_en": "Rack grid localization",
-                "variant": "rack-grid",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/r09-rack-grid-front.webp",
-                    "preview": "web_assets/task_media/r09-rack-grid-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/r09-rack-grid-wrist.webp",
-                    "preview": "web_assets/task_media/r09-rack-grid-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/r09-rack-grid-front.webp"
-          },
-          "name_en": "Map a B3 Grid Instruction",
-          "num_success": 0,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "nmr-rack",
-            "nmr-tube"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Geometry quality",
-              "metric": "geometry_quality_score_100",
-              "weight": 60
-            },
-            {
-              "component": "Evidence quality",
-              "metric": "evidence_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Geometry quality",
-              "metric": "geometry_quality_score_100",
-              "weight": 10
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.75,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.0,
-          "summary_en": "Interpret row and column labels and select the B3 rack socket.",
-          "task_id": "R09",
-          "task_spec": "../tasks/B24_level2_R09_nmrrack.yaml",
-          "track": {
-            "description": "Action selection grounded in visual observations and structured laboratory state.",
-            "label": "Reasoning in Action",
-            "prefix": "R",
-            "task_count": 12,
-            "track_id": "reasoning_in_action"
-          },
-          "track_id": "reasoning_in_action"
-        },
-        {
-          "asset_names_en": [
-            "Test Tube Rack",
-            "Test Tube"
-          ],
-          "atomic_action_labels": [
-            "Move",
-            "Place"
-          ],
-          "atomic_actions": [
-            "move",
-            "place"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 5
-          },
-          "failure_code_distribution": {
-            "timeout": 5
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 75.51183589850552,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "The robot approaches the labelled test-tube rack from above, aligns with the assigned socket and inserts the tube.",
-                "title_en": "Assigned rack socket",
-                "variant": "assigned-socket",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/r10-assigned-socket-front.webp",
-                    "preview": "web_assets/task_media/r10-assigned-socket-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/r10-assigned-socket-wrist.webp",
-                    "preview": "web_assets/task_media/r10-assigned-socket-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/r10-assigned-socket-front.webp"
-          },
-          "name_en": "Place a Tube at C2",
-          "num_success": 0,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "test-tube-rack",
-            "test-tube"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Geometry quality",
-              "metric": "geometry_quality_score_100",
-              "weight": 70
-            },
-            {
-              "component": "Evidence quality",
-              "metric": "evidence_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Geometry quality",
-              "metric": "geometry_quality_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.6,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.0,
-          "summary_en": "Map a C2 command to a labelled rack and insert the test tube.",
-          "task_id": "R10",
-          "task_spec": "../tasks/B22_level3_R10_rackplace.yaml",
-          "track": {
-            "description": "Action selection grounded in visual observations and structured laboratory state.",
-            "label": "Reasoning in Action",
-            "prefix": "R",
-            "task_count": 12,
-            "track_id": "reasoning_in_action"
-          },
-          "track_id": "reasoning_in_action"
-        },
-        {
-          "asset_names_en": [
-            "Sample Organization Box"
-          ],
-          "atomic_action_labels": [
-            "Move"
-          ],
-          "atomic_actions": [
-            "move"
-          ],
-          "availability": "available",
-          "evaluated": true,
-          "failure_category_distribution": {
-            "timeout": 3
-          },
-          "failure_code_distribution": {
-            "timeout": 3
-          },
-          "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-          "inference_latency_p95_ms": 74.99154939345317,
-          "media": {
-            "demos": [
-              {
-                "scene_description_en": "A row-and-column instruction is mapped to the matching sample-box socket before the gripper moves to the target position.",
-                "title_en": "Sample-box socket localization",
-                "variant": "sample-box-socket",
-                "views": [
-                  {
-                    "label_en": "Front camera",
-                    "poster": "web_assets/task_media/r11-sample-box-socket-front.webp",
-                    "preview": "web_assets/task_media/r11-sample-box-socket-front.mp4",
-                    "view_id": "front"
-                  },
-                  {
-                    "label_en": "Wrist camera",
-                    "poster": "web_assets/task_media/r11-sample-box-socket-wrist.webp",
-                    "preview": "web_assets/task_media/r11-sample-box-socket-wrist.mp4",
-                    "view_id": "wrist"
-                  }
-                ]
-              }
-            ],
-            "poster": "web_assets/task_media/r11-sample-box-socket-front.webp"
-          },
-          "name_en": "Locate a Sample-Box Socket",
-          "num_success": 2,
-          "num_trials": 5,
-          "num_valid_trials": 5,
-          "object_ids": [
-            "sample-box"
-          ],
-          "score_100": null,
-          "score_components": [
-            {
-              "component": "Geometry quality",
-              "metric": "geometry_quality_score_100",
-              "weight": 60
-            },
-            {
-              "component": "Evidence quality",
-              "metric": "evidence_quality_score_100",
-              "weight": 20
-            },
-            {
-              "component": "Geometry quality",
-              "metric": "geometry_quality_score_100",
-              "weight": 10
-            },
-            {
-              "component": "Efficiency",
-              "metric": "efficiency_score_100",
-              "weight": 10
-            }
-          ],
-          "score_status": "metrics_unavailable",
-          "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-          "split": "sim_randomized",
-          "stage_completion_mean": 0.4,
-          "status": "implemented",
-          "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-          "success_rate": 0.4,
-          "summary_en": "Interpret a row-and-column instruction and move the gripper above the matching sample-box socket.",
-          "task_id": "R11",
-          "task_spec": "../tasks/B27_level2_R11_plateposition.yaml",
-          "track": {
-            "description": "Action selection grounded in visual observations and structured laboratory state.",
-            "label": "Reasoning in Action",
-            "prefix": "R",
-            "task_count": 12,
-            "track_id": "reasoning_in_action"
-          },
-          "track_id": "reasoning_in_action"
-        }
-      ],
-      "tracks": [
-        {
-          "coverage_rate": 0.75,
-          "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
-          "evaluated_task_count": 9,
-          "label": "Long-Horizon Procedures",
-          "prefix": "L",
-          "score_100": null,
-          "score_coverage_rate": 0.0,
-          "success_rate": 0.0,
-          "task_count": 12,
-          "track_id": "long_horizon"
-        },
-        {
-          "coverage_rate": 0.75,
-          "description": "Action selection grounded in visual observations and structured laboratory state.",
-          "evaluated_task_count": 9,
-          "label": "Reasoning in Action",
-          "prefix": "R",
-          "score_100": null,
-          "score_coverage_rate": 0.0,
-          "success_rate": 0.4,
-          "task_count": 12,
-          "track_id": "reasoning_in_action"
-        }
-      ]
-    }
-  ],
+  "models": [],
   "ranking_metric": "overall_score_100",
   "schema_version": "labbench_public_leaderboard/v1",
   "split": "sim_randomized",
@@ -2261,6 +224,75 @@
     },
     {
       "asset_names_en": [
+        "Micropipette Proxy",
+        "Pipette Tip Fixture",
+        "Test Tube",
+        "Laboratory Waste Target"
+      ],
+      "atomic_action_labels": [
+        "Grasp",
+        "Move",
+        "Press",
+        "Place"
+      ],
+      "atomic_actions": [
+        "grasp",
+        "move",
+        "press",
+        "place"
+      ],
+      "availability": "available",
+      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
+      "media": {
+        "demos": [],
+        "poster": null
+      },
+      "name_en": "Tip Installation and 100 µL Transfer",
+      "object_ids": [
+        "pipette",
+        "pipette-tip-box",
+        "test-tube",
+        "waste-box"
+      ],
+      "score_components": [
+        {
+          "component": "Completion",
+          "metric": "success",
+          "weight": 40
+        },
+        {
+          "component": "Sequence quality",
+          "metric": "sequence_quality_score_100",
+          "weight": 30
+        },
+        {
+          "component": "Subgoal completion",
+          "metric": "subgoal_quality_score_100",
+          "weight": 20
+        },
+        {
+          "component": "Efficiency",
+          "metric": "efficiency_score_100",
+          "weight": 10
+        }
+      ],
+      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
+      "status": "implemented",
+      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
+      "summary_en": "Install a disposable tip, aspirate and dispense 100 microlitres in order, then discard the used tip.",
+      "task_id": "L03",
+      "task_spec": "../tasks/B30_level2_L03_singlepipetting.yaml",
+      "track": {
+        "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
+        "label": "Long-Horizon Procedures",
+        "prefix": "L",
+        "task_count": 12,
+        "track_id": "long_horizon"
+      },
+      "track_id": "long_horizon"
+    },
+    {
+      "asset_names_en": [
         "Laboratory Beaker"
       ],
       "atomic_action_labels": [
@@ -2335,6 +367,71 @@
       "summary_en": "Pour three source beakers into a central mixing target and return every beaker to its original place.",
       "task_id": "L04",
       "task_spec": "../tasks/B19_level4_liquid_mixing.yaml",
+      "track": {
+        "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
+        "label": "Long-Horizon Procedures",
+        "prefix": "L",
+        "task_count": 12,
+        "track_id": "long_horizon"
+      },
+      "track_id": "long_horizon"
+    },
+    {
+      "asset_names_en": [
+        "Micropipette Proxy",
+        "Four-Well Recipe Plate"
+      ],
+      "atomic_action_labels": [
+        "Grasp",
+        "Move",
+        "Press",
+        "Place"
+      ],
+      "atomic_actions": [
+        "grasp",
+        "move",
+        "press",
+        "place"
+      ],
+      "availability": "available",
+      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
+      "media": {
+        "demos": [],
+        "poster": null
+      },
+      "name_en": "Four-Well Recipe Dispensing",
+      "object_ids": [
+        "pipette",
+        "well-plate"
+      ],
+      "score_components": [
+        {
+          "component": "Completion",
+          "metric": "success",
+          "weight": 40
+        },
+        {
+          "component": "Sequence quality",
+          "metric": "sequence_quality_score_100",
+          "weight": 30
+        },
+        {
+          "component": "Subgoal completion",
+          "metric": "subgoal_quality_score_100",
+          "weight": 20
+        },
+        {
+          "component": "Efficiency",
+          "metric": "efficiency_score_100",
+          "weight": 10
+        }
+      ],
+      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
+      "status": "implemented",
+      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
+      "summary_en": "Execute the fixed recipe once for each of A1, A2, B1 and B2 while tracking well-level volume and duplicate visits.",
+      "task_id": "L05",
+      "task_spec": "../tasks/B31_level2_L05_formulation_spotting.yaml",
       "track": {
         "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
         "label": "Long-Horizon Procedures",
@@ -2422,6 +519,79 @@
       "summary_en": "Pick three calibration weights and place them on the laboratory balance in the required order.",
       "task_id": "L06",
       "task_spec": "../tasks/B17_level2_scale_weights.yaml",
+      "track": {
+        "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
+        "label": "Long-Horizon Procedures",
+        "prefix": "L",
+        "task_count": 12,
+        "track_id": "long_horizon"
+      },
+      "track_id": "long_horizon"
+    },
+    {
+      "asset_names_en": [
+        "Laboratory Centrifuge",
+        "NMR Tube",
+        "Six-Slot Centrifuge Rotor",
+        "Physical Control Panel"
+      ],
+      "atomic_action_labels": [
+        "Open",
+        "Grasp",
+        "Move",
+        "Place",
+        "Close",
+        "Press"
+      ],
+      "atomic_actions": [
+        "open",
+        "grasp",
+        "move",
+        "place",
+        "close",
+        "press"
+      ],
+      "availability": "available",
+      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
+      "media": {
+        "demos": [],
+        "poster": null
+      },
+      "name_en": "Load and Start a Centrifuge Preset",
+      "object_ids": [
+        "centrifuge",
+        "nmr-tube",
+        "centrifuge-rotor",
+        "button-panel"
+      ],
+      "score_components": [
+        {
+          "component": "Completion",
+          "metric": "success",
+          "weight": 40
+        },
+        {
+          "component": "Sequence quality",
+          "metric": "sequence_quality_score_100",
+          "weight": 30
+        },
+        {
+          "component": "Subgoal completion",
+          "metric": "subgoal_quality_score_100",
+          "weight": 20
+        },
+        {
+          "component": "Efficiency",
+          "metric": "efficiency_score_100",
+          "weight": 10
+        }
+      ],
+      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
+      "status": "implemented",
+      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
+      "summary_en": "Load two tubes into symmetric rotor positions, lock the lid, select Preset-1 and start the centrifuge.",
+      "task_id": "L07",
+      "task_spec": "../tasks/B14_level2_centrifuge_load.yaml",
       "track": {
         "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
         "label": "Long-Horizon Procedures",
@@ -3259,6 +1429,134 @@
     },
     {
       "asset_names_en": [
+        "Laboratory Centrifuge",
+        "Six-Slot Centrifuge Rotor",
+        "Centrifuge Tube"
+      ],
+      "atomic_action_labels": [
+        "Move",
+        "Place"
+      ],
+      "atomic_actions": [
+        "move",
+        "place"
+      ],
+      "availability": "available",
+      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
+      "media": {
+        "demos": [],
+        "poster": null
+      },
+      "name_en": "Choose the Opposite Rotor Slot",
+      "object_ids": [
+        "centrifuge",
+        "centrifuge-rotor",
+        "centrifuge-tube"
+      ],
+      "score_components": [
+        {
+          "component": "Geometry quality",
+          "metric": "geometry_quality_score_100",
+          "weight": 60
+        },
+        {
+          "component": "Evidence quality",
+          "metric": "evidence_quality_score_100",
+          "weight": 20
+        },
+        {
+          "component": "Geometry quality",
+          "metric": "geometry_quality_score_100",
+          "weight": 10
+        },
+        {
+          "component": "Efficiency",
+          "metric": "efficiency_score_100",
+          "weight": 10
+        }
+      ],
+      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
+      "status": "implemented",
+      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
+      "summary_en": "Identify the occupied rotor slot, map it to the position 180 degrees opposite and insert one tube without disturbing the existing load.",
+      "task_id": "R06",
+      "task_spec": "../tasks/B32_level2_R06_centrifuge_opposite_slot.yaml",
+      "track": {
+        "description": "Action selection grounded in visual observations and structured laboratory state.",
+        "label": "Reasoning in Action",
+        "prefix": "R",
+        "task_count": 12,
+        "track_id": "reasoning_in_action"
+      },
+      "track_id": "reasoning_in_action"
+    },
+    {
+      "asset_names_en": [
+        "Laboratory Centrifuge",
+        "Six-Slot Centrifuge Rotor",
+        "Centrifuge Tube"
+      ],
+      "atomic_action_labels": [
+        "Grasp",
+        "Move",
+        "Place"
+      ],
+      "atomic_actions": [
+        "grasp",
+        "move",
+        "place"
+      ],
+      "availability": "available",
+      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
+      "media": {
+        "demos": [],
+        "poster": null
+      },
+      "name_en": "Find an Empty Symmetric Slot Pair",
+      "object_ids": [
+        "centrifuge",
+        "centrifuge-rotor",
+        "centrifuge-tube"
+      ],
+      "score_components": [
+        {
+          "component": "Geometry quality",
+          "metric": "geometry_quality_score_100",
+          "weight": 60
+        },
+        {
+          "component": "Evidence quality",
+          "metric": "evidence_quality_score_100",
+          "weight": 20
+        },
+        {
+          "component": "Geometry quality",
+          "metric": "geometry_quality_score_100",
+          "weight": 10
+        },
+        {
+          "component": "Efficiency",
+          "metric": "efficiency_score_100",
+          "weight": 10
+        }
+      ],
+      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
+      "status": "implemented",
+      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
+      "summary_en": "Reason over partial rotor occupancy and load two tubes into the first pair of empty positions separated by 180 degrees.",
+      "task_id": "R07",
+      "task_spec": "../tasks/B33_level2_R07_centrifuge_symmetric_pair.yaml",
+      "track": {
+        "description": "Action selection grounded in visual observations and structured laboratory state.",
+        "label": "Reasoning in Action",
+        "prefix": "R",
+        "task_count": 12,
+        "track_id": "reasoning_in_action"
+      },
+      "track_id": "reasoning_in_action"
+    },
+    {
+      "asset_names_en": [
         "NMR Autosampler Rack",
         "NMR Tube"
       ],
@@ -3571,6 +1869,62 @@
         "track_id": "reasoning_in_action"
       },
       "track_id": "reasoning_in_action"
+    },
+    {
+      "asset_names_en": [
+        "Programmable Laboratory Cabinet",
+        "Physical Control Panel"
+      ],
+      "atomic_action_labels": [
+        "Close",
+        "Press"
+      ],
+      "atomic_actions": [
+        "close",
+        "press"
+      ],
+      "availability": "available",
+      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
+      "media": {
+        "demos": [],
+        "poster": null
+      },
+      "name_en": "Lid-State Action Selection",
+      "object_ids": [
+        "drying-cabinet",
+        "button-panel"
+      ],
+      "score_components": [
+        {
+          "component": "Completion",
+          "metric": "success",
+          "weight": 70
+        },
+        {
+          "component": "Evidence quality",
+          "metric": "evidence_quality_score_100",
+          "weight": 20
+        },
+        {
+          "component": "Efficiency",
+          "metric": "efficiency_score_100",
+          "weight": 10
+        }
+      ],
+      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
+      "status": "implemented",
+      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
+      "summary_en": "Observe the randomized Open or Closed lid state, choose Close for Open or Start for Closed, and reject unsafe Start actions.",
+      "task_id": "R12",
+      "task_spec": "../tasks/B34_level3_R12_devicecover_status.yaml",
+      "track": {
+        "description": "Action selection grounded in visual observations and structured laboratory state.",
+        "label": "Reasoning in Action",
+        "prefix": "R",
+        "task_count": 12,
+        "track_id": "reasoning_in_action"
+      },
+      "track_id": "reasoning_in_action"
     }
   ],
   "track_count": 2,
@@ -3590,5 +1944,5 @@
       "track_id": "reasoning_in_action"
     }
   ],
-  "verified_submission_count": 1
+  "verified_submission_count": 0
 }

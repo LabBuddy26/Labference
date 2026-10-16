@@ -1,0 +1,252 @@
+{
+  "description_en": "Versioned long-horizon protocols adapted to the LabBench collection and evaluation contracts. Their scores are reported separately from the 24-task L/R benchmark.",
+  "family_count": 4,
+  "leaderboard_id": "labference_release_protocols_v1",
+  "models": [],
+  "protocol_count": 8,
+  "protocols": [
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb"
+      ],
+      "collection_hz": 10,
+      "config_path": "eai4s_eval/centrifuge_v2/configs/easy.json",
+      "difficulty": "easy",
+      "family": "centrifuge_v2",
+      "family_label_en": "Centrifuge opposite-slot",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "decision_pass",
+        "precision_pass",
+        "safety_pass"
+      ],
+      "name_en": "Centrifuge opposite-slot · Easy",
+      "physics_hz": 60,
+      "protocol_id": "centrifuge_easy",
+      "status": "implemented",
+      "summary_en": "Insert the second tube into the measured slot opposite a preloaded tube without disturbing the existing load.",
+      "task_version": "centrifuge-opposite/v2"
+    },
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb"
+      ],
+      "collection_hz": 10,
+      "config_path": "eai4s_eval/centrifuge_v2/configs/hard.json",
+      "difficulty": "hard",
+      "family": "centrifuge_v2",
+      "family_label_en": "Centrifuge opposite-slot",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "decision_pass",
+        "grasp_lift_pass",
+        "precision_pass",
+        "safety_pass"
+      ],
+      "name_en": "Centrifuge opposite-slot · Hard",
+      "physics_hz": 60,
+      "protocol_id": "centrifuge_hard",
+      "status": "implemented",
+      "summary_en": "Pick both tubes from the table and place them in measured opposite slots with verified lift, insertion and stability evidence.",
+      "task_version": "centrifuge-opposite/v2"
+    },
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb",
+        "display_rgb",
+        "weights_rgb"
+      ],
+      "collection_hz": 10,
+      "config_path": "eai4s_eval/weighing_v1/configs/easy.json",
+      "difficulty": "easy",
+      "family": "weighing_v1",
+      "family_label_en": "Feedback weighing",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "first_ready_choice_correct",
+        "online_legal_next_action_rate",
+        "safety_violations"
+      ],
+      "name_en": "Feedback weighing · Easy",
+      "physics_hz": 60,
+      "protocol_id": "weighing_easy",
+      "status": "implemented",
+      "summary_en": "Read the live force-derived scale display and place the one standard weight required by the target.",
+      "task_version": "weighing-feedback/v1"
+    },
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb",
+        "display_rgb",
+        "weights_rgb"
+      ],
+      "collection_hz": 10,
+      "config_path": "eai4s_eval/weighing_v1/configs/hard.json",
+      "difficulty": "hard",
+      "family": "weighing_v1",
+      "family_label_en": "Feedback weighing",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "first_ready_choice_correct",
+        "online_legal_next_action_rate",
+        "safety_violations"
+      ],
+      "name_en": "Feedback weighing · Hard",
+      "physics_hz": 60,
+      "protocol_id": "weighing_hard",
+      "status": "implemented",
+      "summary_en": "Correct an initially supported weight subset through live load-cell feedback until the exact target subset is stable.",
+      "task_version": "weighing-feedback/v1"
+    },
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb"
+      ],
+      "collection_hz": 20,
+      "config_path": "eai4s_eval/rack_recall_v4/configs/easy.json",
+      "difficulty": "easy",
+      "family": "rack_recall_v4",
+      "family_label_en": "Rack placement recall",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "slot_reasoning_success",
+        "physical_completion",
+        "online_next_choice_accuracy"
+      ],
+      "name_en": "Rack placement recall · Easy",
+      "physics_hz": 120,
+      "protocol_id": "rack_easy",
+      "status": "implemented",
+      "summary_en": "Place one centrifuge tube in a 3 × 4 rack, remember the physical slot through occlusion and retrieve it.",
+      "task_version": "rack-placement-recall/v4"
+    },
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb"
+      ],
+      "collection_hz": 20,
+      "config_path": "eai4s_eval/rack_recall_v4/configs/hard_same_cap.json",
+      "difficulty": "hard",
+      "family": "rack_recall_v4",
+      "family_label_en": "Rack placement recall",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "slot_reasoning_success",
+        "physical_completion",
+        "online_next_choice_accuracy"
+      ],
+      "name_en": "Rack placement recall · Hard / Same cap",
+      "physics_hz": 120,
+      "protocol_id": "rack_same_cap",
+      "status": "implemented",
+      "summary_en": "Remember a target slot when three distractor tubes share the same cap appearance and the rack moves during occlusion.",
+      "task_version": "rack-placement-recall/v4"
+    },
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb"
+      ],
+      "collection_hz": 20,
+      "config_path": "eai4s_eval/rack_recall_v4/configs/hard_distinct_cap.json",
+      "difficulty": "hard",
+      "family": "rack_recall_v4",
+      "family_label_en": "Rack placement recall",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "slot_reasoning_success",
+        "physical_completion",
+        "online_next_choice_accuracy"
+      ],
+      "name_en": "Rack placement recall · Hard / Distinct cap",
+      "physics_hz": 120,
+      "protocol_id": "rack_distinct_cap",
+      "status": "implemented",
+      "summary_en": "Recall the target slot with distinct cap colors while the rack moves during the hidden retrieval phase.",
+      "task_version": "rack-placement-recall/v4"
+    },
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb"
+      ],
+      "collection_hz": 10,
+      "config_path": "eai4s_eval/device_operation_v1/configs/hard.json",
+      "difficulty": "hard",
+      "family": "device_operation_v1",
+      "family_label_en": "Drying-oven operation cycle",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "sequence_pass",
+        "door_cycle_pass",
+        "placement_pass",
+        "retrieval_return_pass",
+        "preloaded_beaker_preserved"
+      ],
+      "name_en": "Drying-oven operation · Hard",
+      "physics_hz": 60,
+      "protocol_id": "device_operation_hard",
+      "status": "implemented",
+      "summary_en": "Open the oven, load a loose beaker, close and reopen the door, retrieve it and return it while preserving the preloaded beaker.",
+      "task_version": "device-operation-cycle/v1"
+    }
+  ],
+  "run_count": 0,
+  "schema_version": "labbench_release_leaderboard/v1",
+  "title_en": "Independent release protocols",
+  "verified_submission_count": 0
+}

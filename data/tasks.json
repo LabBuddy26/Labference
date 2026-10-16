@@ -218,6 +218,75 @@
     },
     {
       "asset_names_en": [
+        "Micropipette Proxy",
+        "Pipette Tip Fixture",
+        "Test Tube",
+        "Laboratory Waste Target"
+      ],
+      "atomic_action_labels": [
+        "Grasp",
+        "Move",
+        "Press",
+        "Place"
+      ],
+      "atomic_actions": [
+        "grasp",
+        "move",
+        "press",
+        "place"
+      ],
+      "availability": "available",
+      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
+      "media": {
+        "demos": [],
+        "poster": null
+      },
+      "name_en": "Tip Installation and 100 µL Transfer",
+      "object_ids": [
+        "pipette",
+        "pipette-tip-box",
+        "test-tube",
+        "waste-box"
+      ],
+      "score_components": [
+        {
+          "component": "Completion",
+          "metric": "success",
+          "weight": 40
+        },
+        {
+          "component": "Sequence quality",
+          "metric": "sequence_quality_score_100",
+          "weight": 30
+        },
+        {
+          "component": "Subgoal completion",
+          "metric": "subgoal_quality_score_100",
+          "weight": 20
+        },
+        {
+          "component": "Efficiency",
+          "metric": "efficiency_score_100",
+          "weight": 10
+        }
+      ],
+      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
+      "status": "implemented",
+      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
+      "summary_en": "Install a disposable tip, aspirate and dispense 100 microlitres in order, then discard the used tip.",
+      "task_id": "L03",
+      "task_spec": "../tasks/B30_level2_L03_singlepipetting.yaml",
+      "track": {
+        "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
+        "label": "Long-Horizon Procedures",
+        "prefix": "L",
+        "task_count": 12,
+        "track_id": "long_horizon"
+      },
+      "track_id": "long_horizon"
+    },
+    {
+      "asset_names_en": [
         "Laboratory Beaker"
       ],
       "atomic_action_labels": [
@@ -292,6 +361,71 @@
       "summary_en": "Pour three source beakers into a central mixing target and return every beaker to its original place.",
       "task_id": "L04",
       "task_spec": "../tasks/B19_level4_liquid_mixing.yaml",
+      "track": {
+        "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
+        "label": "Long-Horizon Procedures",
+        "prefix": "L",
+        "task_count": 12,
+        "track_id": "long_horizon"
+      },
+      "track_id": "long_horizon"
+    },
+    {
+      "asset_names_en": [
+        "Micropipette Proxy",
+        "Four-Well Recipe Plate"
+      ],
+      "atomic_action_labels": [
+        "Grasp",
+        "Move",
+        "Press",
+        "Place"
+      ],
+      "atomic_actions": [
+        "grasp",
+        "move",
+        "press",
+        "place"
+      ],
+      "availability": "available",
+      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
+      "media": {
+        "demos": [],
+        "poster": null
+      },
+      "name_en": "Four-Well Recipe Dispensing",
+      "object_ids": [
+        "pipette",
+        "well-plate"
+      ],
+      "score_components": [
+        {
+          "component": "Completion",
+          "metric": "success",
+          "weight": 40
+        },
+        {
+          "component": "Sequence quality",
+          "metric": "sequence_quality_score_100",
+          "weight": 30
+        },
+        {
+          "component": "Subgoal completion",
+          "metric": "subgoal_quality_score_100",
+          "weight": 20
+        },
+        {
+          "component": "Efficiency",
+          "metric": "efficiency_score_100",
+          "weight": 10
+        }
+      ],
+      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
+      "status": "implemented",
+      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
+      "summary_en": "Execute the fixed recipe once for each of A1, A2, B1 and B2 while tracking well-level volume and duplicate visits.",
+      "task_id": "L05",
+      "task_spec": "../tasks/B31_level2_L05_formulation_spotting.yaml",
       "track": {
         "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
         "label": "Long-Horizon Procedures",
@@ -379,6 +513,79 @@
       "summary_en": "Pick three calibration weights and place them on the laboratory balance in the required order.",
       "task_id": "L06",
       "task_spec": "../tasks/B17_level2_scale_weights.yaml",
+      "track": {
+        "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
+        "label": "Long-Horizon Procedures",
+        "prefix": "L",
+        "task_count": 12,
+        "track_id": "long_horizon"
+      },
+      "track_id": "long_horizon"
+    },
+    {
+      "asset_names_en": [
+        "Laboratory Centrifuge",
+        "NMR Tube",
+        "Six-Slot Centrifuge Rotor",
+        "Physical Control Panel"
+      ],
+      "atomic_action_labels": [
+        "Open",
+        "Grasp",
+        "Move",
+        "Place",
+        "Close",
+        "Press"
+      ],
+      "atomic_actions": [
+        "open",
+        "grasp",
+        "move",
+        "place",
+        "close",
+        "press"
+      ],
+      "availability": "available",
+      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
+      "media": {
+        "demos": [],
+        "poster": null
+      },
+      "name_en": "Load and Start a Centrifuge Preset",
+      "object_ids": [
+        "centrifuge",
+        "nmr-tube",
+        "centrifuge-rotor",
+        "button-panel"
+      ],
+      "score_components": [
+        {
+          "component": "Completion",
+          "metric": "success",
+          "weight": 40
+        },
+        {
+          "component": "Sequence quality",
+          "metric": "sequence_quality_score_100",
+          "weight": 30
+        },
+        {
+          "component": "Subgoal completion",
+          "metric": "subgoal_quality_score_100",
+          "weight": 20
+        },
+        {
+          "component": "Efficiency",
+          "metric": "efficiency_score_100",
+          "weight": 10
+        }
+      ],
+      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
+      "status": "implemented",
+      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
+      "summary_en": "Load two tubes into symmetric rotor positions, lock the lid, select Preset-1 and start the centrifuge.",
+      "task_id": "L07",
+      "task_spec": "../tasks/B14_level2_centrifuge_load.yaml",
       "track": {
         "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
         "label": "Long-Horizon Procedures",
@@ -1216,6 +1423,134 @@
     },
     {
       "asset_names_en": [
+        "Laboratory Centrifuge",
+        "Six-Slot Centrifuge Rotor",
+        "Centrifuge Tube"
+      ],
+      "atomic_action_labels": [
+        "Move",
+        "Place"
+      ],
+      "atomic_actions": [
+        "move",
+        "place"
+      ],
+      "availability": "available",
+      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
+      "media": {
+        "demos": [],
+        "poster": null
+      },
+      "name_en": "Choose the Opposite Rotor Slot",
+      "object_ids": [
+        "centrifuge",
+        "centrifuge-rotor",
+        "centrifuge-tube"
+      ],
+      "score_components": [
+        {
+          "component": "Geometry quality",
+          "metric": "geometry_quality_score_100",
+          "weight": 60
+        },
+        {
+          "component": "Evidence quality",
+          "metric": "evidence_quality_score_100",
+          "weight": 20
+        },
+        {
+          "component": "Geometry quality",
+          "metric": "geometry_quality_score_100",
+          "weight": 10
+        },
+        {
+          "component": "Efficiency",
+          "metric": "efficiency_score_100",
+          "weight": 10
+        }
+      ],
+      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
+      "status": "implemented",
+      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
+      "summary_en": "Identify the occupied rotor slot, map it to the position 180 degrees opposite and insert one tube without disturbing the existing load.",
+      "task_id": "R06",
+      "task_spec": "../tasks/B32_level2_R06_centrifuge_opposite_slot.yaml",
+      "track": {
+        "description": "Action selection grounded in visual observations and structured laboratory state.",
+        "label": "Reasoning in Action",
+        "prefix": "R",
+        "task_count": 12,
+        "track_id": "reasoning_in_action"
+      },
+      "track_id": "reasoning_in_action"
+    },
+    {
+      "asset_names_en": [
+        "Laboratory Centrifuge",
+        "Six-Slot Centrifuge Rotor",
+        "Centrifuge Tube"
+      ],
+      "atomic_action_labels": [
+        "Grasp",
+        "Move",
+        "Place"
+      ],
+      "atomic_actions": [
+        "grasp",
+        "move",
+        "place"
+      ],
+      "availability": "available",
+      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
+      "media": {
+        "demos": [],
+        "poster": null
+      },
+      "name_en": "Find an Empty Symmetric Slot Pair",
+      "object_ids": [
+        "centrifuge",
+        "centrifuge-rotor",
+        "centrifuge-tube"
+      ],
+      "score_components": [
+        {
+          "component": "Geometry quality",
+          "metric": "geometry_quality_score_100",
+          "weight": 60
+        },
+        {
+          "component": "Evidence quality",
+          "metric": "evidence_quality_score_100",
+          "weight": 20
+        },
+        {
+          "component": "Geometry quality",
+          "metric": "geometry_quality_score_100",
+          "weight": 10
+        },
+        {
+          "component": "Efficiency",
+          "metric": "efficiency_score_100",
+          "weight": 10
+        }
+      ],
+      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
+      "status": "implemented",
+      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
+      "summary_en": "Reason over partial rotor occupancy and load two tubes into the first pair of empty positions separated by 180 degrees.",
+      "task_id": "R07",
+      "task_spec": "../tasks/B33_level2_R07_centrifuge_symmetric_pair.yaml",
+      "track": {
+        "description": "Action selection grounded in visual observations and structured laboratory state.",
+        "label": "Reasoning in Action",
+        "prefix": "R",
+        "task_count": 12,
+        "track_id": "reasoning_in_action"
+      },
+      "track_id": "reasoning_in_action"
+    },
+    {
+      "asset_names_en": [
         "NMR Autosampler Rack",
         "NMR Tube"
       ],
@@ -1531,335 +1866,6 @@
     },
     {
       "asset_names_en": [
-        "Micropipette",
-        "Pipette Tip Box",
-        "Test Tube",
-        "Laboratory Waste Box"
-      ],
-      "atomic_action_labels": [
-        "Grasp",
-        "Move",
-        "Press",
-        "Place"
-      ],
-      "atomic_actions": [
-        "grasp",
-        "move",
-        "press",
-        "place"
-      ],
-      "availability": "planned",
-      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-      "media": {
-        "demos": [],
-        "poster": null
-      },
-      "name_en": "Tip Installation and Liquid Transfer",
-      "object_ids": [
-        "pipette",
-        "pipette-tip-box",
-        "test-tube",
-        "waste-box"
-      ],
-      "score_components": [
-        {
-          "component": "Completion",
-          "metric": "success",
-          "weight": 40
-        },
-        {
-          "component": "Sequence quality",
-          "metric": "sequence_quality_score_100",
-          "weight": 30
-        },
-        {
-          "component": "Subgoal completion",
-          "metric": "subgoal_quality_score_100",
-          "weight": 20
-        },
-        {
-          "component": "Efficiency",
-          "metric": "efficiency_score_100",
-          "weight": 10
-        }
-      ],
-      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-      "status": "planned",
-      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-      "summary_en": "Install a tip, transfer 100 microlitres between tubes and discard the tip.",
-      "task_id": "L03",
-      "task_spec": null,
-      "track": {
-        "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
-        "label": "Long-Horizon Procedures",
-        "prefix": "L",
-        "task_count": 12,
-        "track_id": "long_horizon"
-      },
-      "track_id": "long_horizon"
-    },
-    {
-      "asset_names_en": [
-        "Micropipette",
-        "Well Plate"
-      ],
-      "atomic_action_labels": [
-        "Grasp",
-        "Move",
-        "Press",
-        "Place"
-      ],
-      "atomic_actions": [
-        "grasp",
-        "move",
-        "press",
-        "place"
-      ],
-      "availability": "planned",
-      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-      "media": {
-        "demos": [],
-        "poster": null
-      },
-      "name_en": "Four-Well Recipe Dispensing",
-      "object_ids": [
-        "pipette",
-        "well-plate"
-      ],
-      "score_components": [
-        {
-          "component": "Completion",
-          "metric": "success",
-          "weight": 40
-        },
-        {
-          "component": "Sequence quality",
-          "metric": "sequence_quality_score_100",
-          "weight": 30
-        },
-        {
-          "component": "Subgoal completion",
-          "metric": "subgoal_quality_score_100",
-          "weight": 20
-        },
-        {
-          "component": "Efficiency",
-          "metric": "efficiency_score_100",
-          "weight": 10
-        }
-      ],
-      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-      "status": "planned",
-      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-      "summary_en": "Dispense fixed recipe volumes into A1, A2, B1 and B2.",
-      "task_id": "L05",
-      "task_spec": null,
-      "track": {
-        "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
-        "label": "Long-Horizon Procedures",
-        "prefix": "L",
-        "task_count": 12,
-        "track_id": "long_horizon"
-      },
-      "track_id": "long_horizon"
-    },
-    {
-      "asset_names_en": [
-        "Laboratory Centrifuge",
-        "NMR Tube",
-        "Six-Slot Centrifuge Rotor"
-      ],
-      "atomic_action_labels": [
-        "Open",
-        "Grasp",
-        "Move",
-        "Place",
-        "Close",
-        "Press"
-      ],
-      "atomic_actions": [
-        "open",
-        "grasp",
-        "move",
-        "place",
-        "close",
-        "press"
-      ],
-      "availability": "planned",
-      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-      "media": {
-        "demos": [],
-        "poster": null
-      },
-      "name_en": "Load Two Tubes into a Centrifuge",
-      "object_ids": [
-        "centrifuge",
-        "nmr-tube",
-        "centrifuge-rotor"
-      ],
-      "score_components": [
-        {
-          "component": "Completion",
-          "metric": "success",
-          "weight": 40
-        },
-        {
-          "component": "Sequence quality",
-          "metric": "sequence_quality_score_100",
-          "weight": 30
-        },
-        {
-          "component": "Subgoal completion",
-          "metric": "subgoal_quality_score_100",
-          "weight": 20
-        },
-        {
-          "component": "Efficiency",
-          "metric": "efficiency_score_100",
-          "weight": 10
-        }
-      ],
-      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-      "status": "planned",
-      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-      "summary_en": "Pick two NMR tubes and place them into the designated centrifuge rotor positions.",
-      "task_id": "L07",
-      "task_spec": "../tasks/B14_level2_centrifuge_load.yaml",
-      "track": {
-        "description": "Multi-stage laboratory procedures with ordering and state-dependent transitions.",
-        "label": "Long-Horizon Procedures",
-        "prefix": "L",
-        "task_count": 12,
-        "track_id": "long_horizon"
-      },
-      "track_id": "long_horizon"
-    },
-    {
-      "asset_names_en": [
-        "Six-Slot Centrifuge Rotor",
-        "Centrifuge Tube"
-      ],
-      "atomic_action_labels": [
-        "Move",
-        "Place"
-      ],
-      "atomic_actions": [
-        "move",
-        "place"
-      ],
-      "availability": "planned",
-      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-      "media": {
-        "demos": [],
-        "poster": null
-      },
-      "name_en": "Choose the Opposite Rotor Slot",
-      "object_ids": [
-        "centrifuge-rotor",
-        "centrifuge-tube"
-      ],
-      "score_components": [
-        {
-          "component": "Geometry quality",
-          "metric": "geometry_quality_score_100",
-          "weight": 60
-        },
-        {
-          "component": "Evidence quality",
-          "metric": "evidence_quality_score_100",
-          "weight": 20
-        },
-        {
-          "component": "Geometry quality",
-          "metric": "geometry_quality_score_100",
-          "weight": 10
-        },
-        {
-          "component": "Efficiency",
-          "metric": "efficiency_score_100",
-          "weight": 10
-        }
-      ],
-      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-      "status": "planned",
-      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-      "summary_en": "Identify an occupied rotor slot and select its diametrically opposite slot.",
-      "task_id": "R06",
-      "task_spec": null,
-      "track": {
-        "description": "Action selection grounded in visual observations and structured laboratory state.",
-        "label": "Reasoning in Action",
-        "prefix": "R",
-        "task_count": 12,
-        "track_id": "reasoning_in_action"
-      },
-      "track_id": "reasoning_in_action"
-    },
-    {
-      "asset_names_en": [
-        "Six-Slot Centrifuge Rotor",
-        "Centrifuge Tube"
-      ],
-      "atomic_action_labels": [
-        "Grasp",
-        "Move",
-        "Place"
-      ],
-      "atomic_actions": [
-        "grasp",
-        "move",
-        "place"
-      ],
-      "availability": "planned",
-      "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
-      "media": {
-        "demos": [],
-        "poster": null
-      },
-      "name_en": "Find an Empty Symmetric Slot Pair",
-      "object_ids": [
-        "centrifuge-rotor",
-        "centrifuge-tube"
-      ],
-      "score_components": [
-        {
-          "component": "Geometry quality",
-          "metric": "geometry_quality_score_100",
-          "weight": 60
-        },
-        {
-          "component": "Evidence quality",
-          "metric": "evidence_quality_score_100",
-          "weight": 20
-        },
-        {
-          "component": "Geometry quality",
-          "metric": "geometry_quality_score_100",
-          "weight": 10
-        },
-        {
-          "component": "Efficiency",
-          "metric": "efficiency_score_100",
-          "weight": 10
-        }
-      ],
-      "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-      "status": "planned",
-      "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-      "summary_en": "Reason over partial rotor occupancy and load an empty symmetric pair.",
-      "task_id": "R07",
-      "task_spec": null,
-      "track": {
-        "description": "Action selection grounded in visual observations and structured laboratory state.",
-        "label": "Reasoning in Action",
-        "prefix": "R",
-        "task_count": 12,
-        "track_id": "reasoning_in_action"
-      },
-      "track_id": "reasoning_in_action"
-    },
-    {
-      "asset_names_en": [
         "Programmable Laboratory Cabinet",
         "Physical Control Panel"
       ],
@@ -1871,7 +1877,7 @@
         "close",
         "press"
       ],
-      "availability": "planned",
+      "availability": "available",
       "failure_evaluation_en": "Wrong-target placement, object loss, unsafe contact, invalid scene state or timeout is recorded as a failure when applicable.",
       "media": {
         "demos": [],
@@ -1900,11 +1906,11 @@
         }
       ],
       "simulation_en": "Rigid-body simulation with task-specific geometry, contact, sequence and stability predicates.",
-      "status": "planned",
+      "status": "implemented",
       "success_evaluation_en": "Completion and task-specific quality are evaluated from independent simulator state rather than controller phase completion.",
-      "summary_en": "Observe whether a device lid is open and choose Close or Start.",
+      "summary_en": "Observe the randomized Open or Closed lid state, choose Close for Open or Start for Closed, and reject unsafe Start actions.",
       "task_id": "R12",
-      "task_spec": null,
+      "task_spec": "../tasks/B34_level3_R12_devicecover_status.yaml",
       "track": {
         "description": "Action selection grounded in visual observations and structured laboratory state.",
         "label": "Reasoning in Action",
@@ -1931,5 +1937,246 @@
       "track_id": "reasoning_in_action"
     }
   ],
-  "version": "2.0.0"
+  "version": "2.0.0",
+  "release_protocols": [
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb"
+      ],
+      "collection_hz": 10,
+      "config_path": "eai4s_eval/centrifuge_v2/configs/easy.json",
+      "difficulty": "easy",
+      "family": "centrifuge_v2",
+      "family_label_en": "Centrifuge opposite-slot",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "decision_pass",
+        "precision_pass",
+        "safety_pass"
+      ],
+      "name_en": "Centrifuge opposite-slot · Easy",
+      "physics_hz": 60,
+      "protocol_id": "centrifuge_easy",
+      "status": "implemented",
+      "summary_en": "Insert the second tube into the measured slot opposite a preloaded tube without disturbing the existing load.",
+      "task_version": "centrifuge-opposite/v2"
+    },
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb"
+      ],
+      "collection_hz": 10,
+      "config_path": "eai4s_eval/centrifuge_v2/configs/hard.json",
+      "difficulty": "hard",
+      "family": "centrifuge_v2",
+      "family_label_en": "Centrifuge opposite-slot",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "decision_pass",
+        "grasp_lift_pass",
+        "precision_pass",
+        "safety_pass"
+      ],
+      "name_en": "Centrifuge opposite-slot · Hard",
+      "physics_hz": 60,
+      "protocol_id": "centrifuge_hard",
+      "status": "implemented",
+      "summary_en": "Pick both tubes from the table and place them in measured opposite slots with verified lift, insertion and stability evidence.",
+      "task_version": "centrifuge-opposite/v2"
+    },
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb",
+        "display_rgb",
+        "weights_rgb"
+      ],
+      "collection_hz": 10,
+      "config_path": "eai4s_eval/weighing_v1/configs/easy.json",
+      "difficulty": "easy",
+      "family": "weighing_v1",
+      "family_label_en": "Feedback weighing",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "first_ready_choice_correct",
+        "online_legal_next_action_rate",
+        "safety_violations"
+      ],
+      "name_en": "Feedback weighing · Easy",
+      "physics_hz": 60,
+      "protocol_id": "weighing_easy",
+      "status": "implemented",
+      "summary_en": "Read the live force-derived scale display and place the one standard weight required by the target.",
+      "task_version": "weighing-feedback/v1"
+    },
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb",
+        "display_rgb",
+        "weights_rgb"
+      ],
+      "collection_hz": 10,
+      "config_path": "eai4s_eval/weighing_v1/configs/hard.json",
+      "difficulty": "hard",
+      "family": "weighing_v1",
+      "family_label_en": "Feedback weighing",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "first_ready_choice_correct",
+        "online_legal_next_action_rate",
+        "safety_violations"
+      ],
+      "name_en": "Feedback weighing · Hard",
+      "physics_hz": 60,
+      "protocol_id": "weighing_hard",
+      "status": "implemented",
+      "summary_en": "Correct an initially supported weight subset through live load-cell feedback until the exact target subset is stable.",
+      "task_version": "weighing-feedback/v1"
+    },
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb"
+      ],
+      "collection_hz": 20,
+      "config_path": "eai4s_eval/rack_recall_v4/configs/easy.json",
+      "difficulty": "easy",
+      "family": "rack_recall_v4",
+      "family_label_en": "Rack placement recall",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "slot_reasoning_success",
+        "physical_completion",
+        "online_next_choice_accuracy"
+      ],
+      "name_en": "Rack placement recall · Easy",
+      "physics_hz": 120,
+      "protocol_id": "rack_easy",
+      "status": "implemented",
+      "summary_en": "Place one centrifuge tube in a 3 × 4 rack, remember the physical slot through occlusion and retrieve it.",
+      "task_version": "rack-placement-recall/v4"
+    },
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb"
+      ],
+      "collection_hz": 20,
+      "config_path": "eai4s_eval/rack_recall_v4/configs/hard_same_cap.json",
+      "difficulty": "hard",
+      "family": "rack_recall_v4",
+      "family_label_en": "Rack placement recall",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "slot_reasoning_success",
+        "physical_completion",
+        "online_next_choice_accuracy"
+      ],
+      "name_en": "Rack placement recall · Hard / Same cap",
+      "physics_hz": 120,
+      "protocol_id": "rack_same_cap",
+      "status": "implemented",
+      "summary_en": "Remember a target slot when three distractor tubes share the same cap appearance and the rack moves during occlusion.",
+      "task_version": "rack-placement-recall/v4"
+    },
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb"
+      ],
+      "collection_hz": 20,
+      "config_path": "eai4s_eval/rack_recall_v4/configs/hard_distinct_cap.json",
+      "difficulty": "hard",
+      "family": "rack_recall_v4",
+      "family_label_en": "Rack placement recall",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "slot_reasoning_success",
+        "physical_completion",
+        "online_next_choice_accuracy"
+      ],
+      "name_en": "Rack placement recall · Hard / Distinct cap",
+      "physics_hz": 120,
+      "protocol_id": "rack_distinct_cap",
+      "status": "implemented",
+      "summary_en": "Recall the target slot with distinct cap colors while the rack moves during the hidden retrieval phase.",
+      "task_version": "rack-placement-recall/v4"
+    },
+    {
+      "action_streams": [
+        "actions",
+        "actions_ee",
+        "action_gripper"
+      ],
+      "camera_streams": [
+        "camera_1_rgb",
+        "camera_3_rgb"
+      ],
+      "collection_hz": 10,
+      "config_path": "eai4s_eval/device_operation_v1/configs/hard.json",
+      "difficulty": "hard",
+      "family": "device_operation_v1",
+      "family_label_en": "Drying-oven operation cycle",
+      "leaderboard_group": "release_protocols_v1",
+      "metrics": [
+        "valid_success",
+        "sequence_pass",
+        "door_cycle_pass",
+        "placement_pass",
+        "retrieval_return_pass",
+        "preloaded_beaker_preserved"
+      ],
+      "name_en": "Drying-oven operation · Hard",
+      "physics_hz": 60,
+      "protocol_id": "device_operation_hard",
+      "status": "implemented",
+      "summary_en": "Open the oven, load a loose beaker, close and reopen the door, retrieve it and return it while preserving the preloaded beaker.",
+      "task_version": "device-operation-cycle/v1"
+    }
+  ]
 }

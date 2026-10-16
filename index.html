@@ -33,55 +33,74 @@
 <section class="hero">
   <div class="container">
     <span class="badge">Chemistry manipulation benchmark</span>
-    <h1>A chemistry benchmark for robots that can <span>see, plan and act.</span></h1>
-    <p class="lede">LabBench is a chemistry laboratory manipulation dataset and benchmark for embodied agents: realistic laboratory tasks, an object metadata catalogue and synchronized simulation data, measured by two capability leaderboards.</p>
+    <h1><span>LabBench</span></h1>
+    <p class="hero-subtitle">A chemistry laboratory manipulation dataset and benchmark</p>
+    <div class="hero-logos" aria-label="Project and collaborating institutions">
+      <figure class="hero-logo">
+        <img src="/LabBench/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="LabBench project logo">
+        <figcaption>EAI4S LabBench</figcaption>
+      </figure>
+      
+      <figure class="hero-logo">
+        <img src="/LabBench/static/web_assets/brand/casia-logo.jpg" width="128" height="128" alt="Institute of Automation, Chinese Academy of Sciences logo">
+        <figcaption lang="zh-CN">中国科学院自动化研究所<span lang="en">CASIA</span></figcaption>
+      </figure>
+      
+      <figure class="hero-logo">
+        <img src="/LabBench/static/web_assets/brand/ucas-logo.png" width="128" height="128" alt="University of Chinese Academy of Sciences logo">
+        <figcaption lang="zh-CN">中国科学院大学<span lang="en">UCAS</span></figcaption>
+      </figure>
+      
+    </div>
+    <p class="lede">Four optimized laboratory workflows and a 24-task manipulation benchmark, with real simulator assets, synchronized data and separately reported evaluation results.</p>
+    <nav class="project-resources" aria-label="Project resources">
+      
+      
+      
+      
+      <span class="button secondary resource-button unavailable" data-resource="paper" aria-disabled="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l4 4v14H6z M14 3v5h4 M9 12h6 M9 16h6"/></svg>
+        Paper<small>Coming soon</small>
+      </span>
+      
+      
+      
+      <span class="button secondary resource-button unavailable" data-resource="code" aria-disabled="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5a2 2 0 1 0 0 .01 M8 9v6 M8 19a2 2 0 1 0 0 .01 M16 5a2 2 0 1 0 0 .01 M16 9v2a4 4 0 0 1-4 4H8"/></svg>
+        GitHub<small>Coming soon</small>
+      </span>
+      
+      
+      
+      <a class="button secondary resource-button" data-resource="homepage" href="/LabBench/">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M3 12h18 M12 3a18 18 0 0 1 0 18 18 18 0 0 1 0-18"/></svg>
+        Project home
+      </a>
+      
+      
+      
+      <a class="button secondary resource-button" data-resource="dataset" href="https://pan.baidu.com/s/1zyJL3zxHqI_j67hUkUF6lw?pwd=gtc4">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12 M8 11l4 4 4-4 M5 16v5h14v-5"/></svg>
+        Dataset
+      </a>
+      
+    </nav>
     <div class="hero-actions">
-      <a class="button primary" href="/LabBench/tasks/">Explore 24 tasks <span aria-hidden="true">→</span></a>
+      <a class="button primary" href="/LabBench/tasks/#release-protocols">Explore four workflows <span aria-hidden="true">→</span></a>
       <a class="button secondary" href="/LabBench/leaderboard/">View leaderboard</a>
-      <!-- Dataset download is temporarily hidden (Baidu Netdisk share unlisted). Restore this link when ready to publish:
-           <a class="button secondary" href="https://pan.baidu.com/s/1zyJL3zxHqI_j67hUkUF6lw?pwd=gtc4">Download dataset</a> -->
-      <a class="button secondary" href="/LabBench/dataset/">Dataset · coming soon</a>
     </div>
   </div>
 </section>
 
-<nav class="home-sections" aria-label="On this page">
-  <div class="container">
-    <a href="#abstract">Abstract</a>
-    <a href="#method">Workflow</a>
-    <a href="#tasks">Tasks</a>
-    <a href="#dataset">Dataset</a>
-    <a href="#leaderboard">Leaderboard</a>
-    <a href="#demos">Demos</a>
-    <a href="#citation">Citation</a>
-  </div>
-</nav>
 
-<div class="container">
-  <figure class="figure-card">
-    <img src="/LabBench/static/web_assets/hero/labbench-family.webp" width="1600" height="1000" fetchpriority="high" alt="Franka robot surrounded by LabBench beakers, sample racks, a balance, test tubes and a centrifuge">
-    <figcaption class="figure-caption"><b>LabBench.</b> Representative vessels, racks, balances and a centrifuge shown in the LabBench simulation environment.</figcaption>
-  </figure>
-</div>
-
-<section>
-  <div class="container">
-    <div class="highlight-cards" aria-label="Dataset summary">
-      <div class="highlight-card"><div class="number">24</div><div class="label">Benchmark tasks</div></div>
-      <div class="highlight-card"><div class="number">18</div><div class="label">Available tasks</div></div>
-      <div class="highlight-card"><div class="number">19</div><div class="label">Laboratory objects</div></div>
-      <div class="highlight-card"><div class="number">2</div><div class="label">Capability leaderboards</div></div>
-      <div class="highlight-card"><div class="number">11</div><div class="label">Atomic actions</div></div>
-    </div>
-  </div>
-</section>
+<nav class="home-sections" aria-label="On this page"><div class="container"><a href="#abstract">Abstract</a><a href="#special-tasks">Special tasks</a><a href="#leaderboard">Evaluation</a><a href="#dataset">Dataset</a><a href="#objects">Assets</a><a href="#citation">Citation</a></div></nav>
 
 <section id="abstract" class="soft">
   <div class="container">
     <h2 class="section-title">Abstract</h2>
     <div class="content">
-      <p>LabBench is a chemistry laboratory manipulation dataset and benchmark for embodied agents. It provides 24 long-horizon and reasoning-in-action tasks, an object metadata catalogue, synchronized RGB and robot-state trajectories, and two capability leaderboards measuring both reliable multi-stage procedure execution and visual/structured-state reasoning.</p>
-      <p>Every task ships an explicit success predicate, so completion and quality are scored from independent simulator state rather than controller phase completion.</p>
+      <p>LabBench is a chemistry laboratory manipulation dataset and benchmark for embodied agents. It comprises 24 ordinary long-horizon and reasoning-in-action tasks and 4 selected special long-horizon workflows, supported by a catalogue of real simulator assets and synchronized RGB, robot-state, joint-action, end-effector-action and gripper recordings. Successful collection demonstrations are currently presented for weighing and device operation; centrifuge loading and rack recall remain pending public implementation.</p>
+      <p>Task completion is evaluated through explicit physical predicates derived from independent simulator state rather than controller phase completion alone. The special workflows and ordinary benchmark are reported in separate evaluation groups, preserving their task-specific metrics and distinguishing collection demonstrations from model evaluation results.</p>
     </div>
     <div class="tag-row">
       <span class="tag-item">Chemistry Manipulation</span>
@@ -94,353 +113,96 @@
   </div>
 </section>
 
-<section id="method">
+<section id="special-tasks">
   <div class="container">
-    <h2 class="section-title">How LabBench works</h2>
-    <div class="method-box">LabBench couples a reproducible collection pipeline with an independent success evaluator, so agents are measured on the same physics, cameras and state clock from data collection to evaluation.</div>
-    <div class="method-grid">
-      <article class="method-card"><h3>Collection</h3><p>Front and wrist RGB, seven arm joints and gripper state are recorded at 10&nbsp;Hz over 60&nbsp;Hz physics into HDF5 episodes.</p></article>
-      <article class="method-card"><h3>Data contract</h3><p>Observations, actions, phase annotations and timestamps share one sampling clock; per-episode instructions keep task identity aligned.</p></article>
-      <article class="method-card"><h3>Evaluation</h3><p>Completion and task-specific quality are scored from simulator state; only verified runs enter the public leaderboard.</p></article>
+    <div class="section-head"><div><p class="section-kicker">Four optimized long-horizon tasks</p><h2>Laboratory workflows, end to end.</h2></div><p class="coverage">2 implemented · 2 pending</p></div>
+    <p class="section-intro">Four selected workflows extend the ordinary 24-task benchmark. Successful main-camera collection demos are available for weighing and device operation; the other two remain pending public implementation.</p>
+    <div class="special-family-grid">
+  
+  <article class="special-family-card" data-special-family="weighing_v1" data-public-status="implemented">
+    <div class="special-family-media">
+      
+      <video controls muted playsinline preload="none" poster="/LabBench/static/web_assets/task_media/special/weighing-hard-front.jpg" aria-label="Feedback weighing successful collection, main camera"><source src="/LabBench/static/web_assets/task_media/special/weighing-hard-front.mp4" type="video/mp4"></video>
+      
     </div>
+    <div class="special-family-body"><span class="status">Implemented</span><h3>Feedback weighing</h3><p>Correct an initially supported weight subset through live load-cell feedback until the exact target subset is stable.</p>
+      <p class="coverage">Verified successful collection · Main camera · 10 Hz</p>
+      <a class="text-link" href="/LabBench/tasks/protocol/weighing_hard/">View task details →</a>
+    </div>
+  </article>
+  
+  <article class="special-family-card" data-special-family="device_operation_v1" data-public-status="implemented">
+    <div class="special-family-media">
+      
+      <video controls muted playsinline preload="none" poster="/LabBench/static/web_assets/task_media/special/device-operation-hard-front.jpg" aria-label="Drying-oven operation cycle successful collection, main camera"><source src="/LabBench/static/web_assets/task_media/special/device-operation-hard-front.mp4" type="video/mp4"></video>
+      
+    </div>
+    <div class="special-family-body"><span class="status">Implemented</span><h3>Drying-oven operation cycle</h3><p>Open the oven, load a loose beaker, close and reopen the door, retrieve it and return it while preserving the preloaded beaker.</p>
+      <p class="coverage">Verified successful collection · Main camera · 10 Hz</p>
+      <a class="text-link" href="/LabBench/tasks/protocol/device_operation_hard/">View task details →</a>
+    </div>
+  </article>
+  
+  <article class="special-family-card" data-special-family="centrifuge_v2" data-public-status="pending">
+    <div class="special-family-media">
+      <div class="special-family-placeholder"><span>COMING SOON</span><p>Pending implementation</p></div>
+    </div>
+    <div class="special-family-body"><span class="status planned">Pending implementation</span><h3>Centrifuge opposite-slot</h3><p>Pick both tubes from the table and place them in measured opposite slots with verified lift, insertion and stability evidence.</p>
+      
+      <a class="text-link" href="/LabBench/tasks/protocol/centrifuge_hard/">View task details →</a>
+    </div>
+  </article>
+  
+  <article class="special-family-card" data-special-family="rack_recall_v4" data-public-status="pending">
+    <div class="special-family-media">
+      <div class="special-family-placeholder"><span>COMING SOON</span><p>Pending implementation</p></div>
+    </div>
+    <div class="special-family-body"><span class="status planned">Pending implementation</span><h3>Rack placement recall</h3><p>Remember a target slot when three distractor tubes share the same cap appearance and the rack moves during occlusion.</p>
+      
+      <a class="text-link" href="/LabBench/tasks/protocol/rack_same_cap/">View task details →</a>
+    </div>
+  </article>
+  
+</div>
   </div>
 </section>
 
-<section id="leaderboards" class="soft">
+<section id="leaderboard" class="soft">
   <div class="container">
-    <h2 class="section-title">Two capability leaderboards</h2>
-    <div class="track-grid">
+    <div class="section-head"><div><p class="section-kicker">Independent evaluation groups</p><h2>Two task collections. Separate scores.</h2></div><a class="text-link" href="/LabBench/leaderboard/">Full evaluation results →</a></div>
+    <div class="evaluation-group-grid">
       
-      <article class="track-card" data-prefix="L">
-        <span class="track-code">L</span>
-        <h3>Capability Leaderboard 1 · Long-Horizon Procedures</h3>
-        <p>Measures reliable multi-stage laboratory procedures, ordering and state-dependent transitions.</p>
-        <div class="track-count"><span><strong>9</strong> available</span><span><strong>3</strong> planned</span></div>
-        <a class="text-link" href="/LabBench/tasks/?track=long_horizon">Browse 12 tasks →</a>
+      <article class="content-card"><p class="section-kicker">Special workflows</p><h3>4 optimized long-horizon tasks</h3><p>Task-owned metrics; original protocol-level score aggregation.</p>
+        <p class="empty-state">No eligible model results published. Collection demos are not model scores.</p>
+        <a class="text-link" href="/LabBench/leaderboard/#release-leaderboard">View this leaderboard →</a>
       </article>
       
-      <article class="track-card" data-prefix="R">
-        <span class="track-code">R</span>
-        <h3>Capability Leaderboard 2 · Reasoning in Action</h3>
-        <p>Measures visual and structured-state understanding with correct action selection.</p>
-        <div class="track-count"><span><strong>9</strong> available</span><span><strong>3</strong> planned</span></div>
-        <a class="text-link" href="/LabBench/tasks/?track=reasoning_in_action">Browse 12 tasks →</a>
+      <article class="content-card"><p class="section-kicker">Ordinary benchmark</p><h3>24 ordinary tasks</h3><p>Long-horizon and reasoning-in-action tracks; original L/R scoring.</p>
+        <p class="empty-state">No eligible model results published. Collection demos are not model scores.</p>
+        <a class="text-link" href="/LabBench/leaderboard/#ordinary-leaderboard">View this leaderboard →</a>
       </article>
       
     </div>
+    <p class="detail-note">The two groups are never combined into one total. Missing results remain unavailable rather than becoming zero.</p>
   </div>
 </section>
 
-<section id="tasks">
-  <div class="container">
-    <h2 class="section-title">Representative tasks</h2>
-    <div class="card-grid">
-      
-      <article class="task-card" data-featured-track="long_horizon">
-        <div class="card-media"><span class="media-fallback">L01</span><img src="/LabBench/static/web_assets/task_media/l01-sample-transport-front.webp" alt="Transport Three Sample Vials task preview" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta"><span>L01 · L track</span><span class="status">Available</span></div>
-          <h3>Transport Three Sample Vials</h3>
-          <p>Pick three sample vials in sequence and place each one into a separate sample-box slot.</p>
-          <div class="chip-row"><span class="chip">Grasp</span><span class="chip">Lift</span><span class="chip">Move</span><span class="chip">Place</span></div>
-        </div>
-        <a class="card-link" href="/LabBench/tasks/L01/">View Transport Three Sample Vials</a>
-      </article>
-      
-      <article class="task-card" data-featured-track="long_horizon">
-        <div class="card-media"><span class="media-fallback">L02</span><img src="/LabBench/static/web_assets/task_media/l02-sample-organization-front.webp" alt="Organize a Vial by Destination task preview" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta"><span>L02 · L track</span><span class="status">Available</span></div>
-          <h3>Organize a Vial by Destination</h3>
-          <p>Resolve the assigned sample box and insert the vial into the matching destination slot.</p>
-          <div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span></div>
-        </div>
-        <a class="card-link" href="/LabBench/tasks/L02/">View Organize a Vial by Destination</a>
-      </article>
-      
-      <article class="task-card" data-featured-track="long_horizon">
-        <div class="card-media"><span class="media-fallback">L04</span><img src="/LabBench/static/web_assets/task_media/l04-liquid-mixing-front.webp" alt="Three-Beaker Liquid Mixing task preview" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta"><span>L04 · L track</span><span class="status">Available</span></div>
-          <h3>Three-Beaker Liquid Mixing</h3>
-          <p>Pour three source beakers into a central mixing target and return every beaker to its original place.</p>
-          <div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Press</span><span class="chip">Shake</span><span class="chip">Place</span></div>
-        </div>
-        <a class="card-link" href="/LabBench/tasks/L04/">View Three-Beaker Liquid Mixing</a>
-      </article>
-      
-      <article class="task-card" data-featured-track="reasoning_in_action">
-        <div class="card-media"><span class="media-fallback">R01</span><img src="/LabBench/static/web_assets/task_media/r01-digital-mass-front.webp" alt="Read and Record a Digital Mass task preview" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta"><span>R01 · R track</span><span class="status">Available</span></div>
-          <h3>Read and Record a Digital Mass</h3>
-          <p>Read a digital scale display and select the matching value from four choices.</p>
-          <div class="chip-row"><span class="chip">Press</span></div>
-        </div>
-        <a class="card-link" href="/LabBench/tasks/R01/">View Read and Record a Digital Mass</a>
-      </article>
-      
-      <article class="task-card" data-featured-track="reasoning_in_action">
-        <div class="card-media"><span class="media-fallback">R02</span><img src="/LabBench/static/web_assets/task_media/r02-weight-selection-front.webp" alt="Select Weights for a Target Mass task preview" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta"><span>R02 · R track</span><span class="status">Available</span></div>
-          <h3>Select Weights for a Target Mass</h3>
-          <p>Reason over labelled weights and place the required combination on the scale.</p>
-          <div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span></div>
-        </div>
-        <a class="card-link" href="/LabBench/tasks/R02/">View Select Weights for a Target Mass</a>
-      </article>
-      
-      <article class="task-card" data-featured-track="reasoning_in_action">
-        <div class="card-media"><span class="media-fallback">R03</span><img src="/LabBench/static/web_assets/task_media/r03-temperature-open-front.webp" alt="Temperature-Gated Sample Retrieval task preview" loading="lazy"></div>
-        <div class="card-body">
-          <div class="card-meta"><span>R03 · R track</span><span class="status">Available</span></div>
-          <h3>Temperature-Gated Sample Retrieval</h3>
-          <p>Read temperature and choose Wait or Open based on a 30 °C threshold.</p>
-          <div class="chip-row"><span class="chip">Open</span><span class="chip">Press</span></div>
-        </div>
-        <a class="card-link" href="/LabBench/tasks/R03/">View Temperature-Gated Sample Retrieval</a>
-      </article>
-      
-    </div>
-    <div class="tag-row"><a class="text-link" href="/LabBench/tasks/">Browse all tasks →</a></div>
-  </div>
-</section>
+<section id="dataset"><div class="container">
+  <div class="section-head"><div><p class="section-kicker">Reproducible collection</p><h2>One aligned data contract.</h2></div></div>
+  <div class="data-grid"><div class="contract-list"><div><strong>Embodiment</strong>Franka Panda</div><div><strong>Simulator</strong>Isaac Sim</div><div><strong>Observations</strong>camera_1_rgb (Front RGB) + camera_3_rgb (Wrist RGB)</div><div><strong>Actions</strong>Joint actions, end-effector actions and gripper state</div><div><strong>Container</strong>HDF5</div></div>
+  <article class="data-card"><h3>Discover the complete benchmark.</h3><p>Beyond the four selected workflows, the ordinary benchmark contains 24 long-horizon and reasoning tasks. Their task cards and videos live on the Tasks page.</p><a class="button secondary" href="/LabBench/tasks/#ordinary-tasks">Explore 24 ordinary tasks →</a><p><a class="text-link" href="/LabBench/dataset/">Dataset schema and provenance →</a></p></article></div>
+</div></section>
 
-<section id="dataset" class="soft">
-  <div class="container">
-    <h2 class="section-title">Data contract</h2>
-    <div class="data-grid">
-      <div class="contract-list">
-        <div><strong>Embodiment</strong>Franka Panda</div>
-        <div><strong>Simulator</strong>Isaac Sim</div>
-        <div><strong>Observations</strong>Front RGB + Wrist RGB</div>
-        <div><strong>Sample rates</strong>10 / 60 Hz</div>
-        <div><strong>Action</strong>7 arm joints + binary gripper</div>
-        <div><strong>Container</strong>HDF5</div>
-      </div>
-      <article class="data-card">
-        <h3>Every frame stays aligned.</h3>
-        <p>Observations, joint and end-effector actions, binary gripper state, task phases and timestamps share one sampling clock.</p>
-        <p>Dataset statistics preserve collection source, task identity, duration and episode counts instead of collapsing incompatible modalities into a single number.</p>
-        <a class="text-link" href="/LabBench/dataset/">View provenance and schema →</a>
-      </article>
-    </div>
-  </div>
-</section>
+<section id="objects" class="soft"><div class="container"><div class="section-head"><div><p class="section-kicker">Real simulator geometry</p><h2>Assets behind the workflows.</h2></div><a class="text-link" href="/LabBench/objects/">All laboratory assets →</a></div>
+  <div class="object-grid"><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/special-centrifuge.webp" alt="Optimized Task Centrifuge USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Laboratory Instruments</span><h3>Optimized Task Centrifuge</h3></div><a class="card-link" href="/LabBench/objects/special-centrifuge/">View Optimized Task Centrifuge</a></article><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/rack-recall-rack.webp" alt="Rack Recall 3 × 4 Rack USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Racks &amp; Fixtures</span><h3>Rack Recall 3 × 4 Rack</h3></div><a class="card-link" href="/LabBench/objects/rack-recall-rack/">View Rack Recall 3 × 4 Rack</a></article><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/rack-recall-tube.webp" alt="Rack Recall Capped Tube USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Tubes &amp; Consumables</span><h3>Rack Recall Capped Tube</h3></div><a class="card-link" href="/LabBench/objects/rack-recall-tube/">View Rack Recall Capped Tube</a></article><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/feedback-scale.webp" alt="Feedback Weighing Platform USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Laboratory Instruments</span><h3>Feedback Weighing Platform</h3></div><a class="card-link" href="/LabBench/objects/feedback-scale/">View Feedback Weighing Platform</a></article><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/feedback-weight-set.webp" alt="Feedback Task Weight Set USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Tools &amp; Controls</span><h3>Feedback Task Weight Set</h3></div><a class="card-link" href="/LabBench/objects/feedback-weight-set/">View Feedback Task Weight Set</a></article><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/feedback-sample.webp" alt="Feedback Weighing Sample USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Tubes &amp; Consumables</span><h3>Feedback Weighing Sample</h3></div><a class="card-link" href="/LabBench/objects/feedback-sample/">View Feedback Weighing Sample</a></article><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/beaker.webp" alt="Laboratory Beaker USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Glassware &amp; Vessels</span><h3>Laboratory Beaker</h3></div><a class="card-link" href="/LabBench/objects/beaker/">View Laboratory Beaker</a></article><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/nmr-tube.webp" alt="NMR Tube USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Tubes &amp; Consumables</span><h3>NMR Tube</h3></div><a class="card-link" href="/LabBench/objects/nmr-tube/">View NMR Tube</a></article></div>
+</div></section>
 
-<section id="leaderboard">
-  <div class="container">
-    <h2 class="section-title">Official leaderboard</h2>
-    
-    <div class="leader-preview">
-      <table><thead><tr><th>Rank</th><th>Method</th><th>Official score</th><th>Success rate</th><th>Coverage</th></tr></thead><tbody>
-        <tr><td><span class="rank-medal">1</span></td><td class="left"><strong>OpenPI</strong><br><span class="coverage">openpi_labbench_v1</span></td><td><span class="score-number"><span class="score-unavailable">Quality score not implemented yet</span></span></td><td>20.0%</td><td>18/18</td></tr>
-      </tbody></table>
-    </div>
-    
-    <div class="tag-row"><a class="text-link" href="/LabBench/leaderboard/">Full results and protocol →</a></div>
-  </div>
-</section>
-
-<section id="objects" class="soft">
-  <div class="container">
-    <h2 class="section-title">The chemistry lab, item by item</h2>
-    <div class="object-grid">
-      
-      <article class="object-card">
-        <div class="card-media"><span class="media-fallback">BE</span><img src="/LabBench/static/web_assets/object_images/beaker.webp" alt="Laboratory Beaker render" loading="lazy"></div>
-        <div class="card-body"><div class="card-meta"><span>Glassware &amp; Vessels</span><span class="status">available</span></div><h3>Laboratory Beaker</h3></div>
-        <a class="card-link" href="/LabBench/objects/beaker/">View Laboratory Beaker</a>
-      </article>
-      
-      <article class="object-card">
-        <div class="card-media"><span class="media-fallback">CO</span><img src="/LabBench/static/web_assets/object_images/conical-flask.webp" alt="Conical Flask render" loading="lazy"></div>
-        <div class="card-body"><div class="card-meta"><span>Glassware &amp; Vessels</span><span class="status">available</span></div><h3>Conical Flask</h3></div>
-        <a class="card-link" href="/LabBench/objects/conical-flask/">View Conical Flask</a>
-      </article>
-      
-      <article class="object-card">
-        <div class="card-media"><span class="media-fallback">SA</span><img src="/LabBench/static/web_assets/object_images/sample-vial.webp" alt="Sample Vial render" loading="lazy"></div>
-        <div class="card-body"><div class="card-meta"><span>Glassware &amp; Vessels</span><span class="status">available</span></div><h3>Sample Vial</h3></div>
-        <a class="card-link" href="/LabBench/objects/sample-vial/">View Sample Vial</a>
-      </article>
-      
-      <article class="object-card">
-        <div class="card-media"><span class="media-fallback">TE</span><img src="/LabBench/static/web_assets/object_images/test-tube.webp" alt="Test Tube render" loading="lazy"></div>
-        <div class="card-body"><div class="card-meta"><span>Tubes &amp; Consumables</span><span class="status">available</span></div><h3>Test Tube</h3></div>
-        <a class="card-link" href="/LabBench/objects/test-tube/">View Test Tube</a>
-      </article>
-      
-      <article class="object-card">
-        <div class="card-media"><span class="media-fallback">NM</span><img src="/LabBench/static/web_assets/object_images/nmr-tube.webp" alt="NMR Tube render" loading="lazy"></div>
-        <div class="card-body"><div class="card-meta"><span>Tubes &amp; Consumables</span><span class="status">available</span></div><h3>NMR Tube</h3></div>
-        <a class="card-link" href="/LabBench/objects/nmr-tube/">View NMR Tube</a>
-      </article>
-      
-      <article class="object-card">
-        <div class="card-media"><span class="media-fallback">CE</span><img src="/LabBench/static/web_assets/object_images/centrifuge-tube.webp" alt="Centrifuge Tube render" loading="lazy"></div>
-        <div class="card-body"><div class="card-meta"><span>Tubes &amp; Consumables</span><span class="status">available</span></div><h3>Centrifuge Tube</h3></div>
-        <a class="card-link" href="/LabBench/objects/centrifuge-tube/">View Centrifuge Tube</a>
-      </article>
-      
-      <article class="object-card">
-        <div class="card-media"><span class="media-fallback">TE</span><img src="/LabBench/static/web_assets/object_images/test-tube-rack.webp" alt="Test Tube Rack render" loading="lazy"></div>
-        <div class="card-body"><div class="card-meta"><span>Racks &amp; Fixtures</span><span class="status">available</span></div><h3>Test Tube Rack</h3></div>
-        <a class="card-link" href="/LabBench/objects/test-tube-rack/">View Test Tube Rack</a>
-      </article>
-      
-      <article class="object-card">
-        <div class="card-media"><span class="media-fallback">NM</span><img src="/LabBench/static/web_assets/object_images/nmr-rack.webp" alt="NMR Autosampler Rack render" loading="lazy"></div>
-        <div class="card-body"><div class="card-meta"><span>Racks &amp; Fixtures</span><span class="status">available</span></div><h3>NMR Autosampler Rack</h3></div>
-        <a class="card-link" href="/LabBench/objects/nmr-rack/">View NMR Autosampler Rack</a>
-      </article>
-      
-    </div>
-    <div class="tag-row"><a class="text-link" href="/LabBench/objects/">Explore all objects →</a></div>
-  </div>
-</section>
-
-<section id="demos">
-  <div class="container">
-    <h2 class="section-title">Simulation demos</h2>
-    <div class="demo-tabs" aria-label="Demo filters">
-      <button class="demo-tab active" type="button" data-filter="all" aria-pressed="true">All</button>
-      <button class="demo-tab" type="button" data-filter="L" aria-pressed="false">Long-Horizon</button>
-      <button class="demo-tab" type="button" data-filter="R" aria-pressed="false">Reasoning</button>
-    </div>
-    <div class="video-grid">
-      
-      <article class="video-card" data-demo-card data-track="L">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l01-sample-transport-front.webp" aria-label="Transport Three Sample Vials simulation demo"><source src="/LabBench/static/web_assets/task_media/l01-sample-transport-front.mp4" type="video/mp4"></video>
-        <h3>L01 · Transport Three Sample Vials</h3>
-        <p>Long-Horizon Procedures</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="L">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l02-sample-organization-front.webp" aria-label="Organize a Vial by Destination simulation demo"><source src="/LabBench/static/web_assets/task_media/l02-sample-organization-front.mp4" type="video/mp4"></video>
-        <h3>L02 · Organize a Vial by Destination</h3>
-        <p>Long-Horizon Procedures</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="L">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l04-liquid-mixing-front.webp" aria-label="Three-Beaker Liquid Mixing simulation demo"><source src="/LabBench/static/web_assets/task_media/l04-liquid-mixing-front.mp4" type="video/mp4"></video>
-        <h3>L04 · Three-Beaker Liquid Mixing</h3>
-        <p>Long-Horizon Procedures</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="L">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l06-scale-weights-front.webp" aria-label="Sequential Balance Loading simulation demo"><source src="/LabBench/static/web_assets/task_media/l06-scale-weights-front.mp4" type="video/mp4"></video>
-        <h3>L06 · Sequential Balance Loading</h3>
-        <p>Long-Horizon Procedures</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="L">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l08-nmr-loading-front.webp" aria-label="NMR Sample Holder Loading simulation demo"><source src="/LabBench/static/web_assets/task_media/l08-nmr-loading-front.mp4" type="video/mp4"></video>
-        <h3>L08 · NMR Sample Holder Loading</h3>
-        <p>Long-Horizon Procedures</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="L">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l09-device-program-front.webp" aria-label="Load and Start a Laboratory Device simulation demo"><source src="/LabBench/static/web_assets/task_media/l09-device-program-front.mp4" type="video/mp4"></video>
-        <h3>L09 · Load and Start a Laboratory Device</h3>
-        <p>Long-Horizon Procedures</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="L">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l10-cohort-loading-front.webp" aria-label="Sequential Three-Vial Loading simulation demo"><source src="/LabBench/static/web_assets/task_media/l10-cohort-loading-front.mp4" type="video/mp4"></video>
-        <h3>L10 · Sequential Three-Vial Loading</h3>
-        <p>Long-Horizon Procedures</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="L">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l11-condition-module-front.webp" aria-label="Operate a Condition Module simulation demo"><source src="/LabBench/static/web_assets/task_media/l11-condition-module-front.mp4" type="video/mp4"></video>
-        <h3>L11 · Operate a Condition Module</h3>
-        <p>Long-Horizon Procedures</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="L">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l12-bench-reset-front.webp" aria-label="Clear and Reset the Laboratory Bench simulation demo"><source src="/LabBench/static/web_assets/task_media/l12-bench-reset-front.mp4" type="video/mp4"></video>
-        <h3>L12 · Clear and Reset the Laboratory Bench</h3>
-        <p>Long-Horizon Procedures</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="R">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r01-digital-mass-front.webp" aria-label="Read and Record a Digital Mass simulation demo"><source src="/LabBench/static/web_assets/task_media/r01-digital-mass-front.mp4" type="video/mp4"></video>
-        <h3>R01 · Read and Record a Digital Mass</h3>
-        <p>Reasoning in Action</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="R">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r02-weight-selection-front.webp" aria-label="Select Weights for a Target Mass simulation demo"><source src="/LabBench/static/web_assets/task_media/r02-weight-selection-front.mp4" type="video/mp4"></video>
-        <h3>R02 · Select Weights for a Target Mass</h3>
-        <p>Reasoning in Action</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="R">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r03-temperature-open-front.webp" aria-label="Temperature-Gated Sample Retrieval simulation demo"><source src="/LabBench/static/web_assets/task_media/r03-temperature-open-front.mp4" type="video/mp4"></video>
-        <h3>R03 · Temperature-Gated Sample Retrieval</h3>
-        <p>Reasoning in Action</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="R">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r04-rpm-decision-front.webp" aria-label="RPM Adjustment Decision simulation demo"><source src="/LabBench/static/web_assets/task_media/r04-rpm-decision-front.mp4" type="video/mp4"></video>
-        <h3>R04 · RPM Adjustment Decision</h3>
-        <p>Reasoning in Action</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="R">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r05-device-status-front.webp" aria-label="State-Dependent Device Control simulation demo"><source src="/LabBench/static/web_assets/task_media/r05-device-status-front.mp4" type="video/mp4"></video>
-        <h3>R05 · State-Dependent Device Control</h3>
-        <p>Reasoning in Action</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="R">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r08-display-slot-front.webp" aria-label="Read and Select an NMR Slot simulation demo"><source src="/LabBench/static/web_assets/task_media/r08-display-slot-front.mp4" type="video/mp4"></video>
-        <h3>R08 · Read and Select an NMR Slot</h3>
-        <p>Reasoning in Action</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="R">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r09-rack-grid-front.webp" aria-label="Map a B3 Grid Instruction simulation demo"><source src="/LabBench/static/web_assets/task_media/r09-rack-grid-front.mp4" type="video/mp4"></video>
-        <h3>R09 · Map a B3 Grid Instruction</h3>
-        <p>Reasoning in Action</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="R">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r10-assigned-socket-front.webp" aria-label="Place a Tube at C2 simulation demo"><source src="/LabBench/static/web_assets/task_media/r10-assigned-socket-front.mp4" type="video/mp4"></video>
-        <h3>R10 · Place a Tube at C2</h3>
-        <p>Reasoning in Action</p>
-      </article>
-      
-      <article class="video-card" data-demo-card data-track="R">
-        <video controls muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r11-sample-box-socket-front.webp" aria-label="Locate a Sample-Box Socket simulation demo"><source src="/LabBench/static/web_assets/task_media/r11-sample-box-socket-front.mp4" type="video/mp4"></video>
-        <h3>R11 · Locate a Sample-Box Socket</h3>
-        <p>Reasoning in Action</p>
-      </article>
-      
-    </div>
-  </div>
-</section>
-
-<section id="citation" class="soft">
-  <div class="container">
-    <h2 class="section-title">Citation</h2>
-    <!-- Dataset share temporarily hidden. Restore the direct link when ready to publish:
-         <div class="hero-actions"><a class="button" href="https://pan.baidu.com/s/1zyJL3zxHqI_j67hUkUF6lw?pwd=gtc4">Dataset</a></div> -->
-    <div class="hero-actions"><a class="button" href="/LabBench/dataset/">Dataset</a></div>
-    <div class="bibtex-box">
-      <button class="copy-btn" id="copyBib" type="button" aria-describedby="copyBibStatus">Copy</button>
-      <pre id="bibtex">@misc{eai4s_labbench2026,
+<section id="citation"><div class="container"><h2 class="section-title">Citation</h2><div class="bibtex-box"><button class="copy-btn" id="copyBib" type="button" aria-describedby="copyBibStatus">Copy</button><pre id="bibtex">@misc{eai4s_labbench2026,
   title={EAI4S LabBench: A Chemistry Laboratory Manipulation Dataset and Benchmark},
   author={EAI4S},
   year={2026},
   note={Dataset and benchmark website; paper forthcoming}
-}</pre>
-    </div>
-    <p class="copy-status" id="copyBibStatus" aria-live="polite">Pre-release citation; official paper metadata will replace it when available.</p>
-  </div>
-</section>
+}</pre></div><p id="copyBibStatus" class="copy-status" aria-live="polite">Pre-release citation; official paper metadata will replace it when available.</p></div></section>
 
   </main>
 

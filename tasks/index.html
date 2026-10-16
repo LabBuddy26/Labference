@@ -30,8 +30,56 @@
 
   <main id="main-content">
     
-<header class="page-hero"><div><p class="section-kicker">L01–L12 · R01–R12</p><h1>24 tasks for laboratory manipulation.</h1><p class="lede">Browse long-horizon procedures and reasoning-in-action tasks. Available tasks come first; planned tasks make the benchmark roadmap visible.</p></div></header>
+<header class="page-hero"><div><p class="section-kicker">4 special workflows + 24 ordinary tasks</p><h1>Explore the LabBench task collections.</h1><p class="lede">Start with four optimized long-horizon workflows, then browse the ordinary long-horizon and reasoning benchmark.</p></div></header>
 <div class="page-shell">
+  <section id="release-protocols" class="special-task-section"><div class="section-head"><div><p class="section-kicker">Selected workflows</p><h2>4 optimized long-horizon tasks</h2></div><p class="coverage">2 implemented · 2 pending</p></div><div class="special-family-grid">
+  
+  <article class="special-family-card" data-special-family="weighing_v1" data-public-status="implemented">
+    <div class="special-family-media">
+      
+      <video controls muted playsinline preload="none" poster="/LabBench/static/web_assets/task_media/special/weighing-hard-front.jpg" aria-label="Feedback weighing successful collection, main camera"><source src="/LabBench/static/web_assets/task_media/special/weighing-hard-front.mp4" type="video/mp4"></video>
+      
+    </div>
+    <div class="special-family-body"><span class="status">Implemented</span><h3>Feedback weighing</h3><p>Correct an initially supported weight subset through live load-cell feedback until the exact target subset is stable.</p>
+      <p class="coverage">Verified successful collection · Main camera · 10 Hz</p>
+      <a class="text-link" href="/LabBench/tasks/protocol/weighing_hard/">View task details →</a>
+    </div>
+  </article>
+  
+  <article class="special-family-card" data-special-family="device_operation_v1" data-public-status="implemented">
+    <div class="special-family-media">
+      
+      <video controls muted playsinline preload="none" poster="/LabBench/static/web_assets/task_media/special/device-operation-hard-front.jpg" aria-label="Drying-oven operation cycle successful collection, main camera"><source src="/LabBench/static/web_assets/task_media/special/device-operation-hard-front.mp4" type="video/mp4"></video>
+      
+    </div>
+    <div class="special-family-body"><span class="status">Implemented</span><h3>Drying-oven operation cycle</h3><p>Open the oven, load a loose beaker, close and reopen the door, retrieve it and return it while preserving the preloaded beaker.</p>
+      <p class="coverage">Verified successful collection · Main camera · 10 Hz</p>
+      <a class="text-link" href="/LabBench/tasks/protocol/device_operation_hard/">View task details →</a>
+    </div>
+  </article>
+  
+  <article class="special-family-card" data-special-family="centrifuge_v2" data-public-status="pending">
+    <div class="special-family-media">
+      <div class="special-family-placeholder"><span>COMING SOON</span><p>Pending implementation</p></div>
+    </div>
+    <div class="special-family-body"><span class="status planned">Pending implementation</span><h3>Centrifuge opposite-slot</h3><p>Pick both tubes from the table and place them in measured opposite slots with verified lift, insertion and stability evidence.</p>
+      
+      <a class="text-link" href="/LabBench/tasks/protocol/centrifuge_hard/">View task details →</a>
+    </div>
+  </article>
+  
+  <article class="special-family-card" data-special-family="rack_recall_v4" data-public-status="pending">
+    <div class="special-family-media">
+      <div class="special-family-placeholder"><span>COMING SOON</span><p>Pending implementation</p></div>
+    </div>
+    <div class="special-family-body"><span class="status planned">Pending implementation</span><h3>Rack placement recall</h3><p>Remember a target slot when three distractor tubes share the same cap appearance and the rack moves during occlusion.</p>
+      
+      <a class="text-link" href="/LabBench/tasks/protocol/rack_same_cap/">View task details →</a>
+    </div>
+  </article>
+  
+</div></section>
+  <section id="ordinary-tasks"><div class="section-head"><div><p class="section-kicker">L01–L12 · R01–R12</p><h2>24 ordinary tasks</h2></div><p class="coverage">Long-horizon · Reasoning-in-action</p></div>
   <div class="filter-bar" aria-label="Task filters">
     <input data-task-search type="search" placeholder="Search task name, ID or description" aria-label="Search tasks">
     <select data-task-track aria-label="Filter by track"><option value="">All tracks</option><option value="long_horizon">L · Long-Horizon Procedures</option><option value="reasoning_in_action">R · Reasoning in Action</option></select>
@@ -53,16 +101,34 @@
       <a class="card-link" href="/LabBench/tasks/L02/">View Organize a Vial by Destination</a>
     </article>
     
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="grasp,move,press,place" data-search="l03 tip installation and 100 µl transfer install a disposable tip, aspirate and dispense 100 microlitres in order, then discard the used tip.">
+      <div class="card-media"><span class="media-fallback">L03</span></div>
+      <div class="card-body"><div class="card-meta"><span>L03 · L</span><span class="status">available</span></div><h3>Tip Installation and 100 µL Transfer</h3><p>Install a disposable tip, aspirate and dispense 100 microlitres in order, then discard the used tip.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Press</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L03/">View Tip Installation and 100 µL Transfer</a>
+    </article>
+    
     <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="grasp,move,press,shake,place" data-search="l04 three-beaker liquid mixing pour three source beakers into a central mixing target and return every beaker to its original place.">
       <div class="card-media"><span class="media-fallback">L04</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l04-liquid-mixing-front.webp" data-hover-video aria-label="Three-Beaker Liquid Mixing preview"><source data-src="/LabBench/static/web_assets/task_media/l04-liquid-mixing-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
       <div class="card-body"><div class="card-meta"><span>L04 · L</span><span class="status">available</span></div><h3>Three-Beaker Liquid Mixing</h3><p>Pour three source beakers into a central mixing target and return every beaker to its original place.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Press</span><span class="chip">Shake</span><span class="chip">Place</span></div></div>
       <a class="card-link" href="/LabBench/tasks/L04/">View Three-Beaker Liquid Mixing</a>
     </article>
     
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="grasp,move,press,place" data-search="l05 four-well recipe dispensing execute the fixed recipe once for each of a1, a2, b1 and b2 while tracking well-level volume and duplicate visits.">
+      <div class="card-media"><span class="media-fallback">L05</span></div>
+      <div class="card-body"><div class="card-meta"><span>L05 · L</span><span class="status">available</span></div><h3>Four-Well Recipe Dispensing</h3><p>Execute the fixed recipe once for each of A1, A2, B1 and B2 while tracking well-level volume and duplicate visits.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Press</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L05/">View Four-Well Recipe Dispensing</a>
+    </article>
+    
     <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="open,grasp,move,place,close" data-search="l06 sequential balance loading pick three calibration weights and place them on the laboratory balance in the required order.">
       <div class="card-media"><span class="media-fallback">L06</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/l06-scale-weights-front.webp" data-hover-video aria-label="Sequential Balance Loading preview"><source data-src="/LabBench/static/web_assets/task_media/l06-scale-weights-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
       <div class="card-body"><div class="card-meta"><span>L06 · L</span><span class="status">available</span></div><h3>Sequential Balance Loading</h3><p>Pick three calibration weights and place them on the laboratory balance in the required order.</p><div class="chip-row"><span class="chip">Open</span><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span><span class="chip">Close</span></div></div>
       <a class="card-link" href="/LabBench/tasks/L06/">View Sequential Balance Loading</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="open,grasp,move,place,close,press" data-search="l07 load and start a centrifuge preset load two tubes into symmetric rotor positions, lock the lid, select preset-1 and start the centrifuge.">
+      <div class="card-media"><span class="media-fallback">L07</span></div>
+      <div class="card-body"><div class="card-meta"><span>L07 · L</span><span class="status">available</span></div><h3>Load and Start a Centrifuge Preset</h3><p>Load two tubes into symmetric rotor positions, lock the lid, select Preset-1 and start the centrifuge.</p><div class="chip-row"><span class="chip">Open</span><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span><span class="chip">Close</span><span class="chip">Press</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/L07/">View Load and Start a Centrifuge Preset</a>
     </article>
     
     <article class="task-card" data-task-card data-track="long_horizon" data-status="available" data-actions="grasp,lift,move,place" data-search="l08 nmr sample holder loading pick the nmr sample and insert it into the designated sample holder with stable vertical alignment.">
@@ -125,6 +191,18 @@
       <a class="card-link" href="/LabBench/tasks/R05/">View State-Dependent Device Control</a>
     </article>
     
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="available" data-actions="move,place" data-search="r06 choose the opposite rotor slot identify the occupied rotor slot, map it to the position 180 degrees opposite and insert one tube without disturbing the existing load.">
+      <div class="card-media"><span class="media-fallback">R06</span></div>
+      <div class="card-body"><div class="card-meta"><span>R06 · R</span><span class="status">available</span></div><h3>Choose the Opposite Rotor Slot</h3><p>Identify the occupied rotor slot, map it to the position 180 degrees opposite and insert one tube without disturbing the existing load.</p><div class="chip-row"><span class="chip">Move</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/R06/">View Choose the Opposite Rotor Slot</a>
+    </article>
+    
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="available" data-actions="grasp,move,place" data-search="r07 find an empty symmetric slot pair reason over partial rotor occupancy and load two tubes into the first pair of empty positions separated by 180 degrees.">
+      <div class="card-media"><span class="media-fallback">R07</span></div>
+      <div class="card-body"><div class="card-meta"><span>R07 · R</span><span class="status">available</span></div><h3>Find an Empty Symmetric Slot Pair</h3><p>Reason over partial rotor occupancy and load two tubes into the first pair of empty positions separated by 180 degrees.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span></div></div>
+      <a class="card-link" href="/LabBench/tasks/R07/">View Find an Empty Symmetric Slot Pair</a>
+    </article>
+    
     <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="available" data-actions="move,place" data-search="r08 read and select an nmr slot read slot 7 from a display and map it to the physical autosampler socket.">
       <div class="card-media"><span class="media-fallback">R08</span><video muted loop playsinline preload="none" poster="/LabBench/static/web_assets/task_media/r08-display-slot-front.webp" data-hover-video aria-label="Read and Select an NMR Slot preview"><source data-src="/LabBench/static/web_assets/task_media/r08-display-slot-front.mp4" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span></div><p class="task-video-hover-hint">Hover to preview</p>
       <div class="card-body"><div class="card-meta"><span>R08 · R</span><span class="status">available</span></div><h3>Read and Select an NMR Slot</h3><p>Read Slot 7 from a display and map it to the physical autosampler socket.</p><div class="chip-row"><span class="chip">Move</span><span class="chip">Place</span></div></div>
@@ -149,43 +227,14 @@
       <a class="card-link" href="/LabBench/tasks/R11/">View Locate a Sample-Box Socket</a>
     </article>
     
-    <article class="task-card" data-task-card data-track="long_horizon" data-status="planned" data-actions="grasp,move,press,place" data-search="l03 tip installation and liquid transfer install a tip, transfer 100 microlitres between tubes and discard the tip.">
-      <div class="card-media"><span class="media-fallback">L03</span></div>
-      <div class="card-body"><div class="card-meta"><span>L03 · L</span><span class="status planned">planned</span></div><h3>Tip Installation and Liquid Transfer</h3><p>Install a tip, transfer 100 microlitres between tubes and discard the tip.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Press</span><span class="chip">Place</span></div></div>
-      <a class="card-link" href="/LabBench/tasks/L03/">View Tip Installation and Liquid Transfer</a>
-    </article>
-    
-    <article class="task-card" data-task-card data-track="long_horizon" data-status="planned" data-actions="grasp,move,press,place" data-search="l05 four-well recipe dispensing dispense fixed recipe volumes into a1, a2, b1 and b2.">
-      <div class="card-media"><span class="media-fallback">L05</span></div>
-      <div class="card-body"><div class="card-meta"><span>L05 · L</span><span class="status planned">planned</span></div><h3>Four-Well Recipe Dispensing</h3><p>Dispense fixed recipe volumes into A1, A2, B1 and B2.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Press</span><span class="chip">Place</span></div></div>
-      <a class="card-link" href="/LabBench/tasks/L05/">View Four-Well Recipe Dispensing</a>
-    </article>
-    
-    <article class="task-card" data-task-card data-track="long_horizon" data-status="planned" data-actions="open,grasp,move,place,close,press" data-search="l07 load two tubes into a centrifuge pick two nmr tubes and place them into the designated centrifuge rotor positions.">
-      <div class="card-media"><span class="media-fallback">L07</span></div>
-      <div class="card-body"><div class="card-meta"><span>L07 · L</span><span class="status planned">planned</span></div><h3>Load Two Tubes into a Centrifuge</h3><p>Pick two NMR tubes and place them into the designated centrifuge rotor positions.</p><div class="chip-row"><span class="chip">Open</span><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span><span class="chip">Close</span><span class="chip">Press</span></div></div>
-      <a class="card-link" href="/LabBench/tasks/L07/">View Load Two Tubes into a Centrifuge</a>
-    </article>
-    
-    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="planned" data-actions="move,place" data-search="r06 choose the opposite rotor slot identify an occupied rotor slot and select its diametrically opposite slot.">
-      <div class="card-media"><span class="media-fallback">R06</span></div>
-      <div class="card-body"><div class="card-meta"><span>R06 · R</span><span class="status planned">planned</span></div><h3>Choose the Opposite Rotor Slot</h3><p>Identify an occupied rotor slot and select its diametrically opposite slot.</p><div class="chip-row"><span class="chip">Move</span><span class="chip">Place</span></div></div>
-      <a class="card-link" href="/LabBench/tasks/R06/">View Choose the Opposite Rotor Slot</a>
-    </article>
-    
-    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="planned" data-actions="grasp,move,place" data-search="r07 find an empty symmetric slot pair reason over partial rotor occupancy and load an empty symmetric pair.">
-      <div class="card-media"><span class="media-fallback">R07</span></div>
-      <div class="card-body"><div class="card-meta"><span>R07 · R</span><span class="status planned">planned</span></div><h3>Find an Empty Symmetric Slot Pair</h3><p>Reason over partial rotor occupancy and load an empty symmetric pair.</p><div class="chip-row"><span class="chip">Grasp</span><span class="chip">Move</span><span class="chip">Place</span></div></div>
-      <a class="card-link" href="/LabBench/tasks/R07/">View Find an Empty Symmetric Slot Pair</a>
-    </article>
-    
-    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="planned" data-actions="close,press" data-search="r12 lid-state action selection observe whether a device lid is open and choose close or start.">
+    <article class="task-card" data-task-card data-track="reasoning_in_action" data-status="available" data-actions="close,press" data-search="r12 lid-state action selection observe the randomized open or closed lid state, choose close for open or start for closed, and reject unsafe start actions.">
       <div class="card-media"><span class="media-fallback">R12</span></div>
-      <div class="card-body"><div class="card-meta"><span>R12 · R</span><span class="status planned">planned</span></div><h3>Lid-State Action Selection</h3><p>Observe whether a device lid is open and choose Close or Start.</p><div class="chip-row"><span class="chip">Close</span><span class="chip">Press</span></div></div>
+      <div class="card-body"><div class="card-meta"><span>R12 · R</span><span class="status">available</span></div><h3>Lid-State Action Selection</h3><p>Observe the randomized Open or Closed lid state, choose Close for Open or Start for Closed, and reject unsafe Start actions.</p><div class="chip-row"><span class="chip">Close</span><span class="chip">Press</span></div></div>
       <a class="card-link" href="/LabBench/tasks/R12/">View Lid-State Action Selection</a>
     </article>
     
   </div>
+  </section>
 </div>
 
   </main>
