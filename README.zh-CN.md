@@ -1,11 +1,18 @@
-# EAI4S LabBench
+# Labference
 
 [English](README.md)
 
-LabBench 是面向视觉—语言—动作智能体的化学实验室操作数据集和评测基准，包含
-Long-Horizon Procedures 与 Reasoning in Action 两类共 24 个普通任务，以及
-4 个精选优化的特殊长程实验室任务。通过同步观测、机器人状态、关节动作、末端执行器
-动作和夹爪记录，支持数据采集与模型评测；特殊任务与普通任务分别展示评测榜单。
+**机器人实验室中的推理—动作连接评测**
+
+Labference 评估机器人如何依据实际物理结果选择后续操作，以及这些选择如何转化为
+实验室动作。评测通过受控证据变化检验行为适应，分别记录操作选择、物理执行与任务
+完成，并从共享物理检查点开展匹配的 Oracle 辅助续跑，诊断哪类支持能够改善后续表现。
+其范围面向机器人实验室与 Embodied AI for Science，不局限于化学操作。
+
+2026年10月21日技术报告重点展开离心机装载、反馈称重、试管位置回忆三类场景；
+附录 A 描述 L01–L12 十二个实验室工作流与 R01–R12 十二个动作中推理任务。
+网页继续保留四个精选任务卡片，其中设备操作作为目录中的扩展工作流展示。
+论文初步实验结果来自反馈称重，不代表完整任务目录均已获得验证成绩。
 
 ## 四个特殊长程任务
 
@@ -13,20 +20,20 @@ Long-Horizon Procedures 与 Reasoning in Action 两类共 24 个普通任务，�
 | --- | --- | --- |
 | 反馈称重（`weighing_v1`） | 根据天平实时反馈调整标准砝码，使目标重量稳定达成。 | 已展示成功采集视频 |
 | 设备操作（`device_operation_v1`） | 完成设备与烧杯的多阶段操作，应对设备门的干扰变化。 | 已展示成功采集视频 |
-| 离心机装载（`centrifuge_v2`） | 将试管插入转子相对孔位，并保证放置稳定。 | 待实现（公开展示状态） |
-| 试管架位置回忆（`rack_recall_v4`） | 在遮挡前后记忆试管孔位，并从试管架取回正确试管。 | 待实现（公开展示状态） |
+| 离心机装载（`centrifuge_v2`） | 将试管插入转子相对孔位，并保证放置稳定。 | 已展示真实仿真场景图 |
+| 试管架位置回忆（`rack_recall_v4`） | 在遮挡前后记忆试管孔位，并从试管架取回正确试管。 | 已展示真实仿真场景图 |
 
 首页优先展示这四个任务，目前仅播放称重、设备操作两个任务的成功主视角视频，
-另外两个保留待实现标记。[Tasks 页面](https://zhaochunhai.github.io/LabBench/tasks/) 先展示四个
+另外两个展示真实仿真场景图，不将其作为任务成功演示。[Tasks 页面](https://zhaochunhai.github.io/Labference/tasks/) 先展示四个
 特殊任务，再展示 24 个普通任务及其演示视频。
-[评测榜单](https://zhaochunhai.github.io/LabBench/leaderboard/) 将四个特殊任务与普通任务分别展示，
+[评测榜单](https://zhaochunhai.github.io/Labference/leaderboard/) 将四个特殊任务与普通任务分别展示，
 不合并为一个总分。成功采集演示不等同于模型评测成绩，也不代表四个任务均已完成。
 
 ## 公开预览
 
-- **项目主页：** [打开 LabBench 基准主页](https://zhaochunhai.github.io/LabBench/)
-- **数据集：** [通过百度网盘下载](https://pan.baidu.com/s/1zyJL3zxHqI_j67hUkUF6lw?pwd=gtc4)
-- **代码仓库：** [https://github.com/zhaochunhai/LabBench](https://github.com/zhaochunhai/LabBench)
+- **项目主页：** [打开 Labference 基准主页](https://zhaochunhai.github.io/Labference/)
+- **数据集：** [通过百度网盘下载](https://pan.baidu.com/s/1zyJL3zxHqI_j67hUkUF6lw)
+- **代码仓库：** [https://github.com/zhaochunhai/Labference](https://github.com/zhaochunhai/Labference)
 
 网页公开任务目录、物体元数据、数据集统计、已验证榜单、WebP 物体预览和 MP4
 任务演示。USD、网格、纹理、仿真资产、模型权重和内部评测记录不会对外分发。
@@ -38,7 +45,7 @@ Long-Horizon Procedures 与 Reasoning in Action 两类共 24 个普通任务，�
 
 ## 许可证
 
-仓库文档以及后续发布的第一方软件采用 MIT License。明确作为 LabBench 数据集发布的
+仓库文档以及后续发布的第一方软件采用 MIT License。明确作为 Labference 数据集发布的
 数据文件采用 CC BY 4.0，详见 [DATASET_LICENSE.md](DATASET_LICENSE.md)。网页中的
 预览媒体不代表其底层仿真资产源文件可以下载或再分发，详见 [NOTICE.md](NOTICE.md)。
 
