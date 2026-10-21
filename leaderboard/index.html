@@ -4,39 +4,39 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b2c35">
-  <meta name="description" content="Data, tasks, objects and reproducible evaluation for embodied agents operating in chemistry laboratories.">
-  <title>Leaderboard · EAI4S LabBench</title>
-  <link rel="stylesheet" href="/LabBench/static/public-site.css">
-  <script defer src="/LabBench/static/public-site.js"></script>
+  <meta name="description" content="Evaluating how observed physical outcomes guide subsequent choices and how those choices translate into robotic laboratory actions.">
+  <title>Leaderboard · Labference</title>
+  <link rel="stylesheet" href="/Labference/static/public-site.css">
+  <script defer src="/Labference/static/public-site.js"></script>
 </head>
 <body data-page="leaderboard">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
-    <a class="site-brand" href="/LabBench/" aria-label="EAI4S LabBench home">
-      <img class="brand-logo" src="/LabBench/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">
-      <span><strong>EAI4S</strong> <em>LabBench</em><small>Chemistry manipulation benchmark</small></span>
+    <a class="site-brand" href="/Labference/" aria-label="Labference home">
+      <img class="brand-logo" src="/Labference/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">
+      <span><strong>Labference</strong><small>Reasoning–action laboratory benchmark</small></span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
-      <a data-nav="home" href="/LabBench/">Home</a>
-      <a data-nav="tasks" href="/LabBench/tasks/">Tasks</a>
-      <a data-nav="objects" href="/LabBench/objects/">Objects</a>
-      <a data-nav="dataset" href="/LabBench/dataset/">Dataset</a>
-      <a data-nav="leaderboard" href="/LabBench/leaderboard/">Leaderboard</a>
-      <a data-nav="docs" href="/LabBench/docs/">Docs</a>
+      <a data-nav="home" href="/Labference/">Home</a>
+      <a data-nav="tasks" href="/Labference/tasks/">Tasks</a>
+      <a data-nav="objects" href="/Labference/objects/">Objects</a>
+      <a data-nav="dataset" href="/Labference/dataset/">Dataset</a>
+      <a data-nav="leaderboard" href="/Labference/leaderboard/">Leaderboard</a>
+      <a data-nav="docs" href="/Labference/docs/">Docs</a>
       
     </nav>
   </header>
 
   <main id="main-content">
     
-<header class="page-hero"><div><p class="section-kicker">Verified submissions only</p><h1>Separate evaluation for special and ordinary tasks.</h1><p class="lede">Compare four optimized long-horizon task families separately from the ordinary 24-task benchmark. Original score aggregation and model eligibility rules are unchanged.</p></div></header>
+<header class="page-hero"><div><p class="section-kicker">Verified submissions only</p><h1>Separate evaluation for special and ordinary tasks.</h1><p class="lede">Inspect protocol results separately from the broader 24-task catalogue. The report distinguishes operation selection, physical execution, completion and recovery; the aggregate scores below are implementation-specific summaries, not substitutes for those diagnostic readouts. Published collection demos are not model-ranking results.</p></div></header>
 <div class="page-shell"><nav class="evaluation-group-nav" aria-label="Evaluation groups"><a href="#release-leaderboard">4 special workflows</a><a href="#ordinary-leaderboard">24 ordinary tasks</a></nav>
   <section id="release-leaderboard" class="release-section">
     <div class="section-head"><div><p class="section-kicker">Special task evaluation</p><h2>4 optimized long-horizon tasks</h2></div><p class="coverage">4 task families · 8 protocol variants · 0 runs</p></div>
     <p class="lede">Centrifuge, feedback weighing, rack placement recall and device operation retain independent protocol metrics. Scores here never enter the ordinary 24-task L/R ranking.</p>
     <div class="empty-state content-card"><strong>No eligible model runs published yet.</strong>Run outputs remain available to maintainers until their policy contract, camera streams, action streams and evaluator validity have been checked.</div>
-    <div class="track-score-grid release-protocol-score-grid"><article class="content-card"><span class="status">Implemented</span><h3>Feedback weighing</h3><p>Correct an initially supported weight subset through live load-cell feedback until the exact target subset is stable.</p><p><a class="text-link" href="/LabBench/tasks/protocol/weighing_easy/">Feedback weighing · Easy →</a></p><p><a class="text-link" href="/LabBench/tasks/protocol/weighing_hard/">Feedback weighing · Hard →</a></p></article><article class="content-card"><span class="status">Implemented</span><h3>Drying-oven operation cycle</h3><p>Open the oven, load a loose beaker, close and reopen the door, retrieve it and return it while preserving the preloaded beaker.</p><p><a class="text-link" href="/LabBench/tasks/protocol/device_operation_hard/">Drying-oven operation · Hard →</a></p></article><article class="content-card"><span class="status planned">Pending implementation</span><h3>Centrifuge opposite-slot</h3><p>Pick both tubes from the table and place them in measured opposite slots with verified lift, insertion and stability evidence.</p><p><a class="text-link" href="/LabBench/tasks/protocol/centrifuge_easy/">Centrifuge opposite-slot · Easy →</a></p><p><a class="text-link" href="/LabBench/tasks/protocol/centrifuge_hard/">Centrifuge opposite-slot · Hard →</a></p></article><article class="content-card"><span class="status planned">Pending implementation</span><h3>Rack placement recall</h3><p>Remember a target slot when three distractor tubes share the same cap appearance and the rack moves during occlusion.</p><p><a class="text-link" href="/LabBench/tasks/protocol/rack_easy/">Rack placement recall · Easy →</a></p><p><a class="text-link" href="/LabBench/tasks/protocol/rack_same_cap/">Rack placement recall · Hard / Same cap →</a></p><p><a class="text-link" href="/LabBench/tasks/protocol/rack_distinct_cap/">Rack placement recall · Hard / Distinct cap →</a></p></article></div>
+    <div class="track-score-grid release-protocol-score-grid"><article class="content-card"><h3>Feedback weighing</h3><p>Correct an initially supported weight subset through live load-cell feedback until the exact target subset is stable.</p><p><a class="text-link" href="/Labference/tasks/protocol/weighing_easy/">Feedback weighing · Easy →</a></p><p><a class="text-link" href="/Labference/tasks/protocol/weighing_hard/">Feedback weighing · Hard →</a></p></article><article class="content-card"><h3>Drying-oven operation cycle</h3><p>Open the oven, load a loose beaker, close and reopen the door, retrieve it and return it while preserving the preloaded beaker.</p><p><a class="text-link" href="/Labference/tasks/protocol/device_operation_hard/">Drying-oven operation · Hard →</a></p></article><article class="content-card"><h3>Centrifuge opposite-slot</h3><p>Pick both tubes from the table and place them in measured opposite slots with verified lift, insertion and stability evidence.</p><p><a class="text-link" href="/Labference/tasks/protocol/centrifuge_easy/">Centrifuge opposite-slot · Easy →</a></p><p><a class="text-link" href="/Labference/tasks/protocol/centrifuge_hard/">Centrifuge opposite-slot · Hard →</a></p></article><article class="content-card"><h3>Rack placement recall</h3><p>Remember a target slot when three distractor tubes share the same cap appearance and the rack moves during occlusion.</p><p><a class="text-link" href="/Labference/tasks/protocol/rack_easy/">Rack placement recall · Easy →</a></p><p><a class="text-link" href="/Labference/tasks/protocol/rack_same_cap/">Rack placement recall · Hard / Same cap →</a></p><p><a class="text-link" href="/Labference/tasks/protocol/rack_distinct_cap/">Rack placement recall · Hard / Distinct cap →</a></p></article></div>
   </section>
 <section id="ordinary-leaderboard"><div class="section-head"><div><p class="section-kicker">Ordinary benchmark</p><h2>24 ordinary tasks</h2></div><p class="coverage">Long-horizon and reasoning-in-action</p></div>
   <div class="split-control" role="tablist" aria-label="Evaluation split"><button type="button" data-split-button="sim_randomized" role="tab">Randomized · Hard</button><button type="button" data-split-button="sim_clean" role="tab">Clean · Easy</button></div>
@@ -46,7 +46,7 @@
     <div class="empty-state content-card"><strong>No verified Hard submissions yet.</strong>Maintainers add reproduced runs to the official registry after checking configuration, seeds and output integrity.</div>
 
     <div class="track-score-grid">
-      <article class="content-card"><span class="track-code">L</span><h3>Capability Leaderboard 1 · Long-Horizon Procedures</h3><p>Measures reliable multi-stage laboratory procedures, ordering and state-dependent transitions.</p><a class="text-link" href="/LabBench/tasks/?track=long_horizon">View 12 tasks →</a></article><article class="content-card"><span class="track-code">R</span><h3>Capability Leaderboard 2 · Reasoning in Action</h3><p>Measures visual and structured-state understanding with correct action selection.</p><a class="text-link" href="/LabBench/tasks/?track=reasoning_in_action">View 12 tasks →</a></article>
+      <article class="content-card"><span class="track-code">L</span><h3>Capability Leaderboard 1 · Long-Horizon Procedures</h3><p>Measures reliable multi-stage laboratory procedures, ordering and state-dependent transitions.</p><a class="text-link" href="/Labference/tasks/?track=long_horizon">View 12 tasks →</a></article><article class="content-card"><span class="track-code">R</span><h3>Capability Leaderboard 2 · Reasoning in Action</h3><p>Measures visual and structured-state understanding with correct action selection.</p><a class="text-link" href="/Labference/tasks/?track=reasoning_in_action">View 12 tasks →</a></article>
     </div>
   </section>
   
@@ -55,7 +55,7 @@
     <div class="empty-state content-card"><strong>No verified Easy submissions yet.</strong>Maintainers add reproduced runs to the official registry after checking configuration, seeds and output integrity.</div>
 
     <div class="track-score-grid">
-      <article class="content-card"><span class="track-code">L</span><h3>Capability Leaderboard 1 · Long-Horizon Procedures</h3><p>Measures reliable multi-stage laboratory procedures, ordering and state-dependent transitions.</p><a class="text-link" href="/LabBench/tasks/?track=long_horizon">View 12 tasks →</a></article><article class="content-card"><span class="track-code">R</span><h3>Capability Leaderboard 2 · Reasoning in Action</h3><p>Measures visual and structured-state understanding with correct action selection.</p><a class="text-link" href="/LabBench/tasks/?track=reasoning_in_action">View 12 tasks →</a></article>
+      <article class="content-card"><span class="track-code">L</span><h3>Capability Leaderboard 1 · Long-Horizon Procedures</h3><p>Measures reliable multi-stage laboratory procedures, ordering and state-dependent transitions.</p><a class="text-link" href="/Labference/tasks/?track=long_horizon">View 12 tasks →</a></article><article class="content-card"><span class="track-code">R</span><h3>Capability Leaderboard 2 · Reasoning in Action</h3><p>Measures visual and structured-state understanding with correct action selection.</p><a class="text-link" href="/Labference/tasks/?track=reasoning_in_action">View 12 tasks →</a></article>
     </div>
   </section>
   
@@ -69,17 +69,17 @@
 
   <footer class="site-footer">
     <div>
-      <a class="site-brand footer-brand" href="/LabBench/">
-        <img class="brand-logo" src="/LabBench/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">
-        <span><strong>EAI4S</strong> <em>LabBench</em></span>
+      <a class="site-brand footer-brand" href="/Labference/">
+        <img class="brand-logo" src="/Labference/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">
+        <span><strong>Labference</strong></span>
       </a>
-      <p>Data, tasks, objects and reproducible evaluation for embodied agents operating in chemistry laboratories.</p>
+      <p>Evaluating how observed physical outcomes guide subsequent choices and how those choices translate into robotic laboratory actions.</p>
     </div>
     <div class="footer-links">
-      <a href="/LabBench/tasks/">Tasks</a><a href="/LabBench/objects/">Objects</a>
-      <a href="/LabBench/leaderboard/">Leaderboard</a><a href="/LabBench/docs/">Documentation</a>
+      <a href="/Labference/tasks/">Tasks</a><a href="/Labference/objects/">Objects</a>
+      <a href="/Labference/leaderboard/">Leaderboard</a><a href="/Labference/docs/">Documentation</a>
     </div>
-    <p class="footer-note">Built for reproducible chemistry laboratory robotics research.</p>
+    <p class="footer-note">Built for reproducible robotic laboratory research.</p>
   </footer>
 </body>
 </html>

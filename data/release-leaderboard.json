@@ -1,5 +1,5 @@
 {
-  "description_en": "Versioned long-horizon protocols adapted to the LabBench collection and evaluation contracts. Their scores are reported separately from the 24-task L/R benchmark.",
+  "description_en": "Versioned long-horizon protocols adapted to the Labference collection and evaluation contracts. Their scores are reported separately from the 24-task L/R benchmark.",
   "family_count": 4,
   "leaderboard_id": "labference_release_protocols_v1",
   "models": [],

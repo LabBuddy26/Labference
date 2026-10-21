@@ -7070,7 +7070,7 @@
     "version": "1.0.0"
   },
   "release_leaderboard": {
-    "description_en": "Versioned long-horizon protocols adapted to the LabBench collection and evaluation contracts. Their scores are reported separately from the 24-task L/R benchmark.",
+    "description_en": "Versioned long-horizon protocols adapted to the Labference collection and evaluation contracts. Their scores are reported separately from the 24-task L/R benchmark.",
     "family_count": 4,
     "leaderboard_id": "labference_release_protocols_v1",
     "models": [],
@@ -7564,7 +7564,7 @@
   ],
   "schema_version": "labbench_public_snapshot/v1",
   "site": {
-    "brand": "EAI4S LabBench",
+    "brand": "Labference",
     "dataset_access": {
       "provider": "Baidu Netdisk"
     },
@@ -7583,21 +7583,27 @@
       "simulator": "Isaac Sim"
     },
     "dataset_license": {
-      "attribution": "Cite LabBench and identify whether changes were made.",
+      "attribution": "Cite Labference and identify whether changes were made.",
       "name": "Creative Commons Attribution 4.0 International",
       "spdx_id": "CC-BY-4.0",
-      "summary": "The released LabBench dataset may be used, adapted and redistributed with appropriate attribution.",
+      "summary": "The released Labference dataset may be used, adapted and redistributed with appropriate attribution.",
       "url": "https://creativecommons.org/licenses/by/4.0/"
     },
     "default_split": "sim_randomized",
-    "description": "Data, tasks, objects and reproducible evaluation for embodied agents operating in chemistry laboratories.",
+    "description": "Evaluating how observed physical outcomes guide subsequent choices and how those choices translate into robotic laboratory actions.",
     "links": {
-      "code": "",
+      "code": "https://github.com/zhaochunhai/Labference",
       "contact": "",
       "dataset": "https://pan.baidu.com/s/1zyJL3zxHqI_j67hUkUF6lw",
       "documentation": "",
-      "homepage": "",
+      "homepage": "https://zhaochunhai.github.io/Labference/",
       "paper": ""
+    },
+    "paper": {
+      "abstract": "Realizing Embodied AI for Science requires robots to translate experimental goals into reliable physical procedures, reducing hazardous and repetitive human work while generating evidence for scientific discovery. Although language-based planning and learned manipulation provide complementary capabilities, their integration requires robots to adapt subsequent operations to actual execution outcomes. For example, an unsuccessful placement changes what must be done next, even when the experimental goal remains unchanged. Existing benchmarks assess planning, manipulation, and laboratory workflows through task completion and reasoning or execution metrics; however, aggregate performance leaves the connection between outcome-dependent choices and physical execution unresolved. To address this evaluation gap, we introduce Labference, a benchmark for evaluating how observed physical outcomes guide subsequent choices and how those choices translate into robotic laboratory actions. Its evaluation protocol is designed to test outcome-dependent behavioral adaptation through controlled evidence variations, while independently measuring operation selection, physical execution, and task completion. Matched Oracle-assisted continuations from shared checkpoints then assess which forms of support improve subsequent choices and task completion. Initial weighing evaluations reveal target-selection errors in the tested VLA policies despite successful object transfers, whereas GPT-driven control achieves correct selection but encounters execution failures and substantial computation costs. Together, these findings highlight the need to connect task-appropriate reasoning with reliable, timely action. By making this connection measurable and diagnosable, Labference supports targeted improvements toward autonomous experimentation for Embodied AI for Science.",
+      "date": "2026-10-21",
+      "title": "Labference: Benchmarking the Reasoning–Action Connection in Robotic Laboratories",
+      "type": "Technical Report"
     },
     "partners": [
       {
@@ -7611,12 +7617,25 @@
         "name": "中国科学院大学",
         "name_en": "University of Chinese Academy of Sciences",
         "short_name": "UCAS"
+      },
+      {
+        "logo": "web_assets/brand/objecteye-logo.png",
+        "logo_shape": "wide",
+        "name": "中科视语",
+        "name_en": "ObjectEye",
+        "short_name": "ObjectEye"
+      },
+      {
+        "logo": "web_assets/brand/zidong-taichu-logo.png",
+        "name": "紫东太初",
+        "name_en": "Zidong Taichu",
+        "short_name": "Zidong Taichu"
       }
     ],
     "public_media_enabled": true,
     "schema_version": "labbench_public_site/v1",
     "show_hero_image": false,
-    "tagline": "A chemistry laboratory manipulation dataset and benchmark"
+    "tagline": "Benchmarking the Reasoning–Action Connection in Robotic Laboratories"
   },
   "special_families": [
     {
@@ -7819,6 +7838,7 @@
         }
       ],
       "public_status": "pending",
+      "scene_image": "web_assets/task_media/special/centrifuge-scene.webp",
       "status_label": "Pending implementation",
       "summary_en": "Pick both tubes from the table and place them in measured opposite slots with verified lift, insertion and stability evidence."
     },
@@ -7920,6 +7940,7 @@
         }
       ],
       "public_status": "pending",
+      "scene_image": "web_assets/task_media/special/rack-recall-scene.webp",
       "status_label": "Pending implementation",
       "summary_en": "Remember a target slot when three distractor tubes share the same cap appearance and the rack moves during occlusion."
     }

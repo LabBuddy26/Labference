@@ -4,26 +4,26 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b2c35">
-  <meta name="description" content="Data, tasks, objects and reproducible evaluation for embodied agents operating in chemistry laboratories.">
-  <title>EAI4S LabBench · Chemistry Manipulation Benchmark</title>
-  <link rel="stylesheet" href="/LabBench/static/public-site.css">
-  <script defer src="/LabBench/static/public-site.js"></script>
+  <meta name="description" content="Evaluating how observed physical outcomes guide subsequent choices and how those choices translate into robotic laboratory actions.">
+  <title>Labference · Robotic Laboratory Benchmark</title>
+  <link rel="stylesheet" href="/Labference/static/public-site.css">
+  <script defer src="/Labference/static/public-site.js"></script>
 </head>
 <body data-page="home">
   <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
-    <a class="site-brand" href="/LabBench/" aria-label="EAI4S LabBench home">
-      <img class="brand-logo" src="/LabBench/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">
-      <span><strong>EAI4S</strong> <em>LabBench</em><small>Chemistry manipulation benchmark</small></span>
+    <a class="site-brand" href="/Labference/" aria-label="Labference home">
+      <img class="brand-logo" src="/Labference/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">
+      <span><strong>Labference</strong><small>Reasoning–action laboratory benchmark</small></span>
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
-      <a data-nav="home" href="/LabBench/">Home</a>
-      <a data-nav="tasks" href="/LabBench/tasks/">Tasks</a>
-      <a data-nav="objects" href="/LabBench/objects/">Objects</a>
-      <a data-nav="dataset" href="/LabBench/dataset/">Dataset</a>
-      <a data-nav="leaderboard" href="/LabBench/leaderboard/">Leaderboard</a>
-      <a data-nav="docs" href="/LabBench/docs/">Docs</a>
+      <a data-nav="home" href="/Labference/">Home</a>
+      <a data-nav="tasks" href="/Labference/tasks/">Tasks</a>
+      <a data-nav="objects" href="/Labference/objects/">Objects</a>
+      <a data-nav="dataset" href="/Labference/dataset/">Dataset</a>
+      <a data-nav="leaderboard" href="/Labference/leaderboard/">Leaderboard</a>
+      <a data-nav="docs" href="/Labference/docs/">Docs</a>
       
     </nav>
   </header>
@@ -32,27 +32,33 @@
     
 <section class="hero">
   <div class="container">
-    <span class="badge">Chemistry manipulation benchmark</span>
-    <h1><span>LabBench</span></h1>
-    <p class="hero-subtitle">A chemistry laboratory manipulation dataset and benchmark</p>
+    <span class="badge">Reasoning–action laboratory benchmark</span>
+    <h1><span>Labference</span></h1>
+    <p class="hero-subtitle">Benchmarking the Reasoning–Action Connection in Robotic Laboratories</p>
     <div class="hero-logos" aria-label="Project and collaborating institutions">
       <figure class="hero-logo">
-        <img src="/LabBench/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="LabBench project logo">
-        <figcaption>EAI4S LabBench</figcaption>
+        <img src="/Labference/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="Labference project logo">
+        <figcaption>Labference</figcaption>
       </figure>
       
       <figure class="hero-logo">
-        <img src="/LabBench/static/web_assets/brand/casia-logo.jpg" width="128" height="128" alt="Institute of Automation, Chinese Academy of Sciences logo">
+        <img src="/Labference/static/web_assets/brand/casia-logo.jpg" width="128" height="128" alt="Institute of Automation, Chinese Academy of Sciences logo">
         <figcaption lang="zh-CN">中国科学院自动化研究所<span lang="en">CASIA</span></figcaption>
       </figure>
-      
       <figure class="hero-logo">
-        <img src="/LabBench/static/web_assets/brand/ucas-logo.png" width="128" height="128" alt="University of Chinese Academy of Sciences logo">
+        <img src="/Labference/static/web_assets/brand/ucas-logo.png" width="128" height="128" alt="University of Chinese Academy of Sciences logo">
         <figcaption lang="zh-CN">中国科学院大学<span lang="en">UCAS</span></figcaption>
       </figure>
-      
+      <figure class="hero-logo hero-logo-wide">
+        <img src="/Labference/static/web_assets/brand/objecteye-logo.png" width="176" height="128" alt="ObjectEye logo">
+        <figcaption lang="zh-CN">中科视语<span lang="en">ObjectEye</span></figcaption>
+      </figure>
+      <figure class="hero-logo">
+        <img src="/Labference/static/web_assets/brand/zidong-taichu-logo.png" width="128" height="128" alt="Zidong Taichu logo">
+        <figcaption lang="zh-CN">紫东太初<span lang="en">Zidong Taichu</span></figcaption>
+      </figure>
     </div>
-    <p class="lede">Four optimized laboratory workflows and a 24-task manipulation benchmark, with real simulator assets, synchronized data and separately reported evaluation results.</p>
+    <p class="lede">Observed outcomes guide the next operation. Measure choice, physical execution and task completion separately, then diagnose bottlenecks through controlled evidence variations and matched Oracle-assisted continuations.</p>
     <nav class="project-resources" aria-label="Project resources">
       
       
@@ -65,14 +71,14 @@
       
       
       
-      <span class="button secondary resource-button unavailable" data-resource="code" aria-disabled="true">
+      <a class="button secondary resource-button" data-resource="code" href="https://github.com/zhaochunhai/Labference">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5a2 2 0 1 0 0 .01 M8 9v6 M8 19a2 2 0 1 0 0 .01 M16 5a2 2 0 1 0 0 .01 M16 9v2a4 4 0 0 1-4 4H8"/></svg>
-        GitHub<small>Coming soon</small>
-      </span>
+        GitHub
+      </a>
       
       
       
-      <a class="button secondary resource-button" data-resource="homepage" href="/LabBench/">
+      <a class="button secondary resource-button" data-resource="homepage" href="https://zhaochunhai.github.io/Labference/">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0 M3 12h18 M12 3a18 18 0 0 1 0 18 18 18 0 0 1 0-18"/></svg>
         Project home
       </a>
@@ -86,80 +92,88 @@
       
     </nav>
     <div class="hero-actions">
-      <a class="button primary" href="/LabBench/tasks/#release-protocols">Explore four workflows <span aria-hidden="true">→</span></a>
-      <a class="button secondary" href="/LabBench/leaderboard/">View leaderboard</a>
+      <a class="button primary" href="/Labference/tasks/#release-protocols">Explore four workflows <span aria-hidden="true">→</span></a>
+      <a class="button secondary" href="/Labference/leaderboard/">View leaderboard</a>
     </div>
   </div>
 </section>
 
 
-<nav class="home-sections" aria-label="On this page"><div class="container"><a href="#abstract">Abstract</a><a href="#special-tasks">Special tasks</a><a href="#leaderboard">Evaluation</a><a href="#dataset">Dataset</a><a href="#objects">Assets</a><a href="#citation">Citation</a></div></nav>
+<nav class="home-sections" aria-label="On this page"><div class="container"><a href="#abstract">Abstract</a><a href="#protocol">Protocol</a><a href="#special-tasks">Special tasks</a><a href="#leaderboard">Evaluation</a><a href="#dataset">Dataset</a><a href="#objects">Assets</a><a href="#citation">Citation</a></div></nav>
 
 <section id="abstract" class="soft">
   <div class="container">
     <h2 class="section-title">Abstract</h2>
-    <div class="content">
-      <p>LabBench is a chemistry laboratory manipulation dataset and benchmark for embodied agents. It comprises 24 ordinary long-horizon and reasoning-in-action tasks and 4 selected special long-horizon workflows, supported by a catalogue of real simulator assets and synchronized RGB, robot-state, joint-action, end-effector-action and gripper recordings. Successful collection demonstrations are currently presented for weighing and device operation; centrifuge loading and rack recall remain pending public implementation.</p>
-      <p>Task completion is evaluated through explicit physical predicates derived from independent simulator state rather than controller phase completion alone. The special workflows and ordinary benchmark are reported in separate evaluation groups, preserving their task-specific metrics and distinguishing collection demonstrations from model evaluation results.</p>
-    </div>
+    <div class="content" data-paper-abstract><p>Realizing Embodied AI for Science requires robots to translate experimental goals into reliable physical procedures, reducing hazardous and repetitive human work while generating evidence for scientific discovery. Although language-based planning and learned manipulation provide complementary capabilities, their integration requires robots to adapt subsequent operations to actual execution outcomes. For example, an unsuccessful placement changes what must be done next, even when the experimental goal remains unchanged. Existing benchmarks assess planning, manipulation, and laboratory workflows through task completion and reasoning or execution metrics; however, aggregate performance leaves the connection between outcome-dependent choices and physical execution unresolved. To address this evaluation gap, we introduce Labference, a benchmark for evaluating how observed physical outcomes guide subsequent choices and how those choices translate into robotic laboratory actions. Its evaluation protocol is designed to test outcome-dependent behavioral adaptation through controlled evidence variations, while independently measuring operation selection, physical execution, and task completion. Matched Oracle-assisted continuations from shared checkpoints then assess which forms of support improve subsequent choices and task completion. Initial weighing evaluations reveal target-selection errors in the tested VLA policies despite successful object transfers, whereas GPT-driven control achieves correct selection but encounters execution failures and substantial computation costs. Together, these findings highlight the need to connect task-appropriate reasoning with reliable, timely action. By making this connection measurable and diagnosable, Labference supports targeted improvements toward autonomous experimentation for Embodied AI for Science.</p></div>
     <div class="tag-row">
-      <span class="tag-item">Chemistry Manipulation</span>
-      <span class="tag-item">Embodied Agents</span>
-      <span class="tag-item">Isaac Sim</span>
-      <span class="tag-item">Franka Panda</span>
-      <span class="tag-item">HDF5</span>
-      <span class="tag-item">LeRobot</span>
+      <span class="tag-item">Embodied AI for Science</span>
+      <span class="tag-item">State-dependent Reasoning</span>
+      <span class="tag-item">Robotic Laboratories</span>
+      <span class="tag-item">Vision–Language–Action</span>
+      <span class="tag-item">Online Evaluation</span>
+      <span class="tag-item">Oracle Diagnostics</span>
     </div>
+  </div>
+</section>
+
+<section id="protocol">
+  <div class="container">
+    <div class="section-head"><div><p class="section-kicker">Outcome-grounded evaluation</p><h2>From observed evidence to reliable action.</h2></div></div>
+    <div class="data-grid">
+      <article class="content-card"><h3>Controlled evidence variations</h3><p>Keep the task goal and rule fixed while varying the physical evidence that should change the next choice. Measure operation selection, physical execution, task completion and recovery separately.</p></article>
+      <article class="content-card"><h3>Matched Oracle-assisted continuations</h3><p>Resume from shared physical checkpoints with scoped state, decision, geometry or execution support. Compare subsequent choices and completion to identify which support helps.</p></article>
+    </div>
+    <p class="detail-note">The report’s initial experiments concern feedback weighing. Fine-tuned VLA policies show target-selection errors despite successful transfers; GPT-driven control selects correctly but still encounters execution failures and substantial computation costs. These findings do not establish results across every task.</p>
   </div>
 </section>
 
 <section id="special-tasks">
   <div class="container">
-    <div class="section-head"><div><p class="section-kicker">Four optimized long-horizon tasks</p><h2>Laboratory workflows, end to end.</h2></div><p class="coverage">2 implemented · 2 pending</p></div>
-    <p class="section-intro">Four selected workflows extend the ordinary 24-task benchmark. Successful main-camera collection demos are available for weighing and device operation; the other two remain pending public implementation.</p>
+    <div class="section-head"><div><p class="section-kicker">Selected laboratory workflows</p><h2>Laboratory workflows, end to end.</h2></div></div>
+    <p class="section-intro">The report develops centrifuge loading, feedback weighing and placement recall in detail. Device operation is an additional selected workflow from the broader L01–L12 and R01–R12 catalogue. Explore successful main-camera collection demos for weighing and device operation, and simulator scene previews for centrifuge loading and rack recall.</p>
     <div class="special-family-grid">
   
   <article class="special-family-card" data-special-family="weighing_v1" data-public-status="implemented">
     <div class="special-family-media">
       
-      <video controls muted playsinline preload="none" poster="/LabBench/static/web_assets/task_media/special/weighing-hard-front.jpg" aria-label="Feedback weighing successful collection, main camera"><source src="/LabBench/static/web_assets/task_media/special/weighing-hard-front.mp4" type="video/mp4"></video>
+      <video controls muted playsinline preload="none" poster="/Labference/static/web_assets/task_media/special/weighing-hard-front.jpg" aria-label="Feedback weighing successful collection, main camera"><source src="/Labference/static/web_assets/task_media/special/weighing-hard-front.mp4" type="video/mp4"></video>
       
     </div>
-    <div class="special-family-body"><span class="status">Implemented</span><h3>Feedback weighing</h3><p>Correct an initially supported weight subset through live load-cell feedback until the exact target subset is stable.</p>
+    <div class="special-family-body"><h3>Feedback weighing</h3><p>Correct an initially supported weight subset through live load-cell feedback until the exact target subset is stable.</p>
       <p class="coverage">Verified successful collection · Main camera · 10 Hz</p>
-      <a class="text-link" href="/LabBench/tasks/protocol/weighing_hard/">View task details →</a>
+      <a class="text-link" href="/Labference/tasks/protocol/weighing_hard/">View task details →</a>
     </div>
   </article>
   
   <article class="special-family-card" data-special-family="device_operation_v1" data-public-status="implemented">
     <div class="special-family-media">
       
-      <video controls muted playsinline preload="none" poster="/LabBench/static/web_assets/task_media/special/device-operation-hard-front.jpg" aria-label="Drying-oven operation cycle successful collection, main camera"><source src="/LabBench/static/web_assets/task_media/special/device-operation-hard-front.mp4" type="video/mp4"></video>
+      <video controls muted playsinline preload="none" poster="/Labference/static/web_assets/task_media/special/device-operation-hard-front.jpg" aria-label="Drying-oven operation cycle successful collection, main camera"><source src="/Labference/static/web_assets/task_media/special/device-operation-hard-front.mp4" type="video/mp4"></video>
       
     </div>
-    <div class="special-family-body"><span class="status">Implemented</span><h3>Drying-oven operation cycle</h3><p>Open the oven, load a loose beaker, close and reopen the door, retrieve it and return it while preserving the preloaded beaker.</p>
+    <div class="special-family-body"><h3>Drying-oven operation cycle</h3><p>Open the oven, load a loose beaker, close and reopen the door, retrieve it and return it while preserving the preloaded beaker.</p>
       <p class="coverage">Verified successful collection · Main camera · 10 Hz</p>
-      <a class="text-link" href="/LabBench/tasks/protocol/device_operation_hard/">View task details →</a>
+      <a class="text-link" href="/Labference/tasks/protocol/device_operation_hard/">View task details →</a>
     </div>
   </article>
   
   <article class="special-family-card" data-special-family="centrifuge_v2" data-public-status="pending">
     <div class="special-family-media">
-      <div class="special-family-placeholder"><span>COMING SOON</span><p>Pending implementation</p></div>
+      <img src="/Labference/static/web_assets/task_media/special/centrifuge-scene.webp" alt="Centrifuge opposite-slot simulator scene" loading="lazy">
     </div>
-    <div class="special-family-body"><span class="status planned">Pending implementation</span><h3>Centrifuge opposite-slot</h3><p>Pick both tubes from the table and place them in measured opposite slots with verified lift, insertion and stability evidence.</p>
+    <div class="special-family-body"><h3>Centrifuge opposite-slot</h3><p>Pick both tubes from the table and place them in measured opposite slots with verified lift, insertion and stability evidence.</p>
       
-      <a class="text-link" href="/LabBench/tasks/protocol/centrifuge_hard/">View task details →</a>
+      <a class="text-link" href="/Labference/tasks/protocol/centrifuge_hard/">View task details →</a>
     </div>
   </article>
   
   <article class="special-family-card" data-special-family="rack_recall_v4" data-public-status="pending">
     <div class="special-family-media">
-      <div class="special-family-placeholder"><span>COMING SOON</span><p>Pending implementation</p></div>
+      <img src="/Labference/static/web_assets/task_media/special/rack-recall-scene.webp" alt="Rack placement recall simulator scene" loading="lazy">
     </div>
-    <div class="special-family-body"><span class="status planned">Pending implementation</span><h3>Rack placement recall</h3><p>Remember a target slot when three distractor tubes share the same cap appearance and the rack moves during occlusion.</p>
+    <div class="special-family-body"><h3>Rack placement recall</h3><p>Remember a target slot when three distractor tubes share the same cap appearance and the rack moves during occlusion.</p>
       
-      <a class="text-link" href="/LabBench/tasks/protocol/rack_same_cap/">View task details →</a>
+      <a class="text-link" href="/Labference/tasks/protocol/rack_same_cap/">View task details →</a>
     </div>
   </article>
   
@@ -169,17 +183,17 @@
 
 <section id="leaderboard" class="soft">
   <div class="container">
-    <div class="section-head"><div><p class="section-kicker">Independent evaluation groups</p><h2>Two task collections. Separate scores.</h2></div><a class="text-link" href="/LabBench/leaderboard/">Full evaluation results →</a></div>
+    <div class="section-head"><div><p class="section-kicker">Independent evaluation groups</p><h2>Two task collections. Separate scores.</h2></div><a class="text-link" href="/Labference/leaderboard/">Full evaluation results →</a></div>
     <div class="evaluation-group-grid">
       
       <article class="content-card"><p class="section-kicker">Special workflows</p><h3>4 optimized long-horizon tasks</h3><p>Task-owned metrics; original protocol-level score aggregation.</p>
         <p class="empty-state">No eligible model results published. Collection demos are not model scores.</p>
-        <a class="text-link" href="/LabBench/leaderboard/#release-leaderboard">View this leaderboard →</a>
+        <a class="text-link" href="/Labference/leaderboard/#release-leaderboard">View this leaderboard →</a>
       </article>
       
       <article class="content-card"><p class="section-kicker">Ordinary benchmark</p><h3>24 ordinary tasks</h3><p>Long-horizon and reasoning-in-action tracks; original L/R scoring.</p>
         <p class="empty-state">No eligible model results published. Collection demos are not model scores.</p>
-        <a class="text-link" href="/LabBench/leaderboard/#ordinary-leaderboard">View this leaderboard →</a>
+        <a class="text-link" href="/Labference/leaderboard/#ordinary-leaderboard">View this leaderboard →</a>
       </article>
       
     </div>
@@ -190,19 +204,20 @@
 <section id="dataset"><div class="container">
   <div class="section-head"><div><p class="section-kicker">Reproducible collection</p><h2>One aligned data contract.</h2></div></div>
   <div class="data-grid"><div class="contract-list"><div><strong>Embodiment</strong>Franka Panda</div><div><strong>Simulator</strong>Isaac Sim</div><div><strong>Observations</strong>camera_1_rgb (Front RGB) + camera_3_rgb (Wrist RGB)</div><div><strong>Actions</strong>Joint actions, end-effector actions and gripper state</div><div><strong>Container</strong>HDF5</div></div>
-  <article class="data-card"><h3>Discover the complete benchmark.</h3><p>Beyond the four selected workflows, the ordinary benchmark contains 24 long-horizon and reasoning tasks. Their task cards and videos live on the Tasks page.</p><a class="button secondary" href="/LabBench/tasks/#ordinary-tasks">Explore 24 ordinary tasks →</a><p><a class="text-link" href="/LabBench/dataset/">Dataset schema and provenance →</a></p></article></div>
+  <article class="data-card"><h3>Discover the complete benchmark.</h3><p>Appendix A describes 24 tasks: twelve laboratory workflows (L01–L12) and twelve reasoning-in-action tasks (R01–R12). Their task cards and videos live on the Tasks page.</p><a class="button secondary" href="/Labference/tasks/#ordinary-tasks">Explore 24 ordinary tasks →</a><p><a class="text-link" href="/Labference/dataset/">Dataset schema and provenance →</a></p></article></div>
 </div></section>
 
-<section id="objects" class="soft"><div class="container"><div class="section-head"><div><p class="section-kicker">Real simulator geometry</p><h2>Assets behind the workflows.</h2></div><a class="text-link" href="/LabBench/objects/">All laboratory assets →</a></div>
-  <div class="object-grid"><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/special-centrifuge.webp" alt="Optimized Task Centrifuge USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Laboratory Instruments</span><h3>Optimized Task Centrifuge</h3></div><a class="card-link" href="/LabBench/objects/special-centrifuge/">View Optimized Task Centrifuge</a></article><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/rack-recall-rack.webp" alt="Rack Recall 3 × 4 Rack USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Racks &amp; Fixtures</span><h3>Rack Recall 3 × 4 Rack</h3></div><a class="card-link" href="/LabBench/objects/rack-recall-rack/">View Rack Recall 3 × 4 Rack</a></article><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/rack-recall-tube.webp" alt="Rack Recall Capped Tube USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Tubes &amp; Consumables</span><h3>Rack Recall Capped Tube</h3></div><a class="card-link" href="/LabBench/objects/rack-recall-tube/">View Rack Recall Capped Tube</a></article><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/feedback-scale.webp" alt="Feedback Weighing Platform USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Laboratory Instruments</span><h3>Feedback Weighing Platform</h3></div><a class="card-link" href="/LabBench/objects/feedback-scale/">View Feedback Weighing Platform</a></article><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/feedback-weight-set.webp" alt="Feedback Task Weight Set USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Tools &amp; Controls</span><h3>Feedback Task Weight Set</h3></div><a class="card-link" href="/LabBench/objects/feedback-weight-set/">View Feedback Task Weight Set</a></article><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/feedback-sample.webp" alt="Feedback Weighing Sample USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Tubes &amp; Consumables</span><h3>Feedback Weighing Sample</h3></div><a class="card-link" href="/LabBench/objects/feedback-sample/">View Feedback Weighing Sample</a></article><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/beaker.webp" alt="Laboratory Beaker USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Glassware &amp; Vessels</span><h3>Laboratory Beaker</h3></div><a class="card-link" href="/LabBench/objects/beaker/">View Laboratory Beaker</a></article><article class="object-card"><div class="card-media"><img src="/LabBench/static/web_assets/object_images/nmr-tube.webp" alt="NMR Tube USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Tubes &amp; Consumables</span><h3>NMR Tube</h3></div><a class="card-link" href="/LabBench/objects/nmr-tube/">View NMR Tube</a></article></div>
+<section id="objects" class="soft"><div class="container"><div class="section-head"><div><p class="section-kicker">Real simulator geometry</p><h2>Assets behind the workflows.</h2></div><a class="text-link" href="/Labference/objects/">All laboratory assets →</a></div>
+  <div class="object-grid"><article class="object-card"><div class="card-media"><img src="/Labference/static/web_assets/object_images/special-centrifuge.webp" alt="Optimized Task Centrifuge USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Laboratory Instruments</span><h3>Optimized Task Centrifuge</h3></div><a class="card-link" href="/Labference/objects/special-centrifuge/">View Optimized Task Centrifuge</a></article><article class="object-card"><div class="card-media"><img src="/Labference/static/web_assets/object_images/rack-recall-rack.webp" alt="Rack Recall 3 × 4 Rack USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Racks &amp; Fixtures</span><h3>Rack Recall 3 × 4 Rack</h3></div><a class="card-link" href="/Labference/objects/rack-recall-rack/">View Rack Recall 3 × 4 Rack</a></article><article class="object-card"><div class="card-media"><img src="/Labference/static/web_assets/object_images/rack-recall-tube.webp" alt="Rack Recall Capped Tube USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Tubes &amp; Consumables</span><h3>Rack Recall Capped Tube</h3></div><a class="card-link" href="/Labference/objects/rack-recall-tube/">View Rack Recall Capped Tube</a></article><article class="object-card"><div class="card-media"><img src="/Labference/static/web_assets/object_images/feedback-scale.webp" alt="Feedback Weighing Platform USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Laboratory Instruments</span><h3>Feedback Weighing Platform</h3></div><a class="card-link" href="/Labference/objects/feedback-scale/">View Feedback Weighing Platform</a></article><article class="object-card"><div class="card-media"><img src="/Labference/static/web_assets/object_images/feedback-weight-set.webp" alt="Feedback Task Weight Set USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Tools &amp; Controls</span><h3>Feedback Task Weight Set</h3></div><a class="card-link" href="/Labference/objects/feedback-weight-set/">View Feedback Task Weight Set</a></article><article class="object-card"><div class="card-media"><img src="/Labference/static/web_assets/object_images/feedback-sample.webp" alt="Feedback Weighing Sample USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Tubes &amp; Consumables</span><h3>Feedback Weighing Sample</h3></div><a class="card-link" href="/Labference/objects/feedback-sample/">View Feedback Weighing Sample</a></article><article class="object-card"><div class="card-media"><img src="/Labference/static/web_assets/object_images/beaker.webp" alt="Laboratory Beaker USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Glassware &amp; Vessels</span><h3>Laboratory Beaker</h3></div><a class="card-link" href="/Labference/objects/beaker/">View Laboratory Beaker</a></article><article class="object-card"><div class="card-media"><img src="/Labference/static/web_assets/object_images/nmr-tube.webp" alt="NMR Tube USD render" loading="lazy"></div><div class="card-body"><span class="coverage">Tubes &amp; Consumables</span><h3>NMR Tube</h3></div><a class="card-link" href="/Labference/objects/nmr-tube/">View NMR Tube</a></article></div>
 </div></section>
 
-<section id="citation"><div class="container"><h2 class="section-title">Citation</h2><div class="bibtex-box"><button class="copy-btn" id="copyBib" type="button" aria-describedby="copyBibStatus">Copy</button><pre id="bibtex">@misc{eai4s_labbench2026,
-  title={EAI4S LabBench: A Chemistry Laboratory Manipulation Dataset and Benchmark},
-  author={EAI4S},
+<section id="citation"><div class="container"><h2 class="section-title">Citation</h2><div class="bibtex-box"><button class="copy-btn" id="copyBib" type="button" aria-describedby="copyBibStatus">Copy</button><pre id="bibtex">@techreport{labference2026,
+  title={Labference: Benchmarking the Reasoning--Action Connection in Robotic Laboratories},
   year={2026},
-  note={Dataset and benchmark website; paper forthcoming}
-}</pre></div><p id="copyBibStatus" class="copy-status" aria-live="polite">Pre-release citation; official paper metadata will replace it when available.</p></div></section>
+  type={Technical Report},
+  month={October},
+  note={Version 1, October 21, 2026}
+}</pre></div><p id="copyBibStatus" class="copy-status" aria-live="polite">Technical Report · October 21, 2026. Author and archival identifiers will be added when available.</p></div></section>
 
   </main>
 
@@ -210,17 +225,17 @@
 
   <footer class="site-footer">
     <div>
-      <a class="site-brand footer-brand" href="/LabBench/">
-        <img class="brand-logo" src="/LabBench/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">
-        <span><strong>EAI4S</strong> <em>LabBench</em></span>
+      <a class="site-brand footer-brand" href="/Labference/">
+        <img class="brand-logo" src="/Labference/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">
+        <span><strong>Labference</strong></span>
       </a>
-      <p>Data, tasks, objects and reproducible evaluation for embodied agents operating in chemistry laboratories.</p>
+      <p>Evaluating how observed physical outcomes guide subsequent choices and how those choices translate into robotic laboratory actions.</p>
     </div>
     <div class="footer-links">
-      <a href="/LabBench/tasks/">Tasks</a><a href="/LabBench/objects/">Objects</a>
-      <a href="/LabBench/leaderboard/">Leaderboard</a><a href="/LabBench/docs/">Documentation</a>
+      <a href="/Labference/tasks/">Tasks</a><a href="/Labference/objects/">Objects</a>
+      <a href="/Labference/leaderboard/">Leaderboard</a><a href="/Labference/docs/">Documentation</a>
     </div>
-    <p class="footer-note">Built for reproducible chemistry laboratory robotics research.</p>
+    <p class="footer-note">Built for reproducible robotic laboratory research.</p>
   </footer>
 </body>
 </html>

@@ -1,10 +1,10 @@
 {
   "schema_version": "labbench_static_export/v1",
-  "generated_at": "2026-10-16T09:23:26.611815+00:00",
-  "base_url": "/LabBench",
+  "generated_at": "2026-10-21T08:40:34.484362+00:00",
+  "base_url": "/Labference",
   "page_count": 60,
   "console_included": false,
   "public_media_included": true,
-  "media_file_count": 104,
-  "media_bytes": 14916238
+  "media_file_count": 108,
+  "media_bytes": 14940847
 }
