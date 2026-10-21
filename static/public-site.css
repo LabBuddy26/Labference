@@ -167,6 +167,52 @@ h3 { font-size: var(--fs-h3); }
 .tag-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .tag-item { padding: 4px 12px; border-radius: 999px; color: var(--reagent-dark); background: #dcebe6; font-size: 13px; font-weight: 700; }
 
+/* Keep the report abstract distinct from UI cards and preserve its full text. */
+.paper-abstract .abstract-shell {
+  max-width: 920px;
+  padding: clamp(24px, 4vw, 48px) clamp(20px, 5vw, 56px);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+.paper-abstract .section-title {
+  margin-bottom: 26px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(26px, 3vw, 32px);
+  font-weight: 600;
+  line-height: 1.3;
+}
+.paper-abstract .abstract-copy {
+  max-width: 76ch;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  text-align: justify;
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+.paper-abstract .abstract-keywords {
+  justify-content: flex-start;
+  gap: 8px 16px;
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+.paper-abstract .tag-item {
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+@media (max-width: 640px) {
+  .paper-abstract .abstract-copy { font-size: 16px; line-height: 1.8; text-align: left; }
+  .paper-abstract .section-title { margin-bottom: 20px; }
+  .paper-abstract .abstract-keywords { margin-top: 22px; padding-top: 16px; }
+}
+
 /* ===== Method cards ===== */
 .method-box { margin-top: 18px; padding: 22px; border-radius: var(--radius); background: linear-gradient(135deg, #e4f1ee, #f1f7ec); }
 .method-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
