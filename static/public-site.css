@@ -123,6 +123,28 @@ h3 { font-size: var(--fs-h3); }
 .hero h1 { max-width: 900px; margin: 0 auto; }
 .hero h1 span { background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero .lede { max-width: var(--prose); margin: 18px auto 0; }
+.project-mark { width: 96px; height: 96px; object-fit: contain; margin: 22px auto 16px; }
+.institutions-section { padding: 24px 0 40px; }
+.institutions-heading { text-align: center; color: var(--muted); font-size: 14px; font-weight: 600; margin: 0 0 28px; }
+.institution-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px 24px; max-width: 1080px; margin: 0 auto; }
+.institution-logo { flex: 0 1 calc((100% - 72px) / 4); min-width: 0; margin: 0; text-align: center; }
+.institution-logo-frame { height: 112px; display: flex; align-items: center; justify-content: center; padding: 6px 12px; }
+.institution-logo img { width: 112px; height: 100px; object-fit: contain; }
+.institution-logo-wide img { width: 220px; max-width: 100%; }
+.institution-logo figcaption { margin-top: 14px; font-size: 13px; font-weight: 600; line-height: 1.6; overflow-wrap: anywhere; }
+.institution-logo figcaption span { display: block; font-size: 12px; font-weight: 400; color: var(--muted); }
+.institution-text { color: var(--reagent-dark); font-weight: 650; overflow-wrap: anywhere; }
+#institutions { scroll-margin-top: 90px; }
+@media (max-width: 980px) {
+  .institution-logo { flex-basis: calc((100% - 48px) / 3); }
+}
+@media (max-width: 640px) {
+  .institution-grid { gap: 24px 12px; }
+  .institution-logo { flex-basis: calc((100% - 12px) / 2); }
+  .institution-logo-frame { height: 96px; padding: 4px; }
+  .institution-logo img { height: 88px; }
+  .institution-logo figcaption { font-size: 12px; }
+}
 .hero-subtitle { margin: 14px auto 0; max-width: 850px; font-size: clamp(1.1rem, 2.5vw, 1.6rem); font-weight: 650; line-height: 1.4; }
 .hero-logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: start; gap: 28px 64px; margin: 30px auto; }
 .hero-logo { display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 0; max-width: 240px; }
@@ -167,50 +189,52 @@ h3 { font-size: var(--fs-h3); }
 .tag-row { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .tag-item { padding: 4px 12px; border-radius: 999px; color: var(--reagent-dark); background: #dcebe6; font-size: 13px; font-weight: 700; }
 
-/* Keep the report abstract distinct from UI cards and preserve its full text. */
+/* Editorial reading layout, using the same sans-serif family as the site. */
+section.paper-abstract { background: var(--paper); }
 .paper-abstract .abstract-shell {
-  max-width: 920px;
-  padding: clamp(24px, 4vw, 48px) clamp(20px, 5vw, 56px);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--surface);
+  max-width: 880px;
+  padding: 0;
 }
 .paper-abstract .section-title {
-  margin-bottom: 26px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(26px, 3vw, 32px);
-  font-weight: 600;
-  line-height: 1.3;
+  margin-bottom: 32px;
+  font-family: inherit;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 750;
+  letter-spacing: -.035em;
+  line-height: 1.2;
 }
 .paper-abstract .abstract-copy {
-  max-width: 76ch;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 17px;
-  line-height: 1.9;
-  text-align: justify;
+  max-width: 82ch;
+  font-family: inherit;
+  font-size: clamp(16px, 1.5vw, 18px);
+  font-weight: 400;
+  line-height: 1.85;
+  color: #354b52;
+  text-align: left;
   text-wrap: pretty;
   overflow-wrap: break-word;
 }
 .paper-abstract .abstract-keywords {
-  justify-content: flex-start;
-  gap: 8px 16px;
-  margin-top: 28px;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
+  justify-content: center;
+  gap: 8px;
+  max-width: 760px;
+  margin: 30px auto 0;
 }
 .paper-abstract .tag-item {
-  padding: 0;
-  background: transparent;
-  border-radius: 0;
-  color: var(--muted);
+  padding: 6px 12px;
+  background: #e8efeb;
+  border: 1px solid #d9e4df;
+  border-radius: 6px;
+  color: #496369;
   font-size: 12px;
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 @media (max-width: 640px) {
   .paper-abstract .abstract-copy { font-size: 16px; line-height: 1.8; text-align: left; }
-  .paper-abstract .section-title { margin-bottom: 20px; }
-  .paper-abstract .abstract-keywords { margin-top: 22px; padding-top: 16px; }
+  .paper-abstract .section-title { margin-bottom: 24px; }
+  .paper-abstract .abstract-keywords { margin-top: 24px; gap: 6px; }
+  .paper-abstract .tag-item { padding: 5px 9px; font-size: 11px; }
 }
 
 /* ===== Method cards ===== */
