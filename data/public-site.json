@@ -7625,6 +7625,10 @@
         {
           "id": 6,
           "name": "School of Pharmaceutical Sciences, Peking University"
+        },
+        {
+          "id": 7,
+          "name": "State Key Laboratory of Semiconductor Physics and Chip Technologies, Institute of Semiconductors, Chinese Academy of Sciences, Beijing, P.R. China"
         }
       ],
       "authors": [
@@ -7762,6 +7766,14 @@
         },
         {
           "affiliations": [
+            7
+          ],
+          "corresponding": false,
+          "family_names": "Xiong",
+          "given_names": "Zhuang"
+        },
+        {
+          "affiliations": [
             1
           ],
           "corresponding": true,
@@ -7836,11 +7848,10 @@
         "short_name": "PKU Pharmaceutical Sciences"
       },
       {
-        "logo": "web_assets/brand/cas-semiconductors-logo.webp",
-        "logo_shape": "wide",
+        "logo": "web_assets/brand/cas-semiconductors-logo.jpeg",
         "name": "中国科学院半导体研究所",
-        "name_en": "Institute of Semiconductors, Chinese Academy of Sciences",
-        "short_name": "Institute of Semiconductors, CAS"
+        "name_en": "State Key Laboratory of Semiconductor Physics and Chip Technologies, Institute of Semiconductors, Chinese Academy of Sciences, Beijing, P.R. China",
+        "short_name": "State Key Laboratory of Semiconductor Physics and Chip Technologies, Institute of Semiconductors, Chinese Academy of Sciences, Beijing, P.R. China"
       }
     ],
     "public_media_enabled": true,
