@@ -30,37 +30,15 @@
 
   <main id="main-content">
     
-<header class="page-hero"><div><p class="section-kicker">Verified submissions only</p><h1>Separate evaluation for special and ordinary tasks.</h1><p class="lede">Inspect protocol results separately from the broader 24-task catalogue. The report distinguishes operation selection, physical execution, completion and recovery; the aggregate scores below are implementation-specific summaries, not substitutes for those diagnostic readouts. Published collection demos are not model-ranking results.</p></div></header>
-<div class="page-shell"><nav class="evaluation-group-nav" aria-label="Evaluation groups"><a href="#release-leaderboard">4 special workflows</a><a href="#ordinary-leaderboard">24 ordinary tasks</a></nav>
+<header class="page-hero"><div><p class="section-kicker">Verified submissions only</p><h1>Four workflows. One transparent score.</h1><p class="lede">The four featured tasks contribute equally to the final success-rate score. Selection, execution, completion and recovery remain separate diagnostic readouts. Ordinary-task scores are available only in local reports and the internal console. Collection demos are not model submissions.</p></div></header>
+<div class="page-shell"><nav class="evaluation-group-nav" aria-label="Evaluation groups"><a href="#release-leaderboard">4 special workflows</a></nav>
   <section id="release-leaderboard" class="release-section">
-    <div class="section-head"><div><p class="section-kicker">Special task evaluation</p><h2>4 optimized long-horizon tasks</h2></div><p class="coverage">4 task families · 8 protocol variants · 0 runs</p></div>
-    <p class="lede">Centrifuge, feedback weighing, rack placement recall and device operation retain independent protocol metrics. Scores here never enter the ordinary 24-task L/R ranking.</p>
+    <div class="section-head"><div><p class="section-kicker">Special task evaluation</p><h2>4 optimized long-horizon tasks</h2></div><p class="coverage">4 task families · 4 protocol variants · 0 runs</p></div>
+    <p class="lede">Centrifuge, feedback weighing, rack placement recall and device operation retain independent protocol metrics. A final score requires every planned seed in all four tasks to have a valid result; partial coverage is not ranked.</p>
     <div class="empty-state content-card"><strong>No eligible model runs published yet.</strong>Run outputs remain available to maintainers until their policy contract, camera streams, action streams and evaluator validity have been checked.</div>
     <div class="track-score-grid release-protocol-score-grid"><article class="content-card"><h3>Feedback weighing</h3><p>Correct an initially supported weight subset through live load-cell feedback until the exact target subset is stable.</p><p><a class="text-link" href="/Labference/tasks/protocol/weighing_easy/">Feedback weighing · Easy →</a></p><p><a class="text-link" href="/Labference/tasks/protocol/weighing_hard/">Feedback weighing · Hard →</a></p></article><article class="content-card"><h3>Drying-oven operation cycle</h3><p>Open the oven, load a loose beaker, close and reopen the door, retrieve it and return it while preserving the preloaded beaker.</p><p><a class="text-link" href="/Labference/tasks/protocol/device_operation_hard/">Drying-oven operation · Hard →</a></p></article><article class="content-card"><h3>Centrifuge opposite-slot</h3><p>Pick both tubes from the table and place them in measured opposite slots with verified lift, insertion and stability evidence.</p><p><a class="text-link" href="/Labference/tasks/protocol/centrifuge_easy/">Centrifuge opposite-slot · Easy →</a></p><p><a class="text-link" href="/Labference/tasks/protocol/centrifuge_hard/">Centrifuge opposite-slot · Hard →</a></p></article><article class="content-card"><h3>Rack placement recall</h3><p>Remember a target slot when three distractor tubes share the same cap appearance and the rack moves during occlusion.</p><p><a class="text-link" href="/Labference/tasks/protocol/rack_easy/">Rack placement recall · Easy →</a></p><p><a class="text-link" href="/Labference/tasks/protocol/rack_same_cap/">Rack placement recall · Hard / Same cap →</a></p><p><a class="text-link" href="/Labference/tasks/protocol/rack_distinct_cap/">Rack placement recall · Hard / Distinct cap →</a></p></article></div>
   </section>
-<section id="ordinary-leaderboard"><div class="section-head"><div><p class="section-kicker">Ordinary benchmark</p><h2>24 ordinary tasks</h2></div><p class="coverage">Long-horizon and reasoning-in-action</p></div>
-  <div class="split-control" role="tablist" aria-label="Evaluation split"><button type="button" data-split-button="sim_randomized" role="tab">Randomized · Hard</button><button type="button" data-split-button="sim_clean" role="tab">Clean · Easy</button></div>
-  
-  <section class="leaderboard-panel" data-leaderboard-panel="sim_randomized" >
-    <div class="section-head"><div><p class="section-kicker">Robustness ranking</p><h2>Randomized / Hard</h2></div><p class="coverage">0 verified submissions</p></div>
-    <div class="empty-state content-card"><strong>No verified Hard submissions yet.</strong>Maintainers add reproduced runs to the official registry after checking configuration, seeds and output integrity.</div>
 
-    <div class="track-score-grid">
-      <article class="content-card"><span class="track-code">L</span><h3>Capability Leaderboard 1 · Long-Horizon Procedures</h3><p>Measures reliable multi-stage laboratory procedures, ordering and state-dependent transitions.</p><a class="text-link" href="/Labference/tasks/?track=long_horizon">View 12 tasks →</a></article><article class="content-card"><span class="track-code">R</span><h3>Capability Leaderboard 2 · Reasoning in Action</h3><p>Measures visual and structured-state understanding with correct action selection.</p><a class="text-link" href="/Labference/tasks/?track=reasoning_in_action">View 12 tasks →</a></article>
-    </div>
-  </section>
-  
-  <section class="leaderboard-panel" data-leaderboard-panel="sim_clean" hidden>
-    <div class="section-head"><div><p class="section-kicker">In-distribution ranking</p><h2>Clean / Easy</h2></div><p class="coverage">0 verified submissions</p></div>
-    <div class="empty-state content-card"><strong>No verified Easy submissions yet.</strong>Maintainers add reproduced runs to the official registry after checking configuration, seeds and output integrity.</div>
-
-    <div class="track-score-grid">
-      <article class="content-card"><span class="track-code">L</span><h3>Capability Leaderboard 1 · Long-Horizon Procedures</h3><p>Measures reliable multi-stage laboratory procedures, ordering and state-dependent transitions.</p><a class="text-link" href="/Labference/tasks/?track=long_horizon">View 12 tasks →</a></article><article class="content-card"><span class="track-code">R</span><h3>Capability Leaderboard 2 · Reasoning in Action</h3><p>Measures visual and structured-state understanding with correct action selection.</p><a class="text-link" href="/Labference/tasks/?track=reasoning_in_action">View 12 tasks →</a></article>
-    </div>
-  </section>
-  
-</section>
-  <section class="content-card"><p class="section-kicker">Protocol</p><h2>How ranking works</h2><div class="track-grid"><div><h3>Verified runs</h3><p>Only maintainer-reviewed run IDs enter the public aggregation. Debug and synthetic records remain in Console.</p></div><div><h3>Task macro average</h3><p>Each evaluated task contributes equally. Missing task metrics remain unavailable instead of silently becoming zero.</p></div><div><h3>Tie breaking</h3><p>Official score, task success, coverage, then method name determine a stable ordering.</p></div></div></section>
 </div>
 
   </main>
