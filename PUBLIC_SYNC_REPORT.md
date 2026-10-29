@@ -1,8 +1,8 @@
 # Public sync report
 
-- Internal source commit: `ea6f49529ab872e961c66290a9d8b78ef8e79675`
+- Internal source commit: `f43211b6ab9296aed16bbb3d92f766ac3ff74467`
 - Source worktree dirty: `false`
 - Public files: `521`
-- Content SHA-256: `6f2ea6223fcd1c6f6943afa601c6ed9471b447fa492524d92672fd3a51b26073`
+- Content SHA-256: `3ac5256a4eb4ff5b2c8ef87505f83dcdcc359700d6b7e4b40977ff5c84612e27`
 - Asset policy: unverified assets and derived media excluded
 - Git commit/push performed: `false`

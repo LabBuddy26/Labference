@@ -1,12 +1,12 @@
 {
   "schema_version": "labbench_public_release_result/v1",
   "release_series": "0.x",
-  "generated_at": "2026-10-29T04:02:48.236905+00:00",
-  "source_commit": "ea6f49529ab872e961c66290a9d8b78ef8e79675",
+  "generated_at": "2026-10-29T08:42:06.567211+00:00",
+  "source_commit": "f43211b6ab9296aed16bbb3d92f766ac3ff74467",
   "source_dirty": false,
-  "repository_url": "https://github.com/zhaochunhai/Labference",
+  "repository_url": "https://github.com/Lab-Buddy/Labference",
   "file_count": 521,
-  "content_sha256": "6f2ea6223fcd1c6f6943afa601c6ed9471b447fa492524d92672fd3a51b26073",
+  "content_sha256": "3ac5256a4eb4ff5b2c8ef87505f83dcdcc359700d6b7e4b40977ff5c84612e27",
   "assets_policy": "fail_closed",
   "git_actions_performed": false
 }

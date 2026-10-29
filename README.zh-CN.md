@@ -1,6 +1,6 @@
 # Labference
 
-[论文](https://arxiv.org/abs/2610.35252) · [官网](https://zhaochunhai.github.io/Labference/)
+[论文](https://arxiv.org/abs/2610.35252) · [官网](https://lab-buddy.github.io/Labference/)
 
 ## 使用文档
 
@@ -36,7 +36,7 @@ Labference 面向机器人实验室中的推理—动作连接，评估实际物
 Labference 需要 NVIDIA Isaac Sim Python 环境：
 
 ```bash
-git clone https://github.com/zhaochunhai/Labference
+git clone https://github.com/Lab-Buddy/Labference
 cd Labference
 python -m pip install -r eai4s_eval/requirements-dashboard.txt
 python -c "from isaacsim import SimulationApp; print('Isaac Sim OK')"
