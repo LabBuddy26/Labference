@@ -3582,7 +3582,11 @@
       "contact": "",
       "dataset": "https://pan.baidu.com/s/1zyJL3zxHqI_j67hUkUF6lw",
       "documentation": "",
+      "hf_dataset": "",
+      "hf_models": "",
+      "hf_simulator": "",
       "homepage": "https://zhaochunhai.github.io/Labference/",
+      "huggingface": "",
       "paper": "https://arxiv.org/abs/2610.35252"
     },
     "paper": {
