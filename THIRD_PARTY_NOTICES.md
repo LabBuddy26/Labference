@@ -1,7 +1,7 @@
 # Third-party notices
 
 This file records third-party software and material known to be referenced by
-LabBench. It is not a substitute for the upstream licence text.
+Labference. It is not a substitute for the upstream licence text.
 
 | Component | Relationship | Distribution in the public repository |
 |---|---|---|

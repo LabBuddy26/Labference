@@ -1,0 +1,128 @@
+name: Level1_pick
+
+task_type: "pick"
+controller_type: "pick"
+
+mode: "collect"
+
+evaluation:
+  policy:
+    provider: "gr00t"
+    profile: "eai4s_eval/configs/policies/gr00t_franka_ee_pos_v1.yaml"
+    host: "127.0.0.1"
+    port: 5555
+    protocol: "zmq"
+    timeout: 30
+    # Replan every 0.4 s; longer 12-step chunks increase the open-loop
+    # collision window once the wrist view drifts near the beaker.
+    execution_horizon: 16
+    control_hz: 10
+  task_spec: "eai4s_eval/configs/tasks/B01_level1_pick.yaml"
+  model_name: "eai4s_gr00t"
+  split: "sim_clean"
+  num_episodes: 5
+  max_steps: 200
+  output_root: "outputs/eval_runs"
+  save_video: true
+
+collection_startup:
+  # A central, non-singular Franka pose with the gripper open.
+  ready_joint_positions: [0.0, -0.7854, 0.0, -2.3562, 0.0, 1.5708, 0.7854, 0.04, 0.04]
+  warmup_steps: 120
+  stable_frames: 30
+  joint_velocity_threshold: 0.02
+  object_displacement_threshold: 0.0005
+  max_wait_steps: 600
+
+# usd_path: "assets/chemistry_lab/lab_001/lab_001.usd"
+# usd_path: "assets/chemistry_lab/hard_task/lab_004.usd"
+scene:
+    - prim_path: "/World/table"
+      usd_path: "assets/chemistry_lab/assets/table.usd"
+      position: [0.0, 0.0, 1.25]
+      orientation: [1.0, 0.0, 0.0, 0.0]
+      scale: [0.001, 0.001, 0.001]
+
+    - prim_path: "/World/beaker"
+      usd_path: "assets/chemistry_lab/assets/beaker_2.usd"
+      position: [0.0, 0.0, 0.72]
+      orientation: [0.707, 0.707, 0.0, 0.0]
+      scale: [1.0, 1.0, 1.0]
+      glass: True
+
+max_episodes: 200
+
+infer:
+  action_space: "ee_pos"
+  type: "local"
+  obs_names: {"camera_1_rgb": 'camera_1_rgb', "camera_3_rgb": 'camera_3_rgb'}
+  policy_model_path: ""
+  policy_config_path: ""
+  normalizer_path: ""
+  host: "127.0.0.1"
+  port: 8000
+  n_obs_steps: 1
+  timeout: 30
+  max_retries: 3
+
+task:
+  max_steps: 2000
+  obj_paths:
+    - path: "/World/beaker"
+      position_range:
+        x: [0.21, 0.36]
+        y: [-0.08, 0.08]
+        z: [0.80, 0.80]
+
+cameras:
+  - prim_path: "/World/Camera1"
+    name: "camera_1"
+    translation: [1, 0, 1.5]
+    resolution: [640, 480]
+    focal_length: 10
+    focus_distance: 400
+    horizontal_aperture: 20.955
+    clipping_range: [0.1, 100]
+    orientation: [0.61237, 0.35355, 0.35355, 0.61237]
+    # orientation: [0.70711, 0, 0, -0.70711]
+    image_type: "rgb"
+
+  # - prim_path: "/World/Camera2"
+  #   name: "camera_2"
+  #   translation: [0.1, 0, 1.5]
+  #   resolution: [640, 480]
+  #   focal_length: 10
+  #   focus_distance: 400
+  #   horizontal_aperture: 20.955
+  #   clipping_range: [0.1, 100]
+  #   orientation: [0.70711, 0, 0, -0.70711]
+  #   image_type: "rgb"
+
+  - prim_path: "/World/Franka/panda_hand/arm_camera"
+    name: "camera_3"
+    # Wrist-camera pose relative to panda_hand; task configs may override it.
+    # Wide wrist overview: table, two fingers, and the grasp target stay visible.
+    local_translation: [-0.20, 0.0, -0.01]
+    local_orientation: [0.20083, 0.67799, -0.67799, -0.20083]
+    resolution: [640, 480]
+    focal_length: 10.0
+    horizontal_aperture: 20.955
+    focus_distance: 0.50
+    clipping_range: [0.05, 10.0]
+    image_type: "rgb"
+
+robot:
+  type: "franka"
+  position: [-0.4, -0, 0.71]
+
+collector:
+  type: "default"
+  compression: gzip
+  sample_hz: 10
+
+hydra:
+  run:
+    dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}
+
+multi_run:
+  run_dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}

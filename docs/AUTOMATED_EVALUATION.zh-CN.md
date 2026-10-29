@@ -67,7 +67,7 @@ python -m eai4s_eval.cli.run_benchmark_suite_eval \
 该桥接当前只支持numpy后端，并使用启动命令所在的Python环境；
 非默认`--eval-python`或GPU后端会明确拒绝，请直接使用目标环境的Python启动。
 
-本次实际仿真范围、结果与限制见[2026-10-28验证记录](EVALUATION_VALIDATION_20261028.zh-CN.md)。
+工程验证覆盖28项限步参考仿真；这不代表完整任务均能成功或已取得正式模型成绩。
 
 ## 普通任务选跑与全跑
 

@@ -1,0 +1,65 @@
+name: Level3_R05_devicestatus
+task_type: devicestatus
+controller_type: press
+mode: collect
+evaluation:
+  policy: {provider: gr00t, profile: eai4s_eval/configs/policies/gr00t_franka_ee_pos_v1.yaml, host: 127.0.0.1, port: 5555, protocol: zmq, timeout: 30, execution_horizon: null, control_hz: 10}
+  task_spec: eai4s_eval/configs/tasks/B26_level3_R05_devicestatus.yaml
+  model_name: eai4s_gr00t
+  split: sim_clean
+  num_episodes: 5
+  max_steps: 500
+  output_root: outputs/eval_runs
+  save_video: true
+sub_obj_path: /World/TempInstrument
+max_episodes: 200
+collection_startup:
+  ready_joint_positions: [0.0, -0.7854, 0.0, -2.3562, 0.0, 1.5708, 0.7854, 0.04, 0.04]
+  warmup_steps: 120
+  stable_frames: 30
+  joint_velocity_threshold: 0.02
+  object_displacement_threshold: 0.0005
+  max_wait_steps: 600
+press:
+  orientation_deg: [0.0, 90.0, 0.0]
+  approach_offset_x_m: 0.20
+  press_offset_x_m: 0.0
+  open_gripper_width_m: 0.04
+  closed_gripper_width_m: 0.0015
+  approach_tolerance_m: 0.015
+  press_tolerance_m: 0.012
+  close_steps: 30
+  hold_steps: 45
+  phase_timeout_steps: 900
+infer:
+  action_space: ee_pos
+  type: local
+  obs_names: {camera_1_rgb: camera_1_rgb, camera_3_rgb: camera_3_rgb}
+  host: 127.0.0.1
+  port: 8000
+  n_obs_steps: 1
+  timeout: 30
+  max_retries: 3
+scene:
+  - {prim_path: /World/table, usd_path: assets/chemistry_lab/assets/table.usd, position: [0.0, 0.0, 1.25], orientation: [1.0, 0.0, 0.0, 0.0], scale: [0.001, 0.001, 0.001]}
+  - {prim_path: /World/TempInstrument, usd_path: assets/chemistry_lab/assets/TempInstrument.usd, position: [0.6, 0.1, 0.87], orientation: [0.707, 0.0, 0.0, 0.707], scale: [0.7, 0.7, 0.7]}
+task: {max_steps: 2000}
+cameras:
+  - {prim_path: /World/Camera1, name: camera_1, translation: [-0.7, 1.4, 1.4], resolution: [640, 480], focal_length: 10, orientation: [-0.2297, -0.18336, 0.59631, 0.74701], image_type: rgb}
+  - prim_path: /World/Franka/panda_hand/arm_camera
+    name: camera_3
+    local_translation: [-0.20, 0.0, -0.01]
+    local_orientation: [0.20083, 0.67799, -0.67799, -0.20083]
+    resolution: [640, 480]
+    focal_length: 10.0
+    horizontal_aperture: 20.955
+    focus_distance: 0.50
+    clipping_range: [0.05, 10.0]
+    image_type: rgb
+robot: {type: franka, position: [-0.4, 0.0, 0.71]}
+collector: {type: default, compression: gzip, sample_hz: 10}
+hydra:
+  run:
+    dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}
+multi_run:
+  run_dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}

@@ -1,0 +1,58 @@
+defaults:
+  - level2_L06_wights
+  - _self_
+
+name: Level4_weighing_feedback_hard
+release_protocol: weighing_v1
+mode: collect
+task_type: weighing_feedback
+controller_type: weighing_feedback
+
+# main.py dispatches to the versioned physical-load-cell scene before Isaac
+# starts. Historical inherited fields remain only for old config readers.
+evaluation:
+  policy:
+    provider: openpi
+    profile: eai4s_eval/configs/policies/openpi_weighing_ee_pos_v1.yaml
+    protocol: websocket
+    host: 127.0.0.1
+    port: 8000
+    action_space: ee_pos
+  task_spec: eai4s_eval/configs/tasks/level4_weighing_feedback_hard.yaml
+  num_episodes: 5
+  max_steps: 500
+  output_root: outputs/eval_runs
+  save_video: true
+
+weighing_feedback:
+  task_version: weighing-feedback/v1
+  difficulty: hard
+  stable_tolerance_g: 1.0
+  stable_frames: 30
+  max_stabilization_steps: 300
+  # Both main.py and the standalone protocol use physical PhysX load cells.
+  sensor_source: physical_load_cell
+
+max_episodes: 200
+
+infer:
+  obs_names:
+    camera_1_rgb: observation/image
+    camera_3_rgb: observation/wrist_image
+    display_rgb: observation/display_image
+    weights_rgb: observation/weights_image
+
+cameras:
+  - {prim_path: /World/Camera1, name: camera_1, translation: [1.0, 0.0, 1.2], resolution: [640, 480], focal_length: 10, orientation: [0.57922, 0.40558, 0.40558, 0.57923], image_type: rgb}
+  - prim_path: /World/Franka/panda_hand/arm_camera
+    name: camera_3
+    local_translation: [-0.20, 0.0, -0.01]
+    local_orientation: [0.20083, 0.67799, -0.67799, -0.20083]
+    resolution: [640, 480]
+    focal_length: 10.0
+    horizontal_aperture: 20.955
+    focus_distance: 0.50
+    clipping_range: [0.05, 10.0]
+    image_type: rgb
+  - {prim_path: /World/DisplayCamera, name: display, translation: [0.48, 0.25, 0.92], resolution: [640, 480], focal_length: 18, orientation: [0.707, 0.0, 0.707, 0.0], image_type: rgb}
+  - {prim_path: /World/WeightsCamera, name: weights, translation: [0.35, -0.35, 1.05], resolution: [640, 480], focal_length: 14, orientation: [0.653, 0.271, 0.653, 0.271], image_type: rgb}

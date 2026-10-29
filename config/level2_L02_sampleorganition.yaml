@@ -1,0 +1,162 @@
+name: Level2_L02_sampleorganition
+task_type: "sampleorganition"
+controller_type: "sample_organition"
+mode: "collect"
+
+evaluation:
+  policy:
+    provider: "gr00t"
+    profile: "eai4s_eval/configs/policies/gr00t_franka_ee_pos_v1.yaml"
+    host: "127.0.0.1"
+    port: 5555
+    protocol: "zmq"
+    timeout: 30
+    execution_horizon: null
+    control_hz: 10
+  task_spec: "eai4s_eval/configs/tasks/B16_level2_sample_organization.yaml"
+  model_name: "eai4s_gr00t"
+  split: "sim_clean"
+  num_episodes: 5
+  max_steps: 500
+  output_root: "outputs/eval_runs"
+  save_video: true
+
+collection_startup:
+  ready_joint_positions: [0.0, -0.7854, 0.0, -2.3562, 0.0, 1.5708, 0.7854, 0.04, 0.04]
+  warmup_steps: 120
+  stable_frames: 30
+  joint_velocity_threshold: 0.02
+  object_displacement_threshold: 0.0005
+  max_wait_steps: 600
+
+sub_object: "/World/VialBottle"
+target_path: "/World/SamplePlaceBoxA"
+target_path1: "/World/SamplePlaceBoxB"
+max_episodes: 200
+
+sample_organization_success:
+  pick_lift_height_m: 0.12
+  place_xy_tolerance_m: 0.02
+  place_z_tolerance_m: 0.05
+  release_steps: 30
+  stable_displacement_m: 0.001
+  stable_frames: 30
+  place_z_reference: "target"
+
+guarded_insertion:
+  lift_before_approach: true
+  approach_height: 0.20
+  alignment_height: 0.12
+  insertion_step: 0.00100
+  insertion_min_step_factor: 0.25
+  xy_alignment_tolerance: 0.003
+  fine_alignment_z_tolerance: 0.008
+  insertion_tracking_tolerance: 0.004
+  insertion_lateral_tolerance: 0.005
+  insertion_axial_tolerance: 0.007
+  object_lateral_tolerance: 0.003
+  object_axial_tolerance: 0.007
+  fine_alignment_max_correction: 0.005
+  fine_alignment_feedback_gain: 0.2
+  grasp_tracking_tolerance: 0.030
+  grasp_offset_update_limit: 0.020
+  insertion_feedback_recovery: true
+  accept_deeper_insertion: true
+  # Keep the release point close to the socket so the vial enters the hole
+  # instead of hanging above it after the gripper opens.
+  pre_release_offset_z: 0.030
+  pre_release_hold_frames: 30
+  post_release_settle_frames: 60
+  retreat_height: 0.12
+  phase_timeout_steps: {lift_clearance: 600, approach: 600, fine_align: 600, insert: 1500, hold_before_release: 300, release: 60, retreat: 480, post_release_settle: 150}
+
+infer:
+  action_space: "ee_pos"
+  type: "local"
+  obs_names: {"camera_1_rgb": "camera_1_rgb", "camera_3_rgb": "camera_3_rgb"}
+  host: "127.0.0.1"
+  port: 8000
+  n_obs_steps: 1
+  timeout: 30
+  max_retries: 3
+
+scene:
+  - prim_path: "/World/table"
+    usd_path: "assets/chemistry_lab/assets/table.usd"
+    position: [0.0, 0.0, 1.25]
+    orientation: [1.0, 0.0, 0.0, 0.0]
+    scale: [0.001, 0.001, 0.001]
+  - prim_path: "/World/conical"
+    usd_path: "assets/chemistry_lab/assets/conical_bottle01.usd"
+    position: [0.5, -0.2, 0.75]
+    orientation: [0.707, 0.707, 0.0, 0.0]
+    scale: [0.0001, 0.0001, 0.0001]
+    glass: true
+  - prim_path: "/World/flask"
+    usd_path: "assets/chemistry_lab/assets/flask.usd"
+    position: [0.45, 0.0, 0.75]
+    orientation: [0.707, 0.707, 0.0, 0.0]
+    scale: [0.1, 0.1, 0.1]
+    glass: true
+  - prim_path: "/World/vial"
+    usd_path: "assets/chemistry_lab/assets/vial.usd"
+    position: [0.4, -0.3, 0.75]
+    orientation: [0.707, 0.707, 0.0, 0.0]
+    scale: [0.1, 0.1, 0.1]
+    glass: true
+  - prim_path: "/World/VialBottle"
+    usd_path: "assets/chemistry_lab/assets/VialBottle_01.usd"
+    position: [0.38, -0.15, 0.76]
+    orientation: [0.0, 1.0, 0.0, 0.0]
+    scale: [0.45, 0.45, 0.45]
+  - prim_path: "/World/SamplePlaceBoxA"
+    usd_path: "assets/chemistry_lab/assets/SamplePlaceBox.usd"
+    position: [0.1, 0.0, 0.70]
+    orientation: [0.707, 0.707, 0.0, 0.0]
+    scale: [2.0, 2.0, 2.0]
+  - prim_path: "/World/SamplePlaceBoxB"
+    usd_path: "assets/chemistry_lab/assets/SamplePlaceBox.usd"
+    position: [0.1, 0.20, 0.70]
+    orientation: [0.707, 0.707, 0.0, 0.0]
+    scale: [2.0, 2.0, 2.0]
+  - prim_path: "/World/tube_rack"
+    usd_path: "assets/chemistry_lab/assets/test_tube_rack_3h.usd"
+    position: [0.61, -0.2, 0.6]
+    orientation: [0.707, 0.0, 0.0, 0.707]
+    scale: [1.0, 1.0, 1.0]
+
+task:
+  max_steps: 1800
+  obj_paths:
+    - path: "/World/VialBottle"
+      position_range: {x: [0.25, 0.30], y: [-0.15, -0.10], z: [0.76, 0.76]}
+
+cameras:
+  - prim_path: "/World/Camera1"
+    name: "camera_1"
+    translation: [1.0, 0.0, 1.2]
+    resolution: [640, 480]
+    focal_length: 10
+    orientation: [0.57922, 0.40558, 0.40558, 0.57923]
+    image_type: "rgb"
+  - prim_path: "/World/Franka/panda_hand/arm_camera"
+    name: "camera_3"
+    local_translation: [-0.20, 0.0, -0.01]
+    local_orientation: [0.20083, 0.67799, -0.67799, -0.20083]
+    resolution: [640, 480]
+    focal_length: 10.0
+    horizontal_aperture: 20.955
+    focus_distance: 0.50
+    clipping_range: [0.05, 10.0]
+    image_type: "rgb"
+
+robot:
+  type: "franka"
+  position: [-0.4, 0.0, 0.71]
+
+collector: {type: "default", compression: gzip, sample_hz: 10}
+hydra:
+  run:
+    dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}
+multi_run:
+  run_dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}

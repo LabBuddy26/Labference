@@ -1,0 +1,40 @@
+defaults:
+  - level3_R10_rackplace
+  - _self_
+
+name: Level3_R10_hard_rack_recall
+release_protocol: rack_recall_v4
+mode: collect
+task_type: rack_recall
+controller_type: rack_recall
+
+# Use the v4 same-cap occluded-rebuild protocol through main.py.
+evaluation:
+  task_spec: eai4s_eval/configs/tasks/level3_R10_hard_rack_recall.yaml
+  num_episodes: 5
+  max_steps: 500
+  output_root: outputs/eval_runs
+  save_video: true
+
+rack_recall:
+  task_version: rack-placement-recall/v4
+  difficulty: hard
+  condition_variant: same_cap
+  insertion_implementation: rack_recall_v4
+  environment_mode: occluded_rebuild
+  remember_selected_slot: true
+  retrieve_after_placement: true
+
+max_episodes: 200
+
+# Keep the physical grasp gate; the controller enables R10's timed place
+# progression locally because the rack approach point is not always reachable
+# by the generic pose gate.
+collection_control:
+  main_compatible: false
+
+task:
+  max_steps: 4000
+  obj_paths:
+    - path: /World/tube
+      position_range: {x: [0.10, 0.18], y: [0.18, 0.25], z: [0.75, 0.75]}

@@ -1,0 +1,146 @@
+name: Level3_R10_rackplace
+task_type: "rackplace"
+controller_type: "rack_place"
+
+mode: "collect"
+
+evaluation:
+  policy:
+    provider: "gr00t"
+    profile: "eai4s_eval/configs/policies/gr00t_franka_ee_pos_v1.yaml"
+    host: "127.0.0.1"
+    port: 5555
+    protocol: "zmq"
+    timeout: 30
+    execution_horizon: null
+    control_hz: 10
+  task_spec: "eai4s_eval/configs/tasks/B22_level3_R10_rackplace.yaml"
+  model_name: "eai4s_gr00t"
+  split: "sim_clean"
+  num_episodes: 5
+  max_steps: 700
+  output_root: "outputs/eval_runs"
+  save_video: true
+
+collection_startup:
+  ready_joint_positions: [0.0, -0.7854, 0.0, -2.3562, 0.0, 1.5708, 0.7854, 0.04, 0.04]
+  warmup_steps: 120
+  stable_frames: 30
+  joint_velocity_threshold: 0.02
+  object_displacement_threshold: 0.0005
+  max_wait_steps: 600
+
+sub_object: "/World/tube"
+target_path: "/World/tube_rack"
+
+max_episodes: 200
+
+rack_place_success:
+  pick_lift_height_m: 0.12
+  place_xy_tolerance_m: 0.02
+  place_z_tolerance_m: 0.05
+
+infer:
+  action_space: "ee_pos"
+  type: "local"
+  obs_names: {"camera_1_rgb": 'camera_1_rgb', "camera_3_rgb": 'camera_3_rgb'}
+
+  host: "127.0.0.1"
+  port: 8000
+  n_obs_steps: 1
+  timeout: 30
+  max_retries: 3
+
+scene:
+    - prim_path: "/World/table"
+      usd_path: "assets/chemistry_lab/assets/table.usd"
+      position: [0.0, 0.0, 1.25]
+      orientation: [1.0, 0.0, 0.0, 0.0]
+      scale: [0.001, 0.001, 0.001]
+
+    - prim_path: "/World/beaker2"
+      usd_path: "assets/chemistry_lab/assets/beaker_2.usd"
+      position: [0.6, 0.0, 0.72]
+      orientation: [0.707, 0.707, 0.0, 0.0]
+      scale: [1.0, 1.0, 1.0]
+      glass: True
+
+    - prim_path: "/World/conical"
+      usd_path: "assets/chemistry_lab/assets/conical_bottle01.usd"
+      position: [0.5, -0.2, 0.75]
+      orientation: [0.707, 0.707, 0.0, 0.0]
+      scale: [0.0001, 0.0001, 0.0001]
+      glass: True
+
+    - prim_path: "/World/flask"
+      usd_path: "assets/chemistry_lab/assets/flask.usd"
+      position: [0.45, 0.0, 0.75]
+      orientation: [0.707, 0.707, 0.0, 0.0]
+      scale: [0.1, 0.1, 0.1]
+      glass: True
+
+    - prim_path: "/World/vial"
+      usd_path: "assets/chemistry_lab/assets/vial.usd"
+      position: [0.4, -0.3, 0.75]
+      orientation: [0.707, 0.707, 0.0, 0.0]
+      scale: [0.1, 0.1, 0.1]
+      glass: True
+
+    - prim_path: "/World/tube"
+      usd_path: "assets/chemistry_lab/assets/test_tube.usd"
+      position: [0.18, 0.15, 0.71]
+      orientation: [0.0, 1.0, 0.0, 0.0]
+      scale: [0.7, 0.7, 0.7]
+
+    - prim_path: "/World/tube_rack"
+      usd_path: "assets/chemistry_lab/assets/test_tube_rack_12h_mesh.usd"
+      position: [0.28, -0.1, 0.44]
+      orientation: [0.5, 0.5, -0.5, -0.5]
+      scale: [1.0, 1.0, 1.0]
+
+task:
+  max_steps: 1200
+  obj_paths:
+    - path: "/World/tube"
+      position_range:
+        x: [0.1, 0.18]
+        y: [0.18, 0.25]
+        z: [0.75, 0.75]
+
+cameras:
+  - prim_path: "/World/Camera1"
+    name: "camera_1"
+    translation: [1, 0, 1.2]
+    resolution: [640, 480]
+    focal_length: 10
+    orientation: [0.57922, 0.40558, 0.40558, 0.57923]
+    image_type: "rgb"
+
+  - prim_path: "/World/Franka/panda_hand/arm_camera"
+    name: "camera_3"
+    # Keep the wrist view aligned with the other LabBench tasks instead of
+    # relying on the arm_camera USD default pose.
+    local_translation: [-0.20, 0.0, -0.01]
+    local_orientation: [0.20083, 0.67799, -0.67799, -0.20083]
+    resolution: [640, 480]
+    focal_length: 10.0
+    horizontal_aperture: 20.955
+    focus_distance: 0.50
+    clipping_range: [0.05, 10.0]
+    image_type: "rgb"
+
+robot:
+  type: "franka"
+  position: [-0.4, -0, 0.71]
+
+collector:
+  type: "default"
+  compression: gzip
+  sample_hz: 10
+
+hydra:
+  run:
+    dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}
+
+multi_run:
+  run_dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}

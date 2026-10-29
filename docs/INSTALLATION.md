@@ -4,9 +4,9 @@
 
 - Linux with a supported NVIDIA driver and GPU;
 - NVIDIA Isaac Sim and its Python environment;
-- Python dependencies used by LabBench (`hydra-core`, `omegaconf`, `numpy`,
+- Python dependencies used by Labference (`hydra-core`, `omegaconf`, `numpy`,
   `opencv-python`, `h5py`, and the dashboard requirements);
-- a separately installed, licence-approved LabBench asset package.
+- a separately installed, licence-approved Labference asset package.
 
 No model checkpoint or simulator asset is downloaded implicitly.
 

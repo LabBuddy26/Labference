@@ -1,0 +1,132 @@
+name: Level4_L09_DeviceOperation
+
+task_type: "device_operate"
+controller_type: "device_operate"
+
+mode: "collect"
+
+evaluation:
+  policy:
+    provider: "gr00t"
+    profile: "eai4s_eval/configs/policies/gr00t_franka_ee_pos_v1.yaml"
+    host: "127.0.0.1"
+    port: 5555
+    protocol: "zmq"
+    timeout: 30
+    execution_horizon: null
+    control_hz: 10
+  task_spec: "eai4s_eval/configs/tasks/B12_level4_device_operation.yaml"
+  model_name: "eai4s_gr00t"
+  split: "sim_clean"
+  num_episodes: 5
+  max_steps: 500
+  output_root: "outputs/eval_runs"
+  save_video: true
+
+infer:
+  action_space: "ee_pos"
+  type: "local"
+  obs_names: {"camera_1_rgb": 'camera_1_rgb', "camera_3_rgb": 'camera_3_rgb'}
+
+  host: "127.0.0.1"
+  port: 8000
+  n_obs_steps: 1
+  timeout: 30
+  max_retries: 3
+
+scene:
+
+  - prim_path: "/World/table"
+    usd_path: "assets/chemistry_lab/assets/table.usd"
+    position: [0.0, 0.0, 1.37]
+    orientation: [1.0, 0.0, 0.0, 0.0]
+    scale: [0.001, 0.001, 0.001]
+
+  - prim_path: "/World/beaker2"
+    usd_path: "assets/chemistry_lab/assets/beaker_2.usd"
+    position: [0.15, 0.23, 0.84]
+    orientation: [0.707, 0.707, 0.0, 0.0]
+    scale: [1.0, 1.0, 1.0]
+    glass: True
+  
+  - prim_path: "/World/beaker3"
+    usd_path: "assets/chemistry_lab/assets/beaker_2.usd"
+    position: [0.15, 0.35, 0.84]
+    orientation: [0.707, 0.707, 0.0, 0.0]
+    scale: [1.0, 1.0, 1.0]
+    glass: True
+  
+  - prim_path: "/World/DryingBox_01"
+    usd_path: "assets/chemistry_lab/assets/DryingBox_01.usd"
+    position: [0.55, 0.13, 0.976]
+    orientation: [0.707, 0.0, 0.0, -0.707]
+    scale: [0.001, 0.001, 0.001]
+
+task:
+  type: "device_operate"
+  device_path: "/World/DryingBox_01"
+  beaker_path: "/World/beaker2"
+  beaker3_path: "/World/beaker3"
+  button_path: "/World/DryingBox_01/DryingBox_01/button"
+
+  device_interior_position: [0.52, 0.04, 1.11]
+  # Keep the second beaker clear of the first beaker at the device interior.
+  beaker3_target_position: [0.42, 0.15, 1.12]
+  button_position: [0.45, 0.2, 0.77]
+  max_steps: 4000
+
+  obj_paths:
+    - path: "/World/beaker2"
+      position_range:
+        x: [0.15, 0.2]
+        y: [0.23, 0.28]
+        z: [0.84, 0.84]
+    - path: "/World/beaker3"
+      position_range:
+        x: [0.15, 0.2]
+        y: [0.35, 0.40]
+        z: [0.84, 0.84]
+    - path: "/World/DryingBox_01"
+      position_range:
+        x: [0.55, 0.60]
+        y: [0.13, 0.18]
+        z: [0.976, 0.976]
+
+max_episodes: 200
+
+cameras_names: ["camera_1", "camera_3"]
+
+cameras:
+  - prim_path: "/World/Camera1"
+    name: "camera_1"
+    translation: [-0.7, 1.4, 1.4]
+    resolution: [640, 480]
+    focal_length: 10
+    orientation: [-0.2297, -0.18336, 0.59631, 0.74701]
+    image_type: "rgb"
+  - prim_path: "/World/Franka/panda_hand/arm_camera"
+    name: "camera_3"
+    local_translation: [-0.20, 0.0, -0.01]
+    local_orientation: [0.20083, 0.67799, -0.67799, -0.20083]
+    resolution: [640, 480]
+    focal_length: 10.0
+    horizontal_aperture: 20.955
+    focus_distance: 0.50
+    clipping_range: [0.05, 10.0]
+    image_type: "rgb"
+    
+robot:
+  type: "franka"
+  position: [-0.4, -0, 0.71]
+
+collector:
+  type: "default"
+  compression: gzip
+  sample_hz: 10
+
+hydra:
+  run:
+    dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}
+
+multi_run:
+  run_dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}

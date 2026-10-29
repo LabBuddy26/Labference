@@ -78,6 +78,6 @@ python -m eai4s_eval.cli.export_public_site \
   --base-url /Labference --include-public-media
 ```
 
-空评测目录将不包含模型成绩；保留正式榜单时替换为审核结果目录。网站预览后同步到独立LabBench-pages仓库并推送gh-pages，不能把构建输出目录设为发布Git仓库根目录。源码main使用单独的build/verify流程，不能将网站文件覆盖源码。
+空评测目录将不包含模型成绩；保留正式榜单时替换为审核结果目录。网站预览后同步到独立网站发布仓库并推送gh-pages，不能把构建输出目录设为发布Git仓库根目录。源码main使用单独的build/verify流程，不能将网站文件覆盖源码。
 
 官方参考：[Collections](https://huggingface.co/docs/hub/collections)、[数据集](https://huggingface.co/docs/hub/datasets-adding)、[Model Cards](https://huggingface.co/docs/hub/model-cards)、[上传](https://huggingface.co/docs/huggingface_hub/guides/upload)、[CLI](https://huggingface.co/docs/huggingface_hub/guides/cli)、[存储限制](https://huggingface.co/docs/hub/storage-limits)。

@@ -1,6 +1,6 @@
 # Changelog
 
-All notable public changes are documented here. LabBench follows a pre-release
+All notable public changes are documented here. Labference follows a pre-release
 `0.x` version series until its public APIs, metrics and asset distribution are
 declared stable.
 

@@ -1,0 +1,6 @@
+defaults:
+  - level1_pick
+  - _self_
+
+# Deprecated compatibility alias. ``infer`` now runs the complete evaluator.
+mode: eval

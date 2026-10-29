@@ -1,0 +1,155 @@
+name: Level1_pour
+
+task_type: "pickpour"
+controller_type: "pour"
+
+target_path: "/World/beaker1"
+
+# Geometric success conditions for the kinematic pour benchmark.  A source
+# cup must execute the actual velocity-driven pour sequence, tilt substantially
+# over the target, then return upright before an episode is accepted.
+pour_success:
+  min_tilt_degrees: 45.0
+  return_upright_tolerance_degrees: 20.0
+  # The small source cup is intentionally offset so its rim, rather than its
+  # centre, is above the 500 ml receiver.
+  max_xy_distance: 0.12
+  return_hold_steps: 60
+
+pour_grasp:
+  # Per-finger target in metres.  0.012 m gives the small beaker a positive
+  # squeeze instead of the loose generic beaker setting.
+  gripper_target_distance: 0.012
+
+mode: "collect"
+
+evaluation:
+  policy:
+    provider: "openpi"
+    profile: "eai4s_eval/configs/policies/openpi_franka_ee_pos_v1.yaml"
+    host: "127.0.0.1"
+    port: 8000
+    protocol: "websocket"
+    timeout: 30
+    execution_horizon: null
+    control_hz: 10
+  task_spec: "eai4s_eval/configs/tasks/B03_level1_pour.yaml"
+  model_name: "eai4s_openpi"
+  split: "sim_clean"
+  num_episodes: 5
+  output_root: "outputs/eval_runs"
+  save_video: true
+
+collection_startup:
+  # A central, non-singular Franka pose with the gripper open.
+  ready_joint_positions: [0.0, -0.7854, 0.0, -2.3562, 0.0, 1.5708, 0.7854, 0.04, 0.04]
+  warmup_steps: 120
+  stable_frames: 30
+  joint_velocity_threshold: 0.02
+  object_displacement_threshold: 0.0005
+  max_wait_steps: 600
+
+# usd_path: "assets/chemistry_lab/lab_001/lab_001.usd"
+# usd_path: "assets/chemistry_lab/hard_task/lab_004.usd"
+
+scene:
+    - prim_path: "/World/table"
+      usd_path: "assets/chemistry_lab/assets/table.usd"
+      position: [0.0, 0.0, 1.25]
+      orientation: [1.0, 0.0, 0.0, 0.0]
+      scale: [0.001, 0.001, 0.001]
+
+    - prim_path: "/World/beaker"
+      # Source: the small beaker that the robot picks up and pours from.
+      usd_path: "assets/chemistry_lab/assets/beaker_2.usd"
+      # beaker_2.usd is authored upright along local +Y.  Its bottom rests
+      # on the table (z=0.707) at this root position.
+      position: [0.0, 0.0, 0.761285]
+      orientation: [0.707, 0.707, 0.0, 0.0]
+      scale: [1.0, 1.0, 1.0]
+
+    - prim_path: "/World/beaker1"
+      # Target: the large 500 ml beaker stays on the table and receives the
+      # liquid.  Its authored local +Y is rotated onto world +Z below.
+      usd_path: "assets/chemistry_lab/assets/beaker_scale_500ml_v2.usd"
+      # The asset's local Y minimum is 0.002893 m, hence 0.704107 puts the
+      # large beaker's physical bottom exactly on the z=0.707 table surface.
+      position: [0.2, -0.4, 0.704107]
+      orientation: [0.707, 0.707, 0.0, 0.0]
+      scale: [1.0, 1.0, 1.0]
+
+max_episodes: 200
+
+infer:
+  action_space: "ee_pos"
+  type: "local"
+  obs_names: {"camera_1_rgb": 'camera_1_rgb', "camera_3_rgb": 'camera_3_rgb'}
+  policy_model_path: ""
+  policy_config_path: ""
+  normalizer_path: ""
+  host: "127.0.0.1"
+  port: 8000
+  n_obs_steps: 1
+  timeout: 30
+  max_retries: 3
+
+task:
+  max_steps: 3000
+  obj_paths:
+    - path: "/World/beaker"
+      position_range:
+        x: [0.21, 0.36]
+        y: [-0.08, 0.08]
+        z: [0.761285, 0.761285]
+
+cameras:
+  - prim_path: "/World/Camera1"
+    name: "camera_1"
+    translation: [1, 0, 1.5]
+    resolution: [640, 480]
+    focal_length: 10
+    focus_distance: 400
+    horizontal_aperture: 20.955
+    clipping_range: [0.1, 100]
+    orientation: [0.61237, 0.35355, 0.35355, 0.61237]
+    # orientation: [0.70711, 0, 0, -0.70711]
+    image_type: "rgb"
+
+  # - prim_path: "/World/Camera2"
+  #   name: "camera_2"
+  #   translation: [0.1, 0, 1.5]
+  #   resolution: [640, 480]
+  #   focal_length: 10
+  #   focus_distance: 400
+  #   horizontal_aperture: 20.955
+  #   clipping_range: [0.1, 100]
+  #   orientation: [0.70711, 0, 0, -0.70711]
+  #   image_type: "rgb"
+
+  - prim_path: "/World/Franka/panda_hand/arm_camera"
+    name: "camera_3"
+    # Wrist-mounted overview of the table, gripper fingers, and grasp target.
+    local_translation: [-0.20, 0.0, -0.01]
+    local_orientation: [0.20083, 0.67799, -0.67799, -0.20083]
+    resolution: [640, 480]
+    focal_length: 10.0
+    horizontal_aperture: 20.955
+    focus_distance: 0.50
+    clipping_range: [0.05, 10.0]
+    image_type: "rgb"
+
+robot:
+  type: "franka"
+  position: [-0.4, -0, 0.71]
+
+collector:
+  type: "default"
+  compression: gzip
+  sample_hz: 10
+
+hydra:
+  run:
+    dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}
+
+multi_run:
+  run_dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}

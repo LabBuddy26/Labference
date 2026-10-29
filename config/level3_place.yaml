@@ -1,0 +1,219 @@
+name: Level3_place
+
+task_type: "pickplace"
+controller_type: "pickplace"
+
+mode: "collect"
+
+evaluation:
+  policy:
+    provider: "openpi"
+    profile: "eai4s_eval/configs/policies/openpi_franka_ee_pos_v1.yaml"
+    host: "127.0.0.1"
+    port: 8000
+    protocol: "websocket"
+    timeout: 30
+    execution_horizon: null
+    control_hz: 10
+  task_spec: "eai4s_eval/configs/tasks/B10_level3_place.yaml"
+  model_name: "eai4s_openpi"
+  split: "sim_clean"
+  num_episodes: 5
+  output_root: "outputs/eval_runs"
+  save_video: true
+
+collection_startup:
+  # A central, non-singular Franka pose with the gripper open.
+  ready_joint_positions: [0.0, -0.7854, 0.0, -2.3562, 0.0, 1.5708, 0.7854, 0.04, 0.04]
+  warmup_steps: 120
+  stable_frames: 30
+  joint_velocity_threshold: 0.02
+  object_displacement_threshold: 0.0005
+  max_wait_steps: 600
+sub_object: "/World/tube"
+target_path: "/World/tube_rack_1"
+
+# Dedicated test-tube insertion profile.  The two positions below are in the
+# authored local coordinates of test_tube_rack.usd (before the rack root's
+# 0.001 scale is applied).  The selected socket is the empty lower-left hole
+# extracted from the upper plate mesh (group_12).  The asset's group_06 is a
+# test-tube mesh, not a socket marker, and must not be used as an insert target.
+# Deriving the world pose from the rack transform keeps the target correct if
+# the rack position changes between episodes.
+tube_insertion:
+  # Initial centre offset of the source tube relative to the source rack.
+  # The root offset compensates tube_v1's 6.52 mm off-centre mesh origin so
+  # its geometry centre starts in the same lower-left physical socket.
+  source_tube_spawn_offset: [-0.024966, -0.118786, -0.008798]
+  source_tube_rest_center_offset: [-0.018446, -0.118786, -0.008839]
+  source_startup_xy_tolerance: 0.004
+  source_startup_z_tolerance: 0.008
+  source_startup_axis_tolerance_degrees: 8.0
+  socket_local_position: [-18.446424, -118.786393, 17.560448]
+  # Keep the commanded pre-release centre above the rack's lower support;
+  # after release the tube naturally drops about 40.8 mm to its resting pose.
+  pre_release_tube_center_local_position: [-18.446424, -118.786393, 31.970000]
+  inserted_tube_center_local_position: [-18.446424, -118.786393, -8.839000]
+
+  # The RMPFlow end-effector frame is right_gripper.  Its local +Z is the
+  # finger-length/insertion axis, so [0, pi, yaw] makes it point downward.
+  end_effector_yaw_degrees: 0.0
+  grasp_height_above_center: 0.073
+  gripper_target_distance: 0.003
+  grip_static_friction: 3.0
+  grip_dynamic_friction: 2.5
+  # Use high friction only at the fingers. Tube/rack contact stays low enough
+  # to slide into the socket instead of sticking to its rim and springing out.
+  tube_static_friction: 0.8
+  tube_dynamic_friction: 0.6
+  grasp_tracking_tolerance: 0.012
+  grasp_offset_update_limit: 0.002
+  pick_close_hold_frames: 90
+  pick_lift_height: 0.18
+  pick_lift_speed: 0.04
+  pick_retry_wait_steps: 45
+  pick_max_retries: 1
+
+  approach_height: 0.12
+  # Fine alignment must finish while the tube bottom is still clear of the
+  # rack. The complete final 80 mm is then traversed by guarded small steps.
+  alignment_height: 0.080
+  insertion_step: 0.00015
+  # Hand tracking may retain ~2.6 mm RMPFlow residual; physical safety is
+  # enforced separately by the stricter 1.5 mm tube-centre gate below.
+  xy_alignment_tolerance: 0.003
+  fine_alignment_z_tolerance: 0.008
+  insertion_tracking_tolerance: 0.004
+  insertion_lateral_tolerance: 0.003
+  insertion_axial_tolerance: 0.007
+  object_lateral_tolerance: 0.0015
+  object_axial_tolerance: 0.007
+  fine_alignment_max_correction: 0.004
+  fine_alignment_feedback_gain: 0.2
+  pre_release_hold_frames: 30
+  # Leave margin beyond the 45 consecutive success frames so normal release
+  # settling does not consume the entire observation window.
+  post_release_settle_frames: 120
+  retreat_height: 0.12
+
+  # Each phase fails independently instead of waiting for the episode-wide
+  # frame limit. At 60 Hz these allow 6 s for arm moves and 15 s for the
+  # guarded 80 mm incremental insertion.
+  phase_timeout_steps:
+    approach: 360
+    fine_align: 360
+    insert: 900
+    hold_before_release: 240
+    release: 60
+    retreat: 360
+    post_release_settle: 180
+
+  # A settled tube can lean slightly within the selected socket. 4 mm accepts
+  # the measured 3.53 mm centre offset while remaining far inside the spacing
+  # to any neighbouring socket.
+  success_xy_tolerance: 0.004
+  success_z_tolerance: 0.005
+  success_axis_tolerance_degrees: 8.0
+  stable_frames: 45
+
+max_episodes: 200
+
+infer:
+  action_space: "ee_pos"
+  type: "local"
+  obs_names: {"camera_1_rgb": 'camera_1_rgb', "camera_3_rgb": 'camera_3_rgb'}
+
+  policy_model_path: ""
+  policy_config_path: ""
+  normalizer_path: ""
+
+  host: "127.0.0.1"
+  port: 8000
+  n_obs_steps: 1
+  timeout: 30
+  max_retries: 3
+
+scene:
+    - prim_path: "/World/table"
+      usd_path: "assets/chemistry_lab/assets/table.usd"
+      position: [0.0, 0.0, 1.25]
+      orientation: [1.0, 0.0, 0.0, 0.0]
+      scale: [0.001, 0.001, 0.001]
+
+    - prim_path: "/World/tube_rack"
+      usd_path: "assets/chemistry_lab/assets/test_tube_rack.usd"
+      position: [0.3, 0.3, 0.82]
+      orientation: [1.0, 0.0, 0.0, 0.0]
+      scale: [0.001, 0.001, 0.001]
+
+
+    - prim_path: "/World/tube"
+      usd_path: "assets/chemistry_lab/assets/tube_v1.usd"
+      position: [0.3, 0.3, 0.8]
+      orientation: [0.0, 1.0, 0.0, 0.0]
+      scale: [0.01, 0.01, 0.01]
+
+
+    - prim_path: "/World/tube_rack_1"
+      usd_path: "assets/chemistry_lab/assets/test_tube_rack.usd"
+      position: [0.3, -0.2, 0.82]
+      orientation: [1.0, 0.0, 0.0, 0.0]
+      scale: [0.001, 0.001, 0.001]
+
+
+task:
+  # Safety cap only; insertion phases own their actionable timeout diagnostics.
+  max_steps: 5000
+  obj_paths:
+    - path: "/World/tube_rack_1"
+      position_range:
+        x: [0.16, 0.32]
+        y: [-0.2, -0.1]
+        z: [0.82, 0.82]
+
+
+cameras:
+  - prim_path: "/World/Camera1"
+    name: "camera_1"
+    translation: [1, 0, 1.2]
+    resolution: [640, 480]
+    focal_length: 10
+    # orientation: [0.61237, 0.35355, 0.35355, 0.61237]
+    orientation: [0.57922, 0.40558, 0.40558, 0.57923]
+    image_type: "rgb"
+
+  # - prim_path: "/World/Camera2"
+  #   name: "camera_2"
+  #   translation: [0.1, 0, 1.4]
+  #   resolution: [640, 480]
+  #   focal_length: 10
+  #   orientation: [0.70711, 0, 0, -0.70711]
+  #   image_type: "rgb"
+
+  - prim_path: "/World/Franka/panda_hand/arm_camera"
+    name: "camera_3"
+    # Wrist-mounted overview of the table, gripper fingers, and grasp target.
+    local_translation: [-0.20, 0.0, -0.01]
+    local_orientation: [0.20083, 0.67799, -0.67799, -0.20083]
+    resolution: [640, 480]
+    focal_length: 10.0
+    horizontal_aperture: 20.955
+    focus_distance: 0.50
+    clipping_range: [0.05, 10.0]
+    image_type: "rgb"
+
+robot:
+  type: "franka"
+  position: [-0.4, -0, 0.71]
+
+collector:
+  type: "default"
+  compression: gzip
+  sample_hz: 10
+
+hydra:
+  run:
+    dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}
+
+multi_run:
+  run_dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}

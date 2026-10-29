@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for improving LabBench. Please open an issue before a substantial
+Thank you for improving Labference. Please open an issue before a substantial
 change and keep each pull request focused.
 
 The internal development repository is the source of truth. Accepted public

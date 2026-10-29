@@ -1,0 +1,108 @@
+name: Level4_L09_hard_DeviceOperation
+task_type: device_hard_operate
+controller_type: device_hard_operate
+mode: collect
+
+evaluation:
+  policy:
+    provider: gr00t
+    profile: eai4s_eval/configs/policies/gr00t_franka_ee_pos_v1.yaml
+    host: 127.0.0.1
+    port: 5555
+    protocol: zmq
+    timeout: 30
+    execution_horizon: null
+    control_hz: 10
+  task_spec: eai4s_eval/configs/tasks/level4_L09_hard_device_operation.yaml
+  model_name: eai4s_gr00t
+  split: sim_clean
+  num_episodes: 5
+  max_steps: 500
+  output_root: outputs/eval_runs
+  save_video: true
+
+infer:
+  action_space: ee_pos
+  type: local
+  obs_names: {camera_1_rgb: camera_1_rgb, camera_3_rgb: camera_3_rgb}
+  host: 127.0.0.1
+  port: 8000
+  n_obs_steps: 1
+  timeout: 30
+  max_retries: 3
+
+scene:
+  - {prim_path: /World/table, usd_path: assets/chemistry_lab/assets/table.usd, position: [0.0, 0.0, 1.37], orientation: [1.0, 0.0, 0.0, 0.0], scale: [0.001, 0.001, 0.001]}
+  - {prim_path: /World/beaker2, usd_path: assets/chemistry_lab/assets/beaker_2.usd, position: [0.15, 0.23, 0.84], orientation: [0.707, 0.707, 0.0, 0.0], scale: [1.0, 1.0, 1.0], glass: true}
+  - {prim_path: /World/beaker3, usd_path: assets/chemistry_lab/assets/beaker_2.usd, position: [0.15, 0.35, 0.84], orientation: [0.707, 0.707, 0.0, 0.0], scale: [1.0, 1.0, 1.0], glass: true}
+  - {prim_path: /World/DryingBox_01, usd_path: assets/chemistry_lab/assets/DryingBox_01.usd, position: [0.55, 0.13, 0.976], orientation: [0.707, 0.0, 0.0, -0.707], scale: [0.001, 0.001, 0.001]}
+
+task:
+  type: device_hard_operate
+  device_path: /World/DryingBox_01
+  beaker_path: /World/beaker2
+  beaker3_path: /World/beaker3
+  button_path: /World/DryingBox_01/DryingBox_01/button
+  device_interior_position: [0.52, 0.04, 1.11]
+  device_reference_position: [0.55, 0.13, 0.976]
+  # Hand target calibrated against the oven shelf at device_reference_position.
+  beaker3_target_position: [0.42, 0.10, 1.12]
+  beaker3_geometry_center_offset: [0.02, 0.0, 0.05]
+  beaker3_initial_orientation_wxyz: [0.707, 0.707, 0.0, 0.0]
+  button_position: [0.45, 0.2, 0.77]
+  max_steps: 120000
+  door_drive_wait_steps: 900
+  oven_approach_margin_m: 0.03
+  obj_paths:
+    - path: /World/beaker2
+      position_range: {x: [0.15, 0.20], y: [0.23, 0.28], z: [0.84, 0.84]}
+    - path: /World/beaker3
+      # Keep the grasp point inside the reliable Panda approach envelope. The
+      # old far-X samples let the fingers push the beaker across the table.
+      position_range: {x: [0.15, 0.16], y: [0.35, 0.36], z: [0.84, 0.84]}
+    - path: /World/DryingBox_01
+      # The shelf/hand target is calibrated in the oven's authored pose. Keep
+      # this fixture fixed; translating it toward the arm workspace edge makes
+      # the low shelf approach unreachable for the Panda controller.
+      position_range: {x: [0.55, 0.55], y: [0.13, 0.13], z: [0.976, 0.976]}
+
+device_operation_success:
+  door_handle_displacement_m: 0.01
+  closed_handle_displacement_m: 0.008
+  # The beaker centre must remain in the physical device placement window.
+  # The expected geometry centre is offset from the calibrated hand target by
+  # about 2 cm in X and 5 cm in Z for this side-lying beaker asset.
+  place_xy_tolerance_m: 0.080
+  place_z_tolerance_m: 0.060
+  # The side-lying return mesh centre is displaced by the authored beaker
+  # offset when it is released; retain the table-region window used by the
+  # main task instead of requiring the mesh centre to equal the root pose.
+  return_xy_tolerance_m: 0.200
+  # The returned side-lying beaker centre is 12–14 cm above the authored
+  # table centre because its long axis is horizontal; this is the calibrated
+  # physical return window for the existing asset.
+  return_z_tolerance_m: 0.160
+
+max_episodes: 150
+cameras_names: [camera_1, camera_3]
+cameras:
+  - {prim_path: /World/Camera1, name: camera_1, translation: [-0.7, 1.4, 1.4], resolution: [640, 480], focal_length: 10, orientation: [-0.2297, -0.18336, 0.59631, 0.74701], image_type: rgb}
+  - prim_path: /World/Franka/panda_hand/arm_camera
+    name: camera_3
+    local_translation: [-0.20, 0.0, -0.01]
+    local_orientation: [0.20083, 0.67799, -0.67799, -0.20083]
+    resolution: [640, 480]
+    focal_length: 10.0
+    horizontal_aperture: 20.955
+    focus_distance: 0.50
+    clipping_range: [0.05, 10.0]
+    image_type: rgb
+robot: {type: franka, position: [-0.4, 0.0, 0.71]}
+collector: {type: default, compression: gzip, sample_hz: 10, queue_capacity: 2, background_write: true}
+collection_control: {main_compatible: true}
+collection_startup: {settle_steps: 60, stable_steps: 12, max_wait_steps: 600, position_tolerance_m: 0.003, joint_velocity_tolerance: 0.03}
+hydra:
+  run:
+    dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}
+multi_run:
+  run_dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}

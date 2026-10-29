@@ -1,0 +1,89 @@
+name: Level3_L07_hard_centrifuge_load
+release_protocol: centrifuge_v2
+task_type: "centrifugeload_H"
+controller_type: "centrifuge_hard_load"
+mode: "collect"
+
+evaluation:
+  policy: {provider: gr00t, profile: eai4s_eval/configs/policies/gr00t_franka_ee_pos_v1.yaml, host: 127.0.0.1, port: 5555, protocol: zmq, timeout: 30, execution_horizon: null, control_hz: 10}
+  task_spec: "eai4s_eval/configs/tasks/level3_L07_hard_centrifuge_load.yaml"
+  model_name: "eai4s_gr00t"
+  split: "sim_clean"
+  num_episodes: 5
+  max_steps: 500
+  output_root: "outputs/eval_runs"
+  save_video: true
+
+collection_startup:
+  drive_robot: true
+  ready_joint_positions: [0.0, -0.7854, 0.0, -2.3562, 0.0, 1.5708, 0.7854, 0.04, 0.04]
+  warmup_steps: 120
+  stable_frames: 30
+  joint_velocity_threshold: 0.02
+  object_displacement_threshold: 0.0005
+  max_wait_steps: 600
+
+collection_control:
+  main_compatible: true
+  grasp_width_m: 0.001
+  place_descent_tolerance_m: 0.004
+  place_pre_z_m: 0.20
+  place_offset_z_m: 0.070
+  place_xy_compensation_m: [0.0, 0.0]
+sub_object1: /World/NMR_01
+sub_object2: /World/NMR_02
+sub_object3: /World/NMR_03
+target_path: /World/Centrifugal
+preloaded_position: [0.0627004, 0.36812646, 0.82909817]
+target1_position: [-0.01812629, 0.31270059, 0.8290982]
+target2_position: [0.11534928, 0.32306444, 0.82909817]
+max_episodes: 200
+
+centrifuge_success:
+  pick_lift_height_m: 0.12
+  # The NMR mesh centre is offset from the TCP by roughly 48 mm in Z and
+  # 27 mm radially after the proven main-branch place motion.  These are
+  # collection-mode geometric tolerances; evaluator scoring remains strict.
+  place_xy_tolerance_m: 0.03
+  place_z_tolerance_m: 0.12
+
+infer:
+  action_space: ee_pos
+  type: local
+  obs_names: {camera_1_rgb: camera_1_rgb, camera_3_rgb: camera_3_rgb}
+  host: 127.0.0.1
+  port: 8000
+  n_obs_steps: 1
+  timeout: 30
+  max_retries: 3
+
+scene:
+  - {prim_path: /World/table, usd_path: assets/chemistry_lab/assets/table.usd, position: [0.0, 0.0, 1.25], orientation: [1.0, 0.0, 0.0, 0.0], scale: [0.001, 0.001, 0.001]}
+  - {prim_path: /World/NMR_01, usd_path: assets/chemistry_lab/assets/nmr.usd, position: [0.25, -0.25, 0.76], orientation: [0.0, 1.0, 0.0, 0.0], scale: [0.75, 0.75, 0.75]}
+  - {prim_path: /World/NMR_02, usd_path: assets/chemistry_lab/assets/nmr.usd, position: [0.38, -0.15, 0.76], orientation: [0.0, 1.0, 0.0, 0.0], scale: [0.75, 0.75, 0.75]}
+  - {prim_path: /World/NMR_03, usd_path: assets/chemistry_lab/assets/nmr.usd, position: [0.0627004, 0.36812646, 0.82909817], orientation: [0.0, 1.0, 0.0, 0.0], scale: [0.75, 0.75, 0.75]}
+  - {prim_path: /World/Centrifugal, usd_path: assets/chemistry_lab/assets/CentrifugalMachine_mesh.usd, position: [0.05, 0.41, 0.72], orientation: [0.0, 1.0, 0.0, 0.0], scale: [0.5, 0.5, 0.5]}
+
+task:
+  max_steps: 4000
+  obj_paths:
+    - {path: /World/NMR_01, position_range: {x: [0.20, 0.25], y: [-0.25, -0.15], z: [0.76, 0.76]}}
+    - {path: /World/NMR_02, position_range: {x: [0.30, 0.38], y: [-0.15, -0.05], z: [0.76, 0.76]}}
+
+cameras:
+  - {prim_path: /World/Camera1, name: camera_1, translation: [1.0, 0.0, 1.2], resolution: [640, 480], focal_length: 10, orientation: [0.57922, 0.40558, 0.40558, 0.57923], image_type: rgb}
+  - prim_path: /World/Franka/panda_hand/arm_camera
+    name: camera_3
+    local_translation: [-0.20, 0.0, -0.01]
+    local_orientation: [0.20083, 0.67799, -0.67799, -0.20083]
+    resolution: [640, 480]
+    focal_length: 10.0
+    horizontal_aperture: 20.955
+    focus_distance: 0.50
+    clipping_range: [0.05, 10.0]
+    image_type: rgb
+
+robot: {type: franka, gripper_position_reference: rmp, position: [-0.4, 0.0, 0.71]}
+collector: {type: default, compression: gzip, sample_hz: 10}
+hydra: {run: {dir: "outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}"}}
+multi_run: {run_dir: "outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}"}

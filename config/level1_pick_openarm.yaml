@@ -1,0 +1,109 @@
+name: Level1_openarm_pick
+
+task_type: "pick"
+controller_type: "openarm_pick"
+
+mode: "collect"
+
+# This task remains registered for catalog completeness, but its OpenArm
+# action contract is not compatible with the Franka 8-D OpenPI profile.
+evaluation:
+  policy:
+    provider: "openpi"
+    profile: "eai4s_eval/configs/policies/openpi_franka_joint8_v1.yaml"
+    host: "127.0.0.1"
+    port: 8000
+    protocol: "websocket"
+    timeout: 30
+    execution_horizon: null
+    control_hz: 10
+  task_spec: "eai4s_eval/configs/tasks/B05_level1_pick_openarm.yaml"
+  model_name: "eai4s_openpi"
+  split: "sim_clean"
+  num_episodes: 5
+  output_root: "outputs/eval_runs"
+  save_video: true
+scene:
+    - prim_path: "/World/table"
+      usd_path: "assets/chemistry_lab/assets/table.usd"
+      position: [0.0, 0.0, 1.25]
+      orientation: [1.0, 0.0, 0.0, 0.0]
+      scale: [0.001, 0.001, 0.001]
+
+    - prim_path: "/World/beaker"
+      usd_path: "assets/chemistry_lab/assets/beaker_scale_500ml.usd"
+      orientation: [0.707, 0.707, 0.0, 0.0]
+      scale: [0.8, 0.8, 0.8]
+
+max_episodes: 200
+
+infer:
+  action_space: "joint"
+  type: "local"
+  obs_names: {"camera_1_rgb": 'camera_1_rgb', "camera_3_rgb": 'camera_3_rgb'}
+  policy_model_path: ""
+  policy_config_path: ""
+  normalizer_path: ""
+  host: "127.0.0.1"
+  port: 8000
+  n_obs_steps: 1
+  timeout: 30
+  max_retries: 3
+
+task:
+  max_steps: 2000
+  obj_paths:
+    - path: "/World/beaker"
+      position_range:
+        x: [-0.15, -0.08]
+        y: [0.21, 0.32]
+        z: [0.80, 0.80]
+
+cameras:
+  - prim_path: "/World/Camera1"
+    name: "camera_1"
+    translation: [1, 0, 1.5]
+    resolution: [640, 480]
+    focal_length: 10
+    focus_distance: 400
+    horizontal_aperture: 20.955
+    clipping_range: [0.1, 100]
+    orientation: [0.61237, 0.35355, 0.35355, 0.61237]
+    # orientation: [0.70711, 0, 0, -0.70711]
+    image_type: "rgb"
+
+  # - prim_path: "/World/Camera2"
+  #   name: "camera_2"
+  #   translation: [0.1, 0, 1.5]
+  #   resolution: [640, 480]
+  #   focal_length: 10
+  #   focus_distance: 400
+  #   horizontal_aperture: 20.955
+  #   clipping_range: [0.1, 100]
+  #   orientation: [0.70711, 0, 0, -0.70711]
+  #   image_type: "rgb"
+
+  - prim_path: "/World/OpenArm/openarm_left_link7/arm_camera"
+    name: "camera_3"
+    resolution: [640, 480]
+    # focus_distance: 400
+    # horizontal_aperture: 20.955
+    # clipping_range: [0.1, 100]
+    image_type: "rgb"
+
+robot:
+  type: "openarm"
+  usd_path: "openarm.usd"
+  position: [-0.5, -0, 0.5]
+
+collector:
+  type: "default"
+  compression: gzip
+  sample_hz: 10
+
+hydra:
+  run:
+    dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}
+
+multi_run:
+  run_dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}

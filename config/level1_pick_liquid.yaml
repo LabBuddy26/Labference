@@ -1,0 +1,183 @@
+name: Level1_pick_liquid
+
+task_type: "pickliquid"
+controller_type: "pickliquid"
+
+mode: "collect"
+
+evaluation:
+  policy:
+    provider: "openpi"
+    profile: "eai4s_eval/configs/policies/openpi_franka_ee_pos_v1.yaml"
+    host: "127.0.0.1"
+    port: 8000
+    protocol: "websocket"
+    timeout: 30
+    execution_horizon: null
+    control_hz: 10
+  task_spec: "eai4s_eval/configs/tasks/B04_level1_pick_liquid.yaml"
+  model_name: "eai4s_openpi"
+  split: "sim_clean"
+  num_episodes: 5
+  output_root: "outputs/eval_runs"
+  save_video: true
+
+# The task is a pick-and-pour demonstration: raise the beaker, tilt it long
+# enough for the water to leave, return it upright, then keep it still briefly.
+# These values deliberately leave ample time for the 0.25 m lift while keeping
+# the whole sequence well below ``task.max_steps``.
+pick_liquid_pour:
+  # Events 6, 7 and 8 use measured joint angles or explicit hold frames.
+  controller_events_dt: [0.006, 0.003, 0.01, 0.02, 0.02, 0.0012, 0.01, 0.01, 0.01, 0.0125]
+  pour_angle_degrees: 120.0
+  pour_joint_velocity: -0.45
+  # Keep the cup at maximum tilt for fifteen seconds so the particle liquid has
+  # time to drain before the wrist begins returning.
+  pour_hold_steps: 900
+  return_joint_velocity: 0.30
+  # Return to the upright pose captured before pouring (vertical to the table).
+  return_tolerance_degrees: 1.0
+  # The beaker geometry centre shifts while it is rotated.  A 2 cm lift is
+  # sufficient evidence that it left the table without rejecting a valid pour
+  # because that centre is no longer directly above its start location.
+  min_lift_m: 0.02
+  return_hold_steps: 30
+
+collection_startup:
+  # A central, non-singular Franka pose with the gripper open.
+  ready_joint_positions: [0.0, -0.7854, 0.0, -2.3562, 0.0, 1.5708, 0.7854, 0.04, 0.04]
+  warmup_steps: 120
+  stable_frames: 30
+  joint_velocity_threshold: 0.02
+  object_displacement_threshold: 0.0005
+  max_wait_steps: 600
+
+# usd_path: "assets/chemistry_lab/lab_001/lab_001.usd"
+# usd_path: "assets/chemistry_lab/hard_task/lab_004.usd"
+scene:
+    base_scene:
+      - prim_path: "/World/table"
+        usd_path: "assets/chemistry_lab/assets/table.usd"
+        position: [0.0, 0.0, 1.25]
+        orientation: [1.0, 0.0, 0.0, 0.0]
+        scale: [0.001, 0.001, 0.001]
+
+      - prim_path: "/World/beaker"
+        usd_path: "assets/chemistry_lab/assets/beaker_scale_500ml.usd"
+        position: [0.0, 0.0, 0.8]
+        orientation: [0.707, 0.707, 0.0, 0.0]
+        scale: [1.0, 1.0, 1.0]
+
+    liquid_scene:
+        prim_path: "/World/beaker"
+        geometry:
+          outer_radius: 0.036
+          height: 0.16
+          wall_thickness: 0.0025
+          bottom_thickness: 0.004
+          wall_segments: 64
+          grip_band_center_fraction: 0.68
+          visual_scale: [1.0, 1.0, 1.0]
+
+    liquid:
+        enabled": true
+        name: "water"
+        prim_path: "/World/Liquid/Water"
+        particle_system_path: "/World/Liquid/Water/ParticleSystem"
+        particle_set_path: "/World/Liquid/Water/ParticleSet"
+        material_path: "/World/Looks/LiftWater"
+        material_preset: "container_water_stable"
+        particle_set_type: "instancer"
+        collision_mode: "proxies"
+        offset_mode: physx_autocompute
+        render_mode: "particles"
+        color: [0.15, 0.68, 1.0, 1.0]
+        fill_fraction: 0.50
+        particle_spacing: 0.00155
+        particle_contact_offset: 0.0013047
+        particle_radius: 0.00072
+        particle_mass: 0.0
+        max_particles: 15000
+        solver_iterations: 48
+        enable_isosurface: false
+        preview_attach_to_container: false
+        settle_steps: 180
+        collision_proxy_contact_offset: 0.0026
+        collision_proxy_rest_offset: 0.00010
+        collision_proxy_wall_thickness_scale: 6.5
+        collision_proxy_arc_overlap: 1.90
+        collision_proxy_bottom_overlap: 0.0025
+
+max_episodes: 200
+
+infer:
+  action_space: "ee_pos"
+  type: "replay"
+  obs_names: {"camera_1_rgb": 'camera_1_rgb', "camera_3_rgb": 'camera_3_rgb'}
+  replay_data_path: "outputs/collect/example/dataset/episode_0000.h5"
+  host: "127.0.0.1"
+  port: 8000
+  n_obs_steps: 1
+  timeout: 30
+  max_retries: 3
+
+task:
+  max_steps: 2000
+  obj_paths:
+    - path: "/World/beaker"
+      position_range:
+        x: [0.21, 0.36]
+        y: [-0.08, 0.08]
+        z: [0.8, 0.8]
+
+cameras:
+  - prim_path: "/World/Camera1"
+    name: "camera_1"
+    translation: [1, 0, 1.5]
+    resolution: [640, 480]
+    focal_length: 10
+    focus_distance: 400
+    horizontal_aperture: 20.955
+    clipping_range: [0.1, 100]
+    orientation: [0.61237, 0.35355, 0.35355, 0.61237]
+    # orientation: [0.70711, 0, 0, -0.70711]
+    image_type: "rgb"
+
+  # - prim_path: "/World/Camera2"
+  #   name: "camera_2"
+  #   translation: [0.1, 0, 1.5]
+  #   resolution: [640, 480]
+  #   focal_length: 10
+  #   focus_distance: 400
+  #   horizontal_aperture: 20.955
+  #   clipping_range: [0.1, 100]
+  #   orientation: [0.70711, 0, 0, -0.70711]
+  #   image_type: "rgb"
+
+  - prim_path: "/World/Franka/panda_hand/arm_camera"
+    name: "camera_3"
+    # Wrist-mounted overview of the table, gripper fingers, and grasp target.
+    local_translation: [-0.20, 0.0, -0.01]
+    local_orientation: [0.20083, 0.67799, -0.67799, -0.20083]
+    resolution: [640, 480]
+    focal_length: 10.0
+    horizontal_aperture: 20.955
+    focus_distance: 0.50
+    clipping_range: [0.05, 10.0]
+    image_type: "rgb"
+
+robot:
+  type: "franka"
+  position: [-0.4, -0, 0.71]
+
+collector:
+  type: "default"
+  compression: gzip
+  sample_hz: 10
+
+hydra:
+  run:
+    dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}
+
+multi_run:
+  run_dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}

@@ -1,0 +1,147 @@
+name: Level4_L04_LiquidMixing
+
+task_type: "LiquidMixing"
+controller_type: "LiquidMixing"
+
+
+mode: "collect"
+
+evaluation:
+  policy:
+    provider: "gr00t"
+    profile: "eai4s_eval/configs/policies/gr00t_franka_ee_pos_v1.yaml"
+    host: "127.0.0.1"
+    port: 5555
+    protocol: "zmq"
+    timeout: 30
+    execution_horizon: null
+    control_hz: 10
+  task_spec: "eai4s_eval/configs/tasks/B19_level4_liquid_mixing.yaml"
+  model_name: "eai4s_gr00t"
+  split: "sim_clean"
+  num_episodes: 5
+  max_steps: 900
+  output_root: "outputs/eval_runs"
+  save_video: true
+
+scene:
+    - prim_path: "/World/table"
+      usd_path: "assets/chemistry_lab/assets/table.usd"
+      position: [0.0, 0.0, 1.25]
+      orientation: [1.0, 0.0, 0.0, 0.0]
+      scale: [0.001, 0.001, 0.001]
+    
+    # - prim_path: "/World/plat"
+    #   usd_path: "assets/chemistry_lab/assets/target_plat_1.usd"
+    #   position: [0.21, 0.31, 0.71]
+    #   orientation: [0.707, 0.0, 0.0, -0.707]
+    #   scale: [0.15, 0.15, 0.0005]
+
+    # - prim_path: "/World/plat"
+    #   usd_path: "assets/chemistry_lab/assets/heat_device.usd"
+    #   position: [0.21, 0.31, 0.71]
+    #   orientation: [0.707, 0.0, 0.0, -0.707]
+    #   scale: [0.001, 0.001, 0.001]
+    
+    - prim_path: "/World/beaker_4"
+      usd_path: "assets/chemistry_lab/assets/beaker_4.usd"
+      position: [0.2, 0.31, 0.76]
+      orientation: [0.707, 0.707, 0.0, 0.0]
+      scale: [1.0, 1.0, 1.0]
+      glass: True
+      
+    - prim_path: "/World/beaker_03"
+      usd_path: "assets/chemistry_lab/assets/beaker_2.usd"
+      position: [0.16, -0.3, 0.72]
+      orientation: [0.707, 0.707, 0.0, 0.0]
+      scale: [1.0, 1.0, 1.0]
+      glass: True
+
+    - prim_path: "/World/beaker_04"
+      usd_path: "assets/chemistry_lab/assets/beaker_2.usd"
+      position: [0.173, -0.1, 0.72]
+      orientation: [0.707, 0.707, 0.0, 0.0]
+      scale: [1.0, 1.0, 1.0]
+      glass: True
+    
+    - prim_path: "/World/beaker_05"
+      usd_path: "assets/chemistry_lab/assets/beaker_2.usd"
+      position: [0.17, 0.035, 0.72]
+      orientation: [0.707, 0.707, 0.0, 0.0]
+      scale: [1.0, 1.0, 1.0]
+      glass: True
+    
+max_episodes: 200
+
+
+infer:
+  action_space: "ee_pos"
+  type: "local"
+  obs_names: {"camera_1_rgb": 'camera_1_rgb', "camera_3_rgb": 'camera_3_rgb'}
+
+  policy_model_path: "outputs/train/2025.07.29/17.08.44_train_act_image_pick_act/checkpoints/latest.ckpt"
+  policy_config_path: "outputs/train/2025.07.29/17.08.44_train_act_image_pick_act/.hydra/config.yaml"
+  normalizer_path: "outputs/train/2025.07.29/17.08.44_train_act_image_pick_act/checkpoints/normalize.ckpt"
+
+  host: "101.126.156.90"
+  port: 10023
+  n_obs_steps: 3
+  timeout: 30
+  max_retries: 3
+
+  is_test_material: False
+
+task:
+  max_steps: 4000
+  obj_paths:
+    - path: "/World/beaker_03"
+      position_range:
+        x: [0.15, 0.2]
+        y: [-0.3, -0.25]
+        z: [0.72, 0.72]
+    
+    - path: "/World/beaker_04"
+      position_range:
+        x: [0.15, 0.2]
+        y: [-0.2, -0.1]
+        z: [0.72, 0.72]
+    
+    - path: "/World/beaker_05"
+      position_range:
+        x: [0.15, 0.2]
+        y: [-0.05, 0.1]
+        z: [0.72, 0.72]
+    
+cameras:
+  - prim_path: "/World/Camera1"
+    name: "camera_1"
+    translation: [1.0, 0.0, 1.2]
+    resolution: [640, 480]
+    focal_length: 10
+    orientation: [0.57922, 0.40558, 0.40558, 0.57923]
+    image_type: "rgb"
+  - prim_path: "/World/Franka/panda_hand/arm_camera"
+    name: "camera_3"
+    local_translation: [-0.20, 0.0, -0.01]
+    local_orientation: [0.20083, 0.67799, -0.67799, -0.20083]
+    resolution: [640, 480]
+    focal_length: 10.0
+    horizontal_aperture: 20.955
+    focus_distance: 0.50
+    clipping_range: [0.05, 10.0]
+    image_type: "rgb"
+robot:
+  type: "franka"
+  position: [-0.4, -0, 0.71]
+
+collector:
+  type: "default"
+  compression: gzip
+  sample_hz: 10
+
+hydra:
+  run:
+    dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}
+
+multi_run:
+  run_dir: outputs/${mode}/${now:%Y.%m.%d}/${now:%H.%M.%S}_${name}

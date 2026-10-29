@@ -1,9 +1,9 @@
 # Assets and licences
 
-LabBench separates software licensing from asset licensing.
+Labference separates software licensing from asset licensing.
 
 - First-party software is released under the MIT License.
-- Published LabBench dataset releases use CC BY 4.0 as described in
+- Published Labference dataset releases use CC BY 4.0 as described in
   `DATASET_LICENSE.md`.
 - Every public asset requires an explicit record in
   `eai4s_eval/configs/assets/asset_licenses_v1.json`.

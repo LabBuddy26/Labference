@@ -1,5 +1,5 @@
 name: Bug report
-description: Report a reproducible LabBench software or documentation issue
+description: Report a reproducible Labference software or documentation issue
 title: "[Bug]: "
 labels: ["bug"]
 body:
