@@ -1,0 +1,217 @@
+{
+  "schema_version": "dataset_statistics/v1",
+  "generated_at": "2026-07-17T07:16:31Z",
+  "real_robot_teleoperation": {
+    "status": "active",
+    "totals": {
+      "batch_count": 15,
+      "sample_count": 873,
+      "duration_seconds": 17468
+    },
+    "rows": [
+      {
+        "device_model": "UR3",
+        "task_id": "liquid_pour",
+        "task_name": "液体倾倒",
+        "batch_count": 2,
+        "sample_count": 41,
+        "duration_seconds": 1698,
+        "collection_date_start": "2026-04-29",
+        "collection_date_end": "2026-05-13",
+        "operator_ids": [
+          "operator01",
+          "operator02"
+        ]
+      },
+      {
+        "device_model": "UR3",
+        "task_id": "glass_beaker_pick_place",
+        "task_name": "玻璃烧杯抓放",
+        "batch_count": 2,
+        "sample_count": 120,
+        "duration_seconds": 1941,
+        "collection_date_start": "2026-05-20",
+        "collection_date_end": "2026-05-25",
+        "operator_ids": [
+          "operator01",
+          "operator02"
+        ]
+      },
+      {
+        "device_model": "UR3",
+        "task_id": "test_tube_to_rack",
+        "task_name": "试管入架",
+        "batch_count": 2,
+        "sample_count": 100,
+        "duration_seconds": 1698,
+        "collection_date_start": "2026-06-02",
+        "collection_date_end": "2026-06-23",
+        "operator_ids": [
+          "operator01",
+          "operator02"
+        ]
+      },
+      {
+        "device_model": "UR3",
+        "task_id": "clear_bottle_transfer",
+        "task_name": "透明瓶转移",
+        "batch_count": 2,
+        "sample_count": 100,
+        "duration_seconds": 2404,
+        "collection_date_start": "2026-06-03",
+        "collection_date_end": "2026-06-23",
+        "operator_ids": [
+          "operator01",
+          "operator02"
+        ]
+      },
+      {
+        "device_model": "UR3",
+        "task_id": "centrifuge_tube_to_rack",
+        "task_name": "离心管入架",
+        "batch_count": 3,
+        "sample_count": 260,
+        "duration_seconds": 4555,
+        "collection_date_start": "2026-06-23",
+        "collection_date_end": "2026-07-06",
+        "operator_ids": [
+          "operator01",
+          "operator02"
+        ]
+      },
+      {
+        "device_model": "UR3",
+        "task_id": "sample_vial_storage",
+        "task_name": "样品瓶收纳",
+        "batch_count": 1,
+        "sample_count": 100,
+        "duration_seconds": 1008,
+        "collection_date_start": "2026-06-25",
+        "collection_date_end": "2026-06-25",
+        "operator_ids": [
+          "operator01",
+          "operator02"
+        ]
+      },
+      {
+        "device_model": "OPENARM",
+        "task_id": "centrifuge_tube_to_rack",
+        "task_name": "离心管入架",
+        "batch_count": 2,
+        "sample_count": 98,
+        "duration_seconds": 2731,
+        "collection_date_start": "2026-07-13",
+        "collection_date_end": "2026-07-14",
+        "operator_ids": [
+          "operator01",
+          "operator02"
+        ]
+      },
+      {
+        "device_model": "OPENARM",
+        "task_id": "clear_bottle_transfer",
+        "task_name": "透明瓶转移",
+        "batch_count": 1,
+        "sample_count": 54,
+        "duration_seconds": 1433,
+        "collection_date_start": "2026-07-16",
+        "collection_date_end": "2026-07-16",
+        "operator_ids": [
+          "operator01",
+          "operator02"
+        ]
+      }
+    ]
+  },
+  "umi": {
+    "status": "active",
+    "totals": {
+      "batch_count": 12,
+      "sample_count": 743,
+      "duration_seconds": 9322
+    },
+    "rows": [
+      {
+        "device_model": "UMI",
+        "task_id": "glass_beaker_pick_place",
+        "task_name": "玻璃烧杯抓放",
+        "batch_count": 2,
+        "sample_count": 170,
+        "duration_seconds": 1939,
+        "collection_date_start": "2026-05-21",
+        "collection_date_end": "2026-05-25",
+        "operator_ids": [
+          "operator01",
+          "operator02"
+        ]
+      },
+      {
+        "device_model": "UMI",
+        "task_id": "test_tube_to_rack",
+        "task_name": "试管入架",
+        "batch_count": 3,
+        "sample_count": 152,
+        "duration_seconds": 1908,
+        "collection_date_start": "2026-06-02",
+        "collection_date_end": "2026-06-23",
+        "operator_ids": [
+          "operator01",
+          "operator02"
+        ]
+      },
+      {
+        "device_model": "UMI",
+        "task_id": "clear_bottle_transfer",
+        "task_name": "透明瓶转移",
+        "batch_count": 3,
+        "sample_count": 159,
+        "duration_seconds": 2600,
+        "collection_date_start": "2026-06-03",
+        "collection_date_end": "2026-06-23",
+        "operator_ids": [
+          "operator01",
+          "operator02"
+        ]
+      },
+      {
+        "device_model": "UMI",
+        "task_id": "centrifuge_tube_to_rack",
+        "task_name": "离心管入架",
+        "batch_count": 2,
+        "sample_count": 162,
+        "duration_seconds": 1747,
+        "collection_date_start": "2026-06-23",
+        "collection_date_end": "2026-07-01",
+        "operator_ids": [
+          "operator01",
+          "operator02"
+        ]
+      },
+      {
+        "device_model": "UMI",
+        "task_id": "sample_vial_storage",
+        "task_name": "样品瓶收纳",
+        "batch_count": 2,
+        "sample_count": 100,
+        "duration_seconds": 1128,
+        "collection_date_start": "2026-06-24",
+        "collection_date_end": "2026-07-01",
+        "operator_ids": [
+          "operator01",
+          "operator02"
+        ]
+      }
+    ]
+  },
+  "simulation": {
+    "status": "empty",
+    "totals": {
+      "dataset_batch_count": 0,
+      "episode_count": 0,
+      "frame_count": 0,
+      "duration_seconds": 0,
+      "scene_count": 0
+    },
+    "rows": []
+  }
+}

@@ -1,0 +1,27 @@
+{% extends "public_base.html" %}
+{% block title %}Tasks · {{ snapshot.site.brand }}{% endblock %}
+{% block page_id %}tasks{% endblock %}
+{% block content %}
+<header class="page-hero"><div><p class="section-kicker">4 special workflows + 24 ordinary tasks</p><h1>Explore the Labference task collections.</h1><p class="lede">Explore the report’s three detailed settings—centrifuge loading, feedback weighing and placement recall—alongside the selected device-operation workflow. Appendix A provides the broader twelve laboratory workflows and twelve reasoning-in-action tasks.</p></div></header>
+<div class="page-shell">
+  <section id="release-protocols" class="special-task-section"><div class="section-head"><div><p class="section-kicker">Selected workflows</p><h2>4 optimized long-horizon tasks</h2></div></div>{% include "_special_task_cards.html" %}</section>
+  <section id="ordinary-tasks"><div class="section-head"><div><p class="section-kicker">L01–L12 · R01–R12</p><h2>24 ordinary tasks</h2></div><p class="coverage">Long-horizon · Reasoning-in-action</p></div>
+  <div class="filter-bar" aria-label="Task filters">
+    <input data-task-search type="search" placeholder="Search task name, ID or description" aria-label="Search tasks">
+    <select data-task-track aria-label="Filter by track"><option value="">All tracks</option>{% for track in snapshot.catalog.tracks %}<option value="{{ track.track_id }}">{{ track.prefix }} · {{ track.label }}</option>{% endfor %}</select>
+    <select data-task-status aria-label="Filter by availability"><option value="">All states</option><option value="available">Available</option><option value="planned">Planned</option></select>
+    <select data-task-action aria-label="Filter by atomic action"><option value="">All atomic actions</option>{% for action in snapshot.catalog.atomic_actions %}<option value="{{ action.action_id }}">{{ action.label }}</option>{% endfor %}</select>
+    <span class="result-count" data-result-count></span>
+  </div>
+  <div class="card-grid" data-task-grid>
+    {% for task in snapshot.catalog.tasks %}
+    <article class="task-card" data-task-card data-track="{{ task.track_id }}" data-status="{{ task.availability }}" data-actions="{{ task.atomic_actions | join(',') }}" data-search="{{ (task.task_id ~ ' ' ~ task.name_en ~ ' ' ~ task.summary_en) | lower }}">
+      <div class="card-media"><span class="media-fallback">{{ task.task_id }}</span>{% if task.media.demos %}{% set preview = task.media.demos[0].views[0] %}<video muted loop playsinline preload="none" poster="{{ base_url }}/static/{{ preview.poster }}" data-hover-video aria-label="{{ task.name_en }} preview"><source data-src="{{ base_url }}/static/{{ preview.preview }}" type="video/mp4"></video><span class="task-detail-hint task-detail-overlay">Click to view details</span>{% elif task.media.poster %}<img src="{{ base_url }}/static/{{ task.media.poster }}" alt="{{ task.name_en }} task preview" loading="lazy">{% endif %}</div>{% if task.media.demos %}<p class="task-video-hover-hint">Hover to preview</p>{% endif %}
+      <div class="card-body"><div class="card-meta"><span>{{ task.task_id }} · {{ task.track.prefix }}</span><span class="status{% if task.availability == 'planned' %} planned{% endif %}">{{ task.availability }}</span></div><h3>{{ task.name_en }}</h3><p>{{ task.summary_en }}</p><div class="chip-row">{% for label in task.atomic_action_labels %}<span class="chip">{{ label }}</span>{% endfor %}</div></div>
+      <a class="card-link" href="{{ base_url }}/tasks/{{ task.task_id }}/">View {{ task.name_en }}</a>
+    </article>
+    {% endfor %}
+  </div>
+  </section>
+</div>
+{% endblock %}

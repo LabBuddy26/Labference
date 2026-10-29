@@ -1,0 +1,41 @@
+task_id: level2_L07_centrifuge_load
+task_name: Level 2 Centrifuge Load
+task_version: 1.0.0
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level2_L07_centrifuge_load, policy_phase: full_task}
+robot: franka
+task_family: centrifuge_load
+task_level: level2
+task_tags: [benchmark, multi_object, pick_place, centrifuge]
+leaderboard_group: benchmark_multi_stage
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 700
+instruction:
+  canonical: Load the loose NMR tube into the centrifuge beside the preloaded tube
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - predicate: task_state_true
+        args: {id: nmr_01_placed, key: task_state.nmr_01_placed}
+      - predicate: task_state_true
+        args: {id: nmr_02_placed, key: task_state.nmr_02_placed}
+  terminal:
+    required: true
+    all:
+      - predicate: released
+        args: {open_threshold: 0.035}
+  stability: {required: false, all: []}
+  safety: {hard_fail: []}
+failure_modes:
+  - {code: nmr_missing_slot, category: wrong_place, description: At least one NMR tube did not reach its centrifuge slot.}
+  - {code: nmr_not_released, category: sequence_error, description: The last NMR tube was not released.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields:
+  - task_state.nmr_01_placed
+  - task_state.nmr_02_placed
+  - task_state.centrifuge_loaded
+  - gripper_pos

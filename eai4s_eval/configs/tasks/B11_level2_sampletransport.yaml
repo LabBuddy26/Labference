@@ -1,0 +1,43 @@
+task_id: level2_L01_sampletransport
+task_name: Level 2 Sample Transport
+task_version: 1.0.0
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level2_L01_sampletransport, policy_phase: full_task}
+robot: franka
+task_family: sample_transport
+task_level: level2
+task_tags: [benchmark, multi_object, pick_place, sample_box]
+leaderboard_group: benchmark_multi_stage
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 500
+instruction:
+  canonical: Pick up the three vial bottles and place each one into a separate slot in the sample box
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - predicate: task_state_true
+        args: {id: sample_slot_0_filled, key: task_state.sample_slot_0_filled}
+      - predicate: task_state_true
+        args: {id: sample_slot_1_filled, key: task_state.sample_slot_1_filled}
+      - predicate: task_state_true
+        args: {id: sample_slot_2_filled, key: task_state.sample_slot_2_filled}
+  terminal:
+    required: true
+    all:
+      - predicate: released
+        args: {open_threshold: 0.035}
+  stability: {required: false, all: []}
+  safety: {hard_fail: []}
+failure_modes:
+  - {code: vial_missing_target, category: wrong_place, description: At least one vial did not reach its assigned sample-box slot.}
+  - {code: vial_not_released, category: sequence_error, description: The final vial was not released.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields:
+  - task_state.sample_slot_0_filled
+  - task_state.sample_slot_1_filled
+  - task_state.sample_slot_2_filled
+  - gripper_pos

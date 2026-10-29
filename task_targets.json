@@ -1,0 +1,9 @@
+{
+  "level2_L03_singlepipetting": 200,
+  "level2_L05_formulation_spotting": 200,
+  "level2_L07_centrifuge_load": 200,
+  "level3_L07_hard_centrifuge_load": 200,
+  "level2_R06_centrifuge_load": 200,
+  "level2_R07_centrifuge_load": 200,
+  "level3_R12_devicecover_status": 200
+}

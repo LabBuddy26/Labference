@@ -1,0 +1,10 @@
+{
+  "schema_version": "labbench_official_evaluation_suites/v1",
+  "default_suite_id": "eai4s_benchmark_longhorizon_reasoning_v1",
+  "suite_ids": [
+    "eai4s_benchmark_core_v1",
+    "eai4s_benchmark_full_v1",
+    "eai4s_benchmark_longhorizon_reasoning_v1",
+    "eai4s_chem_basic_v0_1"
+  ]
+}

@@ -1,0 +1,27 @@
+task_id: level2_R07_centrifuge_load
+task_name: Level 2 Empty Symmetric Pair Selection
+task_version: 1.0.0
+suite: eai4s_benchmark_longhorizon_reasoning_v1
+runtime: {backend: eai4s_benchmark, env_config: level2_R07_centrifuge_load, policy_phase: full_task}
+robot: franka
+task_family: centrifuge_reasoning
+task_level: level2
+task_tags: [benchmark, reasoning, centrifuge, multi_object]
+leaderboard_group: reasoning_in_action
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 1800
+instruction: {canonical: Select the first empty symmetric slot pair and load both tubes}
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal: {all: [{predicate: task_state_true, args: {id: symmetric_pair_loaded, key: task_state.symmetric_pair_loaded}}]}
+  terminal: {required: true, all: [{predicate: released, args: {open_threshold: 0.035}}]}
+  stability: {required: false, all: []}
+  safety: {hard_fail: [{predicate: task_state_true, args: {id: occupied_slot_collision, key: task_state.occupied_slot_collision}}]}
+failure_modes:
+  - {code: non_symmetric_pair, category: wrong_place, description: Selected slots are not an empty symmetric pair.}
+  - {code: occupied_slot_collision, category: collision, description: An occupied slot was disturbed.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields: [task_state.symmetric_pair_loaded, task_state.occupied_slot_collision, gripper_pos]

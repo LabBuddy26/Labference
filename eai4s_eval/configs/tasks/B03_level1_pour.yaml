@@ -1,0 +1,48 @@
+task_id: level1_pour
+task_name: Level 1 Pour Proxy
+task_version: 1.0.0
+suite: eai4s_benchmark_core_v1
+runtime:
+  backend: eai4s_benchmark
+  env_config: level1_pour
+  policy_phase: after_scripted_pick
+  proxy_task: true
+robot: franka
+task_family: pouring
+task_level: level1
+task_tags: [benchmark, pouring, proxy, joint_policy, scripted_precondition]
+leaderboard_group: benchmark_pouring
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 3000
+instruction:
+  canonical: Pick up the beaker from the table and pour it into the target
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 1.0
+  goal:
+    all:
+      - predicate: near
+        args: {a_key: object_pos, b_key: target_pos, axes: xy, distance_threshold_m: 0.15}
+      - predicate: lifted
+        args: {height_threshold_m: 0.05}
+      - predicate: task_state_true
+        args: {id: pour_returned, key: task_state.pour_returned}
+  sequence:
+    required: true
+    events: [near_target, tilt_source, return_upright]
+  terminal: {required: false, all: []}
+  stability: {required: false, all: []}
+  safety:
+    hard_fail:
+      - predicate: object_out_of_workspace
+        args: {workspace_radius_m: 1.5}
+failure_modes:
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+  - {code: object_out_of_workspace, category: drop, description: Source container left the workspace.}
+  - {code: sequence_incomplete_or_invalid, category: sequence_error, description: Pour/return sequence was incomplete.}
+  - {code: policy_request_failed, category: policy_error, description: OpenPI request failed.}
+metrics: [success_rate, target_distance, max_tilt_angle, return_success, inference_latency]
+quality_metrics: [rotation_deg, xy_distance_m]
+required_snapshot_fields: [object_pos, target_pos, initial_object_pos, events, task_state.pour_returned]

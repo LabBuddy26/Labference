@@ -1,0 +1,29 @@
+{
+  "schema_version": "labbench_public_tasks/v1",
+  "tasks": {
+    "L01": {"name_en": "Transport Three Sample Vials", "summary_en": "Pick three sample vials in sequence and place each one into a separate sample-box slot.", "object_ids": ["sample-vial", "sample-box"]},
+    "L02": {"name_en": "Organize a Vial by Destination", "summary_en": "Resolve the assigned sample box and insert the vial into the matching destination slot.", "object_ids": ["sample-vial", "sample-box"]},
+    "L03": {"name_en": "Tip Installation and 100 µL Transfer", "summary_en": "Install a disposable tip, aspirate and dispense 100 microlitres in order, then discard the used tip.", "object_ids": ["pipette", "pipette-tip-box", "test-tube", "waste-box"]},
+    "L04": {"name_en": "Three-Beaker Liquid Mixing", "summary_en": "Pour three source beakers into a central mixing target and return every beaker to its original place.", "object_ids": ["beaker"]},
+    "L05": {"name_en": "Four-Well Recipe Dispensing", "summary_en": "Execute the fixed recipe once for each of A1, A2, B1 and B2 while tracking well-level volume and duplicate visits.", "object_ids": ["pipette", "well-plate"]},
+    "L06": {"name_en": "Sequential Balance Loading", "summary_en": "Pick three calibration weights and place them on the laboratory balance in the required order.", "object_ids": ["laboratory-balance", "calibration-weights"]},
+    "L07": {"name_en": "Load and Start a Centrifuge Preset", "summary_en": "Load two tubes into symmetric rotor positions, lock the lid, select Preset-1 and start the centrifuge.", "object_ids": ["centrifuge", "nmr-tube", "centrifuge-rotor", "button-panel"]},
+    "L08": {"name_en": "NMR Sample Holder Loading", "summary_en": "Pick the NMR sample and insert it into the designated sample holder with stable vertical alignment.", "object_ids": ["nmr-tube", "sample-box"]},
+    "L09": {"name_en": "Load and Start a Laboratory Device", "summary_en": "Open the device, place two beakers without collision and press the physical start control.", "object_ids": ["drying-cabinet", "beaker", "button-panel"]},
+    "L10": {"name_en": "Sequential Three-Vial Loading", "summary_en": "Load vials A, B and C into positions 1, 2 and 3 in order.", "object_ids": ["sample-vial", "sample-box"]},
+    "L11": {"name_en": "Operate a Condition Module", "summary_en": "Load a beaker onto the condition module, press its control and return the beaker after the cycle.", "object_ids": ["beaker", "heat-block", "button-panel"]},
+    "L12": {"name_en": "Clear and Reset the Laboratory Bench", "summary_en": "Return a sample vial to its box, insert a test tube into its rack and leave the workspace clear.", "object_ids": ["sample-vial", "sample-box", "test-tube", "test-tube-rack"]},
+    "R01": {"name_en": "Read and Record a Digital Mass", "summary_en": "Read a digital scale display and select the matching value from four choices.", "object_ids": ["digital-scale-interface"]},
+    "R02": {"name_en": "Select Weights for a Target Mass", "summary_en": "Reason over labelled weights and place the required combination on the scale.", "object_ids": ["laboratory-balance", "calibration-weights"]},
+    "R03": {"name_en": "Temperature-Gated Sample Retrieval", "summary_en": "Read temperature and choose Wait or Open based on a 30 °C threshold.", "object_ids": ["temperature-status-panel"]},
+    "R04": {"name_en": "RPM Adjustment Decision", "summary_en": "Read an RPM value and select increase, confirm or decrease.", "object_ids": ["rpm-control-panel"]},
+    "R05": {"name_en": "State-Dependent Device Control", "summary_en": "Map Ready, Running and Done states to Start, Wait and Open actions.", "object_ids": ["temperature-status-panel"]},
+    "R06": {"name_en": "Choose the Opposite Rotor Slot", "summary_en": "Identify the occupied rotor slot, map it to the position 180 degrees opposite and insert one tube without disturbing the existing load.", "object_ids": ["centrifuge", "centrifuge-rotor", "centrifuge-tube"]},
+    "R07": {"name_en": "Find an Empty Symmetric Slot Pair", "summary_en": "Reason over partial rotor occupancy and load two tubes into the first pair of empty positions separated by 180 degrees.", "object_ids": ["centrifuge", "centrifuge-rotor", "centrifuge-tube"]},
+    "R08": {"name_en": "Read and Select an NMR Slot", "summary_en": "Read Slot 7 from a display and map it to the physical autosampler socket.", "object_ids": ["nmr-rack", "nmr-tube"]},
+    "R09": {"name_en": "Map a B3 Grid Instruction", "summary_en": "Interpret row and column labels and select the B3 rack socket.", "object_ids": ["nmr-rack", "nmr-tube"]},
+    "R10": {"name_en": "Place a Tube at C2", "summary_en": "Map a C2 command to a labelled rack and insert the test tube.", "object_ids": ["test-tube-rack", "test-tube"]},
+    "R11": {"name_en": "Locate a Sample-Box Socket", "summary_en": "Interpret a row-and-column instruction and move the gripper above the matching sample-box socket.", "object_ids": ["sample-box"]},
+    "R12": {"name_en": "Lid-State Action Selection", "summary_en": "Observe the randomized Open or Closed lid state, choose Close for Open or Start for Closed, and reject unsafe Start actions.", "object_ids": ["drying-cabinet", "button-panel"]}
+  }
+}

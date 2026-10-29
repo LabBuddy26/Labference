@@ -1,0 +1,33 @@
+name: Bug report
+description: Report a reproducible LabBench software or documentation issue
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Do not include credentials, private endpoints, unpublished data or unlicensed assets."
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: input
+    id: release
+    attributes:
+      label: Public release source commit
+      description: Copy source_commit from PUBLIC_RELEASE.json.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, Python, Isaac Sim and GPU versions without private paths.

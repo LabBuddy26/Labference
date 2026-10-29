@@ -1,0 +1,12 @@
+name: labference_release_protocols_v1
+description: Independent release protocols adapted to LabBench collection and model-eval formats.
+leaderboard: independent
+tasks:
+  - {id: centrifuge_easy, family: centrifuge_v2, config: ../../centrifuge_v2/configs/easy.json, collection: reference, status: implemented}
+  - {id: centrifuge_hard, family: centrifuge_v2, config: ../../centrifuge_v2/configs/hard.json, collection: reference, status: implemented}
+  - {id: weighing_easy, family: weighing_v1, config: ../../weighing_v1/configs/easy.json, collection: reference, status: implemented}
+  - {id: weighing_hard, family: weighing_v1, config: ../../weighing_v1/configs/hard.json, collection: reference, status: implemented}
+  - {id: rack_easy, family: rack_recall_v4, config: ../../rack_recall_v4/configs/easy.json, collection: reference, status: implemented}
+  - {id: rack_same_cap, family: rack_recall_v4, config: ../../rack_recall_v4/configs/hard_same_cap.json, collection: reference, status: implemented}
+  - {id: rack_distinct_cap, family: rack_recall_v4, config: ../../rack_recall_v4/configs/hard_distinct_cap.json, collection: reference, status: implemented}
+  - {id: device_operation_hard, family: device_operation_v1, config: ../../device_operation_v1/configs/hard.json, collection: reference, status: implemented}

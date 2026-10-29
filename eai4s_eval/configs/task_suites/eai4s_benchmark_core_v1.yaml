@@ -1,0 +1,8 @@
+suite_id: eai4s_benchmark_core_v1
+suite_name: EAI4S Benchmark Core v1
+suite_version: 1.0.0
+description: Joint-space OpenPI evaluation on the canonical data-collection environments.
+tasks:
+  - {order: 1, task_spec: ../tasks/B01_level1_pick.yaml, status: implemented}
+  - {order: 2, task_spec: ../tasks/B02_level1_place.yaml, status: implemented}
+  - {order: 3, task_spec: ../tasks/B03_level1_pour.yaml, status: implemented}

@@ -1,0 +1,53 @@
+task_id: level4_L04_LiquidMixing
+task_name: Level 4 Liquid Mixing
+task_version: 1.0.0
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level4_L04_LiquidMixing, policy_phase: full_task}
+robot: franka
+task_family: liquid_mixing
+task_level: level4
+task_tags: [benchmark, multi_stage, pour, liquid]
+leaderboard_group: benchmark_multi_stage
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 900
+instruction:
+  canonical: For each beaker, pour its contents into the mixing target, then return the beaker to its original spot
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - predicate: task_state_true
+        args: {id: beaker_0_poured, key: task_state.beaker_0_poured}
+      - predicate: task_state_true
+        args: {id: beaker_1_poured, key: task_state.beaker_1_poured}
+      - predicate: task_state_true
+        args: {id: beaker_2_poured, key: task_state.beaker_2_poured}
+      - predicate: task_state_true
+        args: {id: beaker_0_returned, key: task_state.beaker_0_returned}
+      - predicate: task_state_true
+        args: {id: beaker_1_returned, key: task_state.beaker_1_returned}
+      - predicate: task_state_true
+        args: {id: beaker_2_returned, key: task_state.beaker_2_returned}
+  terminal:
+    required: true
+    all:
+      - predicate: released
+        args: {open_threshold: 0.035}
+  stability: {required: false, all: []}
+  safety: {hard_fail: []}
+failure_modes:
+  - {code: beaker_not_poured, category: wrong_place, description: At least one beaker was not tilted over the mixing target.}
+  - {code: beaker_not_returned, category: sequence_error, description: At least one beaker was not returned to its initial spot.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields:
+  - task_state.beaker_0_poured
+  - task_state.beaker_1_poured
+  - task_state.beaker_2_poured
+  - task_state.beaker_0_returned
+  - task_state.beaker_1_returned
+  - task_state.beaker_2_returned
+  - task_state.liquid_mixing_complete
+  - gripper_pos

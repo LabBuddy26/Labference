@@ -1,0 +1,2127 @@
+<!DOCTYPE html>
+<!-- EAI4S-bench frontend template: utf8-clean-20260707 -->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EAI4S-bench</title>
+<style>
+  :root {
+    --bg: #F3F6FB;
+    --surface: #FFFFFF;
+    --surface2: #F8FAFC;
+    --border: #E4E7EC;
+    --text: #152033;
+    --text2: #5B6B84;
+    --green: #0F9F8F;
+    --red: #D92D20;
+    --amber: #B54708;
+    --blue: #2563EB;
+    --purple: #7C3AED;
+    --teal: #0EA5A4;
+    --grad: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
+    --radius: 12px;
+    --shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 8px 24px rgba(16, 24, 40, 0.05);
+    --shadow-hover: 0 4px 12px rgba(16, 24, 40, 0.07), 0 12px 32px rgba(16, 24, 40, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background:
+      radial-gradient(1200px 480px at 12% -10%, rgba(37, 99, 235, 0.09), transparent 60%),
+      radial-gradient(1000px 420px at 92% -18%, rgba(124, 58, 237, 0.07), transparent 60%),
+      var(--bg);
+    background-attachment: fixed;
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px max(24px, calc((100vw - 1440px) / 2));
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 3px rgba(16, 24, 40, 0.04);
+  }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: var(--grad);
+    color: #FFFFFF;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28);
+  }
+  .brand-text h1 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    line-height: 1.15;
+  }
+  .brand-text h1 span {
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .brand-sub {
+    font-size: 0.72rem;
+    color: var(--text2);
+    letter-spacing: 0.4px;
+    margin-top: 1px;
+  }
+  .header-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .refresh-status {
+    align-self: center;
+    color: var(--text2);
+    font-size: 0.75rem;
+    min-width: 140px;
+    text-align: right;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: var(--radius);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .btn:hover { background: var(--surface2); border-color: #D0D5DD; }
+  .btn-primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+  .btn-primary:hover { opacity: 0.9; }
+  .btn-sm { padding: 5px 10px; font-size: 0.75rem; }
+
+  .container {
+    width: min(94vw, 1440px);
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 28px 0 48px;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 4px;
+    width: fit-content;
+    max-width: 100%;
+    margin-bottom: 24px;
+    padding: 5px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.03);
+    overflow-x: auto;
+  }
+  .tab {
+    padding: 9px 18px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: var(--text2);
+    border: 1px solid transparent;
+    border-radius: 9px;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .tab:hover { color: var(--text); background: var(--surface2); }
+  .tab.active { color: #FFFFFF; background: var(--grad); border-color: transparent; box-shadow: 0 3px 10px rgba(37, 99, 235, 0.25); }
+  .tab-ico { margin-right: 6px; opacity: 0.72; font-size: 0.82em; }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .stat-card {
+    position: relative;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 20px 16px;
+    box-shadow: var(--shadow);
+    min-width: 0;
+    transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--grad);
+    opacity: 0.9;
+  }
+  .stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); border-color: #CBD5E4; }
+  .stat-card .label { font-size: 0.75rem; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat-card .value { font-size: 1.375rem; font-weight: 700; margin-top: 4px; letter-spacing: -0.3px; }
+
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow-x: auto;
+    box-shadow: var(--shadow);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8125rem;
+  }
+  th, td { padding: 10px 14px; text-align: left; white-space: nowrap; }
+  th {
+    background: var(--surface2);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text2);
+    cursor: pointer;
+    user-select: none;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  th:hover { color: var(--text); }
+  th .sort-arrow { margin-left: 4px; opacity: 0.4; }
+  th.sorted .sort-arrow { opacity: 1; color: var(--blue); }
+  tbody tr { border-top: 1px solid var(--border); transition: background 0.12s; }
+  tbody tr:not(.detail-row):nth-child(even) { background: #F7F9FD; }
+  tbody tr:not(.detail-row):hover { background: #EDF3FF; }
+  tbody tr.clickable { cursor: pointer; }
+  tbody tr.expanded { background: var(--surface2); }
+  tbody tr.detail-row:hover { background: transparent; }
+  tbody tr.detail-row td { padding: 0; white-space: normal; }
+
+  .rank { font-weight: 700; font-size: 0.875rem; }
+  .rank.gold { color: #fbbf24; }
+  .rank.silver { color: #94a3b8; }
+  .rank.bronze { color: #d97706; }
+
+  .pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 99px;
+    font-weight: 700;
+    font-size: 0.75rem;
+  }
+  .pill-high { background: rgba(15,159,143,0.10); color: #08766B; }
+  .pill-mid  { background: #FFF6ED; color: var(--amber); }
+  .pill-low  { background: #FEF3F2; color: var(--red); }
+  .pill-na   { background: #F2F4F7; color: var(--text2); }
+
+  .detail-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin: 12px 0;
+    display: none;
+    box-shadow: var(--shadow);
+  }
+  .detail-panel.open { display: block; }
+  .inline-detail {
+    background: #FBFCFE;
+    border-top: 1px solid var(--border);
+    padding: 18px;
+  }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .detail-section h4 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text2);
+    margin-bottom: 8px;
+  }
+  .kv { display: flex; justify-content: space-between; gap: 20px; padding: 6px 0; font-size: 0.8125rem; border-bottom: 1px solid #F0F2F5; }
+  .kv .k { color: var(--text2); }
+  .kv .v { font-weight: 600; }
+  .radar-box {
+    display: flex;
+    justify-content: center;
+    min-height: 280px;
+  }
+  .radar-box canvas {
+    width: min(100%, 340px);
+    height: 260px;
+  }
+  .radar-section { margin-top: 18px; }
+  .radar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+  }
+  .radar-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px;
+    transition: box-shadow 0.16s ease, border-color 0.16s ease;
+  }
+  .radar-card:hover { border-color: #CBD5E4; box-shadow: var(--shadow-hover); }
+  .model-radar-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    margin-bottom: 6px;
+  }
+  .model-radar-head strong { font-size: 0.9375rem; }
+  .model-radar-head small { color: var(--text2); font-size: 0.75rem; }
+  .radar-title {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--text2);
+    letter-spacing: 0.3px;
+    margin: 6px 0 2px;
+    text-align: center;
+  }
+  .radar-card .radar-box { min-height: 250px; }
+  .radar-card .radar-box canvas { height: 250px; }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(23,32,51,0.42);
+    backdrop-filter: blur(3px);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    width: min(520px, 90vw);
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 24px 64px rgba(16, 24, 40, 0.18);
+  }
+  .modal h3 { margin-bottom: 16px; font-size: 1.1rem; }
+  .form-group { margin-bottom: 14px; }
+  .form-group label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.875rem;
+  }
+  .checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.875rem;
+    color: var(--text);
+  }
+  .checkbox-row input { width: auto; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .status { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 99px; font-size: 0.75rem; font-weight: 600; }
+  .status .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .status-running .dot { background: var(--blue); animation: pulse 1.5s infinite; }
+  .status-completed .dot { background: var(--green); }
+  .status-failed .dot { background: var(--red); }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--text);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 20px;
+    font-size: 0.8125rem;
+    color: #FFFFFF;
+    z-index: 200;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.25s;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  .empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text2);
+  }
+  .empty .icon { font-size: 3rem; margin-bottom: 12px; }
+
+  .loading { text-align: center; padding: 40px; color: var(--text2); }
+  .spinner { display: inline-block; width: 28px; height: 28px; border: 3px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .page-intro {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 20px;
+  }
+  .page-intro h2 { font-size: 1.5rem; letter-spacing: -0.35px; margin-bottom: 6px; }
+  .page-intro p { color: var(--text2); max-width: 760px; font-size: 0.875rem; }
+  .generated-at {
+    flex: 0 0 auto;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text2);
+    font-size: 0.75rem;
+  }
+  .dataset-kpis { grid-template-columns: repeat(6, minmax(140px, 1fr)); }
+  .dataset-kpis .stat-card { position: relative; overflow: hidden; }
+  .dataset-kpis .stat-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 3px;
+    background: var(--blue);
+  }
+  .dataset-kpis .stat-card.sim::before { background: var(--green); }
+  .dataset-kpis .value { color: var(--text); }
+  .dataset-section {
+    position: relative;
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  .dataset-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: var(--blue);
+  }
+  .dataset-section.simulation::before { background: var(--green); }
+  .dataset-section .table-wrap { box-shadow: none; }
+  .section-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 5px 0 14px;
+  }
+  .section-heading h3 { font-size: 1rem; margin-bottom: 3px; }
+  .section-heading p { color: var(--text2); font-size: 0.8125rem; }
+  .section-badge {
+    flex: 0 0 auto;
+    padding: 4px 9px;
+    border-radius: 99px;
+    background: #EFF6FF;
+    color: #1D4ED8;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+  .simulation .section-badge { background: #ECFDF3; color: #08766B; }
+  .dataset-alert {
+    display: none;
+    margin-bottom: 16px;
+    padding: 12px 14px;
+    border: 1px solid #FECDCA;
+    border-radius: 10px;
+    background: #FEF3F2;
+    color: #B42318;
+    font-size: 0.8125rem;
+  }
+  .dataset-alert.show { display: block; }
+  .dataset-empty-cell {
+    padding: 36px 20px;
+    color: var(--text2);
+    text-align: center;
+    white-space: normal;
+  }
+  .dataset-empty-cell strong { display: block; margin-bottom: 4px; color: var(--text); font-size: 0.875rem; }
+  .number-cell { font-variant-numeric: tabular-nums; text-align: right; }
+  .score-unavailable { display: inline-block; max-width: 150px; color: var(--text2); font-size: 0.7rem; line-height: 1.25; font-weight: 600; white-space: normal; }
+  .duration-cell { font-variant-numeric: tabular-nums; }
+  .device-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: #EFF6FF;
+    color: #1D4ED8;
+    font-weight: 700;
+  }
+
+  .footer {
+    margin-top: 32px;
+    padding: 20px 0 10px;
+    text-align: center;
+    color: var(--text2);
+    font-size: 0.75rem;
+    letter-spacing: 0.3px;
+  }
+  .footer .sep { color: #C7CFDD; margin: 0 10px; }
+
+  @media (max-width: 768px) {
+    .header { padding: 12px 16px; align-items: flex-start; }
+    .header h1 { font-size: 1rem; }
+    .header-actions { width: 100%; align-items: center; }
+    .refresh-status { margin-right: auto; min-width: 0; text-align: left; }
+    .container { width: 100%; padding: 16px; }
+    .tabs { width: 100%; }
+    .stats-row, .dataset-kpis { grid-template-columns: 1fr; }
+    .page-intro { flex-direction: column; gap: 10px; }
+    .generated-at { align-self: flex-start; }
+    .dataset-section { padding: 16px; }
+    .dataset-section::before { left: 16px; right: 16px; }
+    .section-heading { flex-direction: column; gap: 8px; }
+    th, td { padding: 8px 10px; font-size: 0.75rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER                                                 -->
+<header class="header">
+  <div class="brand">
+    <div class="brand-mark">EAI</div>
+    <div class="brand-text">
+      <h1>EAI4S-<span>bench</span></h1>
+      <p class="brand-sub">Laboratory Robot Agent Evaluation Platform</p>
+    </div>
+  </div>
+  <div class="header-actions">
+    <a class="btn" href="/">Public site</a>
+    <a class="btn" href="/console/batches">Batch reports (private)</a>
+    <span class="refresh-status" id="refresh-status">Not refreshed yet</span>
+    <button class="btn" onclick="refreshData({ manual: true })" id="refresh-btn">Refresh</button>
+    <button class="btn btn-primary" onclick="openEvalModal()">Start Evaluation</button>
+  </div>
+</header>
+
+<div class="container">
+
+<div class="tabs">
+  <div class="tab active" data-tab="overview" onclick="switchTab('overview')"><span class="tab-ico">◉</span>Overall Models</div>
+  <div class="tab" data-tab="long" onclick="switchTab('long')"><span class="tab-ico">➤</span>Long-Horizon</div>
+  <div class="tab" data-tab="reasoning" onclick="switchTab('reasoning')"><span class="tab-ico">◆</span>Reasoning in Action</div>
+  <div class="tab" data-tab="atomic" onclick="switchTab('atomic')"><span class="tab-ico">✚</span>Atomic Actions</div>
+  <div class="tab" data-tab="runs" onclick="switchTab('runs')"><span class="tab-ico">▤</span>Evaluation Runs</div>
+  <div class="tab" data-tab="datasets" onclick="switchTab('datasets')"><span class="tab-ico">▥</span>Dataset Statistics</div>
+</div>
+
+<div class="stats-row" id="stats-row"></div>
+
+<div id="tab-overview">
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>#</th><th>Model</th><th>Checkpoint</th><th>Official Score</th><th>Overall Success Rate</th>
+        <th>Long-Horizon</th><th>Reasoning</th><th>Atomic Actions</th><th>Task Coverage</th>
+      </tr></thead>
+      <tbody id="benchmark-overview-body"></tbody>
+    </table>
+  </div>
+  <div id="benchmark-overview-radars" class="radar-section"></div>
+  <div id="benchmark-overview-empty" class="empty" style="display:none"><div class="icon">24</div><p>No model results yet. The task catalogue is ready.</p></div>
+</div>
+
+<div id="tab-long" style="display:none"></div>
+<div id="tab-reasoning" style="display:none"></div>
+
+<div id="tab-atomic" style="display:none">
+  <div class="card" style="margin-bottom:12px">
+    <h3 style="margin:0 0 6px">Atomic Action Diagnostics</h3>
+    <p style="margin:0;color:var(--text2)">Atomic actions are diagnostic and do not add a second contribution to the official score. Success is measured per action instance with source and coverage information.</p>
+  </div>
+  <div class="table-wrap"><table>
+    <thead id="atomic-head"></thead><tbody id="atomic-body"></tbody>
+  </table></div>
+  <div id="atomic-empty" class="empty" style="display:none"><div class="icon">11</div><p>No evaluable atomic action results yet.</p></div>
+</div>
+
+<div id="tab-runs" style="display:none">
+  <div class="card" style="margin-bottom:12px;display:flex;gap:10px;align-items:end;flex-wrap:wrap">
+    <div class="form-group" style="margin:0;min-width:180px"><label>Model</label><select id="runs-model-filter" onchange="applyRunFilters()"><option value="">All models</option></select></div>
+    <div class="form-group" style="margin:0;min-width:180px"><label>Task</label><select id="runs-task-filter" onchange="applyRunFilters()"><option value="">All tasks</option></select></div>
+    <div class="form-group" style="margin:0;min-width:150px"><label>Split</label><select id="runs-split-filter" onchange="applyRunFilters()"><option value="">All splits</option></select></div>
+    <span id="runs-page-status" style="margin-left:auto;color:var(--text2)">Loading evaluation runs...</span>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Run ID</th>
+          <th>Model</th>
+          <th>Task</th>
+          <th>Created</th>
+          <th>Task Success</th>
+          <th>Capability</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="runs-tbody"></tbody>
+    </table>
+  </div>
+  <div id="runs-empty" class="empty" style="display:none">
+    <div class="icon">Empty</div>
+    <p>No evaluation runs found.</p>
+  </div>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px">
+    <button class="btn" id="runs-prev" onclick="changeRunsPage(-1)" disabled>Previous</button>
+    <button class="btn" id="runs-next" onclick="changeRunsPage(1)" disabled>Next</button>
+  </div>
+</div>
+
+<div id="tab-datasets" style="display:none">
+  <div class="page-intro">
+    <div>
+      <h2>Dataset Statistics</h2>
+      <p>Unified summaries for real-robot teleoperation, UMI and simulation. Each source remains independently reported.</p>
+    </div>
+    <div class="generated-at" id="dataset-generated-at">Waiting for statistics</div>
+  </div>
+
+  <div class="dataset-alert" id="dataset-stats-error" role="status"></div>
+  <div class="stats-row dataset-kpis" id="dataset-kpis"></div>
+
+  <section class="dataset-section" aria-labelledby="real-robot-heading">
+    <div class="section-heading">
+      <div>
+        <h3 id="real-robot-heading">Real-Robot Teleoperation</h3>
+        <p>Grouped by device and task; only devices with collected data are shown.</p>
+      </div>
+      <span class="section-badge" id="real-robot-badge">0 batches · 0 samples · 0:00:00</span>
+    </div>
+    <div class="table-wrap">
+      <table id="real-robot-statistics-table">
+        <thead>
+          <tr>
+            <th>Device</th><th>Task</th><th>Batches</th><th>Samples</th><th>Duration</th><th>Collection Dates</th><th>Anonymous Operators</th>
+          </tr>
+        </thead>
+        <tbody id="real-robot-statistics-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="dataset-section" aria-labelledby="umi-heading">
+    <div class="section-heading">
+      <div>
+        <h3 id="umi-heading">UMI</h3>
+        <p>UMI data is reported separately, with collection batches grouped by task.</p>
+      </div>
+      <span class="section-badge" id="umi-badge">0 batches · 0 samples · 0:00:00</span>
+    </div>
+    <div class="table-wrap">
+      <table id="umi-statistics-table">
+        <thead>
+          <tr>
+            <th>Task</th><th>Batches</th><th>Samples</th><th>Duration</th><th>Collection Dates</th><th>Anonymous Operators</th>
+          </tr>
+        </thead>
+        <tbody id="umi-statistics-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="dataset-section simulation" aria-labelledby="simulation-heading">
+    <div class="section-heading">
+      <div>
+        <h3 id="simulation-heading">Simulation Dataset</h3>
+        <p>Simulation is reported separately and grouped by simulator, robot and task.</p>
+      </div>
+      <span class="section-badge" id="simulation-badge">0 datasets · 0 episodes · 0 frames</span>
+    </div>
+    <div class="table-wrap">
+      <table id="simulation-statistics-table">
+        <thead>
+          <tr>
+            <th>Simulator</th><th>Robot</th><th>Task</th><th>Dataset Batches</th><th>Episodes</th><th>Frames</th><th>Duration</th><th>Scenes</th><th>Generation Dates</th>
+          </tr>
+        </thead>
+        <tbody id="simulation-statistics-body"></tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<div class="detail-panel" id="detail-panel"></div>
+
+</div><!-- .container -->
+
+<footer class="footer">EAI4S-bench<span class="sep">·</span>Laboratory Robot Agent Evaluation<span class="sep">·</span>L/R leaderboards and evaluation runs</footer>
+
+<!-- EVAL TRIGGER MODAL                                     -->
+<div class="modal-overlay" id="eval-modal">
+  <div class="modal">
+    <h3>Trigger New Evaluation</h3>
+    <form id="eval-form" onsubmit="submitEval(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Model Name *</label>
+          <input type="text" id="ev-model" value="OpenPI" required>
+        </div>
+        <div class="form-group">
+          <label>Checkpoint</label>
+          <input type="text" id="ev-ckpt" placeholder="required for suite evaluations">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>VLA Host</label>
+          <input type="text" id="ev-host" value="127.0.0.1">
+        </div>
+        <div class="form-group">
+          <label>VLA Port</label>
+          <input type="number" id="ev-port" value="8000">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Policy Provider</label>
+          <select id="ev-provider">
+            <option value="openpi">OpenPI · WebSocket</option>
+            <option value="gr00t">GR00T · ZeroMQ</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Evaluation Backend</label>
+          <select id="ev-backend"><option value="eai4s_benchmark">EAI4S benchmark runtime</option><option value="isaaclab">Legacy Isaac Lab T02/T03</option></select>
+        </div>
+        <div class="form-group">
+          <label>Policy Profile</label>
+          <select id="ev-policy-profile"><option value="">openpi_franka_ee_pos_v1</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Asset Root</label>
+          <input type="text" id="ev-asset-root" placeholder="/path/to/asset/root">
+        </div>
+        <div class="form-group">
+          <label>Policy API</label>
+          <select id="ev-policy-api">
+            <option value="auto">auto</option>
+            <option value="act">act</option>
+            <option value="predict_action">predict_action</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Robot</label>
+          <select id="ev-robot">
+            <option value="franka_panda">Franka Panda</option>
+            <option value="ur5_single">UR5 (single arm)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Episodes</label>
+          <input type="number" id="ev-num-ep" value="5" min="1" max="100">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Evaluation Target</label>
+          <select id="ev-eval-target" onchange="syncEvalTargetDefaults()">
+            <option value="benchmark_core">Benchmark core suite (pick/place/pour)</option>
+            <option value="benchmark_pick">Benchmark Level 1 pick</option>
+            <option value="benchmark_place">Benchmark Level 1 place</option>
+            <option value="benchmark_pour">Benchmark Level 1 pour proxy</option>
+            <option value="full_suite">Full task suite</option>
+            <option value="t02">T02 Franka pick/lift proxy</option>
+            <option value="t03">T03 tube insert into rack</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Task Suite</label>
+          <input type="text" id="ev-task-suite" value="eai4s_benchmark_core_v1">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Mode</label>
+          <div id="ev-target-help" style="font-size:0.8125rem;color:var(--text2);line-height:1.5"></div>
+        </div>
+        <div class="form-group">
+          <label>Split</label>
+          <select id="ev-split">
+            <option value="sim_dev">sim_dev</option>
+            <option value="sim_clean">sim_clean</option>
+            <option value="sim_randomized">sim_randomized</option>
+          </select>
+          <label class="checkbox-row" style="margin-top:8px">
+            <input type="checkbox" id="ev-multi-split">
+            Run all three splits (sim_dev, sim_clean, sim_randomized)
+          </label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Instruction</label>
+          <input type="text" id="ev-instr" value="pick glass bottle">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Seeds</label>
+          <input type="text" id="ev-seeds" placeholder="100001,100002">
+        </div>
+        <div class="form-group">
+          <label>Device</label>
+          <input type="text" id="ev-device" value="cuda:0">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Interpolation Steps</label>
+          <input type="number" id="ev-reaction-steps" value="1" min="1" max="20">
+        </div>
+        <div class="form-group">
+          <label>Sim Steps / Action</label>
+          <input type="number" id="ev-sim-steps" value="6" min="1" max="20">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Initial Hold Steps</label>
+          <input type="number" id="ev-initial-hold-steps" value="100" min="0" max="1000">
+        </div>
+        <div class="form-group">
+          <label>Stability Max Steps</label>
+          <input type="number" id="ev-stability-max-steps" value="200" min="0" max="2000">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Stability Hold Steps</label>
+          <input type="number" id="ev-stability-hold-steps" value="10" min="1" max="200">
+        </div>
+        <div class="form-group">
+          <label>Joint Vel Threshold</label>
+          <input type="number" id="ev-stability-joint-vel" value="0.02" min="0" max="1" step="0.01">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Success Height</label>
+          <input type="number" id="ev-success-height" value="0.05" min="0" max="1" step="0.01">
+        </div>
+        <div class="form-group">
+          <label>Success Distance</label>
+          <input type="number" id="ev-success-distance" value="0.15" min="0" max="1" step="0.01">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Runtime</label>
+        <label class="checkbox-row">
+          <input type="checkbox" id="ev-headless" checked>
+          Run Isaac evaluation in headless mode
+        </label>
+        <label class="checkbox-row" style="margin-top:8px">
+          <input type="checkbox" id="ev-save-video">
+          Save episode videos
+        </label>
+        <label class="checkbox-row" style="margin-top:8px">
+          <input type="checkbox" id="ev-use-policy-orientation">
+          Use VLA orientation output instead of holding current EE orientation
+        </label>
+        <label class="checkbox-row" style="margin-top:8px">
+          <input type="checkbox" id="ev-skip-isaac-close" checked>
+          Skip Isaac graceful shutdown after outputs are written
+        </label>
+        <label class="checkbox-row" style="margin-top:8px">
+          <input type="checkbox" id="ev-override-success">
+          Override TaskSpec success rules with the fields above
+        </label>
+        <label class="checkbox-row" style="margin-top:8px">
+          <input type="checkbox" id="ev-success-require-gripper" checked>
+          Require gripper closed for success
+        </label>
+        <label class="checkbox-row" style="margin-top:8px">
+          <input type="checkbox" id="ev-success-require-stable">
+          Require stable object velocity for success
+        </label>
+      </div>
+      <div id="ev-preflight" style="padding:10px;border:1px solid var(--border);border-radius:8px;color:var(--text2);font-size:0.8125rem">Preflight has not run.</div>
+      <div class="dataset-alert" id="evaluation-catalog-error" role="status"></div>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:20px">
+        <button type="button" class="btn" onclick="closeEvalModal()">Cancel</button>
+        <button type="button" class="btn" onclick="runEvalPreflight(true)">Run Preflight</button>
+        <button type="submit" class="btn btn-primary">Start Evaluation</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- TOAST                                                   -->
+<div class="toast" id="toast"></div>
+
+<!-- SCRIPTS                                                 -->
+<script>
+const state = {
+  benchmark: null,
+  publicCatalog: null,
+  runs: [],
+  runsPagination: { limit: 50, offset: 0, total: 0, has_previous: false, has_next: false },
+  runsFilters: { model_name: '', task_id: '', split: '' },
+  runsAvailableFilters: { model_names: [], task_ids: [], splits: [] },
+  runsError: null,
+  datasetStatistics: null,
+  datasetStatisticsError: null,
+  evaluationCatalog: null,
+  evaluationCatalogError: null,
+  activeTab: 'overview',
+  expandedAllRunId: null,
+  detailCache: {},
+  refreshInFlight: false,
+  lastRefreshAt: null,
+};
+
+const HAN_RE = /[\u3400-\u9fff]/;
+
+function englishOnly(value, fallback = '-') {
+  const text = String(value || '').trim();
+  return text && !HAN_RE.test(text) ? text : fallback;
+}
+
+function publicTask(taskId) {
+  return (state.publicCatalog?.tasks || []).find(task => task.task_id === taskId) || null;
+}
+
+function publicTaskName(taskId, fallback = '-') {
+  return publicTask(taskId)?.name_en || englishOnly(fallback, taskId || '-');
+}
+
+function applyPublicEnglishCatalog() {
+  const benchmark = state.benchmark;
+  const catalog = state.publicCatalog;
+  if (!benchmark || !catalog) return;
+  const tracks = new Map((catalog.tracks || []).map(item => [item.track_id, item]));
+  const actions = new Map((catalog.atomic_actions || []).map(item => [item.action_id, item]));
+  benchmark.tracks = (benchmark.tracks || []).map(item => ({ ...item, ...(tracks.get(item.track_id) || {}) }));
+  benchmark.atomic_actions = (benchmark.atomic_actions || []).map(item => ({ ...item, ...(actions.get(item.action_id) || {}) }));
+  benchmark.tasks = (benchmark.tasks || []).map(item => {
+    const publicItem = publicTask(item.task_id);
+    return publicItem ? { ...item, task_name: publicItem.name_en, scene: publicItem.summary_en } : item;
+  });
+  (benchmark.models || []).forEach(model => {
+    model.tasks = (model.tasks || []).map(item => {
+      const publicItem = publicTask(item.task_id);
+      return publicItem ? { ...item, task_name: publicItem.name_en, scene: publicItem.summary_en } : item;
+    });
+    model.atomic_actions = (model.atomic_actions || []).map(item => ({
+      ...item,
+      label: actions.get(item.action_id)?.label || englishOnly(item.label, item.action_id),
+    }));
+  });
+}
+
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => document.querySelectorAll(sel);
+
+const evalTargetPresets = {
+  benchmark_core: {
+    backend: 'eai4s_benchmark', runSuite: true, taskSuite: 'eai4s_benchmark_core_v1',
+    instruction: 'Run the canonical pick, place and pour proxy tasks',
+    help: 'Runs the canonical core suite through the validated OpenPI 8D joint-policy adapter.',
+  },
+  benchmark_pick: {
+    backend: 'eai4s_benchmark', runSuite: false, taskSpec: 'B01_level1_pick.yaml',
+    instruction: 'Pick up the beaker from the table',
+    help: 'Full-policy pick with a 0.10 m lift held for one second.',
+  },
+  benchmark_place: {
+    backend: 'eai4s_benchmark', runSuite: false, taskSpec: 'B02_level1_place.yaml',
+    instruction: 'Place the held beaker at the target',
+    help: 'The scripted controller establishes the grasp; the model performs place and release.',
+  },
+  benchmark_pour: {
+    backend: 'eai4s_benchmark', runSuite: false, taskSpec: 'B03_level1_pour.yaml',
+    instruction: 'Pour the held beaker into the target beaker and return upright',
+    help: 'Proxy pour sequence only; it does not claim liquid-volume ground truth.',
+  },
+  full_suite: {
+    runSuite: true,
+    instruction: 'pick glass bottle',
+    help: 'Runs implemented tasks in the suite and marks planned tasks as missing.',
+  },
+  t02: {
+    runSuite: false,
+    taskId: 't02',
+    instruction: 'pick glass bottle',
+    targetObject: 'vial',
+    maxSteps: 300,
+    help: 'Runs only T02 Franka pick/lift proxy and writes a single-task run.',
+  },
+  t03: {
+    runSuite: false,
+    taskId: 't03',
+    instruction: 'place the glass tube in the rack',
+    targetObject: 'tube',
+    maxSteps: 300,
+    help: 'Runs only T03 tube insert into rack using the scene-driven T03 runtime.',
+  },
+};
+
+function formatPct(v) {
+  if (v == null || v === undefined) return '-';
+  return (v * 100).toFixed(1) + '%';
+}
+
+function formatMs(v) {
+  if (v == null || v === undefined) return '-';
+  return v.toFixed(1) + ' ms';
+}
+
+function formatNum(v, decimals = 2) {
+  if (v == null || v === undefined) return '-';
+  return Number(v).toFixed(decimals);
+}
+
+function formatQualityMetrics(metrics) {
+  if (!metrics || typeof metrics !== 'object' || !Object.keys(metrics).length) return 'Quality score not implemented yet';
+  return Object.entries(metrics).map(([k, v]) => {
+    const value = typeof v === 'number' ? Number(v).toFixed(3) : String(v);
+    return `${k}: ${value}`;
+  }).join('\\n');
+}
+
+function formatDistribution(dist) {
+  if (!dist || typeof dist !== 'object' || !Object.keys(dist).length) return 'N/A';
+  return Object.entries(dist)
+    .filter(([, v]) => Number(v) > 0)
+    .map(([k, v]) => `${k}: ${v}`)
+    .join(', ') || 'N/A';
+}
+
+function pillClass(sr) {
+  if (sr == null) return 'pill-na';
+  if (sr >= 0.8) return 'pill-high';
+  if (sr >= 0.4) return 'pill-mid';
+  return 'pill-low';
+}
+
+function rankClass(idx) {
+  if (idx === 0) return 'gold';
+  if (idx === 1) return 'silver';
+  if (idx === 2) return 'bronze';
+  return '';
+}
+
+function jsString(s) {
+  return JSON.stringify(String(s));
+}
+
+function safeDomId(s) {
+  return String(s || 'row').replace(/[^A-Za-z0-9_-]/g, '_');
+}
+
+function escAttr(s) {
+  return escHtml(s).replace(/'/g, '&#39;');
+}
+
+function timeAgo(iso) {
+  if (!iso) return '-';
+  const d = new Date(iso);
+  const now = new Date();
+  const diffMin = Math.floor((now - d) / 60000);
+  if (diffMin < 1) return 'just now';
+  if (diffMin < 60) return diffMin + 'm ago';
+  const diffHr = Math.floor(diffMin / 60);
+  if (diffHr < 24) return diffHr + 'h ago';
+  return d.toLocaleDateString();
+}
+
+let toastTimer;
+function showToast(msg) {
+  const el = $('#toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+function syncEvalTargetDefaults() {
+  const target = $('#ev-eval-target')?.value || 'benchmark_core';
+  const preset = evalTargetPresets[target] || evalTargetPresets.full_suite;
+  const instruction = $('#ev-instr');
+  const help = $('#ev-target-help');
+  if (instruction) instruction.value = preset.instruction;
+  if (help) help.textContent = preset.help;
+  if ($('#ev-backend') && preset.backend) $('#ev-backend').value = preset.backend;
+  if ($('#ev-task-suite') && preset.taskSuite) $('#ev-task-suite').value = preset.taskSuite;
+  const checkpoint = $('#ev-ckpt');
+  if (checkpoint) checkpoint.required = Boolean(preset.runSuite);
+}
+
+async function loadEvaluationCatalog() {
+  const error = $('#evaluation-catalog-error');
+  if (error) { error.textContent = ''; error.classList.remove('show'); }
+  try {
+    const catalog = await api('/api/evaluation_catalog');
+    state.evaluationCatalog = catalog;
+    state.evaluationCatalogError = null;
+    const targetSelect = $('#ev-eval-target');
+    if (targetSelect && catalog.suites?.length) {
+      const options = [];
+      const seenTasks = new Set();
+      catalog.suites.forEach(suite => {
+        const suiteName = englishOnly(suite.suite_name, suite.suite_id);
+        const benchmark = String(suite.suite_id || '').startsWith('eai4s_benchmark');
+        const suiteKey = `catalog_suite_${suite.suite_id}`;
+        evalTargetPresets[suiteKey] = {
+          backend: benchmark ? 'eai4s_benchmark' : 'isaaclab', runSuite: true,
+          taskSuite: suite.suite_id, instruction: englishOnly(suite.description, suiteName),
+          help: `${suiteName} · ${suite.tasks?.length || 0} tasks`,
+        };
+        options.push(`<option value="${escAttr(suiteKey)}">Suite · ${escHtml(suiteName)}</option>`);
+        (suite.tasks || []).forEach(task => {
+          const signature = `${suite.suite_id}:${task.task_id}`;
+          if (seenTasks.has(signature)) return;
+          seenTasks.add(signature);
+          const taskKey = `catalog_task_${suite.suite_id}_${task.task_id}`;
+          const publicItem = publicTask(task.task_id);
+          const taskName = publicItem?.name_en || englishOnly(task.task_name, task.task_id);
+          const instruction = publicItem?.summary_en || (
+            typeof task.instruction === 'object'
+              ? englishOnly(task.instruction?.canonical, taskName)
+              : taskName
+          );
+          evalTargetPresets[taskKey] = {
+            backend: benchmark ? 'eai4s_benchmark' : 'isaaclab', runSuite: false,
+            taskSuite: suite.suite_id, taskSpec: task.task_spec, taskId: task.task_id, instruction,
+            maxSteps: task.max_steps, help: `${taskName} · status=${task.status}`,
+          };
+          const disabled = task.status === 'implemented' ? '' : ' disabled';
+          options.push(`<option value="${escAttr(taskKey)}"${disabled}>Task · ${escHtml(taskName)} (${escHtml(task.status)})</option>`);
+        });
+      });
+      targetSelect.innerHTML = options.join('');
+      const defaultKey = `catalog_suite_${catalog.default_suite_id}`;
+      if (evalTargetPresets[defaultKey]) targetSelect.value = defaultKey;
+      syncEvalTargetDefaults();
+    }
+    const select = $('#ev-policy-profile');
+    if (select && catalog.policy_profiles?.length) {
+      select.innerHTML = catalog.policy_profiles.map(profile =>
+        `<option value="${escAttr(profile.path)}">${escHtml(profile.profile_id)}</option>`
+      ).join('');
+      const defaultProfile = Array.from(select.options).find(option =>
+        option.textContent === 'openpi_franka_ee_pos_v1'
+      );
+      if (defaultProfile) select.value = defaultProfile.value;
+    }
+  } catch (err) {
+    state.evaluationCatalogError = err.message;
+    if (error) {
+      error.textContent = 'Evaluation catalog unavailable: ' + err.message;
+      error.classList.add('show');
+    }
+    console.warn('Evaluation catalog unavailable', err);
+  }
+}
+
+async function api(path, opts = {}) {
+  const res = await fetch(path, opts);
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({ error: res.statusText }));
+    const detail = err?.error;
+    const message = typeof detail === 'string' ? detail : detail?.message;
+    throw new Error(message || res.statusText);
+  }
+  return res.json();
+}
+
+function setRefreshStatus(message, tone = 'muted') {
+  const status = $('#refresh-status');
+  if (!status) return;
+  status.textContent = message;
+  status.style.color = tone === 'ok'
+    ? 'var(--green)'
+    : tone === 'error'
+      ? 'var(--red)'
+      : tone === 'warning'
+        ? 'var(--amber)'
+        : 'var(--text2)';
+}
+
+function formatRefreshTime(date) {
+  if (!date) return 'Not refreshed yet';
+  return 'Updated ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+}
+
+function runsQueryPath() {
+  const params = new URLSearchParams({
+    limit: String(state.runsPagination.limit || 50),
+    offset: String(state.runsPagination.offset || 0),
+  });
+  Object.entries(state.runsFilters).forEach(([key, value]) => {
+    if (value) params.set(key, value);
+  });
+  return '/api/runs/query?' + params.toString();
+}
+
+function applyRunsPage(payload) {
+  state.runs = payload?.rows || [];
+  state.runsPagination = payload?.pagination || state.runsPagination;
+  state.runsAvailableFilters = payload?.available_filters || state.runsAvailableFilters;
+  state.runsError = null;
+}
+
+async function refreshData(options = {}) {
+  if (state.refreshInFlight) return;
+  state.refreshInFlight = true;
+  const manual = Boolean(options.manual);
+  const btn = $('#refresh-btn');
+  btn.disabled = true;
+  btn.textContent = 'Refreshing...';
+  setRefreshStatus('Refreshing...', 'muted');
+  try {
+    const [benchmarkResult, runsResult, datasetResult, publicCatalogResult] = await Promise.allSettled([
+      api('/api/benchmark/leaderboard'),
+      api(runsQueryPath()),
+      api('/api/dataset_statistics'),
+      api('/api/public/tasks'),
+    ]);
+
+    const coreErrors = [];
+    if (benchmarkResult.status === 'fulfilled') {
+      state.benchmark = benchmarkResult.value;
+    } else {
+      coreErrors.push('Laboratory benchmark: ' + benchmarkResult.reason.message);
+    }
+    if (runsResult.status === 'fulfilled') {
+      applyRunsPage(runsResult.value);
+    } else {
+      state.runsError = runsResult.reason.message;
+      coreErrors.push('Runs: ' + runsResult.reason.message);
+    }
+
+    if (publicCatalogResult.status === 'fulfilled') {
+      state.publicCatalog = publicCatalogResult.value;
+    } else {
+      coreErrors.push('Public English catalog: ' + publicCatalogResult.reason.message);
+    }
+    applyPublicEnglishCatalog();
+
+    if (datasetResult.status === 'fulfilled') {
+      state.datasetStatistics = datasetResult.value;
+      state.datasetStatisticsError = null;
+    } else {
+      state.datasetStatisticsError = datasetResult.reason.message;
+    }
+
+    renderAll();
+    state.lastRefreshAt = new Date();
+    if (coreErrors.length) {
+      setRefreshStatus('Evaluation refresh failed', 'error');
+      if (manual) showToast(coreErrors.join(' | '));
+    } else if (state.datasetStatisticsError) {
+      setRefreshStatus(formatRefreshTime(state.lastRefreshAt) + ' · dataset unavailable', 'warning');
+      if (manual) showToast('Evaluation data refreshed; dataset statistics unavailable');
+    } else {
+      setRefreshStatus(formatRefreshTime(state.lastRefreshAt), 'ok');
+      if (manual) showToast('Data refreshed');
+    }
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Refresh';
+    state.refreshInFlight = false;
+  }
+}
+
+function renderAll() {
+  renderStats();
+  renderActiveTab();
+}
+
+function renderActiveTab() {
+  if (state.activeTab === 'overview') renderBenchmarkOverview();
+  if (state.activeTab === 'long' || state.activeTab === 'reasoning') renderBenchmarkTracks();
+  if (state.activeTab === 'atomic') renderAtomicLeaderboard();
+  if (state.activeTab === 'runs') renderRuns();
+  if (state.activeTab === 'datasets') renderDatasetStatistics();
+}
+
+function renderStats() {
+  const models = state.benchmark?.models || [];
+  const best = models[0] || {};
+  const track = id => (best.tracks || []).find(item => item.track_id === id) || {};
+
+  $('#stats-row').innerHTML = `
+    <div class="stat-card">
+      <div class="label">Models</div>
+      <div class="value">${models.length}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Best Official Score</div>
+      <div class="value">${formatNum(best.overall_score_100, 1)}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Best Overall Success Rate</div>
+      <div class="value" style="color:var(--green)">${formatPct(best.overall_success_rate)}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Atomic Action Success</div>
+      <div class="value" style="color:var(--blue)">${formatPct(best.atomic_success_rate)}</div>
+    </div>
+    <div class="stat-card"><div class="label">Long-Horizon</div><div class="value">${formatPct(track('long_horizon').success_rate)}</div></div>
+    <div class="stat-card"><div class="label">Reasoning in Action</div><div class="value">${formatPct(track('reasoning_in_action').success_rate)}</div></div>
+    <div class="stat-card"><div class="label">Task Coverage</div><div class="value">${best.task_coverage ? best.task_coverage.evaluated + '/' + best.task_coverage.total : '0/24'}</div></div>
+  `;
+}
+
+function coverageText(value) {
+  if (!value) return '0/0';
+  return `${value.evaluated}/${value.total} (${formatPct(value.rate)})`;
+}
+
+function qualityScoreText(value, status = '') {
+  if (value != null) return formatNum(value, 1);
+  if (status === 'metrics_unavailable') return '<span class="score-unavailable">Quality score not implemented yet</span>';
+  if (status === 'planned' || status === 'not_run') return '<span class="score-unavailable">Not evaluated</span>';
+  return '<span class="score-unavailable">Quality score not implemented yet</span>';
+}
+
+function renderBenchmarkOverview() {
+  const body = $('#benchmark-overview-body');
+  const empty = $('#benchmark-overview-empty');
+  const radars = $('#benchmark-overview-radars');
+  if (!body || !empty || !radars) return;
+  const models = state.benchmark?.models || [];
+  empty.style.display = models.length ? 'none' : '';
+  body.innerHTML = models.map((model, index) => {
+    const track = id => (model.tracks || []).find(item => item.track_id === id) || {};
+    return `<tr>
+      <td><span class="rank ${rankClass(index)}">${index + 1}</span></td>
+      <td><strong>${escHtml(model.model_name || '-')}</strong></td>
+      <td style="color:var(--text2)">${escHtml(model.checkpoint || '-')}</td>
+      <td><strong>${qualityScoreText(model.overall_score_100)}</strong><br><small>${coverageText(model.score_coverage)}</small></td>
+      <td><span class="pill ${pillClass(model.overall_success_rate)}">${formatPct(model.overall_success_rate)}</span></td>
+      <td>${splitScoreCell(track('long_horizon').success_rate)}</td>
+      <td>${splitScoreCell(track('reasoning_in_action').success_rate)}</td>
+      <td>${splitScoreCell(model.atomic_success_rate)}<br><small>${coverageText(model.atomic_coverage)}</small></td>
+      <td>${coverageText(model.task_coverage)}</td>
+    </tr>`;
+  }).join('');
+
+  // Per-model radars: subtask success rates + capability profile.
+  radars.innerHTML = models.map(model => {
+    const track = id => (model.tracks || []).find(item => item.track_id === id) || {};
+    const sr = value => value == null ? null : value * 100;
+    const subtrackAxes = [
+      { label: 'Long', value: sr(track('long_horizon').success_rate) },
+      { label: 'Reasoning', value: sr(track('reasoning_in_action').success_rate) },
+      { label: 'Atomic', value: sr(model.atomic_success_rate) },
+    ];
+    const cap = model.capabilities || {};
+    const capAxes = [
+      { label: 'Overall', value: cap.overall_success != null ? cap.overall_success : sr(model.overall_success_rate) },
+      { label: 'Partial', value: cap.partial_success != null ? cap.partial_success : null },
+      { label: 'Efficiency', value: cap.efficiency != null ? cap.efficiency : null },
+      { label: 'Safety', value: cap.safety != null ? cap.safety : null },
+      { label: 'Atomic', value: cap.atomic != null ? cap.atomic : sr(model.atomic_success_rate) },
+      { label: 'Coverage', value: cap.task_coverage != null ? cap.task_coverage : (model.task_coverage ? model.task_coverage.rate * 100 : null) },
+    ];
+    return `<div class="radar-card">
+      <div class="model-radar-head"><strong>${escHtml(model.model_name || '-')}</strong><small>${escHtml(model.checkpoint || '')} · rank ${model.rank ?? '-'}</small></div>
+      <div class="radar-grid">
+        <div>
+          <div class="radar-title">Track Success Rates</div>
+          <div class="radar-box"><canvas data-radar="${radarSeriesData(subtrackAxes)}"></canvas></div>
+        </div>
+        <div>
+          <div class="radar-title">Capability Profile</div>
+          <div class="radar-box"><canvas data-radar="${radarSeriesData(capAxes)}"></canvas></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  drawAllRadars(radars);
+}
+
+function trackModelMarkup(trackId, model) {
+  const trackScore = (model.tracks || []).find(item => item.track_id === trackId) || {};
+  const tasks = (model.tasks || []).filter(item => item.track_id === trackId);
+  const taskRows = tasks.map(task => `<tr>
+    <td><strong>${escHtml(task.task_id)}</strong></td><td>${escHtml(publicTaskName(task.task_id, task.task_name))}</td>
+    <td>${escHtml(task.status === 'implemented' ? 'Implemented' : 'Planned')}</td>
+    <td>${splitScoreCell(task.success_rate)}</td><td>${qualityScoreText(task.score_100, task.score_status)}</td>
+    <td>${task.num_success || 0}/${task.num_valid_trials || 0}</td><td>${escHtml(task.score_status || '-')}</td>
+  </tr>`).join('');
+  return `<details style="margin-top:10px"><summary><strong>${escHtml(model.model_name)}</strong> · success rate ${formatPct(trackScore.success_rate)} · coverage ${trackScore.evaluated_task_count || 0}/12</summary>
+    <div class="table-wrap" style="margin-top:8px"><table><thead><tr><th>ID</th><th>Task</th><th>Status</th><th>Success Rate</th><th>Quality Score / 100</th><th>Success / Valid</th><th>Score Status</th></tr></thead><tbody>${taskRows}</tbody></table></div>
+  </details>`;
+}
+
+function renderTrackPage(containerId, trackId) {
+  const container = $(containerId);
+  if (!container) return;
+  const benchmark = state.benchmark || {};
+  const track = (benchmark.tracks || []).find(item => item.track_id === trackId) || {};
+  const models = benchmark.models || [];
+  const catalogTasks = (benchmark.tasks || []).filter(item => item.track_id === trackId);
+  const rankingRows = models.map((model, index) => {
+    const score = (model.tracks || []).find(item => item.track_id === trackId) || {};
+    return `<tr><td>${index + 1}</td><td><strong>${escHtml(model.model_name)}</strong></td><td>${qualityScoreText(score.score_100)}</td><td>${splitScoreCell(score.success_rate)}</td><td>${score.evaluated_task_count || 0}/12</td></tr>`;
+  }).join('');
+  const radarCards = models.map(model => {
+    const tasks = (model.tasks || [])
+      .filter(item => item.track_id === trackId)
+      .sort((a, b) => String(a.task_id).localeCompare(String(b.task_id)));
+    const axes = tasks.map(task => ({ label: task.task_id, value: task.score_100 }));
+    if (!axes.length) return '';
+    return `<div class="radar-card">
+      <div class="model-radar-head"><strong>${escHtml(model.model_name || '-')}</strong><small>${escHtml(model.checkpoint || '')} · 12 task scores</small></div>
+      <div class="radar-box"><canvas data-radar="${radarSeriesData(axes)}"></canvas></div>
+    </div>`;
+  }).join('');
+  const directoryRows = catalogTasks.map(task => `<tr><td><strong>${escHtml(task.task_id)}</strong></td><td>${escHtml(task.scene || '-')}</td><td>${escHtml(publicTaskName(task.task_id, task.task_name))}</td><td>${escHtml(task.status === 'implemented' ? 'Implemented' : 'Planned')}</td><td>${escHtml((task.atomic_actions || []).map(id => (benchmark.atomic_actions || []).find(a => a.action_id === id)?.label || id).join(', '))}</td></tr>`).join('');
+  container.innerHTML = `<div class="card" style="margin-bottom:12px"><h3 style="margin:0 0 6px">${escHtml(track.label || trackId)} Leaderboard</h3><p style="margin:0;color:var(--text2)">${escHtml(track.description || '')} · 12 tasks; unevaluated tasks do not enter the current denominator.</p></div>
+    <div class="table-wrap"><table><thead><tr><th>#</th><th>Model</th><th>Track Score</th><th>Track Success</th><th>Coverage</th></tr></thead><tbody>${rankingRows || '<tr><td colspan="5">No model results</td></tr>'}</tbody></table></div>
+    ${radarCards ? `<h3 style="margin-top:18px">12-Task Score Profile</h3><div class="radar-grid" style="margin-top:8px">${radarCards}</div>` : ''}
+    ${models.map(model => trackModelMarkup(trackId, model)).join('')}
+    <h3 style="margin-top:20px">12-Task Directory</h3><div class="table-wrap"><table><thead><tr><th>ID</th><th>Setting</th><th>Task</th><th>Status</th><th>Atomic Actions</th></tr></thead><tbody>${directoryRows}</tbody></table></div>`;
+  drawAllRadars(container);
+}
+
+function renderBenchmarkTracks() {
+  if (state.activeTab === 'long') renderTrackPage('#tab-long', 'long_horizon');
+  if (state.activeTab === 'reasoning') renderTrackPage('#tab-reasoning', 'reasoning_in_action');
+}
+
+function renderAtomicLeaderboard() {
+  const head = $('#atomic-head');
+  const body = $('#atomic-body');
+  const empty = $('#atomic-empty');
+  if (!head || !body || !empty) return;
+  const benchmark = state.benchmark || {};
+  const actions = benchmark.atomic_actions || [];
+  const models = benchmark.models || [];
+  head.innerHTML = `<tr><th>Model</th><th>Overall</th>${actions.map(action => `<th title="${escAttr(action.action_id)}">${escHtml(action.label)}</th>`).join('')}<th>Coverage</th></tr>`;
+  empty.style.display = models.length ? 'none' : '';
+  body.innerHTML = models.map(model => {
+    const values = new Map((model.atomic_actions || []).map(item => [item.action_id, item]));
+    return `<tr><td><strong>${escHtml(model.model_name)}</strong><br><small>${escHtml(model.checkpoint || '-')}</small></td><td>${splitScoreCell(model.atomic_success_rate)}</td>${actions.map(action => {
+      const metric = values.get(action.action_id) || {};
+      const source = (metric.sources || []).join(', ') || 'No data';
+      return `<td title="${escAttr(source)}">${splitScoreCell(metric.success_rate)}<br><small>${metric.successes || 0}/${metric.attempts || 0}</small></td>`;
+    }).join('')}<td>${coverageText(model.atomic_coverage)}</td></tr>`;
+  }).join('');
+}
+
+function formatInteger(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return '0';
+  return new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(number);
+}
+
+function formatDurationSeconds(value) {
+  const total = Math.max(0, Math.round(Number(value) || 0));
+  const hours = Math.floor(total / 3600);
+  const minutes = Math.floor((total % 3600) / 60);
+  const seconds = total % 60;
+  return `${hours}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+}
+
+function formatDateRange(start, end) {
+  const first = start || '';
+  const last = end || '';
+  if (!first && !last) return '-';
+  if (!last || first === last) return first || last;
+  return `${first} – ${last}`;
+}
+
+function formatOperators(value) {
+  const operators = Array.isArray(value)
+    ? value
+    : String(value || '').split(';');
+  const unique = [...new Set(operators.map(item => String(item).trim()).filter(Boolean))];
+  return unique.length ? unique.join(' · ') : '-';
+}
+
+function firstDefined(source, ...keys) {
+  for (const key of keys) {
+    if (source?.[key] !== undefined && source?.[key] !== null) return source[key];
+  }
+  return undefined;
+}
+
+function nonEmptyPhysicalRows(section) {
+  return (section?.rows || []).filter(row =>
+    Number(row.batch_count || 0) > 0 || Number(row.sample_count || 0) > 0
+  );
+}
+
+function renderDatasetStatistics() {
+  const data = state.datasetStatistics;
+  const error = $('#dataset-stats-error');
+  const generatedAt = $('#dataset-generated-at');
+  const realBody = $('#real-robot-statistics-body');
+  const umiBody = $('#umi-statistics-body');
+  const simBody = $('#simulation-statistics-body');
+  if (!error || !generatedAt || !realBody || !umiBody || !simBody) return;
+
+  if (state.datasetStatisticsError) {
+    error.textContent = 'Dataset statistics are temporarily unavailable: ' + state.datasetStatisticsError;
+    error.classList.add('show');
+  } else {
+    error.textContent = '';
+    error.classList.remove('show');
+  }
+
+  if (!data || data.schema_version !== 'dataset_statistics/v1') {
+    generatedAt.textContent = 'No statistics are available';
+    $('#dataset-kpis').innerHTML = datasetKpiMarkup({}, {}, {});
+    $('#real-robot-badge').textContent = '0 batches · 0 samples · 0:00:00';
+    $('#umi-badge').textContent = '0 batches · 0 samples · 0:00:00';
+    $('#simulation-badge').textContent = '0 datasets · 0 episodes · 0 frames';
+    realBody.innerHTML = emptyDatasetRow(7, 'No real-robot teleoperation data');
+    umiBody.innerHTML = emptyDatasetRow(6, 'No UMI data');
+    simBody.innerHTML = emptyDatasetRow(9, 'No simulation data; the JSON and XLSX contracts are ready');
+    return;
+  }
+
+  const real = data.real_robot_teleoperation || {};
+  const umi = data.umi || {};
+  const simulation = data.simulation || {};
+  const realRows = nonEmptyPhysicalRows(real);
+  const umiRows = nonEmptyPhysicalRows(umi);
+  const simRows = (simulation.rows || []).filter(row => Number(row.dataset_batch_count || 0) > 0);
+
+  generatedAt.textContent = data.generated_at
+    ? 'Generated ' + new Date(data.generated_at).toLocaleString('en-US', { hour12: false })
+    : 'Latest statistics loaded';
+  $('#dataset-kpis').innerHTML = datasetKpiMarkup(real.totals || {}, umi.totals || {}, simulation.totals || {});
+  $('#real-robot-badge').textContent = `${formatInteger(real.totals?.batch_count)} batches · ${formatInteger(real.totals?.sample_count)} samples · ${formatDurationSeconds(firstDefined(real.totals, 'duration_seconds', 'valid_duration_seconds'))}`;
+  $('#umi-badge').textContent = `${formatInteger(umi.totals?.batch_count)} batches · ${formatInteger(umi.totals?.sample_count)} samples · ${formatDurationSeconds(firstDefined(umi.totals, 'duration_seconds', 'valid_duration_seconds'))}`;
+  $('#simulation-badge').textContent = `${formatInteger(simulation.totals?.dataset_batch_count)} datasets · ${formatInteger(simulation.totals?.episode_count)} episodes · ${formatInteger(simulation.totals?.frame_count)} frames`;
+
+  realBody.innerHTML = realRows.length ? realRows.map(row => `
+    <tr>
+      <td><span class="device-tag">${escHtml(row.device_model || '-')}</span></td>
+      <td><strong>${escHtml(publicTaskName(row.task_id, row.task_name))}</strong></td>
+      <td class="number-cell">${formatInteger(row.batch_count)}</td>
+      <td class="number-cell">${formatInteger(row.sample_count)}</td>
+      <td class="duration-cell" title="${formatInteger(firstDefined(row, 'duration_seconds', 'valid_duration_seconds'))} seconds">${formatDurationSeconds(firstDefined(row, 'duration_seconds', 'valid_duration_seconds'))}</td>
+      <td>${escHtml(formatDateRange(firstDefined(row, 'collection_date_start', 'first_date'), firstDefined(row, 'collection_date_end', 'last_date')))}</td>
+      <td>${escHtml(formatOperators(row.operator_ids))}</td>
+    </tr>
+  `).join('') : emptyDatasetRow(7, 'No real-robot teleoperation data');
+
+  umiBody.innerHTML = umiRows.length ? umiRows.map(row => `
+    <tr>
+      <td><strong>${escHtml(publicTaskName(row.task_id, row.task_name))}</strong></td>
+      <td class="number-cell">${formatInteger(row.batch_count)}</td>
+      <td class="number-cell">${formatInteger(row.sample_count)}</td>
+      <td class="duration-cell" title="${formatInteger(firstDefined(row, 'duration_seconds', 'valid_duration_seconds'))} seconds">${formatDurationSeconds(firstDefined(row, 'duration_seconds', 'valid_duration_seconds'))}</td>
+      <td>${escHtml(formatDateRange(firstDefined(row, 'collection_date_start', 'first_date'), firstDefined(row, 'collection_date_end', 'last_date')))}</td>
+      <td>${escHtml(formatOperators(row.operator_ids))}</td>
+    </tr>
+  `).join('') : emptyDatasetRow(6, 'No UMI data');
+
+  simBody.innerHTML = simRows.length ? simRows.map(row => `
+    <tr>
+      <td><strong>${escHtml(row.simulator || '-')}</strong></td>
+      <td>${escHtml(row.robot_type || '-')}</td>
+      <td>${escHtml(publicTaskName(row.task_id, row.task_name))}</td>
+      <td class="number-cell">${formatInteger(row.dataset_batch_count)}</td>
+      <td class="number-cell">${formatInteger(row.episode_count)}</td>
+      <td class="number-cell">${formatInteger(row.frame_count)}</td>
+      <td class="duration-cell" title="${formatInteger(firstDefined(row, 'duration_seconds', 'simulation_duration_seconds'))} seconds">${formatDurationSeconds(firstDefined(row, 'duration_seconds', 'simulation_duration_seconds'))}</td>
+      <td class="number-cell">${formatInteger(row.scene_count)}</td>
+      <td>${escHtml(formatDateRange(firstDefined(row, 'generation_date_start', 'first_date'), firstDefined(row, 'generation_date_end', 'last_date')))}</td>
+    </tr>
+  `).join('') : emptyDatasetRow(9, 'No simulation data; the JSON and XLSX contracts are ready');
+}
+
+function datasetKpiMarkup(real, umi, simulation) {
+  const sampleCount = Number(real.sample_count || 0) + Number(umi.sample_count || 0);
+  return `
+    <div class="stat-card">
+      <div class="label">Total Physical Samples</div>
+      <div class="value">${formatInteger(sampleCount)}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">Real-Robot Batches</div>
+      <div class="value">${formatInteger(real.batch_count)}</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">UMI Batches</div>
+      <div class="value">${formatInteger(umi.batch_count)}</div>
+    </div>
+    <div class="stat-card sim">
+      <div class="label">Simulation Datasets</div>
+      <div class="value">${formatInteger(simulation.dataset_batch_count)}</div>
+    </div>
+    <div class="stat-card sim">
+      <div class="label">Simulation Episodes</div>
+      <div class="value">${formatInteger(simulation.episode_count)}</div>
+    </div>
+    <div class="stat-card sim">
+      <div class="label">Simulation Frames</div>
+      <div class="value">${formatInteger(simulation.frame_count)}</div>
+    </div>
+  `;
+}
+
+function emptyDatasetRow(colspan, message) {
+  return `<tr><td class="dataset-empty-cell" colspan="${colspan}"><strong>${escHtml(message)}</strong><span>Update the unified XLSX and regenerate its JSON snapshot; the next refresh will load it automatically.</span></td></tr>`;
+}
+
+function splitScoreCell(value) {
+  if (value == null) return '<span class="pill pill-na">-</span>';
+  return `<span class="pill ${pillClass(value)}">${formatPct(value)}</span>`;
+}
+
+function radarSeriesData(axes) {
+  // Serialize an axes array [{label, value}] into a single-quoted data-radar attr.
+  return escAttr(JSON.stringify(axes));
+}
+
+function drawRadarChart(canvas, opts) {
+  const axes = Array.isArray(opts && opts.axes) ? opts.axes : [];
+  if (!axes.length) return;
+  const max = opts && opts.max > 0 ? Number(opts.max) : 100;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.clientWidth || 320;
+  const H = canvas.clientHeight || 260;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+
+  const n = axes.length;
+  const cx = W / 2;
+  const cy = H / 2;
+  const R = Math.min(W, H) / 2 - 38;
+  const ang = (i) => -Math.PI / 2 + (2 * Math.PI * i) / n;
+  const valueAt = (axis) => {
+    if (axis.value == null || !Number.isFinite(Number(axis.value))) return null;
+    return Math.max(0, Math.min(max, Number(axis.value)));
+  };
+
+  [0.25, 0.5, 0.75, 1].forEach((ring) => {
+    ctx.beginPath();
+    for (let i = 0; i <= n; i++) {
+      const x = cx + Math.cos(ang(i % n)) * R * ring;
+      const y = cy + Math.sin(ang(i % n)) * R * ring;
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = 'rgba(91,107,132,0.20)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  });
+  for (let i = 0; i < n; i++) {
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + Math.cos(ang(i)) * R, cy + Math.sin(ang(i)) * R);
+    ctx.strokeStyle = 'rgba(91,107,132,0.20)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  const pts = axes.map((axis, i) => {
+    const v = valueAt(axis);
+    const r = v == null ? 0 : (v / max) * R;
+    return { x: cx + Math.cos(ang(i)) * r, y: cy + Math.sin(ang(i)) * r };
+  });
+  ctx.beginPath();
+  pts.forEach((p, i) => (i ? ctx.lineTo(p.x, p.y) : ctx.moveTo(p.x, p.y)));
+  ctx.closePath();
+  ctx.fillStyle = 'rgba(37,99,235,0.16)';
+  ctx.fill();
+  ctx.strokeStyle = '#2563EB';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+  pts.forEach((p) => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 3.2, 0, Math.PI * 2);
+    ctx.fillStyle = '#2563EB';
+    ctx.fill();
+  });
+
+  const dense = n > 6;
+  ctx.fillStyle = '#5B6B84';
+  ctx.font = dense ? '9px sans-serif' : '11px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  axes.forEach((axis, i) => {
+    const v = valueAt(axis);
+    const r = dense ? R + 13 : Math.max(v == null ? 0 : (v / max) * R, R * 0.18) + 18;
+    const x = cx + Math.cos(ang(i)) * r;
+    const y = cy + Math.sin(ang(i)) * r;
+    const lines = dense ? [axis.label] : [axis.label, v == null ? '-' : v.toFixed(1)];
+    lines.forEach((line, li) => ctx.fillText(line, x, y + li * (dense ? 9 : 12)));
+  });
+}
+
+function drawAllRadars(scope) {
+  const root = typeof scope === 'string' ? document.querySelector(scope) : scope;
+  if (!root) return;
+  root.querySelectorAll('canvas[data-radar]').forEach((canvas) => {
+    let axes = [];
+    try { axes = JSON.parse(canvas.getAttribute('data-radar') || '[]'); } catch (e) { axes = []; }
+    if (!Array.isArray(axes)) axes = [];
+    canvas.title = axes.map(a => `${a.label}: ${a.value == null ? '-' : Number(a.value).toFixed(1)}`).join(' · ');
+    drawRadarChart(canvas, { axes });
+  });
+}
+
+function renderRuns() {
+  const tbody = $('#runs-tbody');
+  const empty = $('#runs-empty');
+  const runs = [...state.runs].sort((a, b) => (b.created_at || '').localeCompare(a.created_at || ''));
+  const page = state.runsPagination || {};
+  const available = state.runsAvailableFilters || {};
+  const setOptions = (selector, values, selected, allLabel) => {
+    const select = $(selector);
+    if (!select) return;
+    select.innerHTML = `<option value="">${escHtml(allLabel)}</option>` + (values || []).map(value =>
+      `<option value="${escAttr(value)}"${value === selected ? ' selected' : ''}>${escHtml(value)}</option>`
+    ).join('');
+  };
+  setOptions('#runs-model-filter', available.model_names, state.runsFilters.model_name, 'All models');
+  setOptions('#runs-task-filter', available.task_ids, state.runsFilters.task_id, 'All tasks');
+  setOptions('#runs-split-filter', available.splits, state.runsFilters.split, 'All splits');
+  const status = $('#runs-page-status');
+  if (status) {
+    const start = Number(page.total || 0) ? Number(page.offset || 0) + 1 : 0;
+    const end = Number(page.offset || 0) + runs.length;
+    status.textContent = state.runsError
+      ? 'Unable to load runs: ' + state.runsError
+      : `${start}–${end} of ${Number(page.total || 0)} runs`;
+  }
+  if ($('#runs-prev')) $('#runs-prev').disabled = !page.has_previous;
+  if ($('#runs-next')) $('#runs-next').disabled = !page.has_next;
+
+  if (!runs.length) {
+    tbody.innerHTML = '';
+    empty.style.display = '';
+    empty.querySelector('p').textContent = state.runsError
+      ? 'Evaluation runs could not be loaded.'
+      : 'No evaluation runs match the selected filters.';
+    return;
+  }
+  empty.style.display = 'none';
+
+  tbody.innerHTML = runs.map(r => {
+    const expanded = state.expandedAllRunId === r.run_id;
+    const detailHtml = expanded
+      ? `<tr class="detail-row"><td colspan="7">${renderRunInlineDetail(r.run_id)}</td></tr>`
+      : '';
+    const taskLabel = (r.task_ids || []).map(id => publicTaskName(id, id)).join(', ')
+      || englishOnly(r.task_label, '-');
+    return `
+      <tr class="clickable ${expanded ? 'expanded' : ''}" data-run-detail="${escAttr(r.run_id)}">
+        <td style="font-family:monospace;font-size:0.75rem">${escHtml(r.run_id)}</td>
+        <td><strong>${escHtml(r.model_name || '-')}</strong></td>
+        <td style="color:var(--text2)">${escHtml(taskLabel)}</td>
+        <td style="color:var(--text2)">${timeAgo(r.created_at)}</td>
+        <td><span class="pill ${pillClass(r.task_success_rate ?? r.success_rate)}">${formatPct(r.task_success_rate ?? r.success_rate)}</span></td>
+        <td>${formatNum(r.capability_index, 1)}</td>
+        <td>${(r.task_success_rate ?? r.success_rate) != null ? 'Completed' : 'Partial'}</td>
+      </tr>
+      ${detailHtml}
+    `;
+  }).join('');
+  drawExpandedRunRadars();
+  return;
+}
+
+async function loadRunsPage() {
+  try {
+    applyRunsPage(await api(runsQueryPath()));
+  } catch (err) {
+    state.runs = [];
+    state.runsError = err.message;
+  }
+  renderRuns();
+}
+
+function applyRunFilters() {
+  state.runsFilters = {
+    model_name: $('#runs-model-filter')?.value || '',
+    task_id: $('#runs-task-filter')?.value || '',
+    split: $('#runs-split-filter')?.value || '',
+  };
+  state.runsPagination.offset = 0;
+  loadRunsPage();
+}
+
+function changeRunsPage(direction) {
+  const page = state.runsPagination;
+  page.offset = Math.max(0, Number(page.offset || 0) + Number(direction) * Number(page.limit || 50));
+  loadRunsPage();
+}
+
+function runDetailCacheKey(runId) {
+  return `run:${runId}`;
+}
+
+function renderRunInlineDetail(runId) {
+  const cached = state.detailCache[runDetailCacheKey(runId)];
+  if (!cached) {
+    return '<div class="inline-detail"><div class="loading"><div class="spinner"></div><p>Loading detail...</p></div></div>';
+  }
+  if (cached.error) {
+    return `<div class="inline-detail"><div class="empty"><p>Failed to load detail: ${escHtml(cached.error)}</p></div></div>`;
+  }
+
+  const detail = cached.detail || {};
+  const episodes = cached.episodes || [];
+  const manifest = detail.run_manifest || {};
+  const summary = detail.summary || {};
+  const taskSummary = detail.task_summary || [];
+
+  const taskRows = taskSummary.map(t => `
+    <tr>
+      <td><code style="font-size:0.75rem">${escHtml(t.task_id || '-')}</code></td>
+      <td>${escHtml(publicTaskName(t.task_id, t.task_name))}</td>
+      <td>${escHtml(t.split || manifest.split || '-')}</td>
+      <td>${escHtml(t.success_logic || 'robust_semantic_v0')}</td>
+      <td><span class="pill ${pillClass(t.success_rate)}">${formatPct(t.success_rate)}</span></td>
+      <td>${formatPct(t.goal_pass_rate)} / ${formatPct(t.sequence_pass_rate)} / ${formatPct(t.terminal_pass_rate)} / ${formatPct(t.stability_pass_rate)} / ${formatPct(t.safety_valid_rate)}</td>
+      <td>${formatPct(t.safe_success_rate)}</td>
+      <td>${t.num_valid_trials ?? t.num_trials ?? '-'} (${t.num_success ?? 0} success)</td>
+      <td><code style="font-size:0.7rem;white-space:normal">${escHtml(formatDistribution(t.failure_category_distribution))}</code></td>
+      <td><code style="font-size:0.7rem;white-space:pre-wrap">${escHtml(formatQualityMetrics(t.quality_metric_means))}</code></td>
+      <td><code style="font-size:0.7rem;white-space:pre-wrap">${escHtml(JSON.stringify(t.success_definition || {}, null, 2))}</code></td>
+    </tr>
+  `).join('');
+
+  const episodeRows = episodes.map((ep, i) => `
+    <tr>
+      <td>${i + 1}</td>
+      <td><code style="font-size:0.75rem">${escHtml(ep.episode_id || '-')}</code></td>
+      <td>${escHtml(ep.split || manifest.split || '-')}</td>
+      <td>${ep.seed ?? '-'}</td>
+      <td><span style="color:${ep.success ? 'var(--green)' : 'var(--red)'}">${ep.success ? 'pass' : 'fail'}</span></td>
+      <td>${escHtml(ep.failure_category || 'none')}</td>
+      <td><code style="font-size:0.7rem;color:var(--red)">${escHtml(ep.failure_code || ep.failure_type || 'none')}</code></td>
+      <td>${escHtml(ep.termination_reason || '-')}</td>
+      <td>${ep.episode_steps ?? '-'}</td>
+      <td>${formatMs(ep.inference_latency_p95_ms)}</td>
+    </tr>
+  `).join('');
+
+  return `
+    <div class="inline-detail">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+        <h3 style="margin:0;font-size:1rem">${escHtml(manifest.model_name || runId)}</h3>
+        <button class="btn btn-sm" onclick="state.expandedAllRunId=null;renderRuns()">Close</button>
+      </div>
+      <div class="detail-grid">
+        <div class="detail-section">
+          <h4>Overview</h4>
+          <div class="kv"><span class="k">Run ID</span><span class="v">${escHtml(runId)}</span></div>
+          <div class="kv"><span class="k">Checkpoint</span><span class="v">${escHtml(manifest.checkpoint || '-')}</span></div>
+          <div class="kv"><span class="k">Robot</span><span class="v">${escHtml(manifest.robot || '-')}</span></div>
+          <div class="kv"><span class="k">Split</span><span class="v">${escHtml(manifest.split || '-')}</span></div>
+        </div>
+        <div class="detail-section">
+          <h4>Performance</h4>
+          <div class="kv"><span class="k">Task Success</span><span class="v">${formatPct(summary.success_rate)}</span></div>
+          <div class="kv"><span class="k">Episodes</span><span class="v">${summary.num_episodes ?? episodes.length} (${summary.num_success ?? 0} success)</span></div>
+          <div class="kv"><span class="k">Stage Completion</span><span class="v">${formatPct(summary.stage_completion_mean)}</span></div>
+          <div class="kv"><span class="k">Latency p95</span><span class="v">${formatMs(summary.inference_latency_p95_ms)}</span></div>
+        </div>
+      </div>
+      ${taskRows ? `
+        <div style="margin-top:16px">
+          <h4 style="margin-bottom:8px;font-size:0.8125rem;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px">Task Metrics</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Task ID</th><th>Name</th><th>Split</th><th>Logic</th><th>Strict Success</th><th>Goal / Seq / Terminal / Stability / Safety</th><th>Safe Success</th><th>Trials</th><th>Failures</th><th>Quality</th><th>Success Definition</th></tr></thead>
+              <tbody>${taskRows}</tbody>
+            </table>
+          </div>
+        </div>
+      ` : ''}
+      ${episodeRows ? `
+        <div style="margin-top:16px">
+          <h4 style="margin-bottom:8px;font-size:0.8125rem;color:var(--text2);text-transform:uppercase;letter-spacing:0.5px">Episodes (${episodes.length})</h4>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>#</th><th>Episode ID</th><th>Split</th><th>Seed</th><th>Success</th><th>Failure Category</th><th>Failure Code</th><th>Termination</th><th>Steps</th><th>Latency p95</th></tr></thead>
+              <tbody>${episodeRows}</tbody>
+            </table>
+          </div>
+        </div>
+      ` : ''}
+    </div>
+  `;
+}
+
+function drawExpandedRunRadars() {
+  // All Runs uses compact inline details without radar canvases.
+}
+
+// Evaluation run rows expand their detail inline below the clicked row.
+async function toggleRunDetail(runId) {
+  $('#detail-panel').classList.remove('open');
+  if (state.expandedAllRunId === runId) {
+    state.expandedAllRunId = null;
+    renderRuns();
+    return;
+  }
+
+  state.expandedAllRunId = runId;
+  renderRuns();
+
+  const cacheKey = runDetailCacheKey(runId);
+  if (!state.detailCache[cacheKey]) {
+    try {
+      const [detail, episodes] = await Promise.all([
+        api('/api/runs/' + encodeURIComponent(runId)),
+        api('/api/runs/' + encodeURIComponent(runId) + '/episodes'),
+      ]);
+      state.detailCache[cacheKey] = { detail, episodes };
+    } catch (e) {
+      state.detailCache[cacheKey] = { error: e.message };
+    }
+    renderRuns();
+  }
+  return;
+}
+
+function switchTab(name) {
+  const panels = {
+    overview: '#tab-overview', long: '#tab-long', reasoning: '#tab-reasoning',
+    atomic: '#tab-atomic', runs: '#tab-runs', datasets: '#tab-datasets',
+  };
+  if (!panels[name] || !$(panels[name])) return;
+  state.activeTab = name;
+  $$('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  Object.entries(panels).forEach(([tabName, selector]) => {
+    $(selector).style.display = tabName === name ? '' : 'none';
+  });
+  $('#stats-row').style.display = ['overview', 'long', 'reasoning', 'atomic'].includes(name) ? '' : 'none';
+  // Hide detail when switching
+  state.expandedAllRunId = null;
+  $('#detail-panel').classList.remove('open');
+  renderActiveTab();
+}
+
+document.addEventListener('click', (event) => {
+  const target = event.target instanceof Element ? event.target : null;
+  if (!target) return;
+
+  const runTarget = target.closest('[data-run-detail]');
+  if (runTarget) {
+    event.preventDefault();
+    event.stopPropagation();
+    const runId = runTarget.getAttribute('data-run-detail');
+    if (runId) toggleRunDetail(runId);
+  }
+});
+
+function openEvalModal() { $('#eval-modal').classList.add('open'); }
+function closeEvalModal() { $('#eval-modal').classList.remove('open'); }
+$('#ev-provider')?.addEventListener('change', (event) => {
+  const provider = event.target.value;
+  $('#ev-port').value = provider === 'gr00t' ? '8765' : '8000';
+  const profile = $('#ev-policy-profile');
+  const match = Array.from(profile.options).find(option => {
+    const name = option.textContent.toLowerCase();
+    return name.includes(provider) && name.includes('ee_pos');
+  });
+  if (match) profile.value = match.value;
+  $('#ev-model').value = provider === 'gr00t' ? 'GR00T N1.5' : 'OpenPI';
+});
+$('#eval-modal').addEventListener('click', (e) => {
+  if (e.target === $('#eval-modal')) closeEvalModal();
+});
+
+async function submitEval(e) {
+  e.preventDefault();
+  const target = $('#ev-eval-target')?.value || 'benchmark_core';
+  const preset = evalTargetPresets[target] || evalTargetPresets.full_suite;
+  if (preset.runSuite && !$('#ev-ckpt').value.trim()) {
+    showToast('Checkpoint is required for an official suite evaluation.');
+    $('#ev-ckpt').focus();
+    return;
+  }
+  const body = {
+    backend: $('#ev-backend').value,
+    model_name: $('#ev-model').value,
+    checkpoint: $('#ev-ckpt').value,
+    policy_provider: $('#ev-provider').value,
+    policy_backend: $('#ev-provider').value === 'gr00t' ? 'zmq' : 'websocket',
+    vla_host: $('#ev-host').value,
+    vla_port: parseInt($('#ev-port').value),
+    robot: $('#ev-robot').value,
+    num_episodes: parseInt($('#ev-num-ep').value),
+    split: $('#ev-split').value,
+    multi_split: $('#ev-multi-split').checked,
+    run_suite: Boolean(preset.runSuite),
+    task_spec: preset.taskSpec,
+    task_id: preset.taskId,
+    target_object: preset.targetObject,
+    max_steps: preset.maxSteps,
+    task_suite: $('#ev-task-suite').value || 'eai4s_chem_basic_v0_1',
+    policy_profile: $('#ev-policy-profile').value || undefined,
+    instruction: $('#ev-instr').value,
+    asset_root: $('#ev-asset-root').value || undefined,
+    policy_api: $('#ev-policy-api').value,
+    seeds: $('#ev-seeds').value || undefined,
+    device: $('#ev-device').value || undefined,
+    headless: $('#ev-headless').checked,
+    save_video: $('#ev-save-video').checked,
+    reaction_interpolation_steps: parseInt($('#ev-reaction-steps').value),
+    sim_steps_per_action: parseInt($('#ev-sim-steps').value),
+    initial_hold_steps: parseInt($('#ev-initial-hold-steps').value),
+    stabilization_max_steps: parseInt($('#ev-stability-max-steps').value),
+    stabilization_hold_steps: parseInt($('#ev-stability-hold-steps').value),
+    stabilization_joint_vel_threshold: parseFloat($('#ev-stability-joint-vel').value),
+    use_policy_orientation: $('#ev-use-policy-orientation').checked,
+    skip_isaac_close: $('#ev-skip-isaac-close').checked,
+  };
+  if ($('#ev-override-success').checked) {
+    body.success_height_threshold = parseFloat($('#ev-success-height').value);
+    body.success_distance_threshold = parseFloat($('#ev-success-distance').value);
+    body.success_require_gripper_closed = $('#ev-success-require-gripper').checked;
+    body.success_ignore_gripper_closed = !$('#ev-success-require-gripper').checked;
+    body.success_require_stable = $('#ev-success-require-stable').checked;
+    body.success_ignore_stable = !$('#ev-success-require-stable').checked;
+  }
+  try {
+    if (body.backend === 'eai4s_benchmark') {
+      const preflight = await runEvalPreflight(false);
+      if (!preflight.ok) throw new Error('Preflight failed; inspect the checks before submitting.');
+    }
+    const result = await api('/api/eval/run', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    closeEvalModal();
+    showToast('Evaluation started: ' + result.run_id);
+    // Poll for status
+    pollEvalStatus(result.run_id);
+  } catch (err) {
+    showToast('Failed to start: ' + err.message);
+  }
+}
+
+async function runEvalPreflight(showToastOnSuccess = false) {
+  const panel = $('#ev-preflight');
+  const target = $('#ev-eval-target')?.value || 'benchmark_core';
+  const preset = evalTargetPresets[target] || evalTargetPresets.benchmark_core;
+  panel.textContent = 'Checking assets, camera mapping, policy server and evaluator configuration...';
+  try {
+    const result = await api('/api/eval/preflight', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        vla_host: $('#ev-host').value,
+        vla_port: parseInt($('#ev-port').value),
+        policy_provider: $('#ev-provider').value,
+        policy_profile: $('#ev-policy-profile').value || undefined,
+        task_spec: preset.taskSpec,
+        task_suite: preset.taskSuite || $('#ev-task-suite').value,
+      }),
+    });
+    panel.innerHTML = Object.entries(result.checks || {}).map(([name, check]) => {
+      const symbol = check.ok === true ? 'OK' : check.ok === false ? 'FAIL' : 'INFO';
+      return `<div><strong>${symbol} · ${escHtml(name)}</strong> ${escHtml(check.error || check.message || check.path || '')}</div>`;
+    }).join('');
+    panel.style.color = result.ok ? 'var(--green)' : 'var(--red)';
+    if (showToastOnSuccess) showToast(result.ok ? 'Preflight passed' : 'Preflight failed');
+    return result;
+  } catch (err) {
+    panel.textContent = 'Preflight request failed: ' + err.message;
+    panel.style.color = 'var(--red)';
+    return { ok: false, checks: {} };
+  }
+}
+
+async function pollEvalStatus(runId) {
+  const maxPolls = 120;
+  let polls = 0;
+  const interval = setInterval(async () => {
+    polls++;
+    try {
+      const status = await api('/api/eval/status/' + runId);
+      if (status.status === 'completed') {
+        clearInterval(interval);
+        showToast('Evaluation completed: ' + runId);
+        refreshData();
+      } else if (status.status === 'failed' || status.status === 'error') {
+        clearInterval(interval);
+        showToast('Evaluation failed: ' + (status.error || status.stderr_tail || 'unknown error'));
+        refreshData();
+      }
+      if (polls >= maxPolls) {
+        clearInterval(interval);
+        showToast('Evaluation still running (timeout polling): ' + runId);
+      }
+    } catch {
+      // Ignore polling errors
+    }
+  }, 3000);
+}
+
+function escHtml(s) {
+  if (s == null) return '';
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  syncEvalTargetDefaults();
+  refreshData();
+  loadEvaluationCatalog();
+  // Auto-refresh every 30s
+  setInterval(refreshData, 30000);
+
+  // Multi-split checkbox disables split dropdown
+  const multiSplitCb = document.getElementById('ev-multi-split');
+  const splitSelect = document.getElementById('ev-split');
+  if (multiSplitCb && splitSelect) {
+    multiSplitCb.addEventListener('change', () => {
+      splitSelect.disabled = multiSplitCb.checked;
+    });
+  }
+});
+</script>
+
+</body>
+</html>

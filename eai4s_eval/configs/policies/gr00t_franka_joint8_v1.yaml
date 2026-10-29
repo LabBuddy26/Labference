@@ -1,0 +1,22 @@
+profile_id: gr00t_franka_joint8_v1
+control_hz: 10
+action_space: joint
+observation_mode: gr00t
+observation_map:
+  camera_1_rgb: video.main_camera
+  camera_3_rgb: video.wrist_camera
+state_key: state.single_arm
+state_arm_key: state.single_arm
+state_arm_dim: 7
+state_gripper_key: state.gripper
+prompt_key: annotation.human.task_description
+action_keys: [actions, action]
+action_arm_key: action.single_arm
+action_gripper_key: action.gripper
+action_dim: 8
+max_horizon: 16
+n_obs_steps: 1
+gripper_mode: binary
+gripper_closed_value: 0.0
+gripper_open_value: 0.04
+gripper_binary_threshold: 0.5

@@ -1,0 +1,1125 @@
+{
+  "schema_version": "laboratory_benchmark_catalog/v1",
+  "catalog_id": "laboratory_benchmark_v1",
+  "version": "2.0.0",
+  "source": {
+    "filename": "实验室任务表.xlsx",
+    "sheets": [
+      "长程任务_12",
+      "操作中推理_12"
+    ]
+  },
+  "aggregation": {
+    "task_success": "valid_episode_micro",
+    "track_success": "evaluated_task_macro",
+    "overall_success": "evaluated_task_macro",
+    "atomic_success": "action_instance_micro_per_action_then_action_macro",
+    "atomic_in_official_score": false
+  },
+  "tracks": [
+    {
+      "track_id": "long_horizon",
+      "label": "长程任务",
+      "prefix": "L",
+      "description": "包含状态依赖、顺序约束和多阶段执行的长程任务",
+      "task_count": 12
+    },
+    {
+      "track_id": "reasoning_in_action",
+      "label": "操作中推理",
+      "prefix": "R",
+      "description": "根据视觉或结构化状态进行判断并选择后续动作",
+      "task_count": 12
+    }
+  ],
+  "atomic_actions": [
+    {
+      "action_id": "grasp",
+      "label": "抓取"
+    },
+    {
+      "action_id": "place",
+      "label": "放置"
+    },
+    {
+      "action_id": "press",
+      "label": "按压"
+    },
+    {
+      "action_id": "pour",
+      "label": "倾倒"
+    },
+    {
+      "action_id": "open",
+      "label": "打开"
+    },
+    {
+      "action_id": "close",
+      "label": "关闭"
+    },
+    {
+      "action_id": "move",
+      "label": "移动"
+    },
+    {
+      "action_id": "stir",
+      "label": "搅拌"
+    },
+    {
+      "action_id": "shake",
+      "label": "晃动"
+    },
+    {
+      "action_id": "lift",
+      "label": "抬升"
+    },
+    {
+      "action_id": "twist",
+      "label": "旋拧"
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "L01",
+      "track_id": "long_horizon",
+      "subboard": "长程任务",
+      "scene": "样品流转",
+      "task_name": "取瓶-放架三步任务",
+      "setting": "从给定位置取目标瓶，搬运并放入给定架位。",
+      "capability": "短依赖链执行、对象状态记忆",
+      "dependencies": null,
+      "minimum_assets": "样品瓶、瓶架、机械臂",
+      "simulation_mvp": "仅刚体；无标签识别、无隐藏异常。",
+      "success_conditions": "三步按序完成；瓶在目标架位；手爪释放",
+      "scoring_rule": "终态40+依赖顺序30+子目标20+效率10",
+      "score_components": [
+        {
+          "component": "终态",
+          "weight": 40,
+          "metric": "success"
+        },
+        {
+          "component": "依赖顺序",
+          "weight": 30,
+          "metric": "sequence_quality_score_100"
+        },
+        {
+          "component": "子目标",
+          "weight": 20,
+          "metric": "subgoal_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "掉落、错位或跳过抓取即0分",
+      "atomic_actions": [
+        "grasp",
+        "lift",
+        "move",
+        "place"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B11_level2_sampletransport.yaml"
+    },
+    {
+      "task_id": "L02",
+      "track_id": "long_horizon",
+      "subboard": "长程任务",
+      "scene": "样品整理",
+      "task_name": "扫码后分类放置",
+      "setting": "取目标瓶、调用扫码接口、根据已给定分类规则放到A架或B架。",
+      "capability": "步骤依赖、一次信息调用后的计划更新",
+      "dependencies": null,
+      "minimum_assets": "3个样品瓶、扫码位、2个瓶架",
+      "simulation_mvp": "扫码结果由结构化API返回，不做OCR；每次仅1个瓶。",
+      "success_conditions": "扫描目标瓶且放入规则对应架位；无重复扫描",
+      "scoring_rule": "终态40+顺序30+分类子目标20+效率10",
+      "score_components": [
+        {
+          "component": "终态",
+          "weight": 40,
+          "metric": "success"
+        },
+        {
+          "component": "顺序",
+          "weight": 30,
+          "metric": "sequence_quality_score_100"
+        },
+        {
+          "component": "分类子目标",
+          "weight": 20,
+          "metric": "subgoal_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "未扫描即分类、错架或掉落0分",
+      "atomic_actions": [
+        "grasp",
+        "move",
+        "place"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B16_level2_sample_organization.yaml"
+    },
+    {
+      "task_id": "L03",
+      "track_id": "long_horizon",
+      "subboard": "长程任务",
+      "scene": "单次移液",
+      "task_name": "安装枪头后完成一次转移",
+      "setting": "安装枪头，从源管吸取100µL，排入目标管，最后弃枪头。",
+      "capability": "工具状态依赖、液量状态依赖",
+      "dependencies": null,
+      "minimum_assets": "移液器、枪头盒、2个试管、废弃盒",
+      "simulation_mvp": "使用标量液量和可靠移液技能；不模拟液滴。",
+      "success_conditions": "目标管增加100±2 µL；枪头进入废弃盒；顺序正确",
+      "scoring_rule": "终态40+顺序30+4个子目标20+效率10",
+      "score_components": [
+        {
+          "component": "终态",
+          "weight": 40,
+          "metric": "success"
+        },
+        {
+          "component": "顺序",
+          "weight": 30,
+          "metric": "sequence_quality_score_100"
+        },
+        {
+          "component": "4个子目标",
+          "weight": 20,
+          "metric": "subgoal_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "无枪头吸液、错管、枪头未弃置或体积误差>5%0分",
+      "atomic_actions": [
+        "grasp",
+        "move",
+        "press",
+        "place"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B30_level2_L03_singlepipetting.yaml"
+    },
+    {
+      "task_id": "L04",
+      "track_id": "long_horizon",
+      "subboard": "长程任务",
+      "scene": "简化稀释",
+      "task_name": "三管二倍稀释",
+      "setting": "按固定SOP完成3管二倍稀释，每次使用可靠移液技能。",
+      "capability": "循环依赖、管位和体积记忆",
+      "dependencies": null,
+      "minimum_assets": "3个试管、移液器、枪头盒",
+      "simulation_mvp": "浓度/体积由状态机更新；混匀为离散skill，不模拟流体。",
+      "success_conditions": "3管体积一致；浓度比例1:1/2:1/4；无错管",
+      "scoring_rule": "终态40+关键依赖30+子目标20+效率10",
+      "score_components": [
+        {
+          "component": "终态",
+          "weight": 40,
+          "metric": "success"
+        },
+        {
+          "component": "关键依赖",
+          "weight": 30,
+          "metric": "sequence_quality_score_100"
+        },
+        {
+          "component": "子目标",
+          "weight": 20,
+          "metric": "subgoal_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "跳管、顺序错误、浓度关系错误或交叉污染标志触发0分",
+      "atomic_actions": [
+        "grasp",
+        "move",
+        "press",
+        "shake",
+        "place"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B19_level4_liquid_mixing.yaml"
+    },
+    {
+      "task_id": "L05",
+      "track_id": "long_horizon",
+      "subboard": "长程任务",
+      "scene": "小规模孔板",
+      "task_name": "四孔固定配方点样",
+      "setting": "按给定表格向A1、A2、B1、B2四孔加入固定体积。",
+      "capability": "列表执行、枪头状态和孔级记忆",
+      "dependencies": null,
+      "minimum_assets": "4孔简化板、移液器、2种源液",
+      "simulation_mvp": "用2×2板代替96孔板；孔内为标量液量。",
+      "success_conditions": "四孔配方全部正确；无漏孔/重复孔",
+      "scoring_rule": "终态40+顺序/进度30+孔级子目标20+效率10",
+      "score_components": [
+        {
+          "component": "终态",
+          "weight": 40,
+          "metric": "success"
+        },
+        {
+          "component": "顺序/进度",
+          "weight": 30,
+          "metric": "sequence_quality_score_100"
+        },
+        {
+          "component": "孔级子目标",
+          "weight": 20,
+          "metric": "subgoal_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "错孔、漏孔、重复加样或污染标志0分",
+      "atomic_actions": [
+        "grasp",
+        "move",
+        "press",
+        "place"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B31_level2_L05_formulation_spotting.yaml"
+    },
+    {
+      "task_id": "L06",
+      "track_id": "long_horizon",
+      "subboard": "长程任务",
+      "scene": "简化称量",
+      "task_name": "天平砝码称量流程",
+      "setting": "打开防风门、放入指定砝码、关门、等待稳定、读取结构化数值并取回。",
+      "capability": "门状态和稳定状态依赖",
+      "dependencies": null,
+      "minimum_assets": "简化天平、3个砝码、机械臂",
+      "simulation_mvp": "砝码为刚体真实质量；显示值由总质量计算。",
+      "success_conditions": "顺序正确；读数等于砝码质量±显示分辨率；砝码取回",
+      "scoring_rule": "终态40+依赖顺序30+子目标20+效率10",
+      "score_components": [
+        {
+          "component": "终态",
+          "weight": 40,
+          "metric": "success"
+        },
+        {
+          "component": "依赖顺序",
+          "weight": 30,
+          "metric": "sequence_quality_score_100"
+        },
+        {
+          "component": "子目标",
+          "weight": 20,
+          "metric": "subgoal_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "门未关就读数、砝码掉落、撞击秤盘0分",
+      "atomic_actions": [
+        "open",
+        "grasp",
+        "move",
+        "place",
+        "close"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B17_level2_scale_weights.yaml"
+    },
+    {
+      "task_id": "L07",
+      "track_id": "long_horizon",
+      "subboard": "长程任务",
+      "scene": "离心操作",
+      "task_name": "两管装载并运行预设程序",
+      "setting": "打开离心机，按已给定的两个对称槽位装管，关盖，选择Preset-1并启动。",
+      "capability": "前置条件和设备状态依赖",
+      "dependencies": null,
+      "minimum_assets": "6槽离心机、2个管、实体按钮/简化UI",
+      "simulation_mvp": "槽位与门为刚体/关节；运行只切换状态。",
+      "success_conditions": "两管到位；盖locked；preset正确；状态Running",
+      "scoring_rule": "终态40+顺序30+子目标20+效率10",
+      "score_components": [
+        {
+          "component": "终态",
+          "weight": 40,
+          "metric": "success"
+        },
+        {
+          "component": "顺序",
+          "weight": 30,
+          "metric": "sequence_quality_score_100"
+        },
+        {
+          "component": "子目标",
+          "weight": 20,
+          "metric": "subgoal_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "非对称装载、未锁盖启动、掉管0分",
+      "atomic_actions": [
+        "open",
+        "grasp",
+        "move",
+        "place",
+        "close",
+        "press"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B14_level2_centrifuge_load.yaml"
+    },
+    {
+      "task_id": "L08",
+      "track_id": "long_horizon",
+      "subboard": "长程任务",
+      "scene": "核磁进样",
+      "task_name": "给定孔位的NMR管进样",
+      "setting": "取已给定NMR管，移动到已给定7号孔并调用标准插入技能。",
+      "capability": "样品身份和孔位状态依赖",
+      "dependencies": null,
+      "minimum_assets": "NMR管、12孔自动进样架、机械臂",
+      "simulation_mvp": "不模拟真实NMR；架位占用为布尔状态。",
+      "success_conditions": "slot7占用正确管；管直立；夹爪释放",
+      "scoring_rule": "终态40+顺序30+子目标20+效率10",
+      "score_components": [
+        {
+          "component": "终态",
+          "weight": 40,
+          "metric": "success"
+        },
+        {
+          "component": "顺序",
+          "weight": 30,
+          "metric": "sequence_quality_score_100"
+        },
+        {
+          "component": "子目标",
+          "weight": 20,
+          "metric": "subgoal_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "错管、错孔、管掉落或跳过确认0分",
+      "atomic_actions": [
+        "grasp",
+        "lift",
+        "move",
+        "place"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B13_level2_nmrinjection.yaml"
+    },
+    {
+      "task_id": "L09",
+      "track_id": "long_horizon",
+      "subboard": "长程任务",
+      "scene": "设备操作",
+      "task_name": "预设程序启动-等待-停止",
+      "setting": "将样品放入设备，选择已给定Preset-2，启动，等待Done后取出。",
+      "capability": "设备离散状态依赖、等待",
+      "dependencies": null,
+      "minimum_assets": "带盖简化设备、样品盒、3个按钮",
+      "simulation_mvp": "设备使用有限状态机；无温度/化学物理。",
+      "success_conditions": "按序到Done并取回样品；设备回Ready",
+      "scoring_rule": "终态40+状态顺序30+子目标20+效率10",
+      "score_components": [
+        {
+          "component": "终态",
+          "weight": 40,
+          "metric": "success"
+        },
+        {
+          "component": "状态顺序",
+          "weight": 30,
+          "metric": "sequence_quality_score_100"
+        },
+        {
+          "component": "子目标",
+          "weight": 20,
+          "metric": "subgoal_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "运行中开盖、预设错误或样品遗失0分",
+      "atomic_actions": [
+        "open",
+        "grasp",
+        "move",
+        "place",
+        "close",
+        "press"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B12_level4_device_operation.yaml"
+    },
+    {
+      "task_id": "L10",
+      "track_id": "long_horizon",
+      "subboard": "长程任务",
+      "scene": "分析队列",
+      "task_name": "三瓶按顺序装入进样架",
+      "setting": "按给定队列表将A、B、C三个瓶分别放入1、2、3号位并确认。",
+      "capability": "队列顺序和已占用状态记忆",
+      "dependencies": null,
+      "minimum_assets": "3个进样瓶、3孔架、机械臂",
+      "simulation_mvp": "刚体放置；每次place使用标准技能；不模拟分析仪。",
+      "success_conditions": "1/2/3号位与A/B/C一一对应；无重复抓取",
+      "scoring_rule": "终态40+队列顺序30+3个子目标20+效率10",
+      "score_components": [
+        {
+          "component": "终态",
+          "weight": 40,
+          "metric": "success"
+        },
+        {
+          "component": "队列顺序",
+          "weight": 30,
+          "metric": "sequence_quality_score_100"
+        },
+        {
+          "component": "3个子目标",
+          "weight": 20,
+          "metric": "subgoal_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "错位、瓶掉落或跳过前项直接放后项0分",
+      "atomic_actions": [
+        "grasp",
+        "lift",
+        "move",
+        "place"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B15_level2_cohort_analysis.yaml"
+    },
+    {
+      "task_id": "L11",
+      "track_id": "long_horizon",
+      "subboard": "长程任务",
+      "scene": "恒温模块",
+      "task_name": "放样-运行-取样流程",
+      "setting": "将样品管放入已给定孔位，关盖，启动30秒预设，Done后取出。",
+      "capability": "定时状态和盖状态依赖",
+      "dependencies": null,
+      "minimum_assets": "简化热块、样品管、按钮",
+      "simulation_mvp": "不模拟传热；只用30秒状态机和孔位占用。",
+      "success_conditions": "程序到Done后取样；设备回Ready；样品身份不变",
+      "scoring_rule": "终态40+状态顺序30+子目标20+效率10",
+      "score_components": [
+        {
+          "component": "终态",
+          "weight": 40,
+          "metric": "success"
+        },
+        {
+          "component": "状态顺序",
+          "weight": 30,
+          "metric": "sequence_quality_score_100"
+        },
+        {
+          "component": "子目标",
+          "weight": 20,
+          "metric": "subgoal_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "计时未结束开盖/取样、错孔或掉管0分",
+      "atomic_actions": [
+        "open",
+        "grasp",
+        "move",
+        "place",
+        "close",
+        "press"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B18_level4_condition_module.yaml"
+    },
+    {
+      "task_id": "L12",
+      "track_id": "long_horizon",
+      "subboard": "长程任务",
+      "scene": "实验台复位",
+      "task_name": "五步清场复位",
+      "setting": "将枪头放入废弃盒、两支试管归架、关闭设备盖、机械臂回Home。",
+      "capability": "多对象完成状态与收尾依赖",
+      "dependencies": null,
+      "minimum_assets": "废弃盒、2支试管、试管架、带盖设备",
+      "simulation_mvp": "全部刚体/关节；不做废液分类和擦拭。",
+      "success_conditions": "5个终态谓词全部满足；台面无自由物体",
+      "scoring_rule": "终态50+顺序20+子目标20+效率10",
+      "score_components": [
+        {
+          "component": "终态",
+          "weight": 50,
+          "metric": "success"
+        },
+        {
+          "component": "顺序",
+          "weight": 20,
+          "metric": "sequence_quality_score_100"
+        },
+        {
+          "component": "子目标",
+          "weight": 20,
+          "metric": "subgoal_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "把试管丢入废弃盒、对象掉落或盖夹住物体0分",
+      "atomic_actions": [
+        "grasp",
+        "move",
+        "place",
+        "close"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B20_level4_clear_reset.yaml"
+    },
+    {
+      "task_id": "R01",
+      "track_id": "reasoning_in_action",
+      "subboard": "操作中推理",
+      "scene": "天平读数",
+      "task_name": "读取数字质量并选择记录值",
+      "setting": "观察天平屏幕，例如显示120.0 g，从4个候选值中选择并按对应记录按钮。",
+      "capability": "视觉数字识别、读数与动作绑定",
+      "dependencies": "读屏→选择候选按钮→按下",
+      "minimum_assets": "简化天平屏幕、4个实体按钮",
+      "simulation_mvp": "数字用高对比动态纹理；砝码固定；不模拟噪声和漂移。",
+      "success_conditions": "选择值与屏幕一致；按对按钮",
+      "scoring_rule": "答案60+证据区域20+标准按键成功10+效率10",
+      "score_components": [
+        {
+          "component": "答案",
+          "weight": 60,
+          "metric": "success"
+        },
+        {
+          "component": "证据区域",
+          "weight": 20,
+          "metric": "evidence_quality_score_100"
+        },
+        {
+          "component": "标准按键成功",
+          "weight": 10,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "选择错误值或按错按钮为0分",
+      "atomic_actions": [
+        "press"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B28_level3_R01_scaledigital.yaml"
+    },
+    {
+      "task_id": "R02",
+      "track_id": "reasoning_in_action",
+      "subboard": "操作中推理",
+      "scene": "砝码称量",
+      "task_name": "选择砝码组合达到目标质量",
+      "setting": "目标为120 g，可用100/50/20/10 g砝码；根据标签选择100+20并调用标准放置技能。",
+      "capability": "视觉标签识别、简单加法、操作选择",
+      "dependencies": "识别砝码→选择组合→标准放置→读屏确认",
+      "minimum_assets": "简化天平、4个刚体砝码",
+      "simulation_mvp": "砝码质量固定；标签为大号数字。",
+      "success_conditions": "选中组合总质量=目标；显示值正确",
+      "scoring_rule": "组合正确60+标签证据20+执行10+效率10",
+      "score_components": [
+        {
+          "component": "组合正确",
+          "weight": 60,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "标签证据",
+          "weight": 20,
+          "metric": "evidence_quality_score_100"
+        },
+        {
+          "component": "执行",
+          "weight": 10,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "使用错误组合、砝码掉落或超载0分",
+      "atomic_actions": [
+        "grasp",
+        "move",
+        "place"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B21_level2_R02_wights.yaml"
+    },
+    {
+      "task_id": "R03",
+      "track_id": "reasoning_in_action",
+      "subboard": "操作中推理",
+      "scene": "温控面板",
+      "task_name": "读取温度并判断是否可以取样",
+      "setting": "屏幕显示当前温度；要求温度≤30°C才可取样，选择Wait或Open。",
+      "capability": "数字读屏、阈值比较、安全动作选择",
+      "dependencies": "读温度→比较阈值→选择Wait/Open",
+      "minimum_assets": "数字屏幕、Wait/Open按钮、设备盖",
+      "simulation_mvp": "温度值从离散集合25/30/40/60中采样；无传热仿真。",
+      "success_conditions": "≤30选Open；>30选Wait",
+      "scoring_rule": "判断60+读数证据20+按键10+效率10",
+      "score_components": [
+        {
+          "component": "判断",
+          "weight": 60,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "读数证据",
+          "weight": 20,
+          "metric": "quantity_quality_score_100"
+        },
+        {
+          "component": "按键",
+          "weight": 10,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": ">30°C选择Open为安全硬失败并记0分",
+      "atomic_actions": [
+        "open",
+        "press"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B25_level3_R03_temperaturepanel.yaml"
+    },
+    {
+      "task_id": "R04",
+      "track_id": "reasoning_in_action",
+      "subboard": "操作中推理",
+      "scene": "离心机面板",
+      "task_name": "读取RPM并选择调节方向",
+      "setting": "目标3000 rpm，屏幕随机显示2000/3000/4000；选择+、Confirm或-。",
+      "capability": "数字读屏、目标差值判断",
+      "dependencies": "读RPM→与目标比较→选择按钮",
+      "minimum_assets": "数字屏幕、+/-/Confirm三个按钮",
+      "simulation_mvp": "每次只需一次决策，不要求连续调到目标。",
+      "success_conditions": "2000选+；3000选Confirm；4000选-",
+      "scoring_rule": "动作正确70+读数证据20+效率10",
+      "score_components": [
+        {
+          "component": "动作正确",
+          "weight": 70,
+          "metric": "success"
+        },
+        {
+          "component": "读数证据",
+          "weight": 20,
+          "metric": "quantity_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "按错方向或误按Start为0分",
+      "atomic_actions": [
+        "press"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B29_level3_R04_centrifugepanel.yaml"
+    },
+    {
+      "task_id": "R05",
+      "track_id": "reasoning_in_action",
+      "subboard": "操作中推理",
+      "scene": "设备状态面板",
+      "task_name": "根据Ready/Running/Done选择下一步",
+      "setting": "屏幕显示三种英文状态之一；分别选择Start、Wait、Open。",
+      "capability": "状态文字识别、状态-动作映射",
+      "dependencies": "读状态→查规则→选择动作",
+      "minimum_assets": "状态屏幕、Start/Wait/Open按钮",
+      "simulation_mvp": "三张高对比纹理切换状态。",
+      "success_conditions": "Ready→Start；Running→Wait；Done→Open",
+      "scoring_rule": "动作正确70+文字证据20+效率10",
+      "score_components": [
+        {
+          "component": "动作正确",
+          "weight": 70,
+          "metric": "success"
+        },
+        {
+          "component": "文字证据",
+          "weight": 20,
+          "metric": "evidence_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "Running时选择Open为安全硬失败并记0分",
+      "atomic_actions": [
+        "open",
+        "press"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B26_level3_R05_devicestatus.yaml"
+    },
+    {
+      "task_id": "R06",
+      "track_id": "reasoning_in_action",
+      "subboard": "操作中推理",
+      "scene": "离心机装载",
+      "task_name": "根据已有管选择正对槽位",
+      "setting": "6槽转子中已有一管，识别其槽位并选择正对槽位，随后调用标准插入技能。",
+      "capability": "视觉空间推理、180°槽位映射",
+      "dependencies": "识别已占用槽→计算+3 mod 6→选择槽→标准插入",
+      "minimum_assets": "6槽转子、2个离心管",
+      "simulation_mvp": "转子固定；槽位编号清晰。",
+      "success_conditions": "选择正对槽且标准插入成功",
+      "scoring_rule": "槽位选择60+视觉证据20+执行10+效率10",
+      "score_components": [
+        {
+          "component": "槽位选择",
+          "weight": 60,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "视觉证据",
+          "weight": 20,
+          "metric": "evidence_quality_score_100"
+        },
+        {
+          "component": "执行",
+          "weight": 10,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "选择非对称槽、碰撞已有管或掉管为0分",
+      "atomic_actions": [
+        "move",
+        "place"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B32_level2_R06_centrifuge_opposite_slot.yaml"
+    },
+    {
+      "task_id": "R07",
+      "track_id": "reasoning_in_action",
+      "subboard": "操作中推理",
+      "scene": "离心机装载",
+      "task_name": "从空槽中选择第一组对称槽",
+      "setting": "6槽转子部分占用，找出一组同时为空的对称槽并放入两管。",
+      "capability": "视觉占用识别、简单约束满足",
+      "dependencies": "识别占用→列举(1,4)(2,5)(3,6)→选空对→标准插入两次",
+      "minimum_assets": "6槽转子、4个可见管、2个待放管",
+      "simulation_mvp": "只随机1–2个已占用槽；标准技能完成插入。",
+      "success_conditions": "所选两槽均为空且互为180°；两管到位",
+      "scoring_rule": "槽对正确60+占用证据20+执行10+效率10",
+      "score_components": [
+        {
+          "component": "槽对正确",
+          "weight": 60,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "占用证据",
+          "weight": 20,
+          "metric": "evidence_quality_score_100"
+        },
+        {
+          "component": "执行",
+          "weight": 10,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "覆盖已有槽、选择非对称对或掉管为0分",
+      "atomic_actions": [
+        "grasp",
+        "move",
+        "place"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B33_level2_R07_centrifuge_symmetric_pair.yaml"
+    },
+    {
+      "task_id": "R08",
+      "track_id": "reasoning_in_action",
+      "subboard": "操作中推理",
+      "scene": "核磁自动进样",
+      "task_name": "读屏后选择数字孔位",
+      "setting": "屏幕显示Slot 7，识别数字并选择物理7号孔，再调用标准插入。",
+      "capability": "视觉读数、数字到空间孔位绑定",
+      "dependencies": "读Slot编号→定位同编号孔→选择→标准插入",
+      "minimum_assets": "12孔NMR架、数字屏幕、NMR管",
+      "simulation_mvp": "孔号在架边清晰标注。",
+      "success_conditions": "读数与选择孔位一致；插入成功",
+      "scoring_rule": "孔位正确60+读屏/定位证据20+执行10+效率10",
+      "score_components": [
+        {
+          "component": "孔位正确",
+          "weight": 60,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "读屏/定位证据",
+          "weight": 20,
+          "metric": "evidence_quality_score_100"
+        },
+        {
+          "component": "执行",
+          "weight": 10,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "错孔、管掉落或碰倒相邻管为0分",
+      "atomic_actions": [
+        "move",
+        "place"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B23_level2_R08_nmrsample.yaml"
+    },
+    {
+      "task_id": "R09",
+      "track_id": "reasoning_in_action",
+      "subboard": "操作中推理",
+      "scene": "核磁样品架",
+      "task_name": "将B3指令映射为网格孔位",
+      "setting": "给出文字指令B3，识别架上行列标记并选择对应孔位。",
+      "capability": "行列坐标理解、视觉定位",
+      "dependencies": "定位行B→定位列3→选择交点→标准插入",
+      "minimum_assets": "3×4 NMR架、行列标签、NMR管",
+      "simulation_mvp": "规则网格；行列标签高对比；插入由标准技能完成。",
+      "success_conditions": "选择B3并插入成功",
+      "scoring_rule": "坐标正确60+视觉证据20+执行10+效率10",
+      "score_components": [
+        {
+          "component": "坐标正确",
+          "weight": 60,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "视觉证据",
+          "weight": 20,
+          "metric": "evidence_quality_score_100"
+        },
+        {
+          "component": "执行",
+          "weight": 10,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "错行/错列、管掉落或相邻碰撞为0分",
+      "atomic_actions": [
+        "move",
+        "place"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B24_level2_R09_nmrrack.yaml"
+    },
+    {
+      "task_id": "R10",
+      "track_id": "reasoning_in_action",
+      "subboard": "操作中推理",
+      "scene": "试管架放置",
+      "task_name": "按C2标签选择试管架孔位",
+      "setting": "架上有A-C行、1-4列；根据C2指令选孔并放置试管。",
+      "capability": "简单空间语义、视觉对位",
+      "dependencies": "读行列标记→选C2→调用标准放置",
+      "minimum_assets": "3×4试管架、标签、试管",
+      "simulation_mvp": "使用规则孔阵列；放置由标准技能完成。",
+      "success_conditions": "选择C2且试管直立到位",
+      "scoring_rule": "孔位正确70+视觉证据20+执行10",
+      "score_components": [
+        {
+          "component": "孔位正确",
+          "weight": 70,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "视觉证据",
+          "weight": 20,
+          "metric": "evidence_quality_score_100"
+        },
+        {
+          "component": "执行",
+          "weight": 10,
+          "metric": "geometry_quality_score_100"
+        }
+      ],
+      "failure_safety": "错孔或碰倒其他试管为0分",
+      "atomic_actions": [
+        "move",
+        "place"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B22_level3_R10_rackplace.yaml"
+    },
+    {
+      "task_id": "R11",
+      "track_id": "reasoning_in_action",
+      "subboard": "操作中推理",
+      "scene": "96孔板定位",
+      "task_name": "识别A1方向并选择B3孔",
+      "setting": "孔板可能旋转0°或180°；根据A1标记确定坐标方向，选择B3孔。",
+      "capability": "视觉方向识别、二维索引映射",
+      "dependencies": "找A1→建立行列方向→选择B3→移动到孔上方",
+      "minimum_assets": "简化4×4孔板、A1标记、移液器",
+      "simulation_mvp": "用4×4板替代96孔；只评选择和到孔上方，不排液。",
+      "success_conditions": "选择正确B3；枪头到孔上方5–15 mm",
+      "scoring_rule": "孔位正确60+A1证据20+执行10+效率10",
+      "score_components": [
+        {
+          "component": "孔位正确",
+          "weight": 60,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "A1证据",
+          "weight": 20,
+          "metric": "evidence_quality_score_100"
+        },
+        {
+          "component": "执行",
+          "weight": 10,
+          "metric": "geometry_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "错孔或枪头碰板为0分",
+      "atomic_actions": [
+        "move"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B27_level2_R11_plateposition.yaml"
+    },
+    {
+      "task_id": "R12",
+      "track_id": "reasoning_in_action",
+      "subboard": "操作中推理",
+      "scene": "设备盖状态",
+      "task_name": "观察盖状态并选择Close或Start",
+      "setting": "设备盖随机为Open或Closed；Open时应先Close，Closed时可Start。",
+      "capability": "视觉关节状态判断、前置条件选择",
+      "dependencies": "观察盖状态→选择Close/Start→标准执行",
+      "minimum_assets": "带盖设备、Close/Start按钮",
+      "simulation_mvp": "盖为单铰链；两种明显角度。",
+      "success_conditions": "Open→Close；Closed→Start",
+      "scoring_rule": "动作正确70+盖状态证据20+效率10",
+      "score_components": [
+        {
+          "component": "动作正确",
+          "weight": 70,
+          "metric": "success"
+        },
+        {
+          "component": "盖状态证据",
+          "weight": 20,
+          "metric": "evidence_quality_score_100"
+        },
+        {
+          "component": "效率",
+          "weight": 10,
+          "metric": "efficiency_score_100"
+        }
+      ],
+      "failure_safety": "Open时选择Start为安全硬失败并记0分",
+      "atomic_actions": [
+        "close",
+        "press"
+      ],
+      "status": "implemented",
+      "task_spec": "../tasks/B34_level3_R12_devicecover_status.yaml"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "evaluation": {
+    "task_version": "device-operation-cycle/v1",
+    "difficulty": "hard",
+    "mode": "native",
+    "max_steps": 120000,
+    "collection_hz": 10,
+    "physics_hz": 60,
+    "policy_interface": {
+      "name": "configured_model",
+      "action_space": "array",
+      "action_dim": 8,
+      "camera_streams": ["camera_1_rgb", "camera_3_rgb"]
+    }
+  },
+  "legacy_scene": "config/level4_L09_hard_DeviceOperation.yaml"
+}

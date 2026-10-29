@@ -1,0 +1,19 @@
+{
+  "evaluation": {
+    "task_version": "weighing-feedback/v1",
+    "evaluation_version": "labference/weighing-online-v1",
+    "difficulty": "easy",
+    "max_steps": 7200,
+    "oracle_profile": "none",
+    "oracle_transport": "structured",
+    "policy_interface": {
+      "name": "diagnostic_rule_expert",
+      "action_space": "symbolic",
+      "supported_reports": ["decision"],
+      "oracle_transports": ["structured", "text"],
+      "resettable": true
+    }
+  },
+  "scene": {"scale_type": "physical_load_cell", "render_display_camera": true,
+            "scene_revision": "feedback-scale-v1i"}
+}

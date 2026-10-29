@@ -1,0 +1,7 @@
+{
+  "schema_version": "labference/intervention-v1",
+  "profile": "geometry",
+  "mode": "replace",
+  "site": "geometry_report",
+  "transport": "none"
+}

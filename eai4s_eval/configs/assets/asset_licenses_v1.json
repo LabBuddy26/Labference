@@ -1,0 +1,63 @@
+{
+  "schema_version": "labbench_asset_licenses/v1",
+  "version": "1.0.0",
+  "policy": {
+    "software_license": "MIT",
+    "software_copyright": "Copyright (c) 2026 EAI4S Contributors",
+    "unverified_policy": "Assets marked pending or NOASSERTION are not included in public release artifacts."
+  },
+  "default_record": {
+    "review_status": "pending",
+    "spdx_id": "NOASSERTION",
+    "copyright_holder": "To be confirmed",
+    "source_url": "",
+    "license_url": "",
+    "attribution": "Not available until provenance review is complete.",
+    "modifications": "Repository integration and catalogue rendering; upstream provenance is under review.",
+    "source_redistributable": false,
+    "derivatives_redistributable": false,
+    "review_note": "Source, copyright ownership and redistribution terms must be verified before publication."
+  },
+  "objects": {
+    "feedback-scale": {"display_name": "Feedback Weighing Platform", "modifications": "Display-only USD snapshot exported from the repository weighing scene builder; source ownership and redistribution remain under review."},
+    "feedback-weight-set": {"display_name": "Feedback Task Weight Set", "modifications": "Four runtime-authored weights exported with their actual geometry and labels; source ownership and redistribution remain under review."},
+    "feedback-sample": {"display_name": "Feedback Weighing Sample", "modifications": "Runtime-authored sample exported for catalogue preview; source ownership and redistribution remain under review."},
+    "special-centrifuge": {"display_name": "Optimized Task Centrifuge"},
+    "rack-recall-rack": {"display_name": "Rack Recall 3 × 4 Rack"},
+    "rack-recall-tube": {"display_name": "Rack Recall Capped Tube"},
+    "franka": {"display_name": "Franka Panda Robot"},
+    "beaker": {"display_name": "Laboratory Beaker"},
+    "conical-flask": {"display_name": "Conical Flask"},
+    "sample-vial": {"display_name": "Sample Vial"},
+    "test-tube": {"display_name": "Test Tube"},
+    "nmr-tube": {"display_name": "NMR Tube"},
+    "centrifuge-tube": {"display_name": "Centrifuge Tube"},
+    "rubber-stopper": {"display_name": "Rubber Stopper"},
+    "threaded-cap": {"display_name": "Threaded Vial Cap"},
+    "pipette": {"display_name": "Micropipette"},
+    "pipette-tip-box": {"display_name": "Pipette Tip Box"},
+    "well-plate": {"display_name": "Well Plate"},
+    "test-tube-rack": {"display_name": "Test Tube Rack"},
+    "nmr-rack": {"display_name": "NMR Autosampler Rack"},
+    "sample-box": {"display_name": "Sample Organization Box"},
+    "waste-box": {"display_name": "Laboratory Waste Box"},
+    "centrifuge-rotor": {"display_name": "Six-Slot Centrifuge Rotor"},
+    "laboratory-balance": {"display_name": "Laboratory Balance"},
+    "digital-scale-interface": {"display_name": "Digital Scale Interface"},
+    "temperature-status-panel": {"display_name": "Temperature Status Panel"},
+    "rpm-control-panel": {"display_name": "RPM Control Panel"},
+    "calibration-weights": {"display_name": "Calibration Weight Set"},
+    "centrifuge": {"display_name": "Laboratory Centrifuge"},
+    "drying-cabinet": {"display_name": "Programmable Laboratory Cabinet"},
+    "heat-block": {"display_name": "Laboratory Heat Block"},
+    "button-panel": {"display_name": "Physical Control Panel"},
+    "glass-rod": {"display_name": "Glass Stirring Rod"}
+  },
+  "media_groups": {
+    "brand": {"display_name": "LabBench brand artwork", "review_status": "pending", "spdx_id": "NOASSERTION", "redistributable": false},
+    "hero": {"display_name": "LabBench hero renders", "review_status": "pending", "spdx_id": "NOASSERTION", "redistributable": false},
+    "object_thumbnails": {"display_name": "USD-derived object thumbnails", "review_status": "pending", "spdx_id": "NOASSERTION", "redistributable": false},
+    "task_media": {"display_name": "Simulation demonstration videos and posters", "review_status": "pending", "spdx_id": "NOASSERTION", "redistributable": false},
+    "dataset_snapshots": {"display_name": "Published dataset statistics snapshots", "review_status": "pending", "spdx_id": "NOASSERTION", "redistributable": false}
+  }
+}

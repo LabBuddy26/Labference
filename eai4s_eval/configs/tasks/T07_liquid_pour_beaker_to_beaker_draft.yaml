@@ -1,0 +1,185 @@
+task_id: T07_liquid_pour_beaker_to_beaker
+task_name: Glass beaker-to-beaker liquid pouring
+task_version: 0.1.0
+suite: eai4s_eval_v0_1
+scene_id: tabletop_beaker_pouring
+robot: franka_panda
+task_family: pouring
+task_level: base
+task_tags:
+  - beaker
+  - liquid
+  - pouring
+  - single_arm
+leaderboard_group: basic_pouring
+control_hz: 10
+max_steps: 2200
+success_hold_steps: 15
+
+instruction:
+  canonical: pour the liquid from the glass beaker into another beaker
+  variants:
+    - pick up the source beaker and pour the liquid into the target beaker
+    - transfer the liquid from one glass beaker to the other
+    - grasp the filled beaker and pour it into the empty beaker
+
+objects:
+  source_beaker:
+    asset_id: glass_beaker
+    role: source_container
+  target_beaker:
+    asset_id: glass_beaker
+    role: target_container
+  liquid:
+    role: simulated_liquid_or_volume_proxy
+  target_region:
+    role: target_region
+
+stages:
+  - id: reach
+    weight: 0.15
+  - id: grasp_source
+    weight: 0.20
+  - id: move_to_target
+    weight: 0.20
+  - id: pour
+    weight: 0.30
+  - id: return_upright_stabilize
+    weight: 0.15
+
+success:
+  logic: robust_semantic_v0
+  hold_steps: 15
+  goal:
+    all:
+      - predicate: target_container_correct
+      - predicate: volume_transferred
+        args:
+          target_ml: 20.0
+          tolerance_ml: 2.0
+      - predicate: spill_below
+        args:
+          max_spill_ml: 0.5
+  sequence:
+    required: false
+    events:
+      - reach_source_beaker
+      - grasp_source_beaker
+      - move_above_target_beaker
+      - tilt_and_pour
+      - return_source_beaker_upright
+      - place_or_hold_stable
+  terminal:
+    required: true
+    all:
+      - predicate: container_upright
+        args:
+          min_cosine: 0.90
+  stability:
+    required: true
+    all:
+      - predicate: object_velocity_below
+        args:
+          id: source_beaker_velocity_below
+          lin_vel_key: task_state.source_container_lin_vel
+          ang_vel_key: task_state.source_container_ang_vel
+          linear_velocity_threshold_mps: 0.02
+          angular_velocity_threshold_radps: 0.20
+      - predicate: object_velocity_below
+        args:
+          id: target_beaker_velocity_below
+          lin_vel_key: task_state.target_container_lin_vel
+          ang_vel_key: task_state.target_container_ang_vel
+          linear_velocity_threshold_mps: 0.02
+          angular_velocity_threshold_radps: 0.20
+  safety:
+    hard_fail:
+      - predicate: object_out_of_workspace
+        args:
+          workspace_radius_m: 1.5
+      - predicate: object_tipped_over
+        args:
+          min_upright_cosine: 0.30
+      - predicate: forbidden_collision
+      - predicate: wrong_object_moved
+        args:
+          distance_threshold_m: 0.02
+      - predicate: contact_force_exceeded
+        args:
+          max_force_n: 60.0
+
+failure:
+  any:
+    - predicate: object_out_of_workspace
+    - predicate: object_tipped_over
+      args:
+        min_upright_cosine: 0.30
+    - predicate: forbidden_collision
+    - predicate: wrong_object_moved
+    - predicate: contact_force_exceeded
+      args:
+        max_force_n: 60.0
+    - predicate: timeout
+failure_modes:
+  - code: timeout
+    category: timeout
+    description: Episode exceeded max_steps before the liquid transfer was completed.
+  - code: object_out_of_workspace
+    category: drop
+    description: Source beaker or target beaker moved outside the valid workspace.
+  - code: object_tipped_over
+    category: drop
+    description: A beaker tipped over beyond the safe hard-failure threshold.
+  - code: forbidden_collision
+    category: collision
+    description: Robot, beaker, or scene object collided with a forbidden entity.
+  - code: contact_force_exceeded
+    category: collision
+    description: Contact force exceeded the task safety threshold.
+  - code: wrong_object_moved
+    category: wrong_object
+    description: A non-target object moved beyond the allowed tolerance.
+  - code: severe_spill
+    category: safety_violation
+    description: Spill amount exceeded the task hard-safety threshold.
+  - code: sequence_incomplete_or_invalid
+    category: sequence_error
+    description: Required pouring events were missing or observed in the wrong order.
+
+metrics:
+  - success_rate
+  - stage_completion
+  - transferred_volume_ml
+  - volume_error_ml
+  - spill_ml
+  - residual_volume_ml
+  - source_tilt_angle_deg
+  - target_container_correct
+  - forbidden_collision_rate
+  - inference_latency
+
+quality_metrics:
+  - volume_error_ml
+  - spill_ml
+  - residual_volume_ml
+  - source_tilt_angle_deg
+  - pour_duration_sec
+  - max_contact_force_n
+
+required_snapshot_fields:
+  - object_pos
+  - initial_object_pos
+  - hand_pos
+  - gripper_pos
+  - container_upright_cosine
+  - object_upright_cosine
+  - volume_transferred_ml
+  - spill_ml
+  - target_container_correct
+  - forbidden_collision
+  - wrong_object_moved
+  - max_contact_force_n
+  - task_state.source_container_lin_vel
+  - task_state.source_container_ang_vel
+  - task_state.target_container_lin_vel
+  - task_state.target_container_ang_vel

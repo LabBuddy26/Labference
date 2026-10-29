@@ -1,0 +1,26 @@
+task_id: level2_R09_NMRRack
+task_name: Level 2 NMR Rack Selection
+task_version: 1.0.0
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level2_R09_NMRRack, policy_phase: full_task}
+robot: franka
+task_family: nmr_reasoning
+task_level: level2
+task_tags: [benchmark, reasoning, pick_place, rack]
+leaderboard_group: benchmark_reasoning
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 500
+instruction: {canonical: Read the rack instruction and insert the NMR tube into the selected socket}
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal: {all: [{predicate: task_state_true, args: {id: nmr_placed, key: task_state.nmr_placed}}]}
+  terminal: {required: true, all: [{predicate: released, args: {open_threshold: 0.035}}]}
+  stability: {required: true, all: [{predicate: object_velocity_below}]}
+  safety: {hard_fail: []}
+failure_modes:
+  - {code: wrong_socket, category: wrong_place, description: The NMR tube was not inserted into the instructed rack socket.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields: [task_state.nmr_placed, task_state.object_stable, task_state.gripper_released, gripper_pos]

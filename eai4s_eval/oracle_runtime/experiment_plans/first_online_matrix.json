@@ -1,0 +1,56 @@
+{
+  "schema_version": "labference/online-experiment-plan-v1",
+  "name": "centrifuge-weighing-openpi-rpent-v1",
+  "seeds": [101, 102, 103, 104, 105],
+  "tasks": [
+    {"id": "centrifuge_easy", "config": "eai4s_eval/centrifuge_v2/configs/native_easy.json"},
+    {"id": "centrifuge_hard", "config": "eai4s_eval/centrifuge_v2/configs/native_hard.json"},
+    {"id": "weighing_easy", "config": "eai4s_eval/weighing_v1/configs/native_easy.json"},
+    {"id": "weighing_hard", "config": "eai4s_eval/weighing_v1/configs/native_hard.json"}
+  ],
+  "systems": [
+    {
+      "id": "openpi_native_rgb",
+      "profiles": {
+        "centrifuge": "eai4s_eval/oracle_runtime/profiles/openpi_centrifuge_rgb.json",
+        "weighing": "eai4s_eval/oracle_runtime/profiles/openpi_weighing_rgb.json"
+      },
+      "conditions": ["base", "semantic_assist_text", "decision_assist_text", "geometry_assist_text"]
+    },
+    {
+      "id": "rpent_openpi_rgb",
+      "profiles": {
+        "centrifuge": "eai4s_eval/oracle_runtime/profiles/rpent_agent_rgb.json",
+        "weighing": "eai4s_eval/oracle_runtime/profiles/rpent_agent_weighing_rgb.json"
+      },
+      "conditions": ["base", "semantic_assist", "decision_assist", "geometry_assist", "semantic_replace", "decision_replace", "geometry_replace", "skill_replace"]
+    },
+    {
+      "id": "rpent_openpi_rgbd",
+      "profiles": {
+        "centrifuge": "eai4s_eval/oracle_runtime/profiles/rpent_agent_rgbd.json",
+        "weighing": "eai4s_eval/oracle_runtime/profiles/rpent_agent_weighing_rgbd.json"
+      },
+      "conditions": ["base", "semantic_assist", "decision_assist", "geometry_assist", "semantic_replace", "decision_replace", "geometry_replace", "skill_replace"]
+    },
+    {
+      "id": "vla_eval_transport_reproduction",
+      "profiles": {
+        "centrifuge": "eai4s_eval/oracle_runtime/profiles/vla_eval_harness_centrifuge_rgb.json",
+        "weighing": "eai4s_eval/oracle_runtime/profiles/vla_eval_harness_weighing_rgb.json"
+      },
+      "conditions": ["base", "semantic_assist_text"]
+    }
+  ],
+  "pairing": {
+    "same_checkpoint_base_and_intervention": true,
+    "fixed_missing_pair_denominator": true,
+    "shared_episode_memory_writeback": false,
+    "required_identity_fields": [
+      "task_version", "contract_hash", "instance_id", "policy_profile_hash",
+      "policy_revision", "sensor_condition", "action_spec_hash", "toolset_hash",
+      "reset_protocol_hash", "memory_revision", "budget_id", "scene_layout_hash",
+      "initial_state_hash", "scene_seed", "mass_seed", "pair_member"
+    ]
+  }
+}

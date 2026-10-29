@@ -1,0 +1,37 @@
+task_id: level3_R10_rackplace
+task_name: Level 3 Rack Place
+task_version: 1.0.0
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level3_R10_rackplace, policy_phase: full_task}
+robot: franka
+task_family: rack_place
+task_level: level3
+task_tags: [benchmark, pick_place, reasoning]
+leaderboard_group: benchmark_multi_stage
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 700
+instruction:
+  canonical: Pick the tube and place it into the assigned hole of the rack selected by the given label
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - predicate: task_state_true
+        args: {id: tube_in_rack, key: task_state.tube_in_rack}
+  terminal:
+    required: true
+    all:
+      - predicate: released
+        args: {open_threshold: 0.035}
+  stability: {required: false, all: []}
+  safety: {hard_fail: []}
+failure_modes:
+  - {code: tube_not_in_rack, category: wrong_place, description: The tube did not reach the assigned rack hole.}
+  - {code: tube_not_released, category: sequence_error, description: The tube was not released.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields:
+  - task_state.tube_in_rack
+  - gripper_pos

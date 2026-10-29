@@ -1,0 +1,29 @@
+suite_id: eai4s_benchmark_longhorizon_reasoning_v1
+suite_name: EAI4S Long-Horizon & Reasoning Tasks v1
+suite_version: 1.1.0
+description: All twenty-four implemented LabBench long-horizon and reasoning-in-action tasks.
+tasks:
+  - {order: 1, task_id: L01, task_spec: ../tasks/B11_level2_sampletransport.yaml, status: implemented}
+  - {order: 2, task_id: L02, task_spec: ../tasks/B16_level2_sample_organization.yaml, status: implemented}
+  - {order: 3, task_id: L03, task_spec: ../tasks/B30_level2_L03_singlepipetting.yaml, status: implemented}
+  - {order: 4, task_id: L04, task_spec: ../tasks/B19_level4_liquid_mixing.yaml, status: implemented}
+  - {order: 5, task_id: L05, task_spec: ../tasks/B31_level2_L05_formulation_spotting.yaml, status: implemented}
+  - {order: 6, task_id: L06, task_spec: ../tasks/B17_level2_scale_weights.yaml, status: implemented}
+  - {order: 7, task_id: L07, task_spec: ../tasks/B14_level2_centrifuge_load.yaml, status: implemented}
+  - {order: 8, task_id: L08, task_spec: ../tasks/B13_level2_nmrinjection.yaml, status: implemented}
+  - {order: 9, task_id: L09, task_spec: ../tasks/B12_level4_device_operation.yaml, status: implemented}
+  - {order: 10, task_id: L10, task_spec: ../tasks/B15_level2_cohort_analysis.yaml, status: implemented}
+  - {order: 11, task_id: L11, task_spec: ../tasks/B18_level4_condition_module.yaml, status: implemented}
+  - {order: 12, task_id: L12, task_spec: ../tasks/B20_level4_clear_reset.yaml, status: implemented}
+  - {order: 13, task_id: R01, task_spec: ../tasks/B28_level3_R01_scaledigital.yaml, status: implemented}
+  - {order: 14, task_id: R02, task_spec: ../tasks/B21_level2_R02_wights.yaml, status: implemented}
+  - {order: 15, task_id: R03, task_spec: ../tasks/B25_level3_R03_temperaturepanel.yaml, status: implemented}
+  - {order: 16, task_id: R04, task_spec: ../tasks/B29_level3_R04_centrifugepanel.yaml, status: implemented}
+  - {order: 17, task_id: R05, task_spec: ../tasks/B26_level3_R05_devicestatus.yaml, status: implemented}
+  - {order: 18, task_id: R06, task_spec: ../tasks/B32_level2_R06_centrifuge_opposite_slot.yaml, status: implemented}
+  - {order: 19, task_id: R07, task_spec: ../tasks/B33_level2_R07_centrifuge_symmetric_pair.yaml, status: implemented}
+  - {order: 20, task_id: R08, task_spec: ../tasks/B23_level2_R08_nmrsample.yaml, status: implemented}
+  - {order: 21, task_id: R09, task_spec: ../tasks/B24_level2_R09_nmrrack.yaml, status: implemented}
+  - {order: 22, task_id: R10, task_spec: ../tasks/B22_level3_R10_rackplace.yaml, status: implemented}
+  - {order: 23, task_id: R11, task_spec: ../tasks/B27_level2_R11_plateposition.yaml, status: implemented}
+  - {order: 24, task_id: R12, task_spec: ../tasks/B34_level3_R12_devicecover_status.yaml, status: implemented}

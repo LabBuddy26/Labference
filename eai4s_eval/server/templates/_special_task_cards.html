@@ -1,0 +1,15 @@
+<div class="special-family-grid">
+  {% for family in special_families %}
+  <article class="special-family-card" data-special-family="{{ family.family }}" data-public-status="{{ family.public_status }}">
+    <div class="special-family-media">
+      {% if family.demo and snapshot.site.get('public_media_enabled', true) %}
+      <video controls muted playsinline preload="none" poster="{{ base_url }}/static/{{ family.demo.poster }}" aria-label="{{ family.name_en }} successful collection, main camera"><source src="{{ base_url }}/static/{{ family.demo.video }}" type="video/mp4"></video>
+      {% elif family.scene_image and snapshot.site.get('public_media_enabled', true) %}<img src="{{ base_url }}/static/{{ family.scene_image }}" alt="{{ family.name_en }} simulator scene" loading="lazy">{% else %}<div class="special-family-placeholder"><p>Scene preview unavailable</p></div>{% endif %}
+    </div>
+    <div class="special-family-body"><h3>{{ family.name_en }}</h3><p>{{ family.summary_en }}</p>
+      {% if family.demo %}<p class="coverage">Verified successful collection · Main camera · 10 Hz</p>{% endif %}
+      <a class="text-link" href="{{ base_url }}/tasks/protocol/{{ family.featured_protocol_id }}/">View task details →</a>
+    </div>
+  </article>
+  {% endfor %}
+</div>

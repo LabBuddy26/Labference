@@ -1,0 +1,37 @@
+eval_config_version: isaac_eval_v0.1
+benchmark_version: EAI4S-bench-0.1.0
+control_hz: 10
+max_policy_latency_ms: 100
+success_hold_steps_default: 10
+success_predicates:
+  height_threshold: 0.05
+  distance_threshold: 0.15
+  grip_threshold: 0.04
+  require_gripper_closed: true
+  require_stable: false
+  predicate_log_interval: 25
+official_trials_per_task: 50
+action_clip:
+  delta_xyz_m: 0.03
+  delta_rot_rad: 0.20
+  gripper: [-1, 1]
+action_execution:
+  mode: hold_waypoint
+  reaction_interpolation_steps: 1
+  sim_steps_per_action: 6
+  hold_current_orientation: true
+initial_stability_wait:
+  initial_hold_steps: 100
+  stabilization_max_steps: 200
+  stabilization_hold_steps: 10
+  object_lin_vel_threshold: 0.02
+  object_ang_vel_threshold: 0.20
+  joint_vel_threshold: 0.02
+recording:
+  save_video: false
+  save_trajectory_npz: true
+  save_legacy_json: true
+metrics:
+  wilson_ci: true
+  smoothness_only_on_success: true
+  safety_gate_enabled: false

@@ -1,0 +1,51 @@
+# 自动采集任务列表:每行一个任务 YAML 配置名(可带 .yaml 后缀)。
+# 启动采集:
+#   python -m utils.collect_driver start --task-list collection_tasks.txt
+# 说明:
+#   - 最多 4 个终端并发采集（可用 --workers 调整；单卡需按显存占用选择并发数）;
+#   - 每个任务默认采集 200 条成功 episode(可用 --success-episodes 或 --task-targets 覆盖);
+#   - 任务运行超过 300 分钟判为超时失败并切换任务(--task-timeout-minutes);
+#   - 连续 20 次失败切换下一个任务(--consecutive-failures);
+#   - 采集结束后在 outputs/collect_reports/<日期>/<时间>/ 下生成
+#     collection_report.{json,md},记录每个任务的成功条数与采集时长。
+
+level1_close_door
+level1_open_door
+level1_pick
+level1_pick_liquid
+level1_place
+level1_pour
+level1_stir
+level2_L01_sampletransport
+level2_L02_sampleorganition
+level2_L03_singlepipetting
+level2_L05_formulation_spotting
+level2_L06_wights
+level2_L07_centrifuge_load
+level3_L07_hard_centrifuge_load
+level2_L08_NMRInjection
+level2_L10_cohort_analysis
+level2_pour
+level2_R02_wights
+level2_R06_centrifuge_load
+level2_R07_centrifuge_load
+level2_R08_NMRSample
+level2_R09_NMRRack
+level2_R11_plateposition
+level3_place
+level3_R01_scaledigital
+level3_R03_temperaturepanel
+level3_R04_centrifugepanel
+level3_R05_devicestatus
+level3_R10_rackplace
+level3_R12_devicecover_status
+level4_L04_LiquidMixing
+level4_L09_DeviceOperation
+level4_L11_ConditionModule
+level4_L12_clearreset
+level2_L03_singlepipetting
+level2_L05_formulation_spotting
+level2_L07_centrifuge_load
+level2_R06_centrifuge_load
+level2_R07_centrifuge_load
+level3_R12_devicecover_status

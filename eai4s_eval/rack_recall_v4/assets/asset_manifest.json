@@ -1,0 +1,64 @@
+{
+  "schema_version": "rack-recall-assets/v2",
+  "options": {
+    "accurateSurfaceCurvatures": true,
+    "accurateTessellation": false,
+    "convertCurves": false,
+    "convertHidden": false,
+    "convertMetadata": true,
+    "dedup": true,
+    "globalXforms": false,
+    "instancing": false,
+    "materialType": 0,
+    "reportProgress": true,
+    "tessLOD": 1,
+    "useMaterials": false,
+    "useNormals": true,
+    "iUpAxis": 2,
+    "dMetersPerUnit": 1.0,
+    "bOptimize": false
+  },
+  "frozen_geometry": {
+    "rack_grid": "3x4",
+    "row_centers_source_mm": [40.0, 90.0, 140.0],
+    "column_centers_source_mm": [32.5, 97.5, 162.5, 227.5],
+    "row_pitch_m": 0.05,
+    "column_pitch_m": 0.065,
+    "hole_radius_m": 0.021,
+    "rack_body_bounds_source_mm": [[-10.0, 0.0, -165.0], [190.0, 260.0, 15.0]],
+    "tube_scale": 1.2,
+    "tube_cap_scale": 1.25,
+    "tube_body_diameter_m": 0.033864,
+    "tube_cap_diameter_m": 0.043125,
+    "tube_total_length_m": 0.1404
+  },
+  "assets": {
+    "rack": {
+      "source": "assets/source/rack_3x4.step",
+      "source_sha256": "59d2281d664ff9848e1f5d86d1ba99205c1cae81e779c5bbce35b975b19f874e",
+      "output": "assets/converted/rack_3x4.usd",
+      "mesh_count": 2,
+      "mesh_paths": [
+        "/rack_3x4/Prototypes/tn__Positioningblock_xG/tn__1_x1xAMy0j0b1P9d9/Mesh",
+        "/rack_3x4/Prototypes/tn__Platetesttuberack34holes_zOAFKNeC/tn__3_n14oIf174b09h2Z6/Mesh"
+      ],
+      "calibration_locator_count": 12,
+      "calibration_locators_rendered": false,
+      "calibration_locators_collidable": false
+    },
+    "tube": {
+      "source": "assets/source/centrifuge_tube.step",
+      "source_sha256": "4c8cd308c92cd824ca5cd07b8b984924f26fc50c72e6a821404fe25f16d27978",
+      "output": "assets/converted/centrifuge_tube.usd",
+      "mesh_count": 2,
+      "mesh_paths": [
+        "/centrifuge_tube/Prototypes/centrifuge_tube/tn__CutExtrude1_lG/Mesh",
+        "/centrifuge_tube/Prototypes/centrifuge_tube/tn__CutExtrude3_lG/Mesh"
+      ],
+      "part_roles": {
+        "cap": "/centrifuge_tube/Prototypes/centrifuge_tube/tn__CutExtrude1_lG/Mesh",
+        "body": "/centrifuge_tube/Prototypes/centrifuge_tube/tn__CutExtrude3_lG/Mesh"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+profile_id: openpi_franka_ee_pos_v1
+control_hz: 10
+# Model output: [x, y, z, qw, qx, qy, qz, gripper].
+# Quaternion ordering matches the HDF5 ``actions_ee`` dataset.
+action_space: ee_pos
+observation_map:
+  camera_1_rgb: observation/front_image
+  camera_3_rgb: observation/wrist_image
+state_key: observation/state
+prompt_key: prompt
+action_keys: [actions, action]
+action_dim: 8
+max_horizon: 16
+n_obs_steps: 1
+gripper_mode: binary
+gripper_closed_value: 0.0
+gripper_open_value: 0.04
+gripper_binary_threshold: 0.5

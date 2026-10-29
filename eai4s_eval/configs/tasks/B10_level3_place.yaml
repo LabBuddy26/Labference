@@ -1,0 +1,22 @@
+task_id: level3_place
+task_name: Level 3 Place
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level3_place, policy_phase: after_scripted_pick}
+robot: franka
+task_family: place
+task_level: level3
+task_tags: [benchmark, place, insertion, truth_pending]
+leaderboard_group: benchmark_place
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 3000
+instruction: {canonical: Place the held tube into the target rack}
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal: {all: [{predicate: near, args: {a_key: object_pos, b_key: target_pos, distance_threshold_m: 0.05}}]}
+  terminal: {required: true, all: [{predicate: released}]}
+  stability: {required: true, all: [{predicate: object_velocity_below}]}
+  safety: {hard_fail: []}
+failure_modes: [{code: insertion_truth_unavailable, category: wrong_place, description: Rack insertion depth truth requires validation.}]

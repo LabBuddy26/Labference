@@ -1,0 +1,41 @@
+task_id: level4_L09_DeviceOperation
+task_name: Level 4 Device Operation
+task_version: 1.0.0
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level4_L09_DeviceOperation, policy_phase: full_task}
+robot: franka
+task_family: device_operation
+task_level: level4
+task_tags: [benchmark, multi_stage, articulated, button]
+leaderboard_group: benchmark_multi_stage
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 500
+instruction:
+  canonical: Open the device door, place both beakers at their targets, and press the device button
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - predicate: task_state_true
+        args: {id: device_door_opened, key: task_state.device_door_opened}
+      - predicate: task_state_true
+        args: {id: device_beaker_inside, key: task_state.device_beaker_inside}
+      - predicate: task_state_true
+        args: {id: device_beaker3_placed, key: task_state.device_beaker3_placed}
+      - predicate: button_pressed
+  terminal: {required: false, all: []}
+  stability: {required: false, all: []}
+  safety: {hard_fail: []}
+failure_modes:
+  - {code: device_door_not_opened, category: sequence_error, description: Device door did not reach its opening threshold.}
+  - {code: beaker_not_placed, category: wrong_place, description: One or both beakers did not reach their targets.}
+  - {code: button_not_pressed, category: sequence_error, description: Device button was not pressed.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields:
+  - task_state.device_door_opened
+  - task_state.device_beaker_inside
+  - task_state.device_beaker3_placed
+  - task_state.button_pressed

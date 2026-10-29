@@ -1,0 +1,23 @@
+task_id: level4_weighing_feedback_hard
+task_name: Physical Feedback Weighing Hard
+task_version: weighing-feedback/v1
+suite: labference_release_protocols_v1
+runtime:
+  backend: versioned_release
+  env_config: level4_weighing_feedback_hard
+  family: weighing_v1
+  protocol_config: eai4s_eval/weighing_v1/configs/native_hard.json
+robot: franka
+task_family: weighing_v1
+task_tags: [release_protocol, long_horizon]
+leaderboard_group: release_protocols_v1
+control_hz: 10
+physics_hz: 120
+predicate_hz: 120
+max_steps: 500
+instruction:
+  canonical: Read the live load-cell display and add or remove standards until the instructed target is stable.
+success:
+  logic: protocol_owned
+  metric: valid_success
+  requires_evaluation_valid: true

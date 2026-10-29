@@ -1,0 +1,29 @@
+task_id: level2_R11_plateposition
+task_name: Level 2 Sample Plate Position
+task_version: 1.0.0
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level2_R11_plateposition, policy_phase: full_task}
+robot: franka
+task_family: spatial_reasoning
+task_level: level2
+task_tags: [benchmark, reasoning, sample_box, positioning]
+leaderboard_group: benchmark_reasoning
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 500
+instruction: {canonical: Move the gripper above the instructed sample-box socket}
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  # ``gripper_pos`` is reserved for the two finger-joint widths in the
+  # canonical snapshot.  R11 measures the end-effector Cartesian position,
+  # exposed as ``hand_pos`` by BenchmarkRuntime.
+  goal: {all: [{predicate: near, args: {a_key: hand_pos, b_key: target_pos, axes: xyz, distance_threshold_m: 0.02}}]}
+  terminal: {required: false, all: []}
+  stability: {required: false, all: []}
+  safety: {hard_fail: []}
+failure_modes:
+  - {code: wrong_socket, category: wrong_place, description: The gripper did not reach the instructed socket.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields: [hand_pos, target_pos]

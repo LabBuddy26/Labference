@@ -1,0 +1,33 @@
+task_id: level2_L03_singlepipetting
+task_name: Level 2 Single Pipetting
+task_version: 1.0.0
+suite: eai4s_benchmark_longhorizon_reasoning_v1
+runtime: {backend: eai4s_benchmark, env_config: level2_L03_singlepipetting, policy_phase: full_task}
+robot: franka
+task_family: single_pipetting
+task_level: level2
+task_tags: [benchmark, long_horizon, pipetting]
+leaderboard_group: long_horizon
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 1800
+instruction: {canonical: Install a tip, transfer 100 microliters from the source tube to the target tube, then discard the tip}
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - {predicate: task_state_true, args: {id: transfer_volume_valid, key: task_state.transfer_volume_valid}}
+      - {predicate: task_state_true, args: {id: tip_discarded, key: task_state.tip_discarded}}
+  sequence: {required: true, events: [tip_installed, aspirated, dispensed, tip_discarded]}
+  terminal: {required: false, all: []}
+  stability: {required: false, all: []}
+  safety:
+    hard_fail:
+      - {predicate: task_state_true, args: {id: pipetting_safety_violation, key: task_state.pipetting_safety_violation}}
+failure_modes:
+  - {code: pipetting_sequence_invalid, category: sequence_error, description: Pipetting stages were not completed in order.}
+  - {code: transfer_volume_invalid, category: wrong_place, description: Transferred volume is outside tolerance.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields: [task_state.transfer_volume_valid, task_state.tip_discarded, task_state.pipetting_safety_violation]

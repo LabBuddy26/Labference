@@ -1,0 +1,23 @@
+task_id: level3_R10_hard_rack_recall
+task_name: Rack Placement Recall V4 Hard Same Cap
+task_version: rack-placement-recall/v4
+suite: labference_release_protocols_v1
+runtime:
+  backend: versioned_release
+  env_config: level3_R10_hard_rack_recall
+  family: rack_recall_v4
+  protocol_config: eai4s_eval/rack_recall_v4/configs/native_hard_same_cap.json
+robot: franka
+task_family: rack_recall_v4
+task_tags: [release_protocol, long_horizon]
+leaderboard_group: release_protocols_v1
+control_hz: 20
+physics_hz: 120
+predicate_hz: 120
+max_steps: 500
+instruction:
+  canonical: Place the tube, remember its local slot through an occluded rebuild, and retrieve the same tube.
+success:
+  logic: protocol_owned
+  metric: valid_success
+  requires_evaluation_valid: true

@@ -1,0 +1,301 @@
+{
+  "schema_version": "labbench_public_site/v1",
+  "brand": "Labference",
+  "show_hero_image": false,
+  "tagline": "Benchmarking the Reasoning\u2013Action Connection in Robotic Laboratories",
+  "description": "Evaluating how observed physical outcomes guide subsequent choices and how those choices translate into robotic laboratory actions.",
+  "partners": [
+    {
+      "name": "\u4e2d\u56fd\u79d1\u5b66\u9662\u81ea\u52a8\u5316\u7814\u7a76\u6240",
+      "name_en": "Institute of Automation, Chinese Academy of Sciences",
+      "short_name": "CASIA",
+      "logo": "web_assets/brand/casia-logo.jpg"
+    },
+    {
+      "name": "\u4e2d\u56fd\u79d1\u5b66\u9662\u5927\u5b66",
+      "name_en": "University of Chinese Academy of Sciences",
+      "short_name": "UCAS",
+      "logo": "web_assets/brand/ucas-logo.png"
+    },
+    {
+      "name": "\u4e2d\u79d1\u89c6\u8bed",
+      "name_en": "ObjectEye",
+      "short_name": "ObjectEye",
+      "logo": "web_assets/brand/objecteye-logo.jpeg",
+      "logo_shape": "wide"
+    },
+    {
+      "name": "\u7d2b\u4e1c\u592a\u521d",
+      "name_en": "Zidong Taichu",
+      "short_name": "Zidong Taichu",
+      "logo": "web_assets/brand/zidong-taichu-logo.jpeg",
+      "logo_shape": "wide"
+    },
+    {
+      "name": "\u5317\u4eac\u5927\u5b66\u53e3\u8154\u533b\u5b66\u9662\uff08\u53e3\u8154\u533b\u9662\uff09",
+      "name_en": "Peking University School and Hospital of Stomatology",
+      "short_name": "PKU Stomatology",
+      "logo": "web_assets/brand/pku-stomatology-logo.png"
+    },
+    {
+      "name": "\u4e2d\u56fd\u4eba\u6c11\u89e3\u653e\u519b\u603b\u533b\u9662",
+      "name_en": "Chinese PLA General Hospital",
+      "short_name": "Chinese PLA General Hospital",
+      "logo": "web_assets/brand/pla-general-hospital-logo.jpeg",
+      "logo_shape": "wide"
+    },
+    {
+      "name": "\u667a\u79d1\u7279\u673a\u5668\u4eba",
+      "name_en": "IQuotient Robotics",
+      "short_name": "IQuotient Robotics",
+      "logo": "web_assets/brand/iquotient-robotics-logo.jpeg",
+      "logo_shape": "wide"
+    },
+    {
+      "name": "\u5317\u4eac\u5927\u5b66\u836f\u5b66\u9662",
+      "name_en": "School of Pharmaceutical Sciences, Peking University",
+      "short_name": "PKU Pharmaceutical Sciences",
+      "logo": "web_assets/brand/pku-pharmaceutical-sciences-logo.png",
+      "logo_shape": "wide"
+    },
+    {
+      "name": "\u4e2d\u56fd\u79d1\u5b66\u9662\u534a\u5bfc\u4f53\u7814\u7a76\u6240",
+      "name_en": "State Key Laboratory of Semiconductor Physics and Chip Technologies, Institute of Semiconductors, Chinese Academy of Sciences, Beijing, P.R. China",
+      "short_name": "State Key Laboratory of Semiconductor Physics and Chip Technologies, Institute of Semiconductors, Chinese Academy of Sciences, Beijing, P.R. China",
+      "logo": "web_assets/brand/cas-semiconductors-logo.jpeg"
+    }
+  ],
+  "default_split": "sim_randomized",
+  "dataset_license": {
+    "name": "Creative Commons Attribution 4.0 International",
+    "spdx_id": "CC-BY-4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/",
+    "summary": "The released Labference dataset may be used, adapted and redistributed with appropriate attribution.",
+    "attribution": "Cite Labference and identify whether changes were made."
+  },
+  "dataset_access": {
+    "provider": "Baidu Netdisk"
+  },
+  "links": {
+    "huggingface": "",
+    "hf_dataset": "",
+    "hf_simulator": "",
+    "hf_models": "",
+    "paper": "https://arxiv.org/abs/2610.35252",
+    "code": "https://github.com/zhaochunhai/Labference",
+    "homepage": "https://zhaochunhai.github.io/Labference/",
+    "dataset": "https://pan.baidu.com/s/1zyJL3zxHqI_j67hUkUF6lw",
+    "documentation": "",
+    "contact": ""
+  },
+  "dataset_contract": {
+    "robot": "Franka Panda",
+    "simulator": "Isaac Sim",
+    "cameras": [
+      "camera_1_rgb (Front RGB)",
+      "camera_3_rgb (Wrist RGB)"
+    ],
+    "sample_rates_hz": [
+      10,
+      60
+    ],
+    "action": "actions + actions_ee pose + action_gripper",
+    "format": "HDF5"
+  },
+  "paper": {
+    "title": "Labference: Benchmarking the Reasoning\u2013Action Connection in Robotic Laboratories",
+    "type": "Technical Report",
+    "date": "2026-10-21",
+    "abstract": "Realizing Embodied AI for Science requires robots to translate experimental goals into reliable physical procedures, reducing hazardous and repetitive human work while generating evidence for scientific discovery. Although language-based planning and learned manipulation provide complementary capabilities, their integration requires robots to adapt subsequent operations to actual execution outcomes. For example, an unsuccessful placement changes what must be done next, even when the experimental goal remains unchanged. Existing benchmarks assess planning, manipulation, and laboratory workflows through task completion and reasoning or execution metrics; however, aggregate performance leaves the connection between outcome-dependent choices and physical execution unresolved. To address this evaluation gap, we introduce Labference, a benchmark for evaluating how observed physical outcomes guide subsequent choices and how those choices translate into robotic laboratory actions. Its evaluation protocol is designed to test outcome-dependent behavioral adaptation through controlled evidence variations, while independently measuring operation selection, physical execution, and task completion. Matched Oracle-assisted continuations from shared checkpoints then assess which forms of support improve subsequent choices and task completion. Initial weighing evaluations reveal target-selection errors in the tested VLA policies despite successful object transfers, whereas GPT-driven control achieves correct selection but encounters execution failures and substantial computation costs. Together, these findings highlight the need to connect task-appropriate reasoning with reliable, timely action. By making this connection measurable and diagnosable, Labference supports targeted improvements toward autonomous experimentation for Embodied AI for Science.",
+    "affiliations": [
+      {
+        "id": 1,
+        "name": "Institute of Automation, Chinese Academy of Sciences"
+      },
+      {
+        "id": 2,
+        "name": "University of Chinese Academy of Sciences"
+      },
+      {
+        "id": 3,
+        "name": "Peking University School of Stomatology"
+      },
+      {
+        "id": 4,
+        "name": "Laboratory Medicine Department, The First Medical Center, Chinese PLA General Hospital, Beijing, 100853, China"
+      },
+      {
+        "id": 5,
+        "name": "IQuotient Robotics"
+      },
+      {
+        "id": 6,
+        "name": "School of Pharmaceutical Sciences, Peking University"
+      },
+      {
+        "id": 7,
+        "name": "State Key Laboratory of Semiconductor Physics and Chip Technologies, Institute of Semiconductors, Chinese Academy of Sciences, Beijing, P.R. China"
+      }
+    ],
+    "authors": [
+      {
+        "given_names": "Shitong",
+        "family_names": "Liu",
+        "affiliations": [
+          1,
+          2
+        ],
+        "corresponding": true
+      },
+      {
+        "given_names": "Jingwei",
+        "family_names": "Zhang",
+        "affiliations": [
+          1,
+          2
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Sheng",
+        "family_names": "Lian",
+        "affiliations": [
+          1,
+          2
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Xinyu",
+        "family_names": "Zhuang",
+        "affiliations": [
+          1,
+          2
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Kaiwen",
+        "family_names": "Guo",
+        "affiliations": [
+          1
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Quan",
+        "family_names": "Liu",
+        "affiliations": [
+          1
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Chunhai",
+        "family_names": "Zhao",
+        "affiliations": [
+          1
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Jiaxin",
+        "family_names": "He",
+        "affiliations": [
+          1
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Fan",
+        "family_names": "Yang",
+        "affiliations": [
+          1
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Manli",
+        "family_names": "Tao",
+        "affiliations": [
+          1
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Tingyu",
+        "family_names": "Yuan",
+        "affiliations": [
+          1
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Jinqiao",
+        "family_names": "Wang",
+        "affiliations": [
+          1
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Xiaojing",
+        "family_names": "Liu",
+        "affiliations": [
+          3
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Chaomin",
+        "family_names": "Guo",
+        "affiliations": [
+          4
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Feichan",
+        "family_names": "Yang",
+        "affiliations": [
+          5
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Hongwei",
+        "family_names": "Shi",
+        "affiliations": [
+          6
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Zhuang",
+        "family_names": "Xiong",
+        "affiliations": [
+          7
+        ],
+        "corresponding": false
+      },
+      {
+        "given_names": "Chaoyang",
+        "family_names": "Zhao",
+        "affiliations": [
+          1
+        ],
+        "corresponding": true
+      },
+      {
+        "given_names": "Zhiyong",
+        "family_names": "Liu",
+        "affiliations": [
+          1,
+          2
+        ],
+        "corresponding": true
+      }
+    ]
+  },
+  "public_media_enabled": false
+}

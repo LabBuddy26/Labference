@@ -1,0 +1,174 @@
+task_id: T06_move_consumable_box_area
+task_name: Move consumables box into specified area
+task_version: 0.1.0
+suite: eai4s_eval_v0_1
+scene_id: tabletop_consumable_box_move
+robot: franka_panda
+task_family: transport
+task_level: base
+task_tags:
+  - consumables
+  - box
+  - transport
+  - placement
+leaderboard_group: basic_transport
+control_hz: 10
+max_steps: 2000
+success_hold_steps: 12
+
+instruction:
+  canonical: move the consumables box to the specified area
+  variants:
+    - pick up the consumable box and place it in the target region
+    - move the tip box to the marked area
+    - transport the lab consumables box into the assigned zone
+
+objects:
+  consumable_box:
+    asset_id: consumable_box
+    role: target_object
+  target_area:
+    role: target_region
+
+stages:
+  - id: reach_box
+    weight: 0.20
+  - id: grasp_box
+    weight: 0.25
+  - id: move_to_target_area
+    weight: 0.25
+  - id: place_box
+    weight: 0.20
+  - id: release_stabilize
+    weight: 0.10
+
+success:
+  logic: robust_semantic_v0
+  hold_steps: 12
+  goal:
+    all:
+      - predicate: near
+        args:
+          a_key: object_pos
+          b_key: target_area_pos
+          distance_threshold_m: 0.05
+  sequence:
+    required: false
+    events:
+      - reach_consumable_box
+      - grasp_consumable_box
+      - move_to_target_area
+      - place_consumable_box
+      - release_and_retract
+  terminal:
+    required: true
+    all:
+      - predicate: released
+        args:
+          open_threshold: 0.035
+      - predicate: tcp_far
+        args:
+          distance_threshold_m: 0.10
+  stability:
+    required: true
+    all:
+      - predicate: stable_pose
+        args:
+          linear_velocity_threshold_mps: 0.02
+          angular_velocity_threshold_radps: 0.20
+      - predicate: container_upright
+        args:
+          min_cosine: 0.90
+  safety:
+    hard_fail:
+      - predicate: object_out_of_workspace
+        args:
+          workspace_radius_m: 1.5
+      - predicate: object_dropped
+        args:
+          min_height_m: 0.02
+      - predicate: object_tipped_over
+        args:
+          min_upright_cosine: 0.40
+      - predicate: forbidden_collision
+      - predicate: wrong_target_reached
+        args:
+          expected_target_region_id: target_area
+      - predicate: wrong_object_moved
+        args:
+          distance_threshold_m: 0.03
+
+failure:
+  any:
+    - predicate: object_out_of_workspace
+    - predicate: object_dropped
+      args:
+        min_height_m: 0.02
+    - predicate: object_tipped_over
+      args:
+        min_upright_cosine: 0.40
+    - predicate: forbidden_collision
+    - predicate: wrong_target_reached
+      args:
+        expected_target_region_id: target_area
+    - predicate: wrong_object_moved
+      args:
+        distance_threshold_m: 0.03
+    - predicate: contact_force_exceeded
+      args:
+        max_force_n: 70.0
+    - predicate: timeout
+failure_modes:
+  - code: timeout
+    category: timeout
+    description: Episode exceeded max_steps before the consumables box was placed and stabilized.
+  - code: object_out_of_workspace
+    category: drop
+    description: Consumables box moved outside the valid workspace.
+  - code: object_dropped
+    category: drop
+    description: Consumables box fell below the safe height threshold.
+  - code: object_tipped_over
+    category: drop
+    description: Consumables box tipped over beyond the hard-failure threshold.
+  - code: forbidden_collision
+    category: collision
+    description: Robot or box collided with a forbidden scene entity.
+  - code: contact_force_exceeded
+    category: collision
+    description: Contact force exceeded the task safety threshold.
+  - code: wrong_target_reached
+    category: wrong_place
+    description: Box reached a region that is not the assigned target area.
+  - code: wrong_object_moved
+    category: wrong_object
+    description: A non-task object moved beyond the allowed tolerance.
+
+metrics:
+  - success_rate
+  - stage_completion
+  - placement_position_error
+  - upright_success
+  - drop_rate
+  - forbidden_collision_rate
+  - inference_latency
+
+quality_metrics:
+  - placement_position_error_m
+  - final_upright_cosine
+  - max_contact_force_n
+
+required_snapshot_fields:
+  - object_pos
+  - initial_object_pos
+  - hand_pos
+  - gripper_pos
+  - target_area_pos
+  - object_lin_vel
+  - object_ang_vel
+  - container_upright_cosine
+  - object_upright_cosine
+  - forbidden_collision
+  - wrong_target_reached
+  - wrong_object_moved
+  - max_contact_force_n

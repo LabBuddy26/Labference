@@ -1,68 +1,105 @@
 # Labference
 
+[Paper](https://arxiv.org/abs/2610.35252) · [Website](https://zhaochunhai.github.io/Labference/)
+
+## Usage guides
+
+- [Environment and assets](docs/INSTALLATION.md)
+- [Data collection](docs/COLLECTION.md)
+- [OpenPI / GR00T training and inference](docs/TRAINING.md)
+- [Four special tasks and 24 ordinary tasks: automated evaluation](docs/AUTOMATED_EVALUATION.zh-CN.md)
+- [Hugging Face resource publication](docs/hugging%20face发布说明.md)
+
+This is a source release without simulator assets or model weights. Training conversion and end-to-end training are not yet verified. Reference smoke checks are not model scores.
+
 [中文说明](README.zh-CN.md)
 
-**Benchmarking the Reasoning–Action Connection in Robotic Laboratories**
+Labference benchmarks the reasoning–action connection in robotic laboratories:
+how observed physical outcomes guide subsequent choices and how those choices
+translate into actions. The Technical Report develops centrifuge loading,
+feedback weighing and placement recall, with controlled evidence variations,
+independent choice/execution/completion measurements and matched Oracle-assisted
+continuations. Appendix A provides twelve laboratory workflows and twelve
+reasoning-in-action tasks. The website additionally highlights device operation.
 
-Labference evaluates how observed physical outcomes guide subsequent choices and
-how those choices translate into robotic laboratory actions. Controlled evidence
-variations test outcome-dependent behavioral adaptation, while operation selection,
-physical execution and task completion are measured independently. Matched
-Oracle-assisted continuations from shared checkpoints diagnose which support
-improves subsequent performance. The scope is robotic laboratories and Embodied
-AI for Science, not chemistry manipulation alone.
+> **Pre-release status:** Labference is currently in the `0.x` series. APIs,
+> task definitions, metrics and dataset contents may change before `v1.0.0`.
 
-The Technical Report (October 21, 2026) develops three settings: centrifuge loading,
-feedback weighing and placement recall. Appendix A describes twelve laboratory
-workflows (L01–L12) and twelve reasoning-in-action tasks (R01–R12). This website
-retains four selected workflow cards, including device operation as an additional
-catalogue workflow. Initial experimental findings concern feedback weighing, not
-validated performance across the full catalogue.
+## What is included
 
-## Four special long-horizon workflows
+- 24 public task definitions across Long-Horizon Procedures and Reasoning in Action;
+- three detailed report settings and an additional selected device-operation workflow;
+- fixed evaluation splits (`sim_clean`, `sim_dev`, `sim_randomized`);
+- OpenPI WebSocket and GR00T policy adapters;
+- file-based evaluation records and official-submission validation;
+- a Flask console and an exportable read-only website.
 
-| Workflow | Description | Public demonstration status |
-| --- | --- | --- |
-| Feedback weighing (`weighing_v1`) | Adjust standard weights using live scale feedback to reach a stable target. | Successful collection demo available |
-| Device operation (`device_operation_v1`) | Manipulate a laboratory device and beakers through a multi-stage procedure with door disturbances. | Successful collection demo available |
-| Centrifuge loading (`centrifuge_v2`) | Insert tubes into opposite rotor slots while preserving placement stability. | Simulator scene preview available |
-| Rack placement recall (`rack_recall_v4`) | Remember tube locations through occlusion and retrieve the correct tube from a rack. | Simulator scene preview available |
+## Quick start
 
-The homepage prioritizes these four workflows and shows successful main-camera
-videos only for weighing and device operation. undefined The [Tasks page](https://zhaochunhai.github.io/Labference/tasks/) presents the special
-workflows first, followed by the 24 ordinary tasks and their demonstrations.
-The [Leaderboard](https://zhaochunhai.github.io/Labference/leaderboard/) reports the four special
-workflows separately from the ordinary benchmark. Successful collection demos
-are not model evaluation scores and do not imply all four workflows are complete.
+Labference requires an NVIDIA Isaac Sim Python environment. Clone the public
+repository, install the dashboard dependencies, then verify Isaac Sim:
 
-## Public preview
+```bash
+git clone https://github.com/zhaochunhai/Labference
+cd Labference
+python -m pip install -r eai4s_eval/requirements-dashboard.txt
+python -c "from isaacsim import SimulationApp; print('Isaac Sim OK')"
+```
 
-- **Project website:** [Open the Labference benchmark website](https://zhaochunhai.github.io/Labference/)
-- **Dataset:** [Download from Baidu Netdisk](https://pan.baidu.com/s/1zyJL3zxHqI_j67hUkUF6lw)
-- **Repository:** [https://github.com/zhaochunhai/Labference](https://github.com/zhaochunhai/Labference)
+Runtime laboratory assets are not included in the public repository or website.
+Install them from an authorized internal or upstream source before attempting
+simulation tasks. See [Asset licensing](docs/ASSET_LICENSING.md).
 
-The website publishes the task catalogue, object metadata, dataset summary,
-verified leaderboard results, rendered WebP object previews and MP4 task
-demonstrations. USD files, meshes, textures, simulator assets, model
-checkpoints and internal evaluation records are not distributed.
+Collect one task:
 
-## Source release status
+```bash
+python main.py --config-name level1_pick --mode collect --headless
+```
 
-The implementation is undergoing source, dependency and redistribution review.
-Program source code is not part of this preview repository. An audited source
-snapshot will be published here when implementation and review are complete;
-internal Git history will not be imported.
+Evaluate the official suite with an OpenPI WebSocket service:
+
+```bash
+python -m eai4s_eval.cli.run_benchmark_suite_eval \
+  --task-suite official_evaluation_suites_v1 \
+  --model-name OpenPI \
+  --checkpoint <checkpoint-name> \
+  --policy-provider openpi \
+  --policy-backend websocket \
+  --vla-host 127.0.0.1 --vla-port 8000 \
+  --all-splits --num-episodes 50 --headless
+```
+
+See [Installation](docs/INSTALLATION.md) and
+[Evaluation](docs/EVALUATION.md) for the complete workflow.
+
+## Public website
+
+The repository contains the source for the task catalogue, object catalogue,
+dataset summary and leaderboard. Public links are configured at release time;
+Paper and GitHub links that are not yet published appear as “Coming soon”.
+Configure `links.paper`, `links.code`, `links.homepage` and `links.dataset` in
+`eai4s_eval/configs/site/public_site_v1.json`. An empty homepage defaults to the
+site root, including the static export path prefix. Institution logos are
+configured in `partners` and included when exporting public media.
 
 ## Licences
 
-Repository documentation and first-party software, when released, use the MIT
-License. Data files explicitly identified as a Labference dataset release use
-CC BY 4.0; see [DATASET_LICENSE.md](DATASET_LICENSE.md). Website previews do
-not grant access to or redistribution rights for their underlying simulator
-asset source files. See [NOTICE.md](NOTICE.md).
+Software owned by EAI4S Contributors is licensed under the MIT License. Data
+files explicitly published as a Labference dataset release are licensed under
+[CC BY 4.0](DATASET_LICENSE.md). USD files, robot models, textures, rendered
+images, videos, checkpoints and third-party products are not included in the
+public release. See
+[NOTICE.md](NOTICE.md), [ASSETS_AND_LICENSES.md](ASSETS_AND_LICENSES.md), and
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
 ## Citation
 
-Until archival paper metadata is available, cite the repository URL, dataset
-version and public release identifier. Machine-readable metadata is provided
-in [CITATION.cff](CITATION.cff).
+Paper and archival citation information will be added when available. Until
+then, cite the repository version and source commit recorded in
+`PUBLIC_RELEASE.json`.
+
+## Contributing
+
+The internal development repository is the source of truth. Public changes
+are reviewed, integrated internally, and republished through a generated sync
+pull request. Please open an issue before preparing a substantial change.

@@ -1,0 +1,41 @@
+task_id: level2_R02_wights
+task_name: Level 2 Weight Select
+task_version: 1.0.0
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level2_R02_wights, policy_phase: full_task}
+robot: franka
+task_family: weight_select
+task_level: level2
+task_tags: [benchmark, multi_object, pick_place, reasoning]
+leaderboard_group: benchmark_multi_stage
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 900
+instruction:
+  canonical: Select the required combination of weights and place them on the scale to reach the target mass
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - predicate: task_state_true
+        args: {id: weights_on_scale, key: task_state.weights_on_scale}
+  terminal:
+    required: true
+    all:
+      - predicate: released
+        args: {open_threshold: 0.035}
+  stability: {required: false, all: []}
+  safety: {hard_fail: []}
+failure_modes:
+  - {code: weight_not_placed, category: wrong_place, description: A required weight did not reach its assigned spot on the scale.}
+  - {code: weight_not_released, category: sequence_error, description: The last weight was not released.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields:
+  - task_state.weights_on_scale
+  - task_state.weight_0_placed
+  - task_state.weight_1_placed
+  - task_state.weight_2_placed
+  - task_state.weight_3_placed
+  - gripper_pos

@@ -1,0 +1,23 @@
+task_id: level1_pick_liquid
+task_name: Level 1 Pick Liquid
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level1_pick_liquid, policy_phase: full_task}
+robot: franka
+task_family: pick
+task_level: level1
+task_tags: [benchmark, pick, liquid_diagnostic, truth_pending]
+leaderboard_group: benchmark_pick
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 800
+instruction: {canonical: Pick up the bottle containing liquid}
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 1.0
+  goal: {all: [{predicate: grasped, args: {grip_threshold: 0.04, distance_threshold_m: 0.15}}, {predicate: lifted, args: {height_threshold_m: 0.10}}]}
+  terminal: {required: false, all: []}
+  stability: {required: false, all: []}
+  safety: {hard_fail: [{predicate: object_out_of_workspace, args: {workspace_radius_m: 1.5}}]}
+metrics: [success_rate, liquid_retention_diagnostic]
+failure_modes: [{code: timeout, category: timeout, description: Episode exceeded max_steps.}]

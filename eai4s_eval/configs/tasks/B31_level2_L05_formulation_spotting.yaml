@@ -1,0 +1,31 @@
+task_id: level2_L05_formulation_spotting
+task_name: Level 2 Formulation Spotting
+task_version: 1.0.0
+suite: eai4s_benchmark_longhorizon_reasoning_v1
+runtime: {backend: eai4s_benchmark, env_config: level2_L05_formulation_spotting, policy_phase: full_task}
+robot: franka
+task_family: formulation_spotting
+task_level: level2
+task_tags: [benchmark, long_horizon, pipetting, well_plate]
+leaderboard_group: long_horizon
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 1800
+instruction: {canonical: Dispense the prescribed volumes into wells A1, A2, B1 and B2 exactly once}
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - {predicate: task_state_true, args: {id: formulation_complete, key: task_state.formulation_complete}}
+  terminal: {required: false, all: []}
+  stability: {required: false, all: []}
+  safety:
+    hard_fail:
+      - {predicate: task_state_true, args: {id: formulation_safety_violation, key: task_state.formulation_safety_violation}}
+failure_modes:
+  - {code: formulation_incomplete, category: wrong_place, description: One or more wells have an incorrect or missing dispense.}
+  - {code: formulation_duplicate_well, category: sequence_error, description: A well was dispensed more than once.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields: [task_state.formulation_complete, task_state.formulation_safety_violation]

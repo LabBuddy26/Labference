@@ -1,0 +1,27 @@
+suite_id: eai4s_benchmark_full_v1
+suite_name: EAI4S Benchmark Full v1
+suite_version: 1.0.0
+description: All twenty-two collection configurations. B05 is skipped because the evaluation runtime currently supports Franka only; the other twenty-one tasks expose official geometric/runtime truth.
+tasks:
+  - {order: 1, task_spec: ../tasks/B01_level1_pick.yaml, status: implemented}
+  - {order: 2, task_spec: ../tasks/B04_level1_pick_liquid.yaml, status: implemented}
+  - {order: 3, task_spec: ../tasks/B05_level1_pick_openarm.yaml, status: skipped, skip_reason: openarm_profile_unavailable}
+  - {order: 4, task_spec: ../tasks/B02_level1_place.yaml, status: implemented}
+  - {order: 5, task_spec: ../tasks/B03_level1_pour.yaml, status: implemented}
+  - {order: 6, task_spec: ../tasks/B06_level1_stir.yaml, status: implemented}
+  - {order: 7, task_spec: ../tasks/B07_level1_open_door.yaml, status: implemented}
+  - {order: 8, task_spec: ../tasks/B08_level1_close_door.yaml, status: implemented}
+  - {order: 9, task_spec: ../tasks/B09_level2_pour.yaml, status: implemented}
+  - {order: 10, task_spec: ../tasks/B10_level3_place.yaml, status: implemented}
+  - {order: 11, task_spec: ../tasks/B11_level2_sampletransport.yaml, status: implemented}
+  - {order: 12, task_spec: ../tasks/B12_level4_device_operation.yaml, status: implemented}
+  - {order: 13, task_spec: ../tasks/B13_level2_nmrinjection.yaml, status: implemented}
+  - {order: 14, task_spec: ../tasks/B14_level2_centrifuge_load.yaml, status: implemented}
+  - {order: 15, task_spec: ../tasks/B15_level2_cohort_analysis.yaml, status: implemented}
+  - {order: 16, task_spec: ../tasks/B16_level2_sample_organization.yaml, status: implemented}
+  - {order: 17, task_spec: ../tasks/B17_level2_scale_weights.yaml, status: implemented}
+  - {order: 18, task_spec: ../tasks/B18_level4_condition_module.yaml, status: implemented}
+  - {order: 19, task_spec: ../tasks/B19_level4_liquid_mixing.yaml, status: implemented}
+  - {order: 20, task_spec: ../tasks/B20_level4_clear_reset.yaml, status: implemented}
+  - {order: 21, task_spec: ../tasks/B21_level2_R02_wights.yaml, status: implemented}
+  - {order: 22, task_spec: ../tasks/B22_level3_R10_rackplace.yaml, status: implemented}

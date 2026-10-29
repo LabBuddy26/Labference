@@ -1,0 +1,27 @@
+task_id: level3_R12_devicecover_status
+task_name: Level 3 Device Cover Status Reasoning
+task_version: 1.0.0
+suite: eai4s_benchmark_longhorizon_reasoning_v1
+runtime: {backend: eai4s_benchmark, env_config: level3_R12_devicecover_status, policy_phase: full_task}
+robot: franka
+task_family: device_status_reasoning
+task_level: level3
+task_tags: [benchmark, reasoning, device, safety]
+leaderboard_group: reasoning_in_action
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 500
+instruction: {canonical: Observe the cover state; close an open cover or start a closed device}
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal: {all: [{predicate: task_state_true, args: {id: correct_cover_action, key: task_state.correct_cover_action}}]}
+  terminal: {required: false, all: []}
+  stability: {required: false, all: []}
+  safety: {hard_fail: [{predicate: task_state_true, args: {id: unsafe_start_with_open_cover, key: task_state.unsafe_start_with_open_cover}}]}
+failure_modes:
+  - {code: wrong_cover_action, category: sequence_error, description: The chosen action does not match the observed cover state.}
+  - {code: unsafe_start_with_open_cover, category: safety_violation, description: Start was selected while the cover was open.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields: [task_state.correct_cover_action, task_state.unsafe_start_with_open_cover]

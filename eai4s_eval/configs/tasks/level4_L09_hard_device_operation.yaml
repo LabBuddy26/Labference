@@ -1,0 +1,38 @@
+task_id: level4_L09_hard_device_operation
+task_name: Hard Device Operation Cycle
+task_version: device-operation-cycle/v1
+suite: labference_release_protocols_v1
+runtime: {backend: eai4s_benchmark, env_config: level4_L09_hard_DeviceOperation, policy_phase: full_task}
+robot: franka
+task_family: device_operation
+task_level: level4
+task_tags: [release_protocol, long_horizon, device_operation, memory]
+leaderboard_group: release_protocols_v1
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 500
+instruction:
+  canonical: Open the drying oven, place the loose beaker inside, close and reopen the door, retrieve the beaker, and return it to its original position
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - {predicate: task_state_true, args: {id: beaker_returned, key: task_state.beaker_returned}}
+      - {predicate: task_state_true, args: {id: door_reopened, key: task_state.door_reopened}}
+  sequence:
+    required: true
+    events: [door_opened, beaker_placed_inside, door_closed, door_reopened, beaker_retrieved, beaker_returned]
+  terminal:
+    required: true
+    all:
+      - {predicate: released, args: {open_threshold: 0.035}}
+  stability: {required: false, all: []}
+  safety: {hard_fail: []}
+quality_metrics: [preloaded_beaker_preserved]
+failure_modes:
+  - {code: sequence_incomplete, category: sequence_error, description: The full open-load-close-reopen-retrieve-return sequence was not completed.}
+  - {code: beaker_not_returned, category: wrong_place, description: The manipulated beaker was not returned to its initial pose.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields: [task_state.beaker_returned, task_state.door_reopened, task_state.preloaded_beaker_preserved, gripper_pos, events]

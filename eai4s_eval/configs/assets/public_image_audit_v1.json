@@ -1,0 +1,200 @@
+{
+  "schema_version": "labbench_public_image_audit/v1",
+  "reviewed_on": "2026-10-16",
+  "renderer": "eai4s_eval/cli/render_object_thumbnail.py",
+  "hero_excluded": "The explicitly requested asset-reference hero is a composed illustration, labelled separately, not an object preview.",
+  "objects": {
+    "beaker": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/beaker.webp",
+      "image_sha256": "0205e1ee8f499244fe18e1ebd33cc19e0c79d10309b4e5521c45e60226e75d15",
+      "source_asset": "assets/chemistry_lab/assets/beaker_2.usd",
+      "source_sha256": "02470650e5bf3093790d78a0f0d9726b31958dd420018f719a0e94342e1cf997",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "conical-flask": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/conical-flask.webp",
+      "image_sha256": "f8b5ddcaa1019aa23c07513353e65c394d97e43fafd29259af2a2c597a2fbe58",
+      "source_asset": "assets/chemistry_lab/assets/conical_bottle01.usd",
+      "source_sha256": "3353a168bcc1e8ff577eb1384ee70b565fc4d43a8f7c1ded067f32b2f3c6974b",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "sample-vial": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/sample-vial.webp",
+      "image_sha256": "4ddb7d125271fdc5464c01526e30a833c10fbd90a50d65ae0e97b3f3bb6d91bc",
+      "source_asset": "assets/chemistry_lab/assets/vial.usd",
+      "source_sha256": "8dbd5e3053b9f1f1a6c32996e1cd71e639aeec2edfe0dc70120be7a28e27b509",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "test-tube": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/test-tube.webp",
+      "image_sha256": "255e43774aa2590e3c59b3ce34935f1382d7b04e89941846ccc4b0863ef7e309",
+      "source_asset": "assets/chemistry_lab/assets/test_tube.usd",
+      "source_sha256": "0b151a8dcd4a59b798509d0e09cb041400fce90448076ee9659794296adee72a",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "nmr-tube": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/nmr-tube.webp",
+      "image_sha256": "0925be8377fc49402ff54d546e72fdf9a6004d7810694d2ef3a69ceadc23a6f8",
+      "source_asset": "assets/chemistry_lab/assets/nmr.usd",
+      "source_sha256": "50dc6486c6aecdb2890844baf8571b893989d30f85087eb8680d4c2afebdba0b",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "centrifuge-tube": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/centrifuge-tube.webp",
+      "image_sha256": "3d4790ef5d54df2f044c13423e49d86b681c325269636b0c5dd0a96db356faae",
+      "source_asset": "assets/chemistry_lab/assets/centrifuge_tube.usd",
+      "source_sha256": "8a06054f898dd6b23f27be2748b031afd1c1d4a4ddb986a248d7bbc13a2240a4",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "pipette": {
+      "classification": "generated_concept",
+      "image": "eai4s_eval/server/static/web_assets/object_images/pipette.webp",
+      "image_sha256": "2a4e1b602b7d2fab413d6a87352c7cfaede85ce972131fc3f60d7be33bddef6a",
+      "source_asset": "assets/chemistry_lab/assets/VialBottle_01.usd",
+      "source_sha256": "2a8e88e142fd42fcfea9e6f4cb9a4d04db760d5e8ca65a962192e18b7665d9e2",
+      "review_basis": "Concept illustration does not depict the configured proxy USD; excluded from all asset previews"
+    },
+    "pipette-tip-box": {
+      "classification": "generated_concept",
+      "image": "eai4s_eval/server/static/web_assets/object_images/pipette-tip-box.webp",
+      "image_sha256": "00e45dfd6f9604dcfcc707b9c8dd1ef20604f30a5d2adf5430d0db65d87ea355",
+      "source_asset": "assets/chemistry_lab/assets/test_tube_rack_3h.usd",
+      "source_sha256": "8dc70d3105feb01697deac89ffd71f6810b455b5d155e5c1ab6beca321b3230b",
+      "review_basis": "Concept illustration does not depict the configured proxy USD; excluded from all asset previews"
+    },
+    "well-plate": {
+      "classification": "generated_concept",
+      "image": "eai4s_eval/server/static/web_assets/object_images/well-plate.webp",
+      "image_sha256": "65f07971e0d1284910724e073236c60550500e1e5a065c89043df0e28987f8d8",
+      "source_asset": "assets/chemistry_lab/assets/SamplePlaceBox.usd",
+      "source_sha256": "d98c64d0b1d4bf0aa78ab4cc0479a1be22359908a92f04d58899af2a9fb6e899",
+      "review_basis": "Concept illustration does not depict the configured proxy USD; excluded from all asset previews"
+    },
+    "test-tube-rack": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/test-tube-rack.webp",
+      "image_sha256": "82da04582158bb751ffdf2c9c9bf79b73842b11d292728f4dbb334a9dd1faac2",
+      "source_asset": "assets/chemistry_lab/assets/test_tube_rack.usd",
+      "source_sha256": "d76c3caf58fcf197a088f96b2aed434a69bdd97ed54df30f7d133e5d6670dbcf",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "nmr-rack": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/nmr-rack.webp",
+      "image_sha256": "2ca8bce9178b2eebefc69066689004ee9d3003ed9584966c30386a7781392547",
+      "source_asset": "assets/chemistry_lab/assets/test_tube_rack_12h.usd",
+      "source_sha256": "3866f7ecf8b09d67ddaff70b3c2585ec0e406888df2f90c68ec54ecbada0182e",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "sample-box": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/sample-box.webp",
+      "image_sha256": "31aa4440b264d830af1006cdca569ad813fa8fb2dbd577a8ac16f61004559de5",
+      "source_asset": "assets/chemistry_lab/assets/SamplePlaceBox.usd",
+      "source_sha256": "d98c64d0b1d4bf0aa78ab4cc0479a1be22359908a92f04d58899af2a9fb6e899",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "waste-box": {
+      "classification": "generated_concept",
+      "image": "eai4s_eval/server/static/web_assets/object_images/waste-box.webp",
+      "image_sha256": "9423a59fdf771ec87f17f29d70dcab88f2603a54f0a0654738431ab911f9e03c",
+      "source_asset": "assets/chemistry_lab/assets/SamplePlaceBox.usd",
+      "source_sha256": "d98c64d0b1d4bf0aa78ab4cc0479a1be22359908a92f04d58899af2a9fb6e899",
+      "review_basis": "Concept illustration does not depict the configured proxy USD; excluded from all asset previews"
+    },
+    "centrifuge-rotor": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/centrifuge-rotor.webp",
+      "image_sha256": "6ff63a623148b7b4e6a22b84308609766918dd82a4b290dd9b65e3c236770b20",
+      "source_asset": "assets/chemistry_lab/assets/CentrifugeRotor.usd",
+      "source_sha256": "31251a7efda0c4820dd7ea5025a8698033fe8cf99d21443eb279f404ac11528d",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "laboratory-balance": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/laboratory-balance.webp",
+      "image_sha256": "ed18ddec6fbc1ad56afab8b231daceb205cb682ca3c479baf71df9895c2212b5",
+      "source_asset": "assets/chemistry_lab/assets/Scale.usd",
+      "source_sha256": "05513d435ab2417e8de19cf9566018f9e0ed94918bf491339470aa908ec460c6",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "digital-scale-interface": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/digital-scale-interface.webp",
+      "image_sha256": "e93951c4a03af3dc818fbe13ad7a3aaf535b389431c3843d023ff6789106745b",
+      "source_asset": "assets/chemistry_lab/assets/ScaleInstrument.usd",
+      "source_sha256": "1c4735f8211c5349241092a5f0434c9c8c4344d740ebd7fd277a857c7b3c8e62",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "temperature-status-panel": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/temperature-status-panel.webp",
+      "image_sha256": "f5653ab33b1a2aabb2e9db6976328c0862cb30569fbc105b7bda1d24095f4b39",
+      "source_asset": "assets/chemistry_lab/assets/TempInstrument.usd",
+      "source_sha256": "be2632e486372758ed826bf83a78ec470c7f2ac0f9f2410475ec76eff8758f0e",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "rpm-control-panel": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/rpm-control-panel.webp",
+      "image_sha256": "d3497557a91848cac875516294380d7a081ef6bc46c1386ccdff0ca8db403722",
+      "source_asset": "assets/chemistry_lab/assets/RpmInstrument.usd",
+      "source_sha256": "045c6afe1bc70194529942a2ec9176f4d037435078826447230ed275863bc153",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "calibration-weights": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/calibration-weights.webp",
+      "image_sha256": "989b0d306fb465f7fad407ee46937579e5b7af4e7ee510571facda8c8fbf0c98",
+      "source_asset": "assets/chemistry_lab/assets/weight_10g.usd",
+      "source_sha256": "7d159aa7275355c023215e7f98ebd41160dd9bb547df2a3f72dd0ffe3482e29a",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "centrifuge": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/centrifuge.webp",
+      "image_sha256": "a24d16d0ee50902f4fd7a51c62d51204b6b2caf29a1365551368c4769b941963",
+      "source_asset": "assets/chemistry_lab/assets/CentrifugalMachine.usd",
+      "source_sha256": "52df0d87d548bdc550479b2a6bec3765298c90ab9b837b5624c0aed271652202",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "drying-cabinet": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/drying-cabinet.webp",
+      "image_sha256": "40e0032628057d021ab566f88e3bc398c91121e00281cc5cb9feb87b897c6af4",
+      "source_asset": "assets/chemistry_lab/assets/DryingBox_01.usd",
+      "source_sha256": "40769dd2f2d0b009fed63cbe5373d092ef4709263ebfa0305b1c39bd3ddf57cc",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "heat-block": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/heat-block.webp",
+      "image_sha256": "ccd2b5ff8005e9057ccffca66d99fcdf33063b648b62ed9ea5d232428f14d70e",
+      "source_asset": "assets/chemistry_lab/assets/HotPlate.usd",
+      "source_sha256": "b5bed1ddca1657e6a6fd8e40889daed30c13cd0328952003ce4407e5c9073621",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    },
+    "button-panel": {
+      "classification": "generated_concept",
+      "image": "eai4s_eval/server/static/web_assets/object_images/button-panel.webp",
+      "image_sha256": "37f4b54864ee2ac0dfa473212ae12556506c1b4224eea73becc6360db55c3c05",
+      "source_asset": "assets/chemistry_lab/assets/TempInstrument.usd",
+      "source_sha256": "be2632e486372758ed826bf83a78ec470c7f2ac0f9f2410475ec76eff8758f0e",
+      "review_basis": "Concept illustration does not depict the configured proxy USD; excluded from all asset previews"
+    },
+    "glass-rod": {
+      "classification": "usd_render",
+      "image": "eai4s_eval/server/static/web_assets/object_images/glass-rod.webp",
+      "image_sha256": "6faea69966e9016d4ae3bbdcd776d83d2f79226b380229ba569de4e365f486d3",
+      "source_asset": "assets/chemistry_lab/assets/glass_rod.usd",
+      "source_sha256": "eb6c4ef554152e526ffef56c9d3f608d8bc316987291dc5a0c0fe52795e2a710",
+      "review_basis": "USD thumbnail render pipeline and asset geometry review"
+    }
+  }
+}

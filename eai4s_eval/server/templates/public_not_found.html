@@ -1,0 +1,3 @@
+{% extends "public_base.html" %}
+{% block title %}Not found · {{ snapshot.site.brand }}{% endblock %}
+{% block content %}<div class="page-shell"><div class="empty-state content-card"><p class="section-kicker">404</p><h1>Page not found</h1><p>The requested {{ kind }} “{{ value }}” does not exist in the catalogue.</p><a class="button" href="{{ base_url }}/">Return home</a></div></div>{% endblock %}

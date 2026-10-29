@@ -1,0 +1,46 @@
+task_id: level2_L02_sampleorganition
+task_name: Level 2 Sample Organization
+task_version: 1.0.0
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level2_L02_sampleorganition, policy_phase: full_task}
+robot: franka
+task_family: sample_organization
+task_level: level2
+task_tags: [benchmark, pick_place, sample_box, organize]
+leaderboard_group: benchmark_multi_stage
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 500
+instruction:
+  canonical: Pick up the vial bottle and place it into the sample box assigned by the experiment plan
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - predicate: task_state_true
+        args: {id: sample_in_target_box, key: task_state.sample_in_target_box}
+  terminal:
+    required: true
+    all:
+      - predicate: released
+        args: {open_threshold: 0.035}
+  stability:
+    required: true
+    all:
+      - predicate: object_velocity_below
+  safety: {hard_fail: []}
+failure_modes:
+  - {code: sample_not_in_box, category: wrong_place, description: The vial bottle did not reach its assigned sample box.}
+  - {code: sample_not_released, category: sequence_error, description: The vial bottle was not released after placement.}
+  - {code: object_unstable, category: instability, description: The vial bottle was still moving when the episode ended.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields:
+  - task_state.sample_in_target_box
+  - task_state.sample_in_box_a
+  - task_state.sample_in_box_b
+  - task_state.target_box_name
+  - task_state.object_stable
+  - task_state.gripper_released
+  - gripper_pos

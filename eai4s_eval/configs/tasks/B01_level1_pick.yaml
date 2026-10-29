@@ -1,0 +1,41 @@
+task_id: level1_pick
+task_name: Level 1 Pick
+task_version: 1.0.0
+suite: eai4s_benchmark_core_v1
+runtime:
+  backend: eai4s_benchmark
+  env_config: level1_pick
+  policy_phase: full_task
+robot: franka
+task_family: pick
+task_level: level1
+task_tags: [benchmark, pick, joint_policy]
+leaderboard_group: benchmark_pick
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 2000
+instruction:
+  canonical: Pick up the beaker from the table
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 1.0
+  goal:
+    all:
+      - predicate: grasped
+        args: {grip_threshold: 0.04, distance_threshold_m: 0.15}
+      - predicate: lifted
+        args: {height_threshold_m: 0.10}
+  terminal: {required: false, all: []}
+  stability: {required: false, all: []}
+  safety:
+    hard_fail:
+      - predicate: object_out_of_workspace
+        args: {workspace_radius_m: 1.5}
+failure_modes:
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+  - {code: object_out_of_workspace, category: drop, description: Object left the workspace.}
+  - {code: policy_request_failed, category: policy_error, description: OpenPI request failed.}
+  - {code: policy_output_invalid, category: policy_error, description: OpenPI returned an invalid joint action.}
+metrics: [success_rate, grasp_success, lift_success, inference_latency]
+required_snapshot_fields: [object_pos, initial_object_pos, hand_pos, gripper_pos]

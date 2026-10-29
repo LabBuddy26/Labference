@@ -1,0 +1,9 @@
+suite_id: labference_special_featured_v1
+suite_version: 1.0.0
+description: Four featured protocols; equal task weights, success-rate primary score.
+score_version: labference_success_macro/v2
+tasks:
+  - {protocol_id: weighing_hard, weight: 0.25}
+  - {protocol_id: device_operation_hard, weight: 0.25}
+  - {protocol_id: centrifuge_hard, weight: 0.25}
+  - {protocol_id: rack_same_cap, weight: 0.25}

@@ -1,0 +1,43 @@
+task_id: level2_L08_NMRInjection
+task_name: Level 2 NMR Injection
+task_version: 1.0.0
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level2_L08_NMRInjection, policy_phase: full_task}
+robot: franka
+task_family: nmr_injection
+task_level: level2
+task_tags: [benchmark, pick_place, sample_box, instrument]
+leaderboard_group: benchmark_multi_stage
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 500
+instruction:
+  canonical: Pick up the NMR machine from the table and insert it into the sample box
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - predicate: task_state_true
+        args: {id: nmr_placed, key: task_state.nmr_placed}
+  terminal:
+    required: true
+    all:
+      - predicate: released
+        args: {open_threshold: 0.035}
+  stability:
+    required: true
+    all:
+      - predicate: object_velocity_below
+  safety: {hard_fail: []}
+failure_modes:
+  - {code: nmr_not_placed, category: wrong_place, description: The NMR machine did not reach the sample box.}
+  - {code: nmr_not_released, category: sequence_error, description: The NMR machine was not released after placement.}
+  - {code: object_unstable, category: instability, description: The NMR machine was still moving when the episode ended.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields:
+  - task_state.nmr_placed
+  - task_state.object_stable
+  - task_state.gripper_released
+  - gripper_pos

@@ -1,0 +1,38 @@
+{
+  "suite_id": "eai4s_chem_basic_v0_1",
+  "suite_name": "EAI4S Chemical Basic Tasks v0.1",
+  "suite_version": "0.1.0",
+  "description": "Basic chemical manipulation task suite. T02 pick/lift and T03 tube-rack insertion are implemented; T04-T07 are cataloged TaskSpec drafts and appear as unevaluated until scene code is connected.",
+  "tasks": [
+    {
+      "order": 2,
+      "task_spec": "../tasks/T02_franka_pick_lift_proxy.yaml",
+      "status": "implemented"
+    },
+    {
+      "order": 3,
+      "task_spec": "../tasks/T03_tube_insert_rack_draft.yaml",
+      "status": "implemented"
+    },
+    {
+      "order": 4,
+      "task_spec": "../tasks/T04_scan_label_place_area_draft.yaml",
+      "status": "planned"
+    },
+    {
+      "order": 5,
+      "task_spec": "../tasks/T05_label_color_sort_vials_draft.yaml",
+      "status": "planned"
+    },
+    {
+      "order": 6,
+      "task_spec": "../tasks/T06_move_consumable_box_area_draft.yaml",
+      "status": "planned"
+    },
+    {
+      "order": 7,
+      "task_spec": "../tasks/T07_liquid_pour_beaker_to_beaker_draft.yaml",
+      "status": "planned"
+    }
+  ]
+}

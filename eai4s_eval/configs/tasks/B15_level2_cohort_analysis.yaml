@@ -1,0 +1,44 @@
+task_id: level2_L10_cohort_analysis
+task_name: Level 2 Cohort Analysis
+task_version: 1.0.0
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level2_L10_cohort_analysis, policy_phase: full_task}
+robot: franka
+task_family: cohort_analysis
+task_level: level2
+task_tags: [benchmark, multi_object, pick_place, sample_box]
+leaderboard_group: benchmark_multi_stage
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 700
+instruction:
+  canonical: Place the three vial bottles into the three cohort slots of the sample box
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - predicate: task_state_true
+        args: {id: cohort_vial_0_placed, key: task_state.cohort_vial_0_placed}
+      - predicate: task_state_true
+        args: {id: cohort_vial_1_placed, key: task_state.cohort_vial_1_placed}
+      - predicate: task_state_true
+        args: {id: cohort_vial_2_placed, key: task_state.cohort_vial_2_placed}
+  terminal:
+    required: true
+    all:
+      - predicate: released
+        args: {open_threshold: 0.035}
+  stability: {required: false, all: []}
+  safety: {hard_fail: []}
+failure_modes:
+  - {code: vial_missing_slot, category: wrong_place, description: At least one vial did not reach its cohort slot.}
+  - {code: vial_not_released, category: sequence_error, description: The last vial was not released.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields:
+  - task_state.cohort_vial_0_placed
+  - task_state.cohort_vial_1_placed
+  - task_state.cohort_vial_2_placed
+  - task_state.cohort_analysis_complete
+  - gripper_pos

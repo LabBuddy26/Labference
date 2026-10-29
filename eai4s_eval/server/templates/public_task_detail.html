@@ -1,0 +1,23 @@
+{% extends "public_base.html" %}
+{% block title %}{{ task.task_id }} · {{ task.name_en }} · {{ snapshot.site.brand }}{% endblock %}
+{% block page_id %}tasks{% endblock %}
+{% block content %}
+<header class="page-hero"><div><a class="page-back" href="{{ base_url }}/tasks/" aria-label="Back to all tasks"><span aria-hidden="true">←</span> Back to tasks</a><p class="section-kicker">{{ task.task_id }} · {{ task.track.label }}</p><h1>{{ task.name_en }}</h1><p class="lede">{{ task.summary_en }}</p><span class="status{% if task.availability == 'planned' %} planned{% endif %}">{{ task.availability }}</span></div></header>
+<div class="page-shell detail-grid">
+  <div class="detail-main">
+    {% if task.media.demos %}
+    <section class="content-card task-demos"><p class="section-kicker">Scene demonstrations</p>
+      {% for demo in task.media.demos %}<article class="demo-variant"><div class="demo-copy"><h3>{{ demo.title_en }}</h3><p>{{ demo.scene_description_en }}</p></div><div class="demo-grid">
+        {% for view in demo.views %}<figure class="demo-view"><div class="demo-video-shell"><video muted loop playsinline autoplay preload="auto" tabindex="0" poster="{{ base_url }}/static/{{ view.poster }}" data-autoplay-video aria-label="{{ demo.title_en }} — {{ view.label_en }}"><source src="{{ base_url }}/static/{{ view.preview }}" type="video/mp4"></video></div><figcaption>{{ view.label_en }}</figcaption></figure>{% endfor %}
+      </div></article>{% endfor %}
+    </section>
+    {% else %}<div class="card-media detail-media"><span class="media-fallback">{{ task.task_id }}</span>{% if task.media.poster %}<img src="{{ base_url }}/static/{{ task.media.poster }}" alt="{{ task.name_en }} task preview">{% endif %}</div>{% endif %}
+    <section class="content-card"><p class="section-kicker">Official evaluation</p><h2>Success Rate and scoring</h2>{% for component in task.score_components %}<div class="score-bar" style="--weight: {{ component.weight }}%"><span></span><small>{{ component.component }} · {{ component.weight }}%</small></div>{% endfor %}<p class="detail-note"><strong>Success Rate:</strong> {{ task.success_evaluation_en }}</p><p class="detail-note"><strong>Hard failures:</strong> {{ task.failure_evaluation_en }}</p><p class="detail-note"><strong>Quality score:</strong> Quality scoring is not implemented yet for this task.</p></section>
+  </div>
+  <aside class="detail-side">
+    <section class="content-card"><h3>Task facts</h3><dl class="definition-list"><div><dt>Track</dt><dd>{{ task.track.prefix }} · {{ task.track.label }}</dd></div><div><dt>Availability</dt><dd>{{ task.availability | title }}</dd></div><div><dt>Required objects</dt><dd>{{ task.asset_names_en | join(', ') if task.asset_names_en else 'Task-specific scene assets' }}</dd></div><div><dt>Simulation model</dt><dd>{{ task.simulation_en }}</dd></div></dl></section>
+    <section class="content-card"><h3>Objects & equipment</h3>{% if related_objects %}<div class="chip-row">{% for object in related_objects %}<a class="chip" href="{{ base_url }}/objects/{{ object.object_id }}/">{{ object.name_en }}</a>{% endfor %}</div>{% else %}<p class="coverage">No linked object record.</p>{% endif %}</section>
+    <a class="button" href="{{ base_url }}/tasks/">← Back to all tasks</a>
+  </aside>
+</div>
+{% endblock %}

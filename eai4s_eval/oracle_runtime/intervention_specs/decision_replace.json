@@ -1,0 +1,7 @@
+{
+  "schema_version": "labference/intervention-v1",
+  "profile": "decision",
+  "mode": "replace",
+  "site": "committed_action",
+  "transport": "none"
+}

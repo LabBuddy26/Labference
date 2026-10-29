@@ -1,0 +1,18 @@
+{% extends "public_base.html" %}
+{% block title %}Objects · {{ snapshot.site.brand }}{% endblock %}
+{% block page_id %}objects{% endblock %}
+{% block content %}
+<header class="page-hero"><div><p class="section-kicker">Object & equipment catalogue</p><h1>The tools and vessels behind every task.</h1><p class="lede">Find the implemented vessels, consumables, instruments and fixtures used throughout Labference, with links back to the tasks they support.</p></div></header>
+<div class="page-shell">
+  <div class="filter-bar"><input data-object-search type="search" placeholder="Search objects and instruments" aria-label="Search objects"><select data-object-category><option value="">All categories</option>{% for category in snapshot.objects.categories %}<option value="{{ category.category_id }}">{{ category.label_en }}</option>{% endfor %}</select><span class="result-count" data-object-result-count></span></div>
+  <div class="object-grid" data-object-grid>
+    {% for object in snapshot.objects.objects %}
+    <article class="object-card" data-object-card data-category="{{ object.category_id }}" data-status="{{ object.status }}" data-search="{{ (object.name_en ~ ' ' ~ object.description_en ~ ' ' ~ object.tags | join(' ')) | lower }}">
+      <div class="card-media"><span class="media-fallback">{{ object.object_id[:2] | upper }}</span>{% if object.media %}<img src="{{ base_url }}/static/{{ object.media }}" alt="{{ object.name_en }} render" loading="lazy">{% endif %}</div>
+      <div class="card-body"><div class="card-meta"><span>{{ object.category_label_en }}</span><span class="status">{{ object.status }}</span></div><h3>{{ object.name_en }}</h3><p>{{ object.description_en }}</p><span class="coverage">Used by {{ object.task_ids | length }} tasks · Catalogue metadata</span></div>
+      <a class="card-link" href="{{ base_url }}/objects/{{ object.object_id }}/">View {{ object.name_en }}</a>
+    </article>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

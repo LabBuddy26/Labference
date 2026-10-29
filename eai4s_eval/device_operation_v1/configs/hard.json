@@ -1,0 +1,11 @@
+{
+  "evaluation": {
+    "task_version": "device-operation-cycle/v1",
+    "difficulty": "hard",
+    "mode": "reference",
+    "max_steps": 120000,
+    "collection_hz": 10,
+    "physics_hz": 60
+  },
+  "legacy_scene": "config/level4_L09_hard_DeviceOperation.yaml"
+}

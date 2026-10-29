@@ -1,0 +1,420 @@
+{
+    "manifest_id":  "EAI4S_bench_v0_1_franka_pick_lift_sim_clean",
+    "sampling_method":  "fixed pseudo-random unique integer seeds, sampled once and reused for reproducible benchmark splits",
+    "seed_generator":  "System.Random",
+    "trial_count_per_task":  100,
+    "split":  "sim_clean",
+    "seed_generator_seed":  20260702,
+    "benchmark_version":  "EAI4S-bench-0.1.0",
+    "seed_range":  [
+                       100000,
+                       999999
+                   ],
+    "tasks":  [
+                  {
+                      "task_id":  "T02_franka_pick_lift_proxy",
+                      "seeds":  [
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  135903
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  144922
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  159415
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  175382
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  201251
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  206640
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  221473
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  228208
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  228903
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  230201
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  233471
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  251883
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  254001
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  259356
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  269375
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  276764
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  297194
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  313003
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  313682
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  323144
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  329459
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  329776
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  349245
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  356609
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  356756
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  380519
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  395530
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  399723
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  400857
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  420476
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  425752
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  427211
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  432460
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  437686
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  450676
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  452680
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  455902
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  462803
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  463518
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  466007
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  466864
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  478324
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  482620
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  483198
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  499514
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  509026
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  515822
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  527117
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  535844
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  548428
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  586905
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  601095
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  610119
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  622867
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  638680
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  640894
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  663093
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  675034
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  689845
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  708100
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  711669
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  717893
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  722122
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  728335
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  737199
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  743979
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  756201
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  767464
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  772578
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  776157
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  787844
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  788312
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  790737
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  796443
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  802395
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  809724
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  822647
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  833469
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  837820
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  849485
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  850164
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  860379
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  861708
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  870138
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  883600
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  890514
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  892225
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  920931
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  922424
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  924279
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  934804
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  937955
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  939585
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  942688
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  948834
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  962948
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  975548
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  981783
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  985969
+                                    },
+                                    {
+                                        "valid_scene":  true,
+                                        "seed":  990612
+                                    }
+                                ]
+                  }
+              ]
+}

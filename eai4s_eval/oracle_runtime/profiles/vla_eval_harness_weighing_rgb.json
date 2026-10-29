@@ -1,0 +1,28 @@
+{
+  "schema_version": "labference/policy-profile-v1",
+  "name": "vla-eval-harness-weighing-rgb-v1",
+  "system_type": "evaluation_harness",
+  "adapter": "vla_evaluation_harness",
+  "action": {
+    "representation": "joint_position",
+    "dimensions": 8,
+    "mode": "absolute",
+    "frame": "franka_joint",
+    "units": "radians+normalized_gripper",
+    "gripper": "symmetric_finger_position",
+    "control_hz": 120.0,
+    "max_chunk": 40
+  },
+  "sensors": {
+    "rgb_channels": ["front", "wrist", "display", "weights"],
+    "depth_channels": [],
+    "state_format": "franka_joint_positions"
+  },
+  "reports": [],
+  "oracle_transports": ["text"],
+  "replacement_sites": [],
+  "reset": {"mode": "restart"},
+  "input_mapping": {},
+  "strict_handshake": false,
+  "receipt_required": false
+}

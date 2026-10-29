@@ -1,0 +1,173 @@
+task_id: T04_scan_label_place_area
+task_name: Scan/read label and place item into target area
+task_version: 0.1.0
+suite: eai4s_eval_v0_1
+scene_id: tabletop_label_scan_place
+robot: franka_panda
+task_family: identification_place
+task_level: base
+task_tags:
+  - label
+  - barcode
+  - placement
+  - single_item
+leaderboard_group: basic_identification_place
+control_hz: 10
+max_steps: 1800
+success_hold_steps: 12
+
+instruction:
+  canonical: scan or read the label and place the item into the specified area
+  variants:
+    - read the sample label and move it to the matching target area
+    - scan the barcode and place the object in the assigned region
+    - identify the labeled item and put it into the correct area
+
+objects:
+  labeled_item:
+    asset_id: labeled_sample_item
+    role: target_object
+  scanner_or_camera:
+    role: label_reader
+  target_area:
+    role: target_region
+
+stages:
+  - id: reach_item
+    weight: 0.15
+  - id: read_label
+    weight: 0.25
+  - id: grasp_item
+    weight: 0.20
+  - id: move_to_target_area
+    weight: 0.25
+  - id: release_stabilize
+    weight: 0.15
+
+success:
+  logic: robust_semantic_v0
+  hold_steps: 12
+  goal:
+    all:
+      - predicate: device_state
+        args:
+          expected: label_verified
+      - predicate: near
+        args:
+          a_key: object_pos
+          b_key: target_area_pos
+          distance_threshold_m: 0.035
+  sequence:
+    required: true
+    events:
+      - reach_labeled_item
+      - read_or_scan_label
+      - grasp_labeled_item
+      - move_to_matching_area
+      - release_item
+  terminal:
+    required: true
+    all:
+      - predicate: released
+        args:
+          open_threshold: 0.035
+      - predicate: tcp_far
+        args:
+          distance_threshold_m: 0.08
+  stability:
+    required: true
+    all:
+      - predicate: stable_pose
+        args:
+          linear_velocity_threshold_mps: 0.02
+          angular_velocity_threshold_radps: 0.20
+  safety:
+    hard_fail:
+      - predicate: object_out_of_workspace
+        args:
+          workspace_radius_m: 1.5
+      - predicate: object_dropped
+        args:
+          min_height_m: 0.02
+      - predicate: forbidden_collision
+      - predicate: wrong_object_selected
+        args:
+          expected_object_id: labeled_item
+      - predicate: wrong_target_reached
+        args:
+          expected_target_region_id: target_area
+
+failure:
+  any:
+    - predicate: object_out_of_workspace
+    - predicate: object_dropped
+      args:
+        min_height_m: 0.02
+    - predicate: forbidden_collision
+    - predicate: wrong_object_selected
+      args:
+        expected_object_id: labeled_item
+    - predicate: wrong_target_reached
+      args:
+        expected_target_region_id: target_area
+    - predicate: contact_force_exceeded
+      args:
+        max_force_n: 45.0
+    - predicate: timeout
+failure_modes:
+  - code: timeout
+    category: timeout
+    description: Episode exceeded max_steps before the item was identified and placed.
+  - code: object_out_of_workspace
+    category: drop
+    description: Labeled item moved outside the valid workspace.
+  - code: object_dropped
+    category: drop
+    description: Labeled item fell below the safe height threshold.
+  - code: forbidden_collision
+    category: collision
+    description: Robot or item collided with a forbidden scene entity.
+  - code: contact_force_exceeded
+    category: collision
+    description: Contact force exceeded the task safety threshold.
+  - code: wrong_object_selected
+    category: wrong_object
+    description: The robot selected an object that does not match the requested label.
+  - code: wrong_target_reached
+    category: wrong_place
+    description: The item was placed in an area that does not match the scanned label.
+  - code: sequence_incomplete_or_invalid
+    category: sequence_error
+    description: Label reading, grasping, moving, and release events were not completed in order.
+
+metrics:
+  - success_rate
+  - stage_completion
+  - label_read_success
+  - label_match_correct
+  - placement_position_error
+  - wrong_target_rate
+  - wrong_object_rate
+  - forbidden_collision_rate
+  - inference_latency
+
+quality_metrics:
+  - label_confidence
+  - placement_position_error_m
+  - max_contact_force_n
+
+required_snapshot_fields:
+  - object_pos
+  - initial_object_pos
+  - hand_pos
+  - gripper_pos
+  - target_area_pos
+  - object_lin_vel
+  - object_ang_vel
+  - device_state
+  - selected_object_id
+  - reached_region_id
+  - forbidden_collision
+  - max_contact_force_n
+  - task_state.events
+  - task_state.label_confidence

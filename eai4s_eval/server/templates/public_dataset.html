@@ -1,0 +1,45 @@
+{% extends "public_base.html" %}
+{% block title %}Dataset · {{ snapshot.site.brand }}{% endblock %}
+{% block page_id %}dataset{% endblock %}
+{% block content %}
+<header class="page-hero"><div><p class="section-kicker">Simulation trajectories</p><h1>Simulation data, frame by frame.</h1><p class="lede">Inspect the Isaac Sim collection used to train and evaluate Labference agents: synchronized RGB, robot state and action streams at task-specific rates.</p></div></header>
+<div class="page-shell">
+  <section class="content-card" id="hugging-face"><h2>Hugging Face resources</h2><p>Download trajectories, simulation resources and trained policies. Each release documents its compatible code and data versions.</p>
+    {% for key, label in [('hf_dataset', 'Dataset'), ('hf_simulator', 'Simulation resources'), ('hf_models', 'Models')] %}
+    {% set url = snapshot.site.links.get(key, '') %}
+    {% if url %}<a class="button secondary" href="{{ url }}" target="_blank" rel="noopener noreferrer">{{ label }} ↗</a>{% else %}<span class="button secondary unavailable" aria-disabled="true">{{ label }} · Coming soon</span>{% endif %}
+    {% endfor %}
+  </section>
+  <section class="content-card" id="models"><h2>Models</h2><p>Model releases include the upstream base model, checkpoint or adapter, normalization statistics, camera inputs, action representation and inference instructions. Published evaluation results are listed on the <a href="{{ base_url }}/leaderboard/">leaderboard</a>.</p></section>
+  {% if snapshot.site.links.dataset %}
+  <section class="download-callout" aria-labelledby="dataset-download-title">
+    <div><p class="section-kicker">Download available</p><h2 id="dataset-download-title">Download the Labference dataset</h2><p>Open the Baidu Netdisk share directly or copy the visible link below.</p><a class="download-url" href="{{ snapshot.site.links.dataset }}" target="_blank" rel="noopener">{{ snapshot.site.links.dataset }}</a></div>
+    <div class="download-actions"><a class="button primary" href="{{ snapshot.site.links.dataset }}" target="_blank" rel="noopener">Download from {{ snapshot.site.dataset_access.provider }} →</a></div>
+  </section>
+  {% endif %}
+  <section class="content-card"><div class="section-head"><div><p class="section-kicker">Simulation collection</p><h2>One timeline, every modality.</h2></div></div><div class="contract-list"><div><strong>Observation</strong>camera_1_rgb (front) + camera_3_rgb (wrist)</div><div><strong>Robot state</strong>7 arm joints + gripper</div><div><strong>Actions</strong>actions + actions_ee + binary action_gripper</div><div><strong>Sampling</strong>10 Hz synchronized with 60 Hz physics; release protocols may use 20/120 Hz</div><div><strong>Container</strong>HDF5 episodes with video and state streams (LeRobot-compatible folder naming)</div></div></section>
+
+  <div class="track-grid">
+    {% for section in dataset_sections %}
+    <article class="content-card"><p class="section-kicker">{{ section.kicker }}</p><h3>{{ section.title }}</h3><p>{{ section.description }}</p><dl class="definition-list"><div><dt>{{ section.primary_label }}</dt><dd>{{ section.primary_value }}</dd></div><div><dt>Duration</dt><dd>{{ section.duration }}</dd></div><div><dt>Status</dt><dd>{{ section.status }}</dd></div></dl></article>
+    {% endfor %}
+  </div>
+
+  {% for section in dataset_sections %}{% if section.rows %}<section class="content-card"><p class="section-kicker">Published simulation tasks</p><h2>Dataset inventory</h2><div class="leaderboard-table data-table inventory-table"><table><thead><tr><th>Task</th><th>Episodes</th><th>Frames</th><th>FPS</th><th>Duration</th></tr></thead><tbody>{% for row in section.rows %}<tr><td>{% if row.mapped %}<code class="dataset-task-id">{{ row.task_id }}</code>{% endif %}{{ row.task_name }}</td><td>{{ '{:,}'.format(row.episode_count) }}</td><td>{{ '{:,}'.format(row.frame_count) }}</td><td>{{ row.fps or 10 }}</td><td>{{ '{:,}'.format(row.duration_seconds) }} s</td></tr>{% endfor %}</tbody></table></div></section>{% endif %}{% endfor %}
+
+  <section class="content-card"><p class="section-kicker">HDF5 episode schema</p><h2>Publication fields</h2><div class="leaderboard-table data-table schema-table"><table><thead><tr><th>Field</th><th>Type</th><th>Purpose</th></tr></thead><tbody>
+    <tr><td><code>camera_1_rgb / camera_3_rgb</code></td><td>uint8[T,…]</td><td>Front and wrist RGB observations</td></tr>
+    <tr><td><code>agent_pose</code></td><td>float32[T,8]</td><td>Seven arm joints and gripper state</td></tr>
+    <tr><td><code>actions / actions_ee</code></td><td>float32[T,…]</td><td>Next-step joint or end-effector target</td></tr>
+    <tr><td><code>action_gripper</code></td><td>uint8[T]</td><td>Binary gripper command: 0 close, 1 open</td></tr>
+    <tr><td><code>display_rgb / weights_rgb</code></td><td>uint8[T,…]</td><td>Additional feedback-weighing observations when present</td></tr>
+    <tr><td><code>subtask</code></td><td>UTF-8[T]</td><td>Semantic phase annotation aligned to every frame</td></tr>
+    <tr><td><code>timestamp / sim_step</code></td><td>float64 / int64</td><td>Episode time and original 60 Hz physics step</td></tr>
+    <tr><td><code>language_instruction</code></td><td>UTF-8 string</td><td>Per-episode task instruction</td></tr>
+    <tr><td><code>task_properties</code></td><td>UTF-8 JSON</td><td>Structured task parameters</td></tr>
+    <tr><td><code>attrs: fps / physics_hz / sample_stride</code></td><td>int</td><td>Sample rate, source physics rate and decimation step</td></tr>
+  </tbody></table></div></section>
+
+  <section class="content-card"><p class="section-kicker">Dataset terms</p><h2>{{ snapshot.site.dataset_license.spdx_id }}</h2><p>{{ snapshot.site.dataset_license.summary }} {{ snapshot.site.dataset_license.attribution }}</p><p><a class="text-link" href="{{ snapshot.site.dataset_license.url }}" rel="license">Read the full {{ snapshot.site.dataset_license.name }} terms →</a></p>{% if not snapshot.site.links.dataset %}<div class="empty-state"><strong>Public download link is being prepared.</strong>The dataset link will appear here when its hosting location is configured.</div>{% endif %}</section>
+</div>
+{% endblock %}

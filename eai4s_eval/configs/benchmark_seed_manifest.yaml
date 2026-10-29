@@ -1,0 +1,112 @@
+schema_version: eai4s_benchmark_seeds/v1
+count: 100
+algorithm: contiguous_from_base_inclusive
+splits:
+  sim_clean:
+    level2_L03_singlepipetting: 901000
+    level2_L05_formulation_spotting: 902000
+    level2_R06_centrifuge_load: 903000
+    level2_R07_centrifuge_load: 904000
+    level3_R12_devicecover_status: 905000
+    level2_R02_wights: 810000
+    level3_R10_rackplace: 820000
+    # Reasoning tasks merged after the original benchmark seed table.  Keep
+    # each task in a disjoint 100-seed interval so a configured evaluation can
+    # start on every published split.
+    level3_R01_scaledigital: 871000
+    level3_R03_temperaturepanel: 872000
+    level3_R04_centrifugepanel: 873000
+    level3_R05_devicestatus: 874000
+    level2_R08_NMRSample: 875000
+    level2_R09_NMRRack: 876000
+    level2_R11_plateposition: 877000
+    level1_pick: 110000
+    level1_place: 120000
+    level1_pour: 130000
+    level1_pick_liquid: 140000
+    level1_pick_openarm: 150000
+    level1_stir: 160000
+    level1_open_door: 170000
+    level1_close_door: 180000
+    level2_pour: 190000
+    level3_place: 200000
+    level2_L01_sampletransport: 410000
+    level4_L09_DeviceOperation: 420000
+    level2_L08_NMRInjection: 510000
+    level2_L07_centrifuge_load: 520000
+    level2_L10_cohort_analysis: 530000
+    level2_L02_sampleorganition: 540000
+    level2_L06_wights: 550000
+    level4_L11_ConditionModule: 560000
+    level4_L04_LiquidMixing: 570000
+    level4_L12_clearreset: 580000
+  sim_dev:
+    level2_L03_singlepipetting: 911000
+    level2_L05_formulation_spotting: 912000
+    level2_R06_centrifuge_load: 913000
+    level2_R07_centrifuge_load: 914000
+    level3_R12_devicecover_status: 915000
+    level2_R02_wights: 830000
+    level3_R10_rackplace: 840000
+    level3_R01_scaledigital: 881000
+    level3_R03_temperaturepanel: 882000
+    level3_R04_centrifugepanel: 883000
+    level3_R05_devicestatus: 884000
+    level2_R08_NMRSample: 885000
+    level2_R09_NMRRack: 886000
+    level2_R11_plateposition: 887000
+    level1_pick: 210000
+    level1_place: 220000
+    level1_pour: 230000
+    level1_pick_liquid: 240000
+    level1_pick_openarm: 250000
+    level1_stir: 260000
+    level1_open_door: 270000
+    level1_close_door: 280000
+    level2_pour: 290000
+    level3_place: 300000
+    level2_L01_sampletransport: 430000
+    level4_L09_DeviceOperation: 440000
+    level2_L08_NMRInjection: 610000
+    level2_L07_centrifuge_load: 620000
+    level2_L10_cohort_analysis: 630000
+    level2_L02_sampleorganition: 640000
+    level2_L06_wights: 650000
+    level4_L11_ConditionModule: 660000
+    level4_L04_LiquidMixing: 670000
+    level4_L12_clearreset: 680000
+  sim_randomized:
+    level2_L03_singlepipetting: 921000
+    level2_L05_formulation_spotting: 922000
+    level2_R06_centrifuge_load: 923000
+    level2_R07_centrifuge_load: 924000
+    level3_R12_devicecover_status: 925000
+    level2_R02_wights: 850000
+    level3_R10_rackplace: 860000
+    level3_R01_scaledigital: 891000
+    level3_R03_temperaturepanel: 892000
+    level3_R04_centrifugepanel: 893000
+    level3_R05_devicestatus: 894000
+    level2_R08_NMRSample: 895000
+    level2_R09_NMRRack: 896000
+    level2_R11_plateposition: 897000
+    level1_pick: 310000
+    level1_place: 320000
+    level1_pour: 330000
+    level1_pick_liquid: 340000
+    level1_pick_openarm: 350000
+    level1_stir: 360000
+    level1_open_door: 370000
+    level1_close_door: 380000
+    level2_pour: 390000
+    level3_place: 400000
+    level2_L01_sampletransport: 450000
+    level4_L09_DeviceOperation: 460000
+    level2_L08_NMRInjection: 710000
+    level2_L07_centrifuge_load: 720000
+    level2_L10_cohort_analysis: 730000
+    level2_L02_sampleorganition: 740000
+    level2_L06_wights: 750000
+    level4_L11_ConditionModule: 760000
+    level4_L04_LiquidMixing: 770000
+    level4_L12_clearreset: 780000

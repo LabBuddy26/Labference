@@ -1,0 +1,27 @@
+{
+  "evaluation": {
+    "task_version": "centrifuge-opposite/v2",
+    "evaluation_version": "labference/centrifuge-online-v2",
+    "difficulty": "hard",
+    "rotor_spawn_position_m": [0.05, 0.18, 0.72],
+    "franka_base_position_m": [-0.4, 0.0, 0.71],
+    "front_camera_position_m": [0.55, -0.35, 1.40],
+    "front_camera_orientation_wxyz": [0.79570278, 0.44999645, 0.19957126, 0.35289035],
+    "front_camera_focal_length_mm": 12.0,
+    "max_steps": 10000,
+    "oracle_profile": "none",
+    "oracle_transport": "text",
+    "semantic_visible_slots": [],
+    "policy_interface": {
+      "name": "http_array",
+      "action_space": "array",
+      "supported_reports": [],
+      "oracle_transports": ["text"],
+      "coordinate_input": true,
+      "fixed_subgoal_input": true,
+      "resettable": true,
+      "url": "http://127.0.0.1:8899"
+    }
+  },
+  "legacy_scene": "config/level2_L07_centrifuge_load.yaml"
+}

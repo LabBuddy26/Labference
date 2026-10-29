@@ -1,0 +1,90 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+*.egg
+
+# Environment
+.env
+.venv
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Outputs
+outputs/
+output/
+videos/
+video/
+eai4s_eval/server/static/web_assets/source_videos/
+wandb/
+.neptune/
+logs/
+runs/
+recordings/
+
+# Omniverse / Isaac Sim
+*.dmp
+*.usd
+*.usda
+*.usdc
+*.usdz
+# Small, self-contained task assets imported from LabBench.
+!assets/chemistry_lab/assets/VialBottle_01.usd
+!assets/chemistry_lab/assets/SamplePlaceBox.usd
+!assets/chemistry_lab/assets/DryingBox_01.usd
+*.STL
+*.stl
+**/textures/
+**/Textures/
+*.log*
+*.tmp
+.thumbs
+_isaac_sim*
+_repo
+_build
+.lastformat
+
+# Build
+build/
+cmake-build*/
+*.so
+
+# Checkpoints / Datasets
+/pretrained_checkpoints/
+/datasets/
+datasets/
+checkpoints/
+*.pth
+*.pt
+*.pkl
+*.onnx
+*.pb
+
+# Docker
+*.sif
+docker/artifacts/
+.isaac-lab-docker-history
+
+# Tactile
+tactile_record/
+gelsight_r15_data/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Config local overrides
+config/*.local.yaml
+
+# npm (accidental web tooling)
+node_modules/
+package.json
+package-lock.json

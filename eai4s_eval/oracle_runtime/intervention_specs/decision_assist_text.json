@@ -1,0 +1,7 @@
+{
+  "schema_version": "labference/intervention-v1",
+  "profile": "decision",
+  "mode": "assist",
+  "site": "policy_input",
+  "transport": "text"
+}

@@ -1,0 +1,23 @@
+task_id: level3_L07_hard_centrifuge_load
+task_name: Centrifuge Opposite Slot Hard
+task_version: centrifuge-opposite/v2
+suite: labference_release_protocols_v1
+runtime:
+  backend: versioned_release
+  env_config: level3_L07_hard_centrifuge_load
+  family: centrifuge_v2
+  protocol_config: eai4s_eval/centrifuge_v2/configs/native_hard.json
+robot: franka
+task_family: centrifuge_v2
+task_tags: [release_protocol, long_horizon]
+leaderboard_group: release_protocols_v1
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 500
+instruction:
+  canonical: Place two equal-mass tubes into measured opposite centrifuge slots and release them stably.
+success:
+  logic: protocol_owned
+  metric: valid_success
+  requires_evaluation_valid: true

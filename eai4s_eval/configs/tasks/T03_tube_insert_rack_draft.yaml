@@ -1,0 +1,171 @@
+task_id: T03_tube_insert_rack
+task_name: Tube insert into rack
+task_version: 0.1.0
+suite: eai4s_eval_v0_1
+scene_id: tabletop_tube_rack_insert
+robot: franka_panda
+task_family: insertion
+task_level: base
+task_tags:
+  - tube
+  - rack
+  - insertion
+  - precision
+leaderboard_group: basic_insertion
+control_hz: 10
+max_steps: 1800
+success_hold_steps: 15
+
+instruction:
+  canonical: insert the test tube into the rack
+  variants:
+    - put the test tube into the tube rack
+    - place the tube into the target rack slot
+    - insert the test tube upright into the rack
+
+objects:
+  test_tube:
+    asset_id: test_tube
+    role: target_object
+  tube_rack:
+    asset_id: tube_rack
+    role: receptacle
+  target_slot:
+    role: target_region
+
+stages:
+  - id: reach
+    weight: 0.20
+  - id: grasp
+    weight: 0.20
+  - id: align
+    weight: 0.20
+  - id: insert
+    weight: 0.25
+  - id: release_stabilize
+    weight: 0.15
+
+success:
+  logic: robust_semantic_v0
+  hold_steps: 15
+  goal:
+    all:
+      - predicate: near
+        args:
+          a_key: object_pos
+          b_key: target_slot_pos
+          axes: xy
+          distance_threshold_m: 0.02
+      - predicate: aligned
+        args:
+          min_cosine: 0.92
+      - predicate: insert_depth_reached
+        args:
+          min_depth_m: 0.025
+  sequence:
+    required: true
+    events:
+      - grasp_tube
+      - align_to_slot
+      - insert_tube
+  terminal:
+    required: true
+    all:
+      - predicate: released
+        args:
+          open_threshold: 0.035
+      - predicate: tcp_far
+        args:
+          distance_threshold_m: 0.08
+  stability:
+    required: true
+    all:
+      - predicate: stable_pose
+        args:
+          linear_velocity_threshold_mps: 0.02
+          angular_velocity_threshold_radps: 0.20
+  safety:
+    hard_fail:
+      - predicate: object_out_of_workspace
+        args:
+          workspace_radius_m: 1.5
+      - predicate: forbidden_collision
+      - predicate: wrong_object_moved
+        args:
+          distance_threshold_m: 0.02
+
+failure:
+  any:
+    - predicate: object_out_of_workspace
+    - predicate: object_dropped
+      args:
+        min_height_m: 0.02
+    - predicate: forbidden_collision
+    - predicate: wrong_object_moved
+    - predicate: wrong_target_reached
+      args:
+        expected_target_region_id: target_slot
+    - predicate: contact_force_exceeded
+      args:
+        max_force_n: 50.0
+    - predicate: timeout
+failure_modes:
+  - code: timeout
+    category: timeout
+    description: Episode exceeded max_steps before the tube was inserted and stabilized.
+  - code: object_out_of_workspace
+    category: drop
+    description: Tube moved outside the valid workspace.
+  - code: object_dropped
+    category: drop
+    description: Tube fell below the safe tabletop/object height threshold.
+  - code: forbidden_collision
+    category: collision
+    description: Tube, gripper, or robot collided with a forbidden scene entity.
+  - code: contact_force_exceeded
+    category: collision
+    description: Insertion/contact force exceeded the task safety threshold.
+  - code: wrong_object_moved
+    category: wrong_object
+    description: A non-target object moved beyond the allowed tolerance.
+  - code: wrong_target_reached
+    category: wrong_place
+    description: Tube reached the wrong rack slot or target region.
+  - code: sequence_incomplete_or_invalid
+    category: sequence_error
+    description: Required task events were missing or observed in the wrong order.
+
+metrics:
+  - success_rate
+  - stage_completion
+  - insertion_depth
+  - insertion_position_error
+  - alignment_cosine
+  - release_success
+  - stability_after_release
+  - forbidden_collision_rate
+  - wrong_object_motion
+  - inference_latency
+
+quality_metrics:
+  - insertion_position_error_m
+  - alignment_error_deg
+  - insertion_depth_m
+  - max_contact_force_n
+
+required_snapshot_fields:
+  - object_pos
+  - initial_object_pos
+  - hand_pos
+  - gripper_pos
+  - object_lin_vel
+  - object_ang_vel
+  - target_slot_pos
+  - insert_depth_m
+  - alignment_cosine
+  - forbidden_collision
+  - wrong_object_moved
+  - wrong_target_reached
+  - max_contact_force_n
+  - task_state.insertion_position_error_m
+  - task_state.alignment_error_deg

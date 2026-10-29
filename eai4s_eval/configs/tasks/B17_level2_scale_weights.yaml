@@ -1,0 +1,44 @@
+task_id: level2_L06_wights
+task_name: Level 2 Scale Weights
+task_version: 1.0.0
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level2_L06_wights, policy_phase: full_task}
+robot: franka
+task_family: scale_weights
+task_level: level2
+task_tags: [benchmark, multi_object, pick_place, scale]
+leaderboard_group: benchmark_multi_stage
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 700
+instruction:
+  canonical: Move the three weights onto the three scale pads
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - predicate: task_state_true
+        args: {id: weight_0_placed, key: task_state.weight_0_placed}
+      - predicate: task_state_true
+        args: {id: weight_1_placed, key: task_state.weight_1_placed}
+      - predicate: task_state_true
+        args: {id: weight_2_placed, key: task_state.weight_2_placed}
+  terminal:
+    required: true
+    all:
+      - predicate: released
+        args: {open_threshold: 0.035}
+  stability: {required: false, all: []}
+  safety: {hard_fail: []}
+failure_modes:
+  - {code: weight_missing_pad, category: wrong_place, description: At least one weight did not reach its scale pad.}
+  - {code: weight_not_released, category: sequence_error, description: The last weight was not released.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields:
+  - task_state.weight_0_placed
+  - task_state.weight_1_placed
+  - task_state.weight_2_placed
+  - task_state.weights_on_scale
+  - gripper_pos

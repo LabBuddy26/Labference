@@ -1,0 +1,6 @@
+{
+  "generator": "eai4s_eval/weighing_v1/scene.py",
+  "generator_sha256": "4ef18768bc3988da7c53c5ff940707f519e4930acfe5c9a90247734d373617fe",
+  "asset_sha256": "c9c6d81149354ea3334826099acbd930e17954cf7b17bbb05eb1cfa64ade207c",
+  "purpose": "Display-only geometry snapshot; rigid-body dynamics disabled for rendering."
+}

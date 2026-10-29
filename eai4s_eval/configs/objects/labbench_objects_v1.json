@@ -1,0 +1,598 @@
+{
+  "schema_version": "labbench_object_catalog/v1",
+  "version": "1.0.0",
+  "categories": [
+    {
+      "category_id": "robots",
+      "label_en": "Robotic Platforms",
+      "label_zh": "\u673a\u5668\u4eba\u5e73\u53f0"
+    },
+    {
+      "category_id": "glassware",
+      "label_en": "Glassware & Vessels",
+      "label_zh": "\u73bb\u7483\u5668\u76bf"
+    },
+    {
+      "category_id": "consumables",
+      "label_en": "Tubes & Consumables",
+      "label_zh": "\u8bd5\u7ba1\u4e0e\u8017\u6750"
+    },
+    {
+      "category_id": "instruments",
+      "label_en": "Laboratory Instruments",
+      "label_zh": "\u5b9e\u9a8c\u4eea\u5668"
+    },
+    {
+      "category_id": "fixtures",
+      "label_en": "Racks & Fixtures",
+      "label_zh": "\u652f\u67b6\u4e0e\u5939\u5177"
+    },
+    {
+      "category_id": "tools",
+      "label_en": "Tools & Controls",
+      "label_zh": "\u5de5\u5177\u4e0e\u63a7\u5236\u4ef6"
+    }
+  ],
+  "objects": [
+    {
+      "object_id": "special-centrifuge",
+      "name_en": "Optimized Task Centrifuge",
+      "name_zh": "\u4f18\u5316\u957f\u7a0b\u4efb\u52a1\u79bb\u5fc3\u673a",
+      "category_id": "instruments",
+      "description_en": "The merged-mesh, open-lid centrifuge used by the optimized opposite-slot loading protocol. This is distinct from the legacy centrifuge model used by ordinary tasks.",
+      "status": "available",
+      "asset_paths": [],
+      "public_render_rotation_deg": [
+        180,
+        0,
+        0
+      ],
+      "public_render_distance_factor": 5.5,
+      "tags": [
+        "special-task",
+        "opposite-slots",
+        "centrifuge"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "rack-recall-rack",
+      "name_en": "Rack Recall 3 \u00d7 4 Rack",
+      "name_zh": "\u8bd5\u7ba1\u8bb0\u5fc6\u4efb\u52a1\u4e09\u884c\u56db\u5217\u8bd5\u7ba1\u67b6",
+      "category_id": "fixtures",
+      "description_en": "The converted CAD 3 \u00d7 4 rack used by rack placement recall v4, including its stepped guide geometry. Not the legacy horizontal tube-rack proxy.",
+      "status": "available",
+      "asset_paths": [],
+      "public_render_distance_factor": 5.5,
+      "tags": [
+        "special-task",
+        "3x4",
+        "recall",
+        "CAD"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "rack-recall-tube",
+      "name_en": "Rack Recall Capped Tube",
+      "name_zh": "\u8bd5\u7ba1\u8bb0\u5fc6\u4efb\u52a1\u5e26\u76d6\u79bb\u5fc3\u7ba1",
+      "category_id": "consumables",
+      "description_en": "The converted capped centrifuge tube used by rack recall v4; cap appearance and task placement are configured by the task instance.",
+      "status": "available",
+      "asset_paths": [],
+      "public_render_distance_factor": 5.5,
+      "tags": [
+        "special-task",
+        "recall",
+        "cap",
+        "CAD"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "feedback-scale",
+      "name_en": "Feedback Weighing Platform",
+      "name_zh": "\u53cd\u9988\u79f0\u91cd\u5e73\u53f0",
+      "category_id": "instruments",
+      "description_en": "The actual runtime-authored load-cell platform, tray and segmented display used by the optimized feedback weighing task. Preview exported from the task scene builder, not the legacy balance model.",
+      "status": "available",
+      "asset_paths": [],
+      "public_render_preserve_materials": true,
+      "public_render_distance_factor": 5.5,
+      "tags": [
+        "special-task",
+        "weighing",
+        "load-cell",
+        "runtime-authored"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "feedback-weight-set",
+      "name_en": "Feedback Task Weight Set",
+      "name_zh": "\u53cd\u9988\u79f0\u91cd\u4efb\u52a1\u781d\u7801\u7ec4",
+      "category_id": "tools",
+      "description_en": "The 10 g, 20 g, 50 g and 100 g weights with graspable necks and mass labels authored by the optimized weighing task. All four are shown together at their actual relative dimensions.",
+      "status": "available",
+      "asset_paths": [],
+      "public_render_preserve_materials": true,
+      "public_render_distance_factor": 5.5,
+      "tags": [
+        "special-task",
+        "10g",
+        "20g",
+        "50g",
+        "100g",
+        "runtime-authored"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "feedback-sample",
+      "name_en": "Feedback Weighing Sample",
+      "name_zh": "\u53cd\u9988\u79f0\u91cd\u6837\u672c\u8f7d\u8377",
+      "category_id": "consumables",
+      "description_en": "The capped cylindrical sample load used in the optimized weighing scene, exported directly from the same object authoring function used for collection and evaluation.",
+      "status": "available",
+      "asset_paths": [],
+      "public_render_preserve_materials": true,
+      "public_render_distance_factor": 5.5,
+      "tags": [
+        "special-task",
+        "sample",
+        "weighing",
+        "runtime-authored"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "franka",
+      "name_en": "Franka Panda Robot",
+      "name_zh": "Franka Panda\u673a\u68b0\u81c2",
+      "category_id": "robots",
+      "description_en": "The 7-DoF Franka Panda research arm used as the LabBench manipulation embodiment.",
+      "status": "available",
+      "asset_paths": [],
+      "tags": [
+        "robot",
+        "manipulation",
+        "embodiment"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "beaker",
+      "name_en": "Laboratory Beaker",
+      "name_zh": "\u70e7\u676f",
+      "category_id": "glassware",
+      "description_en": "A transparent vessel used across grasping, pouring, mixing and device-operation tasks.",
+      "status": "available",
+      "asset_paths": [],
+      "tags": [
+        "grasp",
+        "pour",
+        "mix"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "conical-flask",
+      "name_en": "Conical Flask",
+      "name_zh": "\u9525\u5f62\u74f6",
+      "category_id": "glassware",
+      "description_en": "A conical laboratory vessel used as a manipulation target and scene object.",
+      "status": "available",
+      "asset_paths": [],
+      "tags": [
+        "grasp",
+        "place"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "sample-vial",
+      "name_en": "Sample Vial",
+      "name_zh": "\u6837\u54c1\u74f6",
+      "category_id": "glassware",
+      "description_en": "A small sample container used in transport, organization and autosampler workflows.",
+      "status": "available",
+      "asset_paths": [],
+      "tags": [
+        "grasp",
+        "sort",
+        "transport"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "test-tube",
+      "name_en": "Test Tube",
+      "name_zh": "\u8bd5\u7ba1",
+      "category_id": "consumables",
+      "description_en": "A rigid laboratory tube used for rack insertion, transport and reset tasks.",
+      "status": "available",
+      "asset_paths": [],
+      "public_render_rotation_deg": [
+        0,
+        -90,
+        0
+      ],
+      "tags": [
+        "grasp",
+        "insert",
+        "place"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "nmr-tube",
+      "name_en": "NMR Tube",
+      "name_zh": "\u6838\u78c1\u7ba1",
+      "category_id": "consumables",
+      "description_en": "A slender tube for high-precision insertion into an NMR autosampler rack.",
+      "status": "available",
+      "asset_paths": [],
+      "public_render_rotation_deg": [
+        0,
+        -90,
+        0
+      ],
+      "tags": [
+        "precision",
+        "insert"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "centrifuge-tube",
+      "name_en": "Centrifuge Tube",
+      "name_zh": "\u79bb\u5fc3\u7ba1",
+      "category_id": "consumables",
+      "description_en": "A capped tube loaded into symmetric centrifuge rotor slots.",
+      "status": "available",
+      "asset_paths": [],
+      "public_render_rotation_deg": [
+        0,
+        -90,
+        0
+      ],
+      "tags": [
+        "load",
+        "balance"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "rubber-stopper",
+      "name_en": "Rubber Stopper",
+      "name_zh": "\u6a61\u80f6\u585e",
+      "category_id": "consumables",
+      "description_en": "A compliant laboratory closure reserved for future force-aware vial sealing experiments.",
+      "status": "planned",
+      "asset_paths": [],
+      "image_kind": "metadata_only",
+      "tags": [
+        "force-control",
+        "insert"
+      ],
+      "asset_distribution": "not_bundled"
+    },
+    {
+      "object_id": "threaded-cap",
+      "name_en": "Threaded Vial Cap",
+      "name_zh": "\u87ba\u7eb9\u74f6\u76d6",
+      "category_id": "consumables",
+      "description_en": "A threaded sample-vial closure reserved for future torque-aware opening and closing experiments.",
+      "status": "planned",
+      "asset_paths": [],
+      "image_kind": "metadata_only",
+      "tags": [
+        "twist",
+        "torque"
+      ],
+      "asset_distribution": "not_bundled"
+    },
+    {
+      "object_id": "pipette",
+      "name_en": "Micropipette Proxy",
+      "name_zh": "\u79fb\u6db2\u5668\u4ee3\u7406",
+      "category_id": "tools",
+      "description_en": "The rigid manipulation proxy used with a structured two-stop plunger and scalar liquid-volume state for aspiration and dispensing.",
+      "status": "available",
+      "asset_paths": [],
+      "image_kind": "metadata_only",
+      "tags": [
+        "aspirate",
+        "dispense",
+        "state-machine"
+      ],
+      "asset_distribution": "not_bundled"
+    },
+    {
+      "object_id": "pipette-tip-box",
+      "name_en": "Pipette Tip Fixture",
+      "name_zh": "\u67aa\u5934\u5939\u5177",
+      "category_id": "fixtures",
+      "description_en": "The indexed fixture proxy used to represent disposable-tip installation state during pipetting tasks.",
+      "status": "available",
+      "asset_paths": [],
+      "image_kind": "metadata_only",
+      "tags": [
+        "tip",
+        "fixture",
+        "state-machine"
+      ],
+      "asset_distribution": "not_bundled"
+    },
+    {
+      "object_id": "well-plate",
+      "name_en": "Four-Well Recipe Plate",
+      "name_zh": "\u56db\u5b54\u914d\u65b9\u677f",
+      "category_id": "fixtures",
+      "description_en": "A simplified labelled 2\u00d72 plate proxy with scalar per-well volumes for recipe-based dispensing.",
+      "status": "available",
+      "asset_paths": [],
+      "image_kind": "metadata_only",
+      "tags": [
+        "grid",
+        "pipetting",
+        "volume"
+      ],
+      "asset_distribution": "not_bundled"
+    },
+    {
+      "object_id": "test-tube-rack",
+      "name_en": "Test Tube Rack",
+      "name_zh": "\u8bd5\u7ba1\u67b6",
+      "category_id": "fixtures",
+      "description_en": "A labelled multi-socket rack for tube insertion and placement.",
+      "status": "available",
+      "asset_paths": [],
+      "public_render_rotation_deg": [
+        0,
+        -90,
+        0
+      ],
+      "tags": [
+        "socket",
+        "insert"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "nmr-rack",
+      "name_en": "NMR Autosampler Rack",
+      "name_zh": "\u6838\u78c1\u8fdb\u6837\u67b6",
+      "category_id": "fixtures",
+      "description_en": "A numbered rack for precise NMR tube insertion and visual slot reasoning.",
+      "status": "available",
+      "asset_paths": [],
+      "tags": [
+        "numbered",
+        "insert"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "sample-box",
+      "name_en": "Sample Organization Box",
+      "name_zh": "\u6837\u54c1\u76d2",
+      "category_id": "fixtures",
+      "description_en": "A compartmented fixture for vial transport, cohort organization and sorting.",
+      "status": "available",
+      "asset_paths": [],
+      "tags": [
+        "sort",
+        "place"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "waste-box",
+      "name_en": "Laboratory Waste Target",
+      "name_zh": "\u5b9e\u9a8c\u5ba4\u5e9f\u5f03\u76ee\u6807",
+      "category_id": "fixtures",
+      "description_en": "A rigid disposal-target proxy used to verify that a pipette tip is discarded after liquid transfer.",
+      "status": "available",
+      "asset_paths": [],
+      "image_kind": "metadata_only",
+      "tags": [
+        "discard",
+        "reset",
+        "state-machine"
+      ],
+      "asset_distribution": "not_bundled"
+    },
+    {
+      "object_id": "centrifuge-rotor",
+      "name_en": "Six-Slot Centrifuge Rotor",
+      "name_zh": "\u516d\u69fd\u79bb\u5fc3\u673a\u8f6c\u5b50",
+      "category_id": "fixtures",
+      "description_en": "A six-position rotor supporting symmetric loading and slot-reasoning tasks.",
+      "status": "available",
+      "asset_paths": [],
+      "tags": [
+        "symmetric",
+        "slot"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "laboratory-balance",
+      "name_en": "Laboratory Balance",
+      "name_zh": "\u5b9e\u9a8c\u5ba4\u5929\u5e73",
+      "category_id": "instruments",
+      "description_en": "A digital balance used for structured mass reading and weight-selection workflows.",
+      "status": "available",
+      "asset_paths": [],
+      "tags": [
+        "measure",
+        "display"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "digital-scale-interface",
+      "name_en": "Digital Scale Interface",
+      "name_zh": "\u6570\u5b57\u5929\u5e73\u754c\u9762",
+      "category_id": "instruments",
+      "description_en": "A physical mass display and four-choice control panel used to evaluate visually grounded digital reading.",
+      "status": "available",
+      "asset_paths": [],
+      "image_kind": "metadata_only",
+      "tags": [
+        "display",
+        "mass",
+        "press"
+      ],
+      "asset_distribution": "not_bundled"
+    },
+    {
+      "object_id": "temperature-status-panel",
+      "name_en": "Temperature Status Panel",
+      "name_zh": "\u6e29\u5ea6\u72b6\u6001\u9762\u677f",
+      "category_id": "instruments",
+      "description_en": "A laboratory status display with Wait and Open controls for threshold- and state-dependent decisions.",
+      "status": "available",
+      "asset_paths": [],
+      "image_kind": "metadata_only",
+      "tags": [
+        "temperature",
+        "display",
+        "press"
+      ],
+      "asset_distribution": "not_bundled"
+    },
+    {
+      "object_id": "rpm-control-panel",
+      "name_en": "RPM Control Panel",
+      "name_zh": "\u8f6c\u901f\u63a7\u5236\u9762\u677f",
+      "category_id": "instruments",
+      "description_en": "A digital rotational-speed interface with increase, confirm and decrease controls.",
+      "status": "available",
+      "asset_paths": [],
+      "image_kind": "metadata_only",
+      "tags": [
+        "rpm",
+        "display",
+        "press"
+      ],
+      "asset_distribution": "not_bundled"
+    },
+    {
+      "object_id": "calibration-weights",
+      "name_en": "Calibration Weight Set",
+      "name_zh": "\u6821\u51c6\u781d\u7801\u7ec4",
+      "category_id": "tools",
+      "description_en": "A labelled 10 g, 20 g, 50 g and 100 g rigid weight set.",
+      "status": "available",
+      "asset_paths": [],
+      "tags": [
+        "mass",
+        "reasoning"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "centrifuge",
+      "name_en": "Laboratory Centrifuge",
+      "name_zh": "\u79bb\u5fc3\u673a",
+      "category_id": "instruments",
+      "description_en": "A lidded device with rotor and controls for loading and preset-operation tasks.",
+      "status": "available",
+      "asset_paths": [],
+      "public_render_rotation_deg": [
+        0,
+        -90,
+        0
+      ],
+      "tags": [
+        "lid",
+        "preset"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "drying-cabinet",
+      "name_en": "Programmable Laboratory Cabinet",
+      "name_zh": "\u7a0b\u5e8f\u8bbe\u5907\u67dc",
+      "category_id": "instruments",
+      "description_en": "A lidded programmable device used for door, sample and button-operation sequences.",
+      "status": "available",
+      "asset_paths": [],
+      "tags": [
+        "door",
+        "button",
+        "program"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "heat-block",
+      "name_en": "Laboratory Heat Block",
+      "name_zh": "\u52a0\u70ed\u6a21\u5757",
+      "category_id": "instruments",
+      "description_en": "A programmable heating fixture for load-run-retrieve and temperature reasoning tasks.",
+      "status": "available",
+      "asset_paths": [],
+      "tags": [
+        "temperature",
+        "program"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    },
+    {
+      "object_id": "button-panel",
+      "name_en": "Physical Control Panel",
+      "name_zh": "\u5b9e\u4f53\u6309\u94ae\u9762\u677f",
+      "category_id": "tools",
+      "description_en": "Device-integrated Start, Wait, Open and Close controls used for state-dependent laboratory operation.",
+      "status": "available",
+      "asset_paths": [],
+      "image_kind": "metadata_only",
+      "tags": [
+        "press",
+        "state",
+        "safety"
+      ],
+      "asset_distribution": "not_bundled"
+    },
+    {
+      "object_id": "glass-rod",
+      "name_en": "Glass Stirring Rod",
+      "name_zh": "\u73bb\u7483\u6405\u62cc\u68d2",
+      "category_id": "tools",
+      "description_en": "A slender tool used for controlled stirring in a laboratory vessel.",
+      "status": "available",
+      "asset_paths": [],
+      "tags": [
+        "stir",
+        "tool"
+      ],
+      "asset_distribution": "not_bundled",
+      "image_kind": "metadata_only"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+task_id: level2_R06_centrifuge_load
+task_name: Level 2 Opposite Rotor Slot Selection
+task_version: 1.0.0
+suite: eai4s_benchmark_longhorizon_reasoning_v1
+runtime: {backend: eai4s_benchmark, env_config: level2_R06_centrifuge_load, policy_phase: full_task}
+robot: franka
+task_family: centrifuge_reasoning
+task_level: level2
+task_tags: [benchmark, reasoning, centrifuge]
+leaderboard_group: reasoning_in_action
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 2500
+instruction: {canonical: Place the tube in the slot opposite the occupied rotor slot}
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - {predicate: task_state_true, args: {id: opposite_slot_filled, key: task_state.opposite_slot_filled}}
+  terminal: {required: true, all: [{predicate: released, args: {open_threshold: 0.035}}]}
+  stability: {required: false, all: []}
+  safety: {hard_fail: [{predicate: task_state_true, args: {id: occupied_slot_collision, key: task_state.occupied_slot_collision}}]}
+failure_modes:
+  - {code: wrong_rotor_slot, category: wrong_place, description: Selected slot is not opposite the occupied slot.}
+  - {code: occupied_slot_collision, category: collision, description: Existing tube was contacted.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields: [task_state.opposite_slot_filled, task_state.occupied_slot_collision, gripper_pos]

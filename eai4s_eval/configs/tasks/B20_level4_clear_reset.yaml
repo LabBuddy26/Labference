@@ -1,0 +1,42 @@
+task_id: level4_L12_clearreset
+task_name: Level 4 Clear Reset
+task_version: 1.0.0
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level4_L12_clearreset, policy_phase: full_task}
+robot: franka
+task_family: clear_reset
+task_level: level4
+task_tags: [benchmark, multi_object, pick_place, cleanup]
+leaderboard_group: benchmark_multi_stage
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 700
+instruction:
+  canonical: Clear the bench by placing the vial into the sample box and the tube onto the tube rack
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - predicate: task_state_true
+        args: {id: vial_placed, key: task_state.vial_placed}
+      - predicate: task_state_true
+        args: {id: tube_placed, key: task_state.tube_placed}
+  terminal:
+    required: true
+    all:
+      - predicate: released
+        args: {open_threshold: 0.035}
+  stability: {required: false, all: []}
+  safety: {hard_fail: []}
+failure_modes:
+  - {code: vial_missing_box, category: wrong_place, description: The vial did not reach the sample box.}
+  - {code: tube_missing_rack, category: wrong_place, description: The tube did not reach the tube rack.}
+  - {code: object_not_released, category: sequence_error, description: The last object was not released.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields:
+  - task_state.vial_placed
+  - task_state.tube_placed
+  - task_state.clear_reset_complete
+  - gripper_pos

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b2c35">
+  <meta name="description" content="{{ snapshot.site.description }}">
+  <title>{% block title %}{{ snapshot.site.brand }}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ base_url }}/static/public-site.css">
+  <script defer src="{{ base_url }}/static/public-site.js"></script>
+</head>
+<body data-page="{% block page_id %}home{% endblock %}">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <header class="site-header">
+    <a class="site-brand" href="{{ base_url }}/" aria-label="Labference home">
+      {% if snapshot.site.get('public_media_enabled', true) %}<img class="brand-logo" src="{{ base_url }}/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">{% endif %}
+      <span><strong>Labference</strong><small>Reasoning–action laboratory benchmark</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+      <a data-nav="home" href="{{ base_url }}/">Home</a>
+      <a data-nav="tasks" href="{{ base_url }}/tasks/">Tasks</a>
+      <a data-nav="objects" href="{{ base_url }}/objects/">Objects</a>
+      <a data-nav="dataset" href="{{ base_url }}/dataset/">Dataset</a>
+      <a data-nav="leaderboard" href="{{ base_url }}/leaderboard/">Leaderboard</a>
+      <a data-nav="docs" href="{{ base_url }}/docs/">Docs</a>
+      {% if console_enabled %}<a class="console-link" href="{{ base_url }}/console">Console</a>{% endif %}
+    </nav>
+  </header>
+
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <button class="scroll-to-top" id="scrollBtn" type="button" aria-label="Back to top" title="Back to top">↑</button>
+
+  <footer class="site-footer">
+    <div>
+      <a class="site-brand footer-brand" href="{{ base_url }}/">
+        {% if snapshot.site.get('public_media_enabled', true) %}<img class="brand-logo" src="{{ base_url }}/static/web_assets/brand/eai4s-labbench-mark.webp" width="128" height="128" alt="" aria-hidden="true">{% endif %}
+        <span><strong>Labference</strong></span>
+      </a>
+      <p>{{ snapshot.site.description }}</p>
+    </div>
+    <div class="footer-links">
+      <a href="{{ base_url }}/tasks/">Tasks</a><a href="{{ base_url }}/objects/">Objects</a>
+      <a href="{{ base_url }}/leaderboard/">Leaderboard</a><a href="{{ base_url }}/docs/">Documentation</a>
+    </div>
+    <p class="footer-note">Built for reproducible robotic laboratory research.</p>
+  </footer>
+</body>
+</html>

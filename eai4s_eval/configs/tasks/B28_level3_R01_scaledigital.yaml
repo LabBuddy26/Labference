@@ -1,0 +1,28 @@
+task_id: level3_R01_scaledigital
+task_name: Level 3 Scale Digital Decision
+task_version: 1.0.0
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level3_R01_scaledigital, policy_phase: full_task}
+robot: franka
+task_family: display_reasoning
+task_level: level3
+task_tags: [benchmark, reasoning, display, button, scale]
+leaderboard_group: benchmark_reasoning
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 500
+instruction: {canonical: Read the scale display and press the matching weight button}
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  # ``gripper_pos`` is the two-finger joint width.  The button approach is
+  # evaluated using the Cartesian end-effector pose ``hand_pos``.
+  goal: {all: [{predicate: near, args: {a_key: hand_pos, b_key: object_pos, axes: xyz, distance_threshold_m: 0.02}}]}
+  terminal: {required: false, all: []}
+  stability: {required: false, all: []}
+  safety: {hard_fail: []}
+failure_modes:
+  - {code: wrong_button, category: sequence_error, description: The selected button did not match the displayed weight.}
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+required_snapshot_fields: [hand_pos, object_pos]

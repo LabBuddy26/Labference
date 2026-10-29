@@ -1,0 +1,103 @@
+{
+  "schema_version": "labbench_official_submissions/v1",
+  "updated_at": "2026-09-01",
+  "submissions": [
+    {
+      "submission_id": "gr00t-n1-5-eai4s-longhorizon-v1",
+      "status": "verified",
+      "model_name": "GR00T N1.5",
+      "checkpoint": "eval_20260831_175410",
+      "policy_provider": "gr00t",
+      "suite_id": "eai4s_benchmark_longhorizon_reasoning_v1",
+      "splits": ["sim_clean"],
+      "contributor": "EAI4S",
+      "verified_at": "2026-09-01",
+      "run_ids": [
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_L01_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_L02_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_L04_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_L06_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_L08_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_L09_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_L10_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_L11_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_L12_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_R01_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_R02_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_R03_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_R04_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_R05_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_R08_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_R09_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_R10_sim_clean",
+        "eval_20260831_175410_eai4s_openpi_eai4s_benchmark_longhorizon_reasoning_v1_R11_sim_clean"
+      ]
+    },
+    {
+      "submission_id": "OPEN_PI05-labbench-easy-v1",
+      "status": "verified",
+      "model_name": "OpenPI",
+      "checkpoint": "openpi_labbench_v1",
+      "policy_provider": "openpi",
+      "suite_id": "eai4s_benchmark_longhorizon_reasoning_v1",
+      "splits": [
+        "sim_clean"
+      ],
+      "run_ids": [
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L01_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L02_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L04_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L06_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L08_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L09_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L10_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L11_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L12_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R01_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R02_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R03_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R04_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R05_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R08_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R09_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R10_sim_clean",
+        "eval_20260901_143801_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R11_sim_clean"
+      ],
+      "contributor": "EAI4S",
+      "verified_at": "2026-09-01"
+    },
+    {
+      "submission_id": "OPEN_PI05-labbench-hard-v1",
+      "status": "verified",
+      "model_name": "OpenPI",
+      "checkpoint": "openpi_labbench_v1",
+      "policy_provider": "openpi",
+      "suite_id": "eai4s_benchmark_longhorizon_reasoning_v1",
+      "splits": [
+        "sim_randomized"
+      ],
+      "run_ids": [
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L01_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L02_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L04_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L06_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L08_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L09_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L10_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L11_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_L12_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R01_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R02_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R03_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R04_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R05_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R08_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R09_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R10_sim_randomized",
+        "eval_20260902_185920_OpenPI_eai4s_benchmark_longhorizon_reasoning_v1_R11_sim_randomized"
+      ],
+      "contributor": "EAI4S",
+      "verified_at": "2026-09-01"
+    }
+  ]
+}

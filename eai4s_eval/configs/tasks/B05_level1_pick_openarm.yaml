@@ -1,0 +1,22 @@
+task_id: level1_pick_openarm
+task_name: Level 1 OpenArm Pick
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level1_pick_openarm, policy_phase: full_task, incompatible_profile: openpi_franka_joint8_v1}
+robot: openarm
+task_family: pick
+task_level: level1
+task_tags: [benchmark, pick, openarm, policy_profile_pending]
+leaderboard_group: benchmark_pick
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 800
+instruction: {canonical: Pick up the target object}
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 1.0
+  goal: {all: [{predicate: grasped}, {predicate: lifted, args: {height_threshold_m: 0.10}}]}
+  terminal: {required: false, all: []}
+  stability: {required: false, all: []}
+  safety: {hard_fail: []}
+failure_modes: [{code: policy_profile_incompatible, category: policy_error, description: A validated OpenArm action profile is required.}]

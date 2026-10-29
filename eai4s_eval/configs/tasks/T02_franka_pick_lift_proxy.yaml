@@ -1,0 +1,83 @@
+task_id: T02_franka_pick_lift_proxy
+task_name: Franka pick/lift proxy
+task_version: 0.1.0
+suite: eai4s_eval_v0_1
+scene_id: tabletop_pick_lift_proxy
+robot: franka_panda
+task_family: pick_place
+task_level: base
+task_tags:
+  - pick
+  - lift
+  - single_object
+leaderboard_group: basic_pick_place
+control_hz: 10
+max_steps: 1500
+success_hold_steps: 10
+instruction:
+  canonical: pick glass bottle
+  variants:
+    - pick the glass bottle
+    - pick the vial
+    - grasp and lift the glass bottle
+objects:
+  vial:
+    asset_id: vial_brown
+    role: target_object
+stages:
+  - id: reach
+    weight: 0.25
+  - id: grasp
+    weight: 0.25
+  - id: lift
+    weight: 0.30
+  - id: stabilize
+    weight: 0.20
+success:
+  logic: robust_semantic_v0
+  hold_steps: 10
+  goal:
+    all:
+      - predicate: grasped
+        args: {grip_threshold: 0.04, distance_threshold_m: 0.15}
+      - predicate: lifted
+        args: {height_threshold_m: 0.05}
+  terminal:
+    required: false
+    all: []
+  stability:
+    required: false
+    all:
+      - predicate: object_velocity_below
+        args: {linear_velocity_threshold_mps: 0.05, angular_velocity_threshold_radps: 0.50}
+  safety:
+    hard_fail:
+      - predicate: object_out_of_workspace
+        args: {workspace_radius_m: 2.0}
+failure:
+  any:
+    - predicate: object_out_of_workspace
+    - predicate: timeout
+failure_modes:
+  - code: timeout
+    category: timeout
+    description: Episode exceeded max_steps before satisfying success predicates.
+  - code: object_out_of_workspace
+    category: drop
+    description: Target object moved outside the valid workspace.
+  - code: policy_output_invalid
+    category: policy_error
+    description: VLA service returned an invalid action payload.
+  - code: policy_request_failed
+    category: policy_error
+    description: VLA service request failed or timed out.
+metrics:
+  - success_rate
+  - stage_completion
+  - object_height_change
+  - hand_object_distance
+  - grasp_attempts
+  - joint_jerk_rms
+  - eef_jerk_rms
+  - path_length
+  - inference_latency

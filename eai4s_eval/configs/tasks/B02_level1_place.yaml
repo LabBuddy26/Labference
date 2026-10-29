@@ -1,0 +1,49 @@
+task_id: level1_place
+task_name: Level 1 Place
+task_version: 1.0.0
+suite: eai4s_benchmark_core_v1
+runtime:
+  backend: eai4s_benchmark
+  env_config: level1_place
+  policy_phase: after_scripted_pick
+robot: franka
+task_family: place
+task_level: level1
+task_tags: [benchmark, place, joint_policy, scripted_precondition]
+leaderboard_group: benchmark_place
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 2000
+instruction:
+  canonical: Pick up the beaker from the table and place it at the target
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal:
+    all:
+      - predicate: near
+        args: {id: object_near_target_xy, a_key: object_pos, b_key: target_pos, axes: xy, distance_threshold_m: 0.05}
+      - predicate: near
+        args: {id: object_on_table_height, a_key: object_pos, b_key: initial_object_pos, axes: z, distance_threshold_m: 0.05}
+  terminal:
+    required: true
+    all:
+      - predicate: released
+        args: {open_threshold: 0.035}
+  stability:
+    required: true
+    all:
+      - predicate: object_velocity_below
+        args: {linear_velocity_threshold_mps: 0.05, angular_velocity_threshold_radps: 0.50}
+  safety:
+    hard_fail:
+      - predicate: object_out_of_workspace
+        args: {workspace_radius_m: 1.5}
+failure_modes:
+  - {code: timeout, category: timeout, description: Episode exceeded max_steps.}
+  - {code: object_out_of_workspace, category: drop, description: Object left the workspace.}
+  - {code: wrong_target_reached, category: wrong_place, description: Object was placed outside the target.}
+  - {code: policy_request_failed, category: policy_error, description: OpenPI request failed.}
+metrics: [success_rate, placement_error, release_success, stability, inference_latency]
+required_snapshot_fields: [object_pos, target_pos, initial_object_pos, gripper_pos, object_lin_vel]

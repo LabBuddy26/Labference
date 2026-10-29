@@ -1,0 +1,201 @@
+task_id: T05_label_color_sort_vials
+task_name: Sort multiple sample vials by label or color
+task_version: 0.1.0
+suite: eai4s_eval_v0_1
+scene_id: tabletop_multi_vial_sort
+robot: franka_panda
+task_family: sorting
+task_level: base
+task_tags:
+  - vial
+  - label
+  - color
+  - sorting
+  - multi_object
+leaderboard_group: basic_sorting
+control_hz: 10
+max_steps: 3200
+success_hold_steps: 15
+
+instruction:
+  canonical: sort the sample vials into target areas by label or color
+  variants:
+    - classify the sample bottles by color and place them in the matching regions
+    - put each labeled vial into its assigned area
+    - sort the vials according to their labels
+
+objects:
+  vial_red:
+    asset_id: sample_vial_red_label
+    role: sortable_object
+  vial_blue:
+    asset_id: sample_vial_blue_label
+    role: sortable_object
+  vial_green:
+    asset_id: sample_vial_green_label
+    role: sortable_object
+  red_area:
+    role: target_region
+  blue_area:
+    role: target_region
+  green_area:
+    role: target_region
+
+stages:
+  - id: inspect_labels_or_colors
+    weight: 0.20
+  - id: sort_first_vial
+    weight: 0.25
+  - id: sort_second_vial
+    weight: 0.25
+  - id: sort_third_vial
+    weight: 0.20
+  - id: final_stabilize
+    weight: 0.10
+
+success:
+  logic: robust_semantic_v0
+  hold_steps: 15
+  goal:
+    all:
+      - predicate: device_state
+        args:
+          expected: classification_complete
+      - predicate: near
+        args:
+          id: red_vial_in_red_area
+          a_key: task_state.vial_red_pos
+          b_key: task_state.red_area_pos
+          distance_threshold_m: 0.04
+      - predicate: near
+        args:
+          id: blue_vial_in_blue_area
+          a_key: task_state.vial_blue_pos
+          b_key: task_state.blue_area_pos
+          distance_threshold_m: 0.04
+      - predicate: near
+        args:
+          id: green_vial_in_green_area
+          a_key: task_state.vial_green_pos
+          b_key: task_state.green_area_pos
+          distance_threshold_m: 0.04
+  sequence:
+    required: false
+    events:
+      - inspect_labels_or_colors
+      - place_red_vial
+      - place_blue_vial
+      - place_green_vial
+      - final_stabilize
+  terminal:
+    required: false
+    all: []
+  stability:
+    required: true
+    all:
+      - predicate: object_velocity_below
+        args:
+          id: red_vial_velocity_below
+          lin_vel_key: task_state.vial_red_lin_vel
+          ang_vel_key: task_state.vial_red_ang_vel
+          linear_velocity_threshold_mps: 0.02
+          angular_velocity_threshold_radps: 0.20
+      - predicate: object_velocity_below
+        args:
+          id: blue_vial_velocity_below
+          lin_vel_key: task_state.vial_blue_lin_vel
+          ang_vel_key: task_state.vial_blue_ang_vel
+          linear_velocity_threshold_mps: 0.02
+          angular_velocity_threshold_radps: 0.20
+      - predicate: object_velocity_below
+        args:
+          id: green_vial_velocity_below
+          lin_vel_key: task_state.vial_green_lin_vel
+          ang_vel_key: task_state.vial_green_ang_vel
+          linear_velocity_threshold_mps: 0.02
+          angular_velocity_threshold_radps: 0.20
+  safety:
+    hard_fail:
+      - predicate: object_out_of_workspace
+        args:
+          workspace_radius_m: 1.5
+      - predicate: object_dropped
+        args:
+          min_height_m: 0.02
+      - predicate: forbidden_collision
+      - predicate: wrong_object_moved
+        args:
+          distance_threshold_m: 0.03
+      - predicate: wrong_target_reached
+
+failure:
+  any:
+    - predicate: object_out_of_workspace
+    - predicate: object_dropped
+      args:
+        min_height_m: 0.02
+    - predicate: forbidden_collision
+    - predicate: wrong_object_moved
+      args:
+        distance_threshold_m: 0.03
+    - predicate: wrong_target_reached
+    - predicate: timeout
+failure_modes:
+  - code: timeout
+    category: timeout
+    description: Episode exceeded max_steps before all vials were classified and placed.
+  - code: object_out_of_workspace
+    category: drop
+    description: At least one sample vial moved outside the valid workspace.
+  - code: object_dropped
+    category: drop
+    description: At least one sample vial fell below the safe height threshold.
+  - code: forbidden_collision
+    category: collision
+    description: Robot or vial collided with a forbidden scene entity.
+  - code: wrong_target_reached
+    category: wrong_place
+    description: A vial was placed into a region that does not match its label or color.
+  - code: wrong_object_moved
+    category: wrong_object
+    description: A non-task object moved beyond the allowed tolerance.
+  - code: sequence_incomplete_or_invalid
+    category: sequence_error
+    description: Optional sorting events were missing or observed in an invalid order.
+
+metrics:
+  - success_rate
+  - stage_completion
+  - per_vial_placement_accuracy
+  - classification_accuracy
+  - wrong_target_rate
+  - drop_rate
+  - forbidden_collision_rate
+  - inference_latency
+
+quality_metrics:
+  - mean_placement_error_m
+  - max_placement_error_m
+  - classification_confidence_mean
+  - max_contact_force_n
+
+required_snapshot_fields:
+  - device_state
+  - object_pos
+  - initial_object_pos
+  - forbidden_collision
+  - wrong_target_reached
+  - wrong_object_moved
+  - task_state.vial_red_pos
+  - task_state.vial_blue_pos
+  - task_state.vial_green_pos
+  - task_state.red_area_pos
+  - task_state.blue_area_pos
+  - task_state.green_area_pos
+  - task_state.vial_red_lin_vel
+  - task_state.vial_red_ang_vel
+  - task_state.vial_blue_lin_vel
+  - task_state.vial_blue_ang_vel
+  - task_state.vial_green_lin_vel
+  - task_state.vial_green_ang_vel
+  - task_state.events

@@ -1,0 +1,23 @@
+task_id: level1_stir
+task_name: Level 1 Stir
+suite: eai4s_benchmark_full_v1
+runtime: {backend: eai4s_benchmark, env_config: level1_stir, policy_phase: after_scripted_pick}
+robot: franka
+task_family: stirring
+task_level: level1
+task_tags: [benchmark, stirring, trajectory_truth_pending]
+leaderboard_group: benchmark_stirring
+control_hz: 10
+physics_hz: 60
+predicate_hz: 60
+max_steps: 3000
+instruction: {canonical: Use the glass rod to stir the liquid.}
+success:
+  logic: robust_semantic_v0
+  hold_time_sec: 0.5
+  goal: {all: [{predicate: task_state_true, args: {key: task_state.stir_trajectory_valid}}]}
+  terminal: {required: false, all: []}
+  stability: {required: false, all: []}
+  safety: {hard_fail: []}
+metrics: [stir_path_coverage_diagnostic]
+failure_modes: [{code: trajectory_truth_unavailable, category: sequence_error, description: Stir path truth is not validated yet.}]

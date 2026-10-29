@@ -1,0 +1,34 @@
+{
+  "schema_version": "labference/policy-profile-v1",
+  "name": "rpent-openpi-franka-rgbd-v1",
+  "system_type": "agent",
+  "adapter": "rpent",
+  "action": {
+    "representation": "joint_position",
+    "dimensions": 8,
+    "mode": "absolute",
+    "frame": "franka_joint",
+    "units": "radians+normalized_gripper",
+    "gripper": "symmetric_finger_position",
+    "control_hz": 120.0,
+    "max_chunk": 40
+  },
+  "sensors": {
+    "rgb_channels": ["front", "wrist"],
+    "depth_channels": ["front_depth", "wrist_depth"],
+    "state_format": "franka_joint_positions"
+  },
+  "reports": ["semantic", "decision", "geometry", "execution"],
+  "oracle_transports": ["structured", "text", "tool"],
+  "replacement_sites": ["semantic_report", "committed_action", "geometry_report", "executor"],
+  "reset": {
+    "mode": "restart",
+    "clear_action_buffer": true,
+    "clear_agent_context": true,
+    "clear_episode_memory": true
+  },
+  "input_mapping": {},
+  "agent_tools": ["observe", "recognize_state", "commit_operation", "localize_target", "vla_act", "move_to", "execute_operation", "wait", "finish"],
+  "strict_handshake": true,
+  "receipt_required": true
+}
