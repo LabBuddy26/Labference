@@ -3578,14 +3578,14 @@
     "default_split": "sim_randomized",
     "description": "Evaluating how observed physical outcomes guide subsequent choices and how those choices translate into robotic laboratory actions.",
     "links": {
-      "code": "https://github.com/zhaochunhai/Labference",
+      "code": "https://github.com/LabBuddy26/Labference",
       "contact": "",
       "dataset": "https://pan.baidu.com/s/1zyJL3zxHqI_j67hUkUF6lw",
       "documentation": "",
       "hf_dataset": "",
       "hf_models": "",
       "hf_simulator": "",
-      "homepage": "https://zhaochunhai.github.io/Labference/",
+      "homepage": "https://labbuddy26.github.io/Labference/",
       "huggingface": "",
       "paper": "https://arxiv.org/abs/2610.35252"
     },
@@ -3786,63 +3786,68 @@
     },
     "partners": [
       {
-        "logo": "web_assets/brand/casia-logo.jpg",
+        "logo": "web_assets/brand/casia-logo-v2.png",
+        "logo_crop": true,
+        "logo_shape": "wide",
         "name": "中国科学院自动化研究所",
         "name_en": "Institute of Automation, Chinese Academy of Sciences",
         "short_name": "CASIA"
       },
       {
-        "logo": "web_assets/brand/ucas-logo.png",
+        "logo": "web_assets/brand/ucas-logo-v2.webp",
+        "logo_shape": "wide",
         "name": "中国科学院大学",
         "name_en": "University of Chinese Academy of Sciences",
         "short_name": "UCAS"
       },
       {
-        "logo": "web_assets/brand/objecteye-logo.jpeg",
+        "logo": "web_assets/brand/objecteye-logo-v2.jpg",
         "logo_shape": "wide",
         "name": "中科视语",
         "name_en": "ObjectEye",
         "short_name": "ObjectEye"
       },
       {
-        "logo": "web_assets/brand/zidong-taichu-logo.jpeg",
+        "logo": "web_assets/brand/zidong-taichu-logo-v2.jpg",
         "logo_shape": "wide",
         "name": "紫东太初",
         "name_en": "Zidong Taichu",
         "short_name": "Zidong Taichu"
       },
       {
-        "logo": "web_assets/brand/pku-stomatology-logo.png",
+        "logo": "web_assets/brand/pku-stomatology-logo-v3.png",
+        "logo_shape": "wide",
         "name": "北京大学口腔医学院（口腔医院）",
         "name_en": "Peking University School and Hospital of Stomatology",
         "short_name": "PKU Stomatology"
       },
       {
-        "logo": "web_assets/brand/pla-general-hospital-logo.jpeg",
+        "logo": "web_assets/brand/pla-general-hospital-logo-v2.jpg",
         "logo_shape": "wide",
         "name": "中国人民解放军总医院",
         "name_en": "Chinese PLA General Hospital",
         "short_name": "Chinese PLA General Hospital"
       },
       {
-        "logo": "web_assets/brand/iquotient-robotics-logo.jpeg",
+        "logo": "web_assets/brand/iquotient-robotics-logo-v2.png",
         "logo_shape": "wide",
         "name": "智科特机器人",
         "name_en": "IQuotient Robotics",
         "short_name": "IQuotient Robotics"
       },
       {
-        "logo": "web_assets/brand/pku-pharmaceutical-sciences-logo.png",
+        "logo": "web_assets/brand/pku-pharmaceutical-sciences-logo-v2.png",
         "logo_shape": "wide",
         "name": "北京大学药学院",
         "name_en": "School of Pharmaceutical Sciences, Peking University",
         "short_name": "PKU Pharmaceutical Sciences"
       },
       {
-        "logo": "web_assets/brand/cas-semiconductors-logo.jpeg",
+        "logo": "web_assets/brand/cas-semiconductors-logo-v2.png",
+        "logo_shape": "wide",
         "name": "中国科学院半导体研究所",
-        "name_en": "State Key Laboratory of Semiconductor Physics and Chip Technologies, Institute of Semiconductors, Chinese Academy of Sciences, Beijing, P.R. China",
-        "short_name": "State Key Laboratory of Semiconductor Physics and Chip Technologies, Institute of Semiconductors, Chinese Academy of Sciences, Beijing, P.R. China"
+        "name_en": "Institute of Semiconductors, Chinese Academy of Sciences",
+        "short_name": "Institute of Semiconductors, Chinese Academy of Sciences"
       }
     ],
     "public_media_enabled": true,

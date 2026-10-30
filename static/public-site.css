@@ -131,6 +131,7 @@ h3 { font-size: var(--fs-h3); }
 .institution-logo-frame { height: 112px; display: flex; align-items: center; justify-content: center; padding: 6px 12px; }
 .institution-logo img { width: 112px; height: 100px; object-fit: contain; }
 .institution-logo-wide img { width: 220px; max-width: 100%; }
+.institution-logo-crop img { object-fit: cover; object-position: center; }
 .institution-logo figcaption { margin-top: 14px; font-size: 13px; font-weight: 600; line-height: 1.6; overflow-wrap: anywhere; }
 .institution-logo figcaption span { display: block; font-size: 12px; font-weight: 400; color: var(--muted); }
 .institution-text { color: var(--reagent-dark); font-weight: 650; overflow-wrap: anywhere; }
