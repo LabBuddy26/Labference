@@ -13,7 +13,7 @@ No model checkpoint or simulator asset is downloaded implicitly.
 ## Setup
 
 ```bash
-git clone https://github.com/Lab-Buddy/Labference
+git clone https://github.com/LabBuddy26/Labference
 cd Labference
 python -m pip install hydra-core omegaconf numpy opencv-python h5py
 python -m pip install -r eai4s_eval/requirements-dashboard.txt

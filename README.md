@@ -1,6 +1,6 @@
 # Labference
 
-[Paper](https://arxiv.org/abs/2610.35252) · [Website](https://lab-buddy.github.io/Labference/)
+[Paper](https://arxiv.org/abs/2610.35252) · [Website](https://labbuddy26.github.io/Labference/)
 
 ## Usage guides
 
@@ -40,7 +40,7 @@ Labference requires an NVIDIA Isaac Sim Python environment. Clone the public
 repository, install the dashboard dependencies, then verify Isaac Sim:
 
 ```bash
-git clone https://github.com/Lab-Buddy/Labference
+git clone https://github.com/LabBuddy26/Labference
 cd Labference
 python -m pip install -r eai4s_eval/requirements-dashboard.txt
 python -c "from isaacsim import SimulationApp; print('Isaac Sim OK')"

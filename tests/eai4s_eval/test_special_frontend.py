@@ -47,9 +47,9 @@ AUTHOR_NAMES = ['Shitong Liu', 'Jingwei Zhang', 'Sheng Lian', 'Xinyu Zhuang',
                 'Kaiwen Guo', 'Quan Liu', 'Chunhai Zhao', 'Jiaxin He', 'Fan Yang',
                 'Manli Tao', 'Tingyu Yuan', 'Jinqiao Wang', 'Xiaojing Liu',
                 'Chaomin Guo', 'Feichan Yang', 'Hongwei Shi', 'Zhuang Xiong', 'Chaoyang Zhao', 'Zhiyong Liu']
-NEW_PARTNER_LOGOS = ('pku-stomatology-logo.png', 'pla-general-hospital-logo.jpeg',
-                     'iquotient-robotics-logo.jpeg', 'pku-pharmaceutical-sciences-logo.png',
-                     'cas-semiconductors-logo.jpeg')
+NEW_PARTNER_LOGOS = ('pku-stomatology-logo-v3.png', 'pla-general-hospital-logo-v2.jpg',
+                     'iquotient-robotics-logo-v2.png', 'pku-pharmaceutical-sciences-logo-v2.png',
+                     'cas-semiconductors-logo-v2.png')
 
 
 def test_institutions_are_separate_from_project_and_authors_match_citation():
@@ -68,8 +68,9 @@ def test_institutions_are_separate_from_project_and_authors_match_citation():
     semiconductor_name = ('State Key Laboratory of Semiconductor Physics and Chip Technologies, '
                           'Institute of Semiconductors, Chinese Academy of Sciences, Beijing, P.R. China')
     assert affiliations[7] == semiconductor_name
-    assert config['partners'][-1]['name_en'] == semiconductor_name
-    assert config['partners'][-1]['short_name'] == semiconductor_name
+    partner_name = 'Institute of Semiconductors, Chinese Academy of Sciences'
+    assert config['partners'][-1]['name_en'] == partner_name
+    assert config['partners'][-1]['short_name'] == partner_name
     cff = yaml.safe_load((REPOSITORY_ROOT / 'docs/public/CITATION.cff').read_text())
     assert [a['given-names'] + ' ' + a['family-names'] for a in cff['authors']] == AUTHOR_NAMES
     assert [a['affiliation'] for a in cff['authors']] == [
@@ -82,8 +83,9 @@ def test_institutions_are_separate_from_project_and_authors_match_citation():
         assert institutions.count('data-institution') == 9
         assert 'eai4s-labbench-mark.webp' not in institutions
         assert '中国科学院半导体研究所' in institutions
-        assert semiconductor_name in institutions
-        assert 'cas-semiconductors-logo.jpeg' in institutions
+        assert partner_name in institutions
+        assert semiconductor_name not in institutions
+        assert 'cas-semiconductors-logo-v2.png' in institutions
         assert 'cas-semiconductors-logo.webp' not in institutions
         assert 'id="authors"' not in page
         assert 'href="#authors"' not in page
@@ -132,7 +134,7 @@ def test_home_has_only_four_special_tasks_and_two_videos():
         assert 'chemistry laboratory' not in page.lower()
         assert 'Matched Oracle-assisted continuations' in page
         assert page.count('class="tag-item"') == 6
-        for name, logo in [('中科视语', 'objecteye-logo.jpeg'), ('紫东太初', 'zidong-taichu-logo.jpeg')]:
+        for name, logo in [('中科视语', 'objecteye-logo-v2.jpg'), ('紫东太初', 'zidong-taichu-logo-v2.jpg')]:
             assert name in page
             assert f'/static/web_assets/brand/{logo}' in page
         assert page.count('data-special-family=') == 4
@@ -228,7 +230,7 @@ def test_static_export_includes_special_videos_and_new_assets_but_no_hero():
         for logo in NEW_PARTNER_LOGOS:
             assert (root/'site/static/web_assets/brand'/logo).is_file()
             assert f'/Labference/static/web_assets/brand/{logo}' in page
-        for logo in ('objecteye-logo.jpeg', 'zidong-taichu-logo.jpeg'):
+        for logo in ('objecteye-logo-v2.jpg', 'zidong-taichu-logo-v2.jpg'):
             assert (root/'site/static/web_assets/brand'/logo).is_file()
             assert f'/Labference/static/web_assets/brand/{logo}' in page
         for old_logo in ('objecteye-logo.png', 'zidong-taichu-logo.png'):

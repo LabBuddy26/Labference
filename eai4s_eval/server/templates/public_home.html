@@ -37,7 +37,7 @@
     <h2 id="institutions-title" class="institutions-heading">Collaborating institutions</h2>
     <div class="institution-grid">
       {% for partner in snapshot.site.get('partners', []) %}
-      <figure class="institution-logo{% if partner.get('logo_shape') == 'wide' %} institution-logo-wide{% endif %}" data-institution>
+      <figure class="institution-logo{% if partner.get('logo_shape') == 'wide' %} institution-logo-wide{% endif %}{% if partner.get('logo_crop') %} institution-logo-crop{% endif %}" data-institution>
         <div class="institution-logo-frame">{% if snapshot.site.get('public_media_enabled', true) %}<img src="{{ base_url }}/static/{{ partner.logo }}" width="240" height="120" alt="{{ partner.name_en }} logo" loading="lazy">{% else %}<span class="institution-text">{{ partner.short_name }}</span>{% endif %}</div>
         <figcaption lang="zh-CN">{{ partner.name }}<span lang="en">{{ partner.short_name }}</span></figcaption>
       </figure>

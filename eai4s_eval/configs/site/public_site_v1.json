@@ -9,60 +9,65 @@
       "name": "\u4e2d\u56fd\u79d1\u5b66\u9662\u81ea\u52a8\u5316\u7814\u7a76\u6240",
       "name_en": "Institute of Automation, Chinese Academy of Sciences",
       "short_name": "CASIA",
-      "logo": "web_assets/brand/casia-logo.jpg"
+      "logo": "web_assets/brand/casia-logo-v2.png",
+      "logo_shape": "wide",
+      "logo_crop": true
     },
     {
       "name": "\u4e2d\u56fd\u79d1\u5b66\u9662\u5927\u5b66",
       "name_en": "University of Chinese Academy of Sciences",
       "short_name": "UCAS",
-      "logo": "web_assets/brand/ucas-logo.png"
+      "logo": "web_assets/brand/ucas-logo-v2.webp",
+      "logo_shape": "wide"
     },
     {
       "name": "\u4e2d\u79d1\u89c6\u8bed",
       "name_en": "ObjectEye",
       "short_name": "ObjectEye",
-      "logo": "web_assets/brand/objecteye-logo.jpeg",
+      "logo": "web_assets/brand/objecteye-logo-v2.jpg",
       "logo_shape": "wide"
     },
     {
       "name": "\u7d2b\u4e1c\u592a\u521d",
       "name_en": "Zidong Taichu",
       "short_name": "Zidong Taichu",
-      "logo": "web_assets/brand/zidong-taichu-logo.jpeg",
+      "logo": "web_assets/brand/zidong-taichu-logo-v2.jpg",
       "logo_shape": "wide"
     },
     {
       "name": "\u5317\u4eac\u5927\u5b66\u53e3\u8154\u533b\u5b66\u9662\uff08\u53e3\u8154\u533b\u9662\uff09",
       "name_en": "Peking University School and Hospital of Stomatology",
       "short_name": "PKU Stomatology",
-      "logo": "web_assets/brand/pku-stomatology-logo.png"
+      "logo": "web_assets/brand/pku-stomatology-logo-v3.png",
+      "logo_shape": "wide"
     },
     {
       "name": "\u4e2d\u56fd\u4eba\u6c11\u89e3\u653e\u519b\u603b\u533b\u9662",
       "name_en": "Chinese PLA General Hospital",
       "short_name": "Chinese PLA General Hospital",
-      "logo": "web_assets/brand/pla-general-hospital-logo.jpeg",
+      "logo": "web_assets/brand/pla-general-hospital-logo-v2.jpg",
       "logo_shape": "wide"
     },
     {
       "name": "\u667a\u79d1\u7279\u673a\u5668\u4eba",
       "name_en": "IQuotient Robotics",
       "short_name": "IQuotient Robotics",
-      "logo": "web_assets/brand/iquotient-robotics-logo.jpeg",
+      "logo": "web_assets/brand/iquotient-robotics-logo-v2.png",
       "logo_shape": "wide"
     },
     {
       "name": "\u5317\u4eac\u5927\u5b66\u836f\u5b66\u9662",
       "name_en": "School of Pharmaceutical Sciences, Peking University",
       "short_name": "PKU Pharmaceutical Sciences",
-      "logo": "web_assets/brand/pku-pharmaceutical-sciences-logo.png",
+      "logo": "web_assets/brand/pku-pharmaceutical-sciences-logo-v2.png",
       "logo_shape": "wide"
     },
     {
       "name": "\u4e2d\u56fd\u79d1\u5b66\u9662\u534a\u5bfc\u4f53\u7814\u7a76\u6240",
-      "name_en": "State Key Laboratory of Semiconductor Physics and Chip Technologies, Institute of Semiconductors, Chinese Academy of Sciences, Beijing, P.R. China",
-      "short_name": "State Key Laboratory of Semiconductor Physics and Chip Technologies, Institute of Semiconductors, Chinese Academy of Sciences, Beijing, P.R. China",
-      "logo": "web_assets/brand/cas-semiconductors-logo.jpeg"
+      "name_en": "Institute of Semiconductors, Chinese Academy of Sciences",
+      "short_name": "Institute of Semiconductors, Chinese Academy of Sciences",
+      "logo": "web_assets/brand/cas-semiconductors-logo-v2.png",
+      "logo_shape": "wide"
     }
   ],
   "default_split": "sim_randomized",
@@ -82,8 +87,8 @@
     "hf_simulator": "",
     "hf_models": "",
     "paper": "https://arxiv.org/abs/2610.35252",
-    "code": "https://github.com/Lab-Buddy/Labference",
-    "homepage": "https://lab-buddy.github.io/Labference/",
+    "code": "https://github.com/LabBuddy26/Labference",
+    "homepage": "https://labbuddy26.github.io/Labference/",
     "dataset": "https://pan.baidu.com/s/1zyJL3zxHqI_j67hUkUF6lw",
     "documentation": "",
     "contact": ""

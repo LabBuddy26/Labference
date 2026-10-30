@@ -242,15 +242,15 @@ class PublicSiteRouteTest(unittest.TestCase):
     def test_project_resources_and_institution_logo(self) -> None:
         home = self.client.get("/").get_data(as_text=True)
         self.assertIn('data-resource="paper" href="https://arxiv.org/abs/2610.35252"', home)
-        self.assertIn('data-resource="code" href="https://github.com/zhaochunhai/Labference"', home)
-        self.assertIn('data-resource="homepage" href="https://zhaochunhai.github.io/Labference/"', home)
+        self.assertIn('data-resource="code" href="https://github.com/LabBuddy26/Labference"', home)
+        self.assertIn('data-resource="homepage" href="https://labbuddy26.github.io/Labference/"', home)
         self.assertIn('data-resource="dataset" href="https://pan.baidu.com/', home)
         self.assertIn("中国科学院自动化研究所", home)
         self.assertIn("中国科学院大学", home)
         self.assertIn("University of Chinese Academy of Sciences logo", home)
-        with self.client.get("/static/web_assets/brand/ucas-logo.png") as response:
+        with self.client.get("/static/web_assets/brand/ucas-logo-v2.webp") as response:
             self.assertEqual(response.status_code, 200)
-        with self.client.get("/static/web_assets/brand/casia-logo.jpg") as response:
+        with self.client.get("/static/web_assets/brand/casia-logo-v2.png") as response:
             self.assertEqual(response.status_code, 200)
         config = load_public_site_config()
         config["links"].update({
@@ -439,10 +439,10 @@ class PublicSiteRouteTest(unittest.TestCase):
         home = (output / "index.html").read_text(encoding="utf-8")
         self.assertIn('/LabBench/tasks/', home)
         self.assertIn('/LabBench/static/public-site.css', home)
-        self.assertIn('data-resource="homepage" href="https://zhaochunhai.github.io/Labference/"', home)
+        self.assertIn('data-resource="homepage" href="https://labbuddy26.github.io/Labference/"', home)
         self.assertIn('class="institution-text">CASIA', home)
         self.assertIn('class="institution-text">UCAS', home)
-        self.assertNotIn('src="/LabBench/static/web_assets/brand/casia-logo.jpg"', home)
+        self.assertNotIn('src="/LabBench/static/web_assets/brand/casia-logo-v2.png"', home)
         self.assertTrue((output / "tasks" / "L01" / "index.html").is_file())
         self.assertTrue((output / "objects" / "beaker" / "index.html").is_file())
         self.assertFalse((output / "licenses").exists())
@@ -470,8 +470,8 @@ class PublicSiteRouteTest(unittest.TestCase):
         self.assertGreater(manifest["media_bytes"], 0)
         media_root = output / "static" / "web_assets"
         self.assertTrue((media_root / "brand" / "eai4s-labbench-mark.webp").is_file())
-        self.assertTrue((media_root / "brand" / "casia-logo.jpg").is_file())
-        self.assertTrue((media_root / "brand" / "ucas-logo.png").is_file())
+        self.assertTrue((media_root / "brand" / "casia-logo-v2.png").is_file())
+        self.assertTrue((media_root / "brand" / "ucas-logo-v2.webp").is_file())
         self.assertFalse((media_root / "hero" / "labbench-family-assets-v2.webp").exists())
         self.assertFalse((media_root / "hero" / "labbench-family.webp").exists())
         for object_id in ("pipette", "pipette-tip-box", "waste-box", "well-plate", "button-panel"):
